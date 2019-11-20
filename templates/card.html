@@ -1,0 +1,11 @@
+<div class="card d-inline-flex border-0 m-2 mtg-card">
+  <a href="{{ card.card().scryfall_uri|safe }}">
+    <img src="{{ card.front_image_uri()|safe }}" class="card-img-top" alt="{{ card.card().name }}">
+  </a>
+  <div class="card-body p-0">
+    <h6 class="card-title">{{ card.card().name }}</h6>
+    {% for tag in card.tags() %}
+      <a href="tag-{{ tag.canonical_name() }}.html" class="badge badge-pill badge-info">{{ tag.name() }}</a>
+    {% endfor %}
+  </div>
+</div>

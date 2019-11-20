@@ -1,0 +1,163 @@
+# 0 colors
+[""]
+colors = []
+type = "colorless"
+name = "Colorless"
+
+# 1 color
+[W]
+colors = ["white"]
+type = "mono"
+name = "White"
+[U]
+colors = ["blue"]
+type = "mono"
+name = "Blue"
+[B]
+colors = ["black"]
+type = "mono"
+name = "Black"
+[R]
+colors = ["red"]
+type = "mono"
+name = "Red"
+[G]
+colors = ["green"]
+type = "mono"
+name = "Green"
+
+# 2 color allied
+[WU]
+colors = ["white", "blue"]
+type = "dual"
+name = "Azorius"
+subtype = "allied"
+[UB]
+colors = ["blue", "black"]
+type = "dual"
+name = "Dimir"
+subtype = "allied"
+[BR]
+colors = ["black", "red"]
+type = "dual"
+name = "Rakdos"
+subtype = "allied"
+[RG]
+colors = ["red", "green"]
+type = "dual"
+name = "Gruul"
+subtype = "allied"
+[WG]
+colors = ["white", "blue"]
+type = "dual"
+name = "Selesnya"
+subtype = "allied"
+
+# 2 color enemy
+[WB]
+colors = ["white", "black"]
+type = "dual"
+name = "Orzhov"
+subtype = "enemy"
+[UR]
+colors = ["blue", "red"]
+type = "dual"
+name = "Izzet"
+subtype = "enemy"
+[BG]
+colors = ["black", "green"]
+type = "dual"
+name = "Golgari"
+subtype = "enemy"
+[WR]
+colors = ["white", "red"]
+type = "dual"
+name = "Boros"
+subtype = "enemy"
+[UG]
+colors = ["blue", "green"]
+type = "dual"
+name = "Simic"
+subtype = "enemy"
+
+# 3 color shard
+[WUG]
+colors = ["white", "blue", "green"]
+type = "tri"
+name = "Bant"
+subtype = "shard"
+[WUB]
+colors = ["white", "blue", "black"]
+type = "tri"
+name = "Esper"
+subtype = "shard"
+[UBR]
+colors = ["blue", "black", "red"]
+type = "tri"
+name = "Grixis"
+subtype = "shard"
+[BRG]
+colors = ["black", "red", "green"]
+type = "tri"
+name = "Jund"
+subtype = "shard"
+[WRG]
+colors = ["white", "red", "green"]
+type = "tri"
+name = "Naya"
+subtype = "shard"
+
+# 3 color wedge
+[WBG]
+colors = ["white", "black", "green"]
+type = "tri"
+name = "Abzan"
+subtype = "wedge"
+[WUR]
+colors = ["white", "blue", "red"]
+type = "tri"
+name = "Jeskai"
+subtype = "wedge"
+[UBG]
+colors = ["blue", "black", "green"]
+type = "tri"
+name = "Sultai"
+subtype = "wedge"
+[WBR]
+colors = ["white", "black", "red"]
+type = "tri"
+name = "Mardu"
+subtype = "wedge"
+[URG]
+colors = ["blue", "red", "green"]
+type = "tri"
+name = "Temur"
+subtype = "wedge"
+
+# 4 color
+[WUBR]
+colors = ["white", "blue", "black", "red"]
+type = "four"
+name = "Nongreen"
+[UBRG]
+colors = ["blue", "black", "red", "green"]
+type = "four"
+name = "Nonwhite"
+[WBRG]
+colors = ["white", "black", "red", "green"]
+type = "four"
+name = "Nonwhite"
+[WURG]
+colors = ["white", "blue", "red", "green"]
+type = "four"
+name = "Nonblack"
+[WUBG]
+colors = ["white", "blue", "black", "green"]
+type = "four"
+name = "Nonred"
+
+# 5 color domain
+[WUBRG]
+colors = ["white", "blue", "black", "red", "green"]
+type = "domain"
+name = "Domain"

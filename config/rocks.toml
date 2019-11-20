@@ -1,0 +1,33 @@
+# ["CMC {0}"]
+# cmc = 0
+# subtags = ["Artifact Lands", "Charge Counters", "One-shot", "Mox", "Other"]
+
+# ["Artifact Lands"]
+# type = 'Land'
+
+# ["Charge Counters"]
+# name = '^(?:Astral Cornucopia|Everflowing Chalice|Jeweled Amulet)$'
+
+# ["One-shot"]
+# name = "^(?:Lion's Eye Diamond|Lotus Bloom|Lotus Petal)$"
+
+# [Mox]
+# name = '\bMox\b'
+
+# ["CMC {1}"]
+# cmc = 1
+# subtags = ["Eggs", "Colorless", "Other"]
+
+# [Eggs]
+# name = """
+# ^(?:Barbed Sextant|Chromatic Sphere|Chromatic Star|Darkwater Egg|Mossfire Egg|Shadowblood Egg|\
+# Skycloud Egg|Sungrass Egg|Terrarion)$"""
+
+# [Colorless]
+# name = '^(?:Mana Vault|Sol Ring)$'
+
+# [Other]
+# name = """
+# ^(?:Paradise Mantle|Arcum's Astrolabe|Expedition Map|Locket of Yesterdays|Mana Cylix|Manifold Key|\
+# Myr Moonvessel|Pyramid of the Pantheon|Springleaf Drum|Thran Turbine|Voltaic Key|\
+# Wayfarer's Bauble)$"""

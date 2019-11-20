@@ -1,0 +1,323 @@
+[Basics]
+type = 'Basic'
+subtags = ["Basics", "Snow Basics"]
+
+["Snow Basics"]
+type = "Basic Snow"
+
+[Snow]
+type = 'Snow'
+subtags = ["Snow Basics", "Snow Duals"]
+
+["Snow Duals"]
+type = 'Snow'
+color-identity = 2
+alt-names = ["Snow Taplands"]
+
+[Deserts]
+type = 'Desert'
+subtags = ["Cycling Deserts", "Sac Deserts"]
+
+[Forests]
+type = 'Forest'
+subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
+    "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
+
+[Gates]
+type = 'Gate'
+subtags = ["Gate Duals"]
+
+[Islands]
+type = 'Island'
+subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
+    "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
+
+[Lairs]
+type = 'Lair'
+
+[Mountains]
+type = 'Mountain'
+subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
+    "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
+
+[Plains]
+type = 'Plains'
+subtag = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
+    "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
+
+[Swamps]
+type = 'Swamp'
+subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
+    "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
+
+["Urza's"]
+type = "Urza's"
+
+[Monocolor]
+color-identity = 1
+subtags = ["Sac Any Color", "Vivid Lands", "Cycling Deserts", "ETB Spell Lands", "Hideaways",
+    "Keywoard Lands", "Legacy Legend Lands", "Legendary Assist Lands", "Legendary Transformers",
+    "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands",
+    "Permanent Type Legendaries", "Shadowmoor Utility Lands", "Replacement Lands", "Sac Deserts",
+    "Snow Basics", "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basic Lands",
+    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands"]
+
+["Sac Any Color"]
+name = '^(?:Abandoned Output|Seafloor Debris|Bog Wreckage|Ravaged Highlands|Timberland Ruins)$'
+
+["Vivid Lands"]
+name = '^Vivid \w$'
+
+["Cycling Deserts"]
+name = '^Desert of the \w$'
+
+["ETB Spell Lands"]
+color-identity = 1
+text = '''
+enters the battlefield tapped\.
+When .*? enters the battlefield, '''
+
+[Hideaways]
+text = 'Hideaway'
+
+["Keyword Lands"]
+name = '^(?:New Benalia|Tolaria West|Dakmor Salvage|Keldon Megaliths|Llanowar Reborn)$'
+alt-names = ["Futuresight Ability Lands"]
+
+["Legacy Legend Lands"]
+name = '^(?:Karakas|Tolaria|Urborg|Hammerheim|Pendelhaven)$'
+
+["Legendary Assist Lands"]
+name = """
+^(?:Eiganjo Castle|Minamo, School at Water's Edge|Shizo, Death's Storehouse|\
+Shinka, the Bloodsoaked Keep|Okina, Temple to the Grandfathers)$\
+"""
+
+["Legendary Transformers"]
+name = 'Adanto, the First Fort|Azcanta, the Sunken Ruin|Temple of Aclazotz|Spitefire Bastion|Itlimoc, Cradle of the Sun'
+card_face = 1
+
+["Mono Bounces"]
+color-identity = 1
+text = '''
+enters the battlefield tapped\.
+When .*? enters the battlefield, sacrifice it unless you return an untapped '''
+alt-names = ["Karoos"]
+
+["Mono Depletion Lands"]
+color-identity = 1
+text = 'enters the battlefield tapped with two depletion counters on it\.'
+
+["Mono Manlands"]
+color-identity = 1
+text = 'enters the battlefield tapped\..*? becomes a .*? creature '
+
+["Mono Storage Lands"]
+color-identity = 1
+text = 'enters the battlefield tapped\..*? storage counters '
+alt-names = ["Battery Lands"]
+
+["Permanent Type Legendaries"]
+name = "^(?:Serra's Sanctum|Tolarian Academy|Gaea's Cradle)$"
+
+["Shadowmoor Utility Lands"]
+name = '^(?:Mistveil Plains|Moonring Island|Leechridden Swamp|Madblind Mountain|Sapseep Forest)$'
+alt-names = ["Permanent Utility Lands"]
+
+["Replacement Lands"]
+text = '^If .*? would enter the battlefield, sacrifice an?(?: untapped)?'
+
+["Sac Deserts"]
+type = 'Desert'
+color-identity = 1
+text = ' Sacrifice a Desert: '
+
+["Threshold Lands"]
+text = '\sThreshold '
+
+["Zendikar Landmarks"]
+name = """^(?:Emeria, the Sky Ruin|Magosi, the Waterveil|Crypt of Agadeem|\
+    Valakut, the Molten Pinnacle|Oran-Rief, the Vastwood)$"""
+
+["Artifact Lands"]
+type = 'Artifact'
+
+["Cycling Lands"]
+text = '\sCycling '
+
+["Blighted Lands"]
+name = '^Blighted \w$'
+
+[Memorials]
+name = '^Memorial to \w$'
+
+[Castles]
+name = '^Castle \w$'
+
+["Fairytale Lands"]
+color-identity = 1
+text = ' enters the battlefield tapped unless you control three or more other '
+alt-names = ["Mono Check Lands", "Eldraine ETB Lands"]
+
+[Duals]
+color-identity = 2
+subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
+    "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
+    "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
+    "Canopy Lands"]
+
+["Battle Lands"]
+text = ' enters the battlefield tapped unless you control two or more basic lands\.'
+alt-names = ["BFZ Check Lands", "Tango Lands"]
+
+["Bounce Duals"]
+color-identity = 2
+text = "When .*? enters the battlefield, return a land you control to its owner's hand"
+alt-names = ["Karoo Duals"]
+
+["Check Lands"]
+color-identity = 2
+text = ' enters the battlefield tapped unless you control an? .*? or an? .*?\.'
+alt-names = ["Buddy Lands"]
+
+["Cycling Duals"]
+color-identity = 2
+text = 'Cycling '
+
+["Depletion Duals"]
+text = " doesn't untap during your untap step if it has a depltion counter on it\\."
+alt-names = ["Counter Lands", "Slow Lands"]
+
+["Fast Lands"]
+text = ' enters the battlefield tapped unless you control two or fewer other lands\.'
+
+["Filter Duals"]
+text = '\{./.\}, \{T\}: Add \{.\}{2}, \{.\}{2}, or \{.\}{2}'
+
+["Futuresight Duals"]
+name = '^(?:Nimbus Maze|River of Tears|Grove of the Burnwillows)$'
+
+["Life-Gain Duals"]
+text = 'When .*? enters the battlefield, you gain 1 life\.1'
+alt-names = ["Gain Duals", "Life Lands", "Refuges"]
+
+["Signet Lands"]
+text = '\{1\}, \{T\}: Add \{.\}{2}'
+alt-names = ["Manaless Filters", "Odyssey Filters"]
+
+["Manland Duals"]
+color-identity = 2
+text = ' becomes a \d/\d .*? creature '
+alt-names = ["Elemental Lands"]
+
+["Pain Lands"]
+color-identity = 2
+text = '^\{T\}: .*? deals 1 damage to you\.'
+
+["Pause Lands"]
+text = " doesn't untap during your next untap\\."
+alt-names = ["Slow Lands"]
+
+["Scry Lands"]
+text = 'scry 1'
+alt-names = ["Temples"]
+
+["Shock Lands"]
+text = 'As .*? enters the battlefield, you may pay 2 life\.'
+
+["Show Duals"]
+text = 'As .*? enters the battlefield, you may reveal an? .*? or .*? card from your hand\.'
+alt-names = ["Shadow Lands"]
+
+["Storage Duals"]
+color-identity = 2
+text = 'Put a storage counter on .*? Remove X storage counters from '
+alt-names = ["Battery Duals"]
+
+["Tainted Lands"]
+name = 'Tainted \w'
+text = 'Activate this ability only if you control a Swamp\.'
+
+["Tap Duals"]
+text = '^.*? enters the battlefield tapped\.\n\{T\} Add \{.\} or \{T\}(?: to your mana pool)?\.$'
+
+["Tap Pain Lands"]
+text = ' enters the battlefield tapped\..*? deals 1 damage to you\.'
+
+["Tribal Duals"]
+text = 'As .*? enters the battlefield, you may reveal an? .{1,6} card from your hand\.'
+alt-names = ["Lord Lands"]
+
+["True Duals"]
+type = '\w \w'
+color-identity = 2
+text = '^$'
+alt-names = ["Legacy Duals"]
+
+["Innistrad Landmarks"]
+name = """
+^(?:Moorland Haunt|Gavony Township|Nephalia Drownyard|Stensia Bloodhall|Kessig Wolf Run|\
+Vault of the Archangel|Slayers' Stronghold|Desolate Lighthouse|Alchemist's Refuge|\
+Grim Backwoods)$"""
+
+["Ravnica Landmarks"]
+name = """
+^(?:Prahv, Spires of Order|Vitu-Ghazi, the City-Tree|Duskmantle, House of Shadow|\
+Rix Maadi, Dungeon Palace|Skarrg, the Rage Pits|Orzhova, the Church of Deals|\
+Sunhome, Fortress of the Legion|Nivix, Aerie of the Firemind|Novijen, Heart of Progress|\
+Svogthos, the Restless Tomb)$"""
+
+["Bond Duals"]
+text = ' enters the battlefield tapped unless you have two or more opponents\.'
+alt-names = ["Battlebond Lands", "Multiplayer Duals"]
+
+["Canopy Lands"]
+color-identity = 2
+text = ' Pay 1 life: .*? Sacrifice .*?: Draw a card\.'
+alt-names = ["Horizon Lands"]
+
+["Tri-Color"]
+color-identity = 3
+subtags = ["Lairs", "Sac Tri-Lands", "Tap Tri-Lands", "Tri-Color Filters"]
+
+["Sac Tri-Lands"]
+color-identity = 3
+text = ' Sacrifice .*?: Add \{.\}{2}'
+
+["Tap Tri-Lands"]
+color-identity = 3
+text = '^.*? enters the battlefield tapped\.\n\{T\}: Add \{.\}, \{.\}, or \{.\}(?: to your mana pool)\.$'
+
+["Tri-Color Filters"]
+text = '\{1\}, \{T\}:.*\{2\}, \{T\}:'
+alt-names = ["Homelands"]
+
+[Colorless]
+color-identity = 0
+subtags = ["Eldrazi Lands", "Artifact Lands", "Basics", "Cycling Lands", "Panoramas",
+    "Copy Lands", "Banding Lands", "Basic Fetches", "Dual Fetches", "Slow Fetches"]
+
+["Eldrazi Lands"]
+name = """
+^(?:Ruins of Oran-Rief|Eye of Ugin|Sanctum of Ugin|Shrine of the Forsaken Gods|\
+Spawning Beds|Eldrazi Temple|Tomb of the Spirit Dragon)$"""
+
+[Panoramas]
+name = '\w Panorama'
+
+["Copy Lands"]
+name = "^(?:Thespian's Stage|Vesuva)$"
+
+["Banding Lands"]
+text = ' bands with other '
+
+["Basic Fetches"]
+name = '^(?:Evolving Wilds|Terramorphic Expanse)$'
+
+["Dual Fetches"]
+text = ' Pay 1 life, Sacrifice .*?: Search your library for an? .*? or .*? card '
+
+["Slow Fetches"]
+text = ' enters the battlefield tapped.*? Search your library for an? .*? or .*? card '
