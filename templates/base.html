@@ -10,12 +10,14 @@
 </head>
 <body>
   <header class="border-bottom d-flex bg-light w-100">
-    <h1>Mana Base</a>
+    <h1>Mana Base</h1>
     {% block header %}
     {% endblock %}
   </header>
-  {% block body %}
-  {% endblock %}
+  <main>
+    {% block body %}
+    {% endblock %}
+  </main>
   <footer class="border-top d-flex bg-light w-100">
     <nav class="nav">
       <a href="index.html" class="nav-link">Index</a>

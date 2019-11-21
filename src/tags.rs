@@ -1,4 +1,4 @@
-use crate::scryfall::{Card, CardFace};
+use crate::scryfall::{Card, CardFace, Color};
 use lazy_static::lazy_static;
 use regex::{Regex, RegexBuilder};
 use serde::{Deserialize, Serialize};
@@ -23,6 +23,17 @@ pub enum TagCategory {
     Dorks,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub enum TagKind {
+    Other,
+    ColorIdentity,
+    ManaPool,
+    #[serde(rename = "type")]
+    TypeLine,
+    Cost,
+}
+
 #[derive(Debug)]
 pub struct TagIndex(HashMap<String, TagData>);
 
@@ -33,6 +44,8 @@ pub struct TagData {
     alt_names: BTreeSet<String>,
     subtags: BTreeSet<String>,
     canonical_name: String,
+    kind: TagKind,
+    color_identity: Option<Vec<Color>>,
 }
 
 #[derive(Debug)]
@@ -42,6 +55,7 @@ pub struct TagCondition {
     text_regex: Option<Regex>,
     name_regex: Option<Regex>,
     color_identity_len: Option<usize>,
+    color_identity: Option<Vec<Color>>,
     card_face: Option<usize>,
     cmc: Option<f32>,
 }
@@ -63,7 +77,9 @@ struct TagConfig {
     #[serde(default, rename = "name")]
     name_regex: Option<String>,
     #[serde(default)]
-    color_identity: Option<usize>,
+    color_identity_len: Option<usize>,
+    #[serde(default)]
+    color_identity: Option<Vec<Color>>,
     #[serde(default)]
     card_face: Option<usize>,
     #[serde(default)]
@@ -72,6 +88,8 @@ struct TagConfig {
     alt_names: Vec<String>,
     #[serde(default)]
     subtags: Vec<String>,
+    #[serde(default)]
+    kind: TagKind,
 }
 
 pub fn load_tags(config_dir: &Path) -> Result<TagIndex, Box<dyn std::error::Error>> {
@@ -101,6 +119,18 @@ impl TagCategory {
             TagCategory::Lands => &LAND_TYPE_REGEX,
             TagCategory::Rocks => &ROCK_TYPE_REGEX,
             TagCategory::Dorks => &DORK_TYPE_REGEX,
+        }
+    }
+}
+
+impl TagKind {
+    pub fn class(self) -> &'static str {
+        match self {
+            TagKind::Other => "badge-dark",
+            TagKind::ColorIdentity => "badge-warning",
+            TagKind::ManaPool => "badge-primary",
+            TagKind::TypeLine => "badge-info",
+            TagKind::Cost => "badge-secondary",
         }
     }
 }
@@ -144,6 +174,8 @@ impl TagData {
             alt_names: config.alt_names.into_iter().collect(),
             subtags: config.subtags.into_iter().collect(),
             canonical_name: TAG_NAME_STRIP_REGEX.replace_all(name, "_").to_string(),
+            kind: config.kind,
+            color_identity: config.color_identity.clone(),
         })
     }
 
@@ -165,6 +197,22 @@ impl TagData {
 
     pub fn name(&self) -> &str {
         &self.name
+    }
+
+    pub fn kind(&self) -> TagKind {
+        self.kind
+    }
+
+    pub fn color_identity_symbols(&self) -> String {
+        if let Some(color_identity) = &self.color_identity {
+            color_identity
+                .iter()
+                .map(|c| c.mana_symbol())
+                .collect::<Vec<_>>()[..]
+                .join("")
+        } else {
+            "".to_owned()
+        }
     }
 
     pub fn canonical_name(&self) -> &str {
@@ -212,7 +260,8 @@ impl TagCondition {
                     builder.build()
                 })
                 .transpose()?,
-            color_identity_len: config.color_identity,
+            color_identity: config.color_identity.clone(),
+            color_identity_len: config.color_identity_len,
             card_face: config.card_face,
             cmc: config.cmc,
         })
@@ -232,6 +281,17 @@ impl TagCondition {
         if let Some(color_identity_len) = self.color_identity_len {
             if card.color_identity.len() != color_identity_len {
                 return false;
+            }
+        }
+
+        if let Some(color_identity) = &self.color_identity {
+            if card.color_identity.len() != color_identity.len() {
+                return false;
+            }
+            for color in color_identity {
+                if !card.color_identity.contains(color) {
+                    return false;
+                }
             }
         }
 
@@ -327,5 +387,27 @@ impl Eq for &TagData {}
 impl Hash for &TagData {
     fn hash<H: Hasher>(&self, hasher: &mut H) {
         ptr::hash(self as *const &TagData, hasher)
+    }
+}
+
+impl Default for TagKind {
+    fn default() -> Self {
+        TagKind::Other
+    }
+}
+
+impl std::fmt::Display for TagData {
+    fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self.kind {
+            TagKind::ColorIdentity => write!(
+                fmt,
+                "Color: {} {}",
+                &self.color_identity_symbols(),
+                &self.name
+            ),
+            TagKind::ManaPool => write!(fmt, "Mana: {}", &self.name),
+            TagKind::Cost => write!(fmt, "Cost: {}", &self.name),
+            _ => write!(fmt, "{}", &self.name),
+        }
     }
 }

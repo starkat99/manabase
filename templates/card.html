@@ -5,7 +5,7 @@
   <div class="card-body p-0">
     <h6 class="card-title">{{ card.card().name }}</h6>
     {% for tag in card.tags() %}
-      <a href="tag-{{ tag.canonical_name() }}.html" class="badge badge-pill badge-info">{{ tag.name() }}</a>
+      <a href="tag-{{ tag.canonical_name()|safe }}.html" class="badge badge-pill {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
     {% endfor %}
   </div>
 </div>

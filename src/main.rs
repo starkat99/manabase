@@ -1,5 +1,4 @@
 mod card;
-mod color;
 mod scryfall;
 mod tags;
 mod templates;
@@ -30,7 +29,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .long("data")
                 .takes_value(true),
         )
-        .arg(Arg::with_name("output").index(1).default_value("target/www"))
+        .arg(
+            Arg::with_name("output")
+                .index(1)
+                .default_value("target/www"),
+        )
         .get_matches();
 
     info!("loading config files");

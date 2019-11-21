@@ -54,3 +54,15 @@ impl<'a> CardList<'a> {
         &self.0
     }
 }
+
+impl Color {
+    pub fn mana_symbol(self) -> &'static str {
+        match self {
+            Color::White => "<span class=\"mana sw\"></span>",
+            Color::Blue => "<span class=\"mana su\"></span>",
+            Color::Black => "<span class=\"mana sb\"></span>",
+            Color::Red => "<span class=\"mana sr\"></span>",
+            Color::Green => "<span class=\"mana sg\"></span>",
+        }
+    }
+}
