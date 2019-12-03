@@ -2,7 +2,50 @@
     width: 244px;
 }
 
-.mtg-card img {
+.mtg-card-img-container {
     width: 244px;
     height: 340px;
+}
+
+.mtg-card-img-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.mtg-tag, .mtg-category {
+    font-size: 0.80rem !important;
+}
+
+.mtg-tag img, .mtg-category img {
+    height: 0.80rem !important;
+    width: 0.80rem !important;
+    vertical-align: top;
+}
+
+.mtg-transform-button {
+    z-index: 1;
+    position: absolute;
+    right: 5px;
+    top: 25%;
+    display: block;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    opacity: 80%;
+    background-color: white;
+    box-shadow: 0 .5rem 1rem rgb(0,0,0);
+    border: none;
+}
+
+.mtg-transform-button svg {
+    width: 100%;
+    height: 100%;
+}
+
+.mtg-transform-button:hover {
+    background-color: black;
+}
+
+.mtg-transform-button:hover svg {
+    fill: white;
 }

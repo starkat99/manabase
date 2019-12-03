@@ -48,6 +48,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     };
     dir::copy("img", output_dir, &copy_opts)?;
     dir::copy("style", output_dir, &copy_opts)?;
+    dir::copy("script", output_dir, &copy_opts)?;
     std::fs::create_dir_all(output_dir.join(IMAGE_FRONT_BASE_PATH))?;
     std::fs::create_dir_all(output_dir.join(IMAGE_BACK_BASE_PATH))?;
 

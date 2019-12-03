@@ -114,11 +114,27 @@ pub fn load_tags(config_dir: &Path) -> Result<TagIndex, Box<dyn std::error::Erro
 }
 
 impl TagCategory {
-    pub fn type_regex(&self) -> &Regex {
+    pub fn type_regex(self) -> &'static Regex {
         match self {
             TagCategory::Lands => &LAND_TYPE_REGEX,
             TagCategory::Rocks => &ROCK_TYPE_REGEX,
             TagCategory::Dorks => &DORK_TYPE_REGEX,
+        }
+    }
+
+    pub fn tag_name(self) -> &'static str {
+        match self {
+            TagCategory::Lands => "Land",
+            TagCategory::Rocks => "Rock",
+            TagCategory::Dorks => "Dork",
+        }
+    }
+
+    pub fn base_uri(self) -> &'static str {
+        match self {
+            TagCategory::Lands => "lands.html",
+            TagCategory::Rocks => "rocks.html",
+            TagCategory::Dorks => "dorks.html",
         }
     }
 }

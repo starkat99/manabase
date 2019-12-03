@@ -5,7 +5,7 @@ use crate::{
 };
 use std::{
     borrow::Cow,
-    collections::{HashMap, HashSet},
+    collections::{BTreeSet, HashMap, HashSet},
     path::{Path, PathBuf},
 };
 
@@ -20,7 +20,7 @@ pub struct TaggedCardDb<'a, 'b> {
 pub struct TaggedCard<'a, 'b> {
     card: &'a Card<'a>,
     tags: HashSet<&'b TagData>,
-    categories: HashSet<TagCategory>,
+    categories: BTreeSet<TagCategory>,
     front_image_path: PathBuf,
     back_image_path: Option<PathBuf>,
 }
@@ -42,7 +42,7 @@ impl<'a, 'b> TaggedCardDb<'a, 'b> {
         for card in cards.cards() {
             trace!("testing card '{}'", &card.name);
             let mut tags: HashSet<&'b TagData> = HashSet::new();
-            let mut categories: HashSet<TagCategory> = HashSet::new();
+            let mut categories: BTreeSet<TagCategory> = BTreeSet::new();
             for (tag, tag_data) in tag_index.iter() {
                 for condition in tag_data.iter() {
                     if condition.is_match(&card) {
@@ -94,7 +94,7 @@ impl<'a, 'b> TaggedCard<'a, 'b> {
     fn new(
         card: &'a Card<'a>,
         tags: HashSet<&'b TagData>,
-        categories: HashSet<TagCategory>,
+        categories: BTreeSet<TagCategory>,
     ) -> Self {
         let front_image_path = Path::new(IMAGE_FRONT_BASE_PATH)
             .join(card.id.as_ref())
@@ -129,7 +129,7 @@ impl<'a, 'b> TaggedCard<'a, 'b> {
         tags
     }
 
-    pub fn categories(&self) -> &HashSet<TagCategory> {
+    pub fn categories(&self) -> &BTreeSet<TagCategory> {
         &self.categories
     }
 

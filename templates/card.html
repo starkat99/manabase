@@ -1,11 +1,28 @@
-<div class="card d-inline-flex border-0 m-2 mtg-card">
-  <a href="{{ card.card().scryfall_uri|safe }}">
-    <img src="{{ card.front_image_uri()|safe }}" class="card-img-top" alt="{{ card.card().name }}">
-  </a>
+<div class="card d-inline-flex border-0 m-2 mtg-card" id="card{{ card.card().id|safe }}">
+  <div class="mtg-card-img-container">
+    <a href="{{ card.card().scryfall_uri|safe }}">
+      <img src="{{ card.front_image_uri()|safe }}" class="front" alt="{{ card.card().name }}">
+      {% if card.back_image_path().is_some() %}
+        <img src="{{ card.back_image_uri().unwrap()|safe }}" class="back" alt="{{ card.card().name }}">
+      {% endif %}
+    </a>
+    {% if card.back_image_path().is_some() %}
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#card{{ card.card().id|safe }} .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    {% endif %}
+  </div>
   <div class="card-body p-0">
     <h6 class="card-title">{{ card.card().name }}</h6>
-    {% for tag in card.tags() %}
-      <a href="tag-{{ tag.canonical_name()|safe }}.html" class="badge badge-pill {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
-    {% endfor %}
+    <p class="card-text">
+      {% for cat in card.categories() %}
+        <a href="{{ cat.base_uri()|safe }}" class="badge badge-pill badge-danger mtg-category">{{ cat.tag_name()|safe }}</a>
+      {% endfor %}
+      {% for tag in card.tags() %}
+        <a href="tag-{{ tag.canonical_name()|safe }}.html" class="badge {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
+      {% endfor %}
+    </p>
   </div>
 </div>
