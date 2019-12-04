@@ -17,10 +17,11 @@ lazy_static! {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
-pub enum TagCategory {
+pub enum Category {
     Lands,
     Rocks,
     Dorks,
+    Ramp,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
@@ -50,7 +51,7 @@ pub struct TagData {
 
 #[derive(Debug)]
 pub struct TagCondition {
-    category: TagCategory,
+    category: Category,
     type_regex: Option<Regex>,
     text_regex: Option<Regex>,
     name_regex: Option<Regex>,
@@ -61,7 +62,7 @@ pub struct TagCondition {
 }
 
 #[derive(Debug)]
-pub struct TagCategoryConfig(HashMap<TagCategory, TagConfigFile>);
+pub struct CategoryConfig(HashMap<Category, TagConfigFile>);
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(transparent)]
@@ -93,48 +94,56 @@ struct TagConfig {
 }
 
 pub fn load_tags(config_dir: &Path) -> Result<TagIndex, Box<dyn std::error::Error>> {
-    let mut config = TagCategoryConfig(HashMap::new());
+    let mut config = CategoryConfig(HashMap::new());
     debug!("loading land tags config file");
     config.0.insert(
-        TagCategory::Lands,
+        Category::Lands,
         toml::from_str(&std::fs::read_to_string(config_dir.join("lands.toml"))?)?,
     );
     debug!("loading rocks tags config file");
     config.0.insert(
-        TagCategory::Rocks,
+        Category::Rocks,
         toml::from_str(&std::fs::read_to_string(config_dir.join("rocks.toml"))?)?,
     );
     debug!("loading dorks tags config file");
     config.0.insert(
-        TagCategory::Dorks,
+        Category::Dorks,
         toml::from_str(&std::fs::read_to_string(config_dir.join("dorks.toml"))?)?,
+    );
+    debug!("loading ramp tags config file");
+    config.0.insert(
+        Category::Ramp,
+        toml::from_str(&std::fs::read_to_string(config_dir.join("ramp.toml"))?)?,
     );
     debug!("indexing tags");
     Ok(TagIndex::from_config(config)?)
 }
 
-impl TagCategory {
-    pub fn type_regex(self) -> &'static Regex {
+impl Category {
+    pub fn type_regex(self) -> Option<&'static Regex> {
         match self {
-            TagCategory::Lands => &LAND_TYPE_REGEX,
-            TagCategory::Rocks => &ROCK_TYPE_REGEX,
-            TagCategory::Dorks => &DORK_TYPE_REGEX,
+            Category::Lands => Some(&LAND_TYPE_REGEX),
+            Category::Rocks => Some(&ROCK_TYPE_REGEX),
+            Category::Dorks => Some(&DORK_TYPE_REGEX),
+            Category::Ramp => None,
         }
     }
 
     pub fn tag_name(self) -> &'static str {
         match self {
-            TagCategory::Lands => "Land",
-            TagCategory::Rocks => "Rock",
-            TagCategory::Dorks => "Dork",
+            Category::Lands => "Land",
+            Category::Rocks => "Rock",
+            Category::Dorks => "Dork",
+            Category::Ramp => "Ramp",
         }
     }
 
     pub fn base_uri(self) -> &'static str {
         match self {
-            TagCategory::Lands => "lands.html",
-            TagCategory::Rocks => "rocks.html",
-            TagCategory::Dorks => "dorks.html",
+            Category::Lands => "lands.html",
+            Category::Rocks => "rocks.html",
+            Category::Dorks => "dorks.html",
+            Category::Ramp => "ramp.html",
         }
     }
 }
@@ -152,7 +161,7 @@ impl TagKind {
 }
 
 impl TagIndex {
-    fn from_config(config: TagCategoryConfig) -> Result<Self, regex::Error> {
+    fn from_config(config: CategoryConfig) -> Result<Self, regex::Error> {
         let mut tags: HashMap<String, TagData> = HashMap::new();
         for (category, tag_configs) in config.0 {
             for (name, tag_config) in tag_configs.0 {
@@ -181,7 +190,7 @@ impl TagIndex {
 impl TagData {
     fn from_config(
         name: &str,
-        category: TagCategory,
+        category: Category,
         config: TagConfig,
     ) -> Result<TagData, regex::Error> {
         Ok(TagData {
@@ -195,11 +204,7 @@ impl TagData {
         })
     }
 
-    fn merge_config(
-        &mut self,
-        category: TagCategory,
-        config: TagConfig,
-    ) -> Result<(), regex::Error> {
+    fn merge_config(&mut self, category: Category, config: TagConfig) -> Result<(), regex::Error> {
         self.conditions
             .push(TagCondition::from_config(category, &config)?);
         self.alt_names.extend(config.alt_names);
@@ -243,10 +248,7 @@ trait MatchItem {
 }
 
 impl TagCondition {
-    fn from_config(
-        category: TagCategory,
-        config: &TagConfig,
-    ) -> Result<TagCondition, regex::Error> {
+    fn from_config(category: Category, config: &TagConfig) -> Result<TagCondition, regex::Error> {
         Ok(TagCondition {
             category,
             type_regex: config
@@ -283,7 +285,7 @@ impl TagCondition {
         })
     }
 
-    pub fn category(&self) -> TagCategory {
+    pub fn category(&self) -> Category {
         self.category
     }
 
@@ -332,7 +334,12 @@ impl TagCondition {
         // Check category first
         if !card
             .type_line()
-            .filter(|s| self.category.type_regex().is_match(s))
+            .filter(|s| {
+                self.category
+                    .type_regex()
+                    .filter(|r| r.is_match(s))
+                    .is_some()
+            })
             .is_some()
         {
             return false;

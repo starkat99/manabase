@@ -1,6 +1,6 @@
 use crate::{
     scryfall::{Card, CardList},
-    tags::{TagCategory, TagData, TagIndex},
+    tags::{Category, TagData, TagIndex},
     IMAGE_BACK_BASE_PATH, IMAGE_FRONT_BASE_PATH,
 };
 use std::{
@@ -13,14 +13,14 @@ use std::{
 pub struct TaggedCardDb<'a, 'b> {
     card_index: HashMap<&'a str, TaggedCard<'a, 'b>>,
     tag_index: HashMap<&'b TagData, HashSet<&'a str>>,
-    category_index: HashMap<TagCategory, HashSet<&'a str>>,
+    category_index: HashMap<Category, HashSet<&'a str>>,
 }
 
 #[derive(Debug)]
 pub struct TaggedCard<'a, 'b> {
     card: &'a Card<'a>,
     tags: HashSet<&'b TagData>,
-    categories: BTreeSet<TagCategory>,
+    categories: BTreeSet<Category>,
     front_image_path: PathBuf,
     back_image_path: Option<PathBuf>,
 }
@@ -42,8 +42,8 @@ impl<'a, 'b> TaggedCardDb<'a, 'b> {
         for card in cards.cards() {
             trace!("testing card '{}'", &card.name);
             let mut tags: HashSet<&'b TagData> = HashSet::new();
-            let mut categories: BTreeSet<TagCategory> = BTreeSet::new();
-            for (tag, tag_data) in tag_index.iter() {
+            let mut categories: BTreeSet<Category> = BTreeSet::new();
+            for (_tag, tag_data) in tag_index.iter() {
                 for condition in tag_data.iter() {
                     if condition.is_match(&card) {
                         tags.insert(&tag_data);
@@ -56,10 +56,10 @@ impl<'a, 'b> TaggedCardDb<'a, 'b> {
             if card
                 .type_line
                 .as_ref()
-                .filter(|s| TagCategory::Lands.type_regex().is_match(&s))
+                .filter(|s| Category::Lands.type_regex().unwrap().is_match(&s))
                 .is_some()
             {
-                categories.insert(TagCategory::Lands);
+                categories.insert(Category::Lands);
             }
 
             if !categories.is_empty() {
@@ -91,11 +91,7 @@ impl<'a, 'b> TaggedCardDb<'a, 'b> {
 }
 
 impl<'a, 'b> TaggedCard<'a, 'b> {
-    fn new(
-        card: &'a Card<'a>,
-        tags: HashSet<&'b TagData>,
-        categories: BTreeSet<TagCategory>,
-    ) -> Self {
+    fn new(card: &'a Card<'a>, tags: HashSet<&'b TagData>, categories: BTreeSet<Category>) -> Self {
         let front_image_path = Path::new(IMAGE_FRONT_BASE_PATH)
             .join(card.id.as_ref())
             .with_extension("jpg");
@@ -129,7 +125,7 @@ impl<'a, 'b> TaggedCard<'a, 'b> {
         tags
     }
 
-    pub fn categories(&self) -> &BTreeSet<TagCategory> {
+    pub fn categories(&self) -> &BTreeSet<Category> {
         &self.categories
     }
 
