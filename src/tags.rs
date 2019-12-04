@@ -337,8 +337,8 @@ impl TagCondition {
             .filter(|s| {
                 self.category
                     .type_regex()
-                    .filter(|r| r.is_match(s))
-                    .is_some()
+                    .filter(|r| !r.is_match(s))
+                    .is_none()
             })
             .is_some()
         {

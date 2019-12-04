@@ -1,13 +1,8 @@
 use crate::{
     scryfall::{Card, CardList},
     tags::{Category, TagData, TagIndex},
-    IMAGE_BACK_BASE_PATH, IMAGE_FRONT_BASE_PATH,
 };
-use std::{
-    borrow::Cow,
-    collections::{BTreeSet, HashMap, HashSet},
-    path::{Path, PathBuf},
-};
+use std::collections::{BTreeSet, HashMap, HashSet};
 
 #[derive(Debug)]
 pub struct TaggedCardDb<'a, 'b> {
@@ -21,8 +16,8 @@ pub struct TaggedCard<'a, 'b> {
     card: &'a Card<'a>,
     tags: HashSet<&'b TagData>,
     categories: BTreeSet<Category>,
-    front_image_path: PathBuf,
-    back_image_path: Option<PathBuf>,
+    front_image_uri: &'a str,
+    back_image_uri: Option<&'a str>,
 }
 
 impl<'a, 'b> TaggedCardDb<'a, 'b> {
@@ -92,26 +87,36 @@ impl<'a, 'b> TaggedCardDb<'a, 'b> {
 
 impl<'a, 'b> TaggedCard<'a, 'b> {
     fn new(card: &'a Card<'a>, tags: HashSet<&'b TagData>, categories: BTreeSet<Category>) -> Self {
-        let front_image_path = Path::new(IMAGE_FRONT_BASE_PATH)
-            .join(card.id.as_ref())
-            .with_extension("jpg");
-        let back_image_path = card
+        let back_image_uri = card
             .card_faces
             .as_ref()
             .and_then(|v| v.get(1))
             .and_then(|f| f.image_uris.as_ref())
             .filter(|_| card.image_uris.is_none())
-            .map(|_| {
-                Path::new(IMAGE_BACK_BASE_PATH)
-                    .join(card.id.as_ref())
-                    .with_extension("jpg")
-            });
+            .and_then(|m| m.get("normal"))
+            .map(|c| c.as_ref());
+        let front_image_uri = if back_image_uri.is_some() {
+            card.card_faces
+                .as_ref()
+                .unwrap()
+                .get(0)
+                .and_then(|f| f.image_uris.as_ref())
+                .and_then(|m| m.get("normal"))
+                .map(|c| c.as_ref())
+                .unwrap_or("")
+        } else {
+            card.image_uris
+                .as_ref()
+                .and_then(|m| m.get("normal"))
+                .map(|c| c.as_ref())
+                .unwrap_or("")
+        };
         TaggedCard {
             card,
             tags,
             categories,
-            front_image_path,
-            back_image_path,
+            front_image_uri,
+            back_image_uri,
         }
     }
 
@@ -129,19 +134,11 @@ impl<'a, 'b> TaggedCard<'a, 'b> {
         &self.categories
     }
 
-    pub fn front_image_path(&self) -> &Path {
-        &self.front_image_path
+    pub fn front_image_uri(&self) -> &str {
+        self.front_image_uri
     }
 
-    pub fn front_image_uri(&self) -> Cow<'_, str> {
-        self.front_image_path.to_string_lossy()
-    }
-
-    pub fn back_image_path(&self) -> Option<&Path> {
-        self.back_image_path.as_ref().map(|p| p.as_ref())
-    }
-
-    pub fn back_image_uri(&self) -> Option<Cow<'_, str>> {
-        self.back_image_path.as_ref().map(|p| p.to_string_lossy())
+    pub fn back_image_uri(&self) -> Option<&'a str> {
+        self.back_image_uri
     }
 }

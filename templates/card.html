@@ -1,12 +1,12 @@
 <div class="card d-inline-flex border-0 m-2 mtg-card" id="card{{ card.card().id|safe }}">
   <div class="mtg-card-img-container">
     <a href="{{ card.card().scryfall_uri|safe }}">
-      <img src="{{ card.front_image_uri()|safe }}" class="front" alt="{{ card.card().name }}">
-      {% if card.back_image_path().is_some() %}
-        <img src="{{ card.back_image_uri().unwrap()|safe }}" class="back" alt="{{ card.card().name }}">
+      <img src="{{ card.front_image_uri()|safe }}" class="front" loading="lazy" alt="{{ card.card().name }}">
+      {% if card.back_image_uri().is_some() %}
+        <img src="{{ card.back_image_uri().unwrap()|safe }}" class="back" loading="lazy" alt="{{ card.card().name }}">
       {% endif %}
     </a>
-    {% if card.back_image_path().is_some() %}
+    {% if card.back_image_uri().is_some() %}
       <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#card{{ card.card().id|safe }} .mtg-card-img-container">
         <svg title="Transform">
           <use xlink:href="#shape-transform"/>
