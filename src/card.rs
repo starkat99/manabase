@@ -126,7 +126,7 @@ impl<'a, 'b> TaggedCard<'a, 'b> {
 
     pub fn tags(&self) -> Vec<&'b TagData> {
         let mut tags: Vec<_> = self.tags.iter().map(|r| *r).collect();
-        tags.sort_by_key(|t| t.name());
+        tags.sort_unstable_by_key(|t| t.name());
         tags
     }
 

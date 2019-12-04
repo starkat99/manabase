@@ -1,9 +1,13 @@
-use crate::scryfall::{Card, CardFace, Color};
+use crate::{
+    color::{Color, Colors},
+    scryfall::{Card, CardFace},
+};
 use lazy_static::lazy_static;
 use regex::{Regex, RegexBuilder};
 use serde::{Deserialize, Serialize};
 use std::{
-    collections::{BTreeSet, HashMap},
+    borrow::Cow,
+    collections::{BTreeMap, BTreeSet, HashMap},
     hash::{Hash, Hasher},
     path::Path,
     ptr,
@@ -27,12 +31,17 @@ pub enum Category {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub enum TagKind {
-    Other,
     ColorIdentity,
     ManaPool,
+    Cost,
     #[serde(rename = "type")]
     TypeLine,
-    Cost,
+    Other,
+}
+
+#[derive(Debug)]
+pub struct TagDb<'a> {
+    kind_index: BTreeMap<TagKind, Vec<&'a TagData>>,
 }
 
 #[derive(Debug)]
@@ -46,7 +55,7 @@ pub struct TagData {
     subtags: BTreeSet<String>,
     canonical_name: String,
     kind: TagKind,
-    color_identity: Option<Vec<Color>>,
+    color_identity: Option<Colors>,
 }
 
 #[derive(Debug)]
@@ -148,6 +157,21 @@ impl Category {
     }
 }
 
+impl std::fmt::Display for Category {
+    fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(
+            fmt,
+            "{}",
+            match self {
+                Category::Lands => "Lands",
+                Category::Rocks => "Rocks",
+                Category::Dorks => "Dorks",
+                Category::Ramp => "Ramp",
+            }
+        )
+    }
+}
+
 impl TagKind {
     pub fn class(self) -> &'static str {
         match self {
@@ -157,6 +181,57 @@ impl TagKind {
             TagKind::TypeLine => "badge-info",
             TagKind::Cost => "badge-secondary",
         }
+    }
+
+    pub fn sort_tags(self, tags: &mut Vec<&TagData>) {
+        match self {
+            // TODO: Fix None sort order
+            TagKind::ColorIdentity => tags.sort_unstable_by_key(|tag| &tag.color_identity),
+            _ => tags.sort_unstable_by_key(|tag| &tag.name),
+        }
+    }
+}
+
+impl std::fmt::Display for TagKind {
+    fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(
+            fmt,
+            "{}",
+            match self {
+                TagKind::ColorIdentity => "Color Identity",
+                TagKind::Cost => "Converted Mana Cost",
+                TagKind::ManaPool => "Mana",
+                TagKind::TypeLine => "Type",
+                TagKind::Other => "Other",
+            }
+        )
+    }
+}
+
+impl<'a> TagDb<'a> {
+    pub fn new(index: &'a TagIndex) -> TagDb<'a> {
+        let mut kind_index: BTreeMap<TagKind, Vec<&'a TagData>> = BTreeMap::new();
+        for (_, tag) in index.iter() {
+            if !kind_index.get(&tag.kind).is_some() {
+                kind_index.insert(tag.kind, Vec::new());
+            }
+            let taglist = kind_index.get_mut(&tag.kind).unwrap();
+            taglist.push(&tag);
+        }
+        for (kind, taglist) in kind_index.iter_mut() {
+            kind.sort_tags(taglist);
+        }
+        TagDb { kind_index }
+    }
+
+    pub fn kind_index(&self) -> &BTreeMap<TagKind, Vec<&TagData>> {
+        &self.kind_index
+    }
+
+    pub fn has_kind_tags_in_category(&self, kind: &TagKind, category: &Category) -> bool {
+        self.kind_index[kind]
+            .iter()
+            .any(|tag| tag.has_category(*category))
     }
 }
 
@@ -200,7 +275,7 @@ impl TagData {
             subtags: config.subtags.into_iter().collect(),
             canonical_name: TAG_NAME_STRIP_REGEX.replace_all(name, "_").to_string(),
             kind: config.kind,
-            color_identity: config.color_identity.clone(),
+            color_identity: config.color_identity.clone().map(Colors::from_vec),
         })
     }
 
@@ -224,20 +299,20 @@ impl TagData {
         self.kind
     }
 
-    pub fn color_identity_symbols(&self) -> String {
+    pub fn color_identity_symbols(&self) -> Cow<'static, str> {
         if let Some(color_identity) = &self.color_identity {
-            color_identity
-                .iter()
-                .map(|c| c.mana_symbol())
-                .collect::<Vec<_>>()[..]
-                .join("")
+            color_identity.mana_symbols()
         } else {
-            "".to_owned()
+            Cow::Borrowed("")
         }
     }
 
     pub fn canonical_name(&self) -> &str {
         &self.canonical_name
+    }
+
+    pub fn has_category(&self, category: Category) -> bool {
+        self.conditions.iter().any(|c| c.category == category)
     }
 }
 

@@ -40,6 +40,7 @@ subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
     "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
 
 [Lairs]
+kind = 'type'
 type = 'Lair'
 
 [Mountains]

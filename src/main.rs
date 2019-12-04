@@ -1,4 +1,5 @@
 mod card;
+mod color;
 mod scryfall;
 mod tags;
 mod templates;
@@ -6,7 +7,11 @@ mod templates;
 #[macro_use]
 extern crate log;
 
-use crate::{card::TaggedCardDb, scryfall::CardList};
+use crate::{
+    card::TaggedCardDb,
+    scryfall::CardList,
+    tags::{Category, TagDb},
+};
 use clap::{App, Arg};
 use fs_extra::dir::{self, CopyOptions};
 use std::path::Path;
@@ -36,6 +41,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     info!("loading config files");
     let tag_index = tags::load_tags(&Path::new("config"))?;
+    let tagdb = TagDb::new(&tag_index);
 
     let output_dir = Path::new(matches.value_of_os("output").unwrap());
 
@@ -67,6 +73,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     info!("creating template pages");
     debug!("writing all cards page");
     templates::AllCards::new(&carddb).write_output(&output_dir)?;
+    debug!("writing category pages");
+    templates::CategoryPage::new(Category::Lands, &tagdb).write_output(&output_dir)?;
+    templates::CategoryPage::new(Category::Rocks, &tagdb).write_output(&output_dir)?;
+    templates::CategoryPage::new(Category::Dorks, &tagdb).write_output(&output_dir)?;
+    templates::CategoryPage::new(Category::Ramp, &tagdb).write_output(&output_dir)?;
 
     info!("complete");
     Ok(())

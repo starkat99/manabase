@@ -21,7 +21,7 @@
         <a href="{{ cat.base_uri()|safe }}" class="badge badge-pill badge-danger mtg-category">{{ cat.tag_name()|safe }}</a>
       {% endfor %}
       {% for tag in card.tags() %}
-        <a href="tag-{{ tag.canonical_name()|safe }}.html" class="badge {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
+        {% include "tag.html" %}
       {% endfor %}
     </p>
   </div>

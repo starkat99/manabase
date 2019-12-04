@@ -1,3 +1,4 @@
+use crate::color::Color;
 use serde::{Deserialize, Serialize};
 use std::{borrow::Cow, collections::HashMap};
 
@@ -35,34 +36,8 @@ pub struct CardFace<'a> {
     pub type_line: Option<Cow<'a, str>>,
 }
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Color {
-    #[serde(rename = "W")]
-    White,
-    #[serde(rename = "U")]
-    Blue,
-    #[serde(rename = "B")]
-    Black,
-    #[serde(rename = "R")]
-    Red,
-    #[serde(rename = "G")]
-    Green,
-}
-
 impl<'a> CardList<'a> {
     pub fn cards(&'a self) -> &'a Vec<Card<'a>> {
         &self.0
-    }
-}
-
-impl Color {
-    pub fn mana_symbol(self) -> &'static str {
-        match self {
-            Color::White => "<span class=\"mana sw\"></span>",
-            Color::Blue => "<span class=\"mana su\"></span>",
-            Color::Black => "<span class=\"mana sb\"></span>",
-            Color::Red => "<span class=\"mana sr\"></span>",
-            Color::Green => "<span class=\"mana sg\"></span>",
-        }
     }
 }
