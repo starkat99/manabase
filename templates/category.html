@@ -3,7 +3,7 @@
 {% block title %}{{ category|safe }}{% endblock %}
 
 {% block header %}
-  <h3>{{ category|safe }}</h3>
+  <h2>{{ category|safe }}</h2>
 {% endblock %}
 
 {% block body %}
@@ -13,7 +13,7 @@
         <h4>{{ kind|safe }}</h4>
         <p>
           {% for tag in tags %}
-            {% if tag.has_category(category) %}
+            {% if tag.has_category(self.category()) %}
               {% include "tag.html" %}
             {% endif %}
           {% endfor %}

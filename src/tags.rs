@@ -231,7 +231,7 @@ impl<'a> TagDb<'a> {
     pub fn has_kind_tags_in_category(&self, kind: &TagKind, category: &Category) -> bool {
         self.kind_index[kind]
             .iter()
-            .any(|tag| tag.has_category(*category))
+            .any(|tag| tag.has_category(category))
     }
 }
 
@@ -311,8 +311,8 @@ impl TagData {
         &self.canonical_name
     }
 
-    pub fn has_category(&self, category: Category) -> bool {
-        self.conditions.iter().any(|c| c.category == category)
+    pub fn has_category(&self, category: &Category) -> bool {
+        self.conditions.iter().any(|c| c.category == *category)
     }
 }
 

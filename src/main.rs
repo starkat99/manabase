@@ -71,6 +71,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     carddb.build(&tag_index, &cards);
 
     info!("creating template pages");
+    templates::IndexPage::new(&tagdb).write_output(&output_dir)?;
     debug!("writing all cards page");
     templates::AllCards::new(&carddb).write_output(&output_dir)?;
     debug!("writing category pages");
