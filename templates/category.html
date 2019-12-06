@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ category|safe }}{% endblock %}
+{% block title %}{{ category }}{% endblock %}
 
 {% block header %}
   <h2>{{ category|safe }}</h2>
@@ -10,7 +10,7 @@
   {% for (kind, tags) in tagdb.kind_index() %}
     {% if tagdb.has_kind_tags_in_category(kind, category) %}
       <section>
-        <h4>{{ kind|safe }}</h4>
+        <h4><a name="{{ kind }}"></a>{{ kind|safe }}</h4>
         <p>
           {% for tag in tags %}
             {% if tag.has_category(self.category()) %}
