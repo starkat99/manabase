@@ -1,26 +1,34 @@
 use crate::{
     scryfall::{Card, CardList},
-    tags::{Category, TagData, TagIndex},
+    tags::{Category, TagIndex, TagRef},
 };
-use std::collections::{BTreeSet, HashMap, HashSet};
+use std::{
+    collections::{BTreeSet, HashMap, HashSet},
+    hash::{Hash, Hasher},
+    ops::Deref,
+    ptr,
+};
 
 #[derive(Debug)]
-pub struct TaggedCardDb<'a, 'b> {
-    card_index: HashMap<&'a str, TaggedCard<'a, 'b>>,
-    tag_index: HashMap<&'b TagData, HashSet<&'a str>>,
-    category_index: HashMap<Category, HashSet<&'a str>>,
+pub struct TaggedCardDb<'a> {
+    card_index: HashMap<CardId<'a>, TaggedCard<'a>>,
+    tag_index: HashMap<TagRef<'a>, HashSet<CardId<'a>>>,
+    category_index: HashMap<Category, HashSet<CardId<'a>>>,
 }
 
 #[derive(Debug)]
-pub struct TaggedCard<'a, 'b> {
+pub struct TaggedCard<'a> {
     card: &'a Card<'a>,
-    tags: HashSet<&'b TagData>,
+    tags: HashSet<TagRef<'a>>,
     categories: BTreeSet<Category>,
     front_image_uri: &'a str,
     back_image_uri: Option<&'a str>,
 }
 
-impl<'a, 'b> TaggedCardDb<'a, 'b> {
+#[derive(Debug)]
+pub struct CardId<'a>(&'a str);
+
+impl<'a> TaggedCardDb<'a> {
     pub fn new() -> Self {
         TaggedCardDb {
             card_index: HashMap::default(),
@@ -29,19 +37,19 @@ impl<'a, 'b> TaggedCardDb<'a, 'b> {
         }
     }
 
-    pub fn cards(&self) -> impl Iterator<Item = &TaggedCard<'a, 'b>> {
+    pub fn cards(&self) -> impl Iterator<Item = &TaggedCard<'a>> {
         self.card_index.values()
     }
 
-    pub fn build(&mut self, tag_index: &'b TagIndex, cards: &'a CardList<'a>) {
+    pub fn build(&mut self, tag_index: &'a TagIndex, cards: &'a CardList<'a>) {
         for card in cards.cards() {
             trace!("testing card '{}'", &card.name);
-            let mut tags: HashSet<&'b TagData> = HashSet::new();
+            let mut tags: HashSet<TagRef<'a>> = HashSet::new();
             let mut categories: BTreeSet<Category> = BTreeSet::new();
-            for (_tag, tag_data) in tag_index.iter() {
-                for condition in tag_data.iter() {
+            for (_tag, tag_ref) in tag_index.iter() {
+                for condition in tag_ref.iter() {
                     if condition.is_match(&card) {
-                        tags.insert(&tag_data);
+                        tags.insert(tag_ref);
                         categories.insert(condition.category());
                     }
                 }
@@ -61,32 +69,40 @@ impl<'a, 'b> TaggedCardDb<'a, 'b> {
                 trace!("card '{}' matched", &card.name);
                 for category in &categories {
                     if let Some(ids) = self.category_index.get_mut(category) {
-                        ids.insert(card.id.as_ref());
+                        ids.insert(CardId::new(card.id.as_ref()));
                     } else {
                         let mut set = HashSet::new();
-                        set.insert(card.id.as_ref());
+                        set.insert(CardId::new(card.id.as_ref()));
                         self.category_index.insert(*category, set);
                     }
                 }
                 for tag in &tags {
                     if let Some(ids) = self.tag_index.get_mut(tag) {
-                        ids.insert(card.id.as_ref());
+                        ids.insert(CardId::new(card.id.as_ref()));
                     } else {
                         let mut set = HashSet::new();
-                        set.insert(card.id.as_ref());
+                        set.insert(CardId::new(card.id.as_ref()));
                         self.tag_index.insert(tag.clone(), set);
                     }
                 }
                 let tagged_card = TaggedCard::new(card, tags, categories);
                 self.card_index
-                    .insert(tagged_card.card.id.as_ref(), tagged_card);
+                    .insert(CardId::new(tagged_card.card.id.as_ref()), tagged_card);
             }
         }
     }
+
+    pub fn card_index(&self) -> &HashMap<CardId<'a>, TaggedCard<'a>> {
+        &self.card_index
+    }
+
+    pub fn tag_index(&self) -> &HashMap<TagRef<'a>, HashSet<CardId<'a>>> {
+        &self.tag_index
+    }
 }
 
-impl<'a, 'b> TaggedCard<'a, 'b> {
-    fn new(card: &'a Card<'a>, tags: HashSet<&'b TagData>, categories: BTreeSet<Category>) -> Self {
+impl<'a> TaggedCard<'a> {
+    fn new(card: &'a Card<'a>, tags: HashSet<TagRef<'a>>, categories: BTreeSet<Category>) -> Self {
         let back_image_uri = card
             .card_faces
             .as_ref()
@@ -124,10 +140,14 @@ impl<'a, 'b> TaggedCard<'a, 'b> {
         &self.card
     }
 
-    pub fn tags(&self) -> Vec<&'b TagData> {
-        let mut tags: Vec<_> = self.tags.iter().map(|r| *r).collect();
-        tags.sort_unstable_by_key(|t| t.name());
+    pub fn tags(&self) -> Vec<TagRef<'a>> {
+        let mut tags: Vec<_> = self.tags.iter().copied().collect();
+        tags.sort_unstable_by_key(|&t| t.name().to_owned());
         tags
+    }
+
+    pub fn tag_set(&self) -> &HashSet<TagRef<'a>> {
+        &self.tags
     }
 
     pub fn categories(&self) -> &BTreeSet<Category> {
@@ -140,5 +160,50 @@ impl<'a, 'b> TaggedCard<'a, 'b> {
 
     pub fn back_image_uri(&self) -> Option<&'a str> {
         self.back_image_uri
+    }
+
+    pub fn has_category(&self, category: &Category) -> bool {
+        self.categories.contains(category)
+    }
+}
+
+impl<'a> CardId<'a> {
+    pub fn new(tag: &'a str) -> CardId<'a> {
+        CardId(tag)
+    }
+}
+
+impl<'a> Clone for CardId<'a> {
+    fn clone(&self) -> CardId<'a> {
+        CardId(self.0)
+    }
+}
+
+impl<'a> Copy for CardId<'a> {}
+
+impl<'a> PartialEq for CardId<'a> {
+    fn eq(&self, other: &CardId) -> bool {
+        ptr::eq(self.0, other.0)
+    }
+}
+
+impl<'a> Eq for CardId<'a> {}
+
+impl<'a> Hash for CardId<'a> {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        ptr::hash(self.0, state)
+    }
+}
+
+impl<'a> AsRef<str> for CardId<'a> {
+    fn as_ref(&self) -> &str {
+        self.0
+    }
+}
+
+impl<'a> Deref for CardId<'a> {
+    type Target = str;
+    fn deref(&self) -> &str {
+        self.0
     }
 }

@@ -2,6 +2,7 @@ use crate::{
     color::{Color, Colors},
     scryfall::{Card, CardFace},
 };
+use itertools::free::join;
 use lazy_static::lazy_static;
 use regex::{Regex, RegexBuilder};
 use serde::{Deserialize, Serialize};
@@ -9,6 +10,7 @@ use std::{
     borrow::Cow,
     collections::{BTreeMap, BTreeSet, HashMap},
     hash::{Hash, Hasher},
+    ops::Deref,
     path::Path,
     ptr,
 };
@@ -41,7 +43,7 @@ pub enum TagKind {
 
 #[derive(Debug)]
 pub struct TagDb<'a> {
-    kind_index: BTreeMap<TagKind, Vec<&'a TagData>>,
+    kind_index: BTreeMap<TagKind, Vec<TagRef<'a>>>,
 }
 
 #[derive(Debug)]
@@ -69,6 +71,9 @@ pub struct TagCondition {
     card_face: Option<usize>,
     cmc: Option<f32>,
 }
+
+#[derive(Debug)]
+pub struct TagRef<'a>(&'a TagData);
 
 #[derive(Debug)]
 pub struct CategoryConfig(HashMap<Category, TagConfigFile>);
@@ -183,11 +188,11 @@ impl TagKind {
         }
     }
 
-    pub fn sort_tags(self, tags: &mut Vec<&TagData>) {
+    pub fn sort_tags(self, tags: &mut Vec<TagRef<'_>>) {
         match self {
             // TODO: Fix None sort order
-            TagKind::ColorIdentity => tags.sort_unstable_by_key(|tag| &tag.color_identity),
-            _ => tags.sort_unstable_by_key(|tag| &tag.name),
+            TagKind::ColorIdentity => tags.sort_unstable_by_key(|tag| tag.color_identity),
+            _ => tags.sort_unstable_by_key(|tag| tag.name.clone()),
         }
     }
 }
@@ -210,13 +215,13 @@ impl std::fmt::Display for TagKind {
 
 impl<'a> TagDb<'a> {
     pub fn new(index: &'a TagIndex) -> TagDb<'a> {
-        let mut kind_index: BTreeMap<TagKind, Vec<&'a TagData>> = BTreeMap::new();
+        let mut kind_index: BTreeMap<TagKind, Vec<TagRef<'a>>> = BTreeMap::new();
         for (_, tag) in index.iter() {
             if !kind_index.get(&tag.kind).is_some() {
                 kind_index.insert(tag.kind, Vec::new());
             }
             let taglist = kind_index.get_mut(&tag.kind).unwrap();
-            taglist.push(&tag);
+            taglist.push(tag);
         }
         for (kind, taglist) in kind_index.iter_mut() {
             kind.sort_tags(taglist);
@@ -224,7 +229,7 @@ impl<'a> TagDb<'a> {
         TagDb { kind_index }
     }
 
-    pub fn kind_index(&self) -> &BTreeMap<TagKind, Vec<&TagData>> {
+    pub fn kind_index(&self) -> &BTreeMap<TagKind, Vec<TagRef<'_>>> {
         &self.kind_index
     }
 
@@ -253,12 +258,12 @@ impl TagIndex {
         Ok(TagIndex(tags))
     }
 
-    pub fn iter(&self) -> impl Iterator<Item = (&str, &TagData)> {
-        self.0.iter().map(|(s, d)| (s.as_ref(), d))
+    pub fn iter(&self) -> impl Iterator<Item = (&str, TagRef<'_>)> {
+        self.0.iter().map(|(s, d)| (s.as_ref(), TagRef::new(d)))
     }
 
-    pub fn get(&self, tag: &str) -> Option<&TagData> {
-        self.0.get(tag)
+    pub fn get(&self, tag: &str) -> Option<TagRef<'_>> {
+        self.0.get(tag).map(TagRef::new)
     }
 }
 
@@ -313,6 +318,18 @@ impl TagData {
 
     pub fn has_category(&self, category: &Category) -> bool {
         self.conditions.iter().any(|c| c.category == *category)
+    }
+
+    pub fn subtags(&self) -> &BTreeSet<String> {
+        &self.subtags
+    }
+
+    pub fn has_alt_names(&self) -> bool {
+        !self.alt_names.is_empty()
+    }
+
+    pub fn alt_names_string(&self) -> String {
+        join(self.alt_names.iter(), ", ")
     }
 }
 
@@ -474,20 +491,6 @@ impl<'a> MatchItem for CardFace<'a> {
     }
 }
 
-impl PartialEq<&TagData> for &TagData {
-    fn eq(&self, other: &&TagData) -> bool {
-        ptr::eq(*self as *const TagData, *other as *const TagData)
-    }
-}
-
-impl Eq for &TagData {}
-
-impl Hash for &TagData {
-    fn hash<H: Hasher>(&self, hasher: &mut H) {
-        ptr::hash(self as *const &TagData, hasher)
-    }
-}
-
 impl Default for TagKind {
     fn default() -> Self {
         TagKind::Other
@@ -507,5 +510,52 @@ impl std::fmt::Display for TagData {
             TagKind::Cost => write!(fmt, "Cost: {}", &self.name),
             _ => write!(fmt, "{}", &self.name),
         }
+    }
+}
+
+impl<'a> TagRef<'a> {
+    pub fn new(tag: &'a TagData) -> TagRef<'a> {
+        TagRef(tag)
+    }
+}
+
+impl<'a> Clone for TagRef<'a> {
+    fn clone(&self) -> TagRef<'a> {
+        TagRef(self.0)
+    }
+}
+
+impl<'a> Copy for TagRef<'a> {}
+
+impl<'a> PartialEq for TagRef<'a> {
+    fn eq(&self, other: &TagRef) -> bool {
+        ptr::eq(self.0, other.0)
+    }
+}
+
+impl<'a> Eq for TagRef<'a> {}
+
+impl<'a> Hash for TagRef<'a> {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        ptr::hash(self.0, state)
+    }
+}
+
+impl<'a> AsRef<TagData> for TagRef<'a> {
+    fn as_ref(&self) -> &TagData {
+        self.0
+    }
+}
+
+impl<'a> Deref for TagRef<'a> {
+    type Target = TagData;
+    fn deref(&self) -> &TagData {
+        self.0
+    }
+}
+
+impl<'a> std::fmt::Display for TagRef<'a> {
+    fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::fmt::Result {
+        self.0.fmt(fmt)
     }
 }

@@ -79,6 +79,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     templates::CategoryPage::new(Category::Rocks, &tagdb).write_output(&output_dir)?;
     templates::CategoryPage::new(Category::Dorks, &tagdb).write_output(&output_dir)?;
     templates::CategoryPage::new(Category::Ramp, &tagdb).write_output(&output_dir)?;
+    debug!("writing tag pages");
+    for (_, tag) in tag_index.iter() {
+        templates::TagPage::new(tag, &tag_index, &carddb).write_output(&output_dir)?;
+    }
 
     info!("complete");
     Ok(())

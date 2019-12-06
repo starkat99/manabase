@@ -1,9 +1,14 @@
 use crate::{
     card::{TaggedCard, TaggedCardDb},
-    tags::{Category, TagDb},
+    tags::{Category, TagDb, TagIndex, TagRef},
 };
 use askama::Template;
-use std::{fs::File, io::Write, path::Path};
+use std::{
+    collections::{HashMap, HashSet},
+    fs::File,
+    io::Write,
+    path::Path,
+};
 
 #[derive(Debug, Template)]
 #[template(path = "index.html")]
@@ -14,9 +19,9 @@ pub struct IndexPage<'a> {
 
 #[derive(Debug, Template)]
 #[template(path = "all.html")]
-pub struct AllCards<'a, 'b> {
+pub struct AllCards<'a> {
     title: &'static str,
-    cards: Vec<&'a TaggedCard<'a, 'b>>,
+    cards: Vec<&'a TaggedCard<'a>>,
 }
 
 #[derive(Debug, Template)]
@@ -24,6 +29,15 @@ pub struct AllCards<'a, 'b> {
 pub struct CategoryPage<'a> {
     category: Category,
     tagdb: &'a TagDb<'a>,
+}
+
+#[derive(Debug, Template)]
+#[template(path = "tag-cards.html")]
+pub struct TagPage<'a> {
+    categories: [Category; 4],
+    tag: TagRef<'a>,
+    tag_index: &'a TagIndex,
+    cards: HashMap<Option<TagRef<'a>>, Vec<&'a TaggedCard<'a>>>,
 }
 
 impl<'a> IndexPage<'a> {
@@ -44,8 +58,8 @@ impl<'a> IndexPage<'a> {
     }
 }
 
-impl<'a, 'b> AllCards<'a, 'b> {
-    pub fn new(carddb: &'a TaggedCardDb<'a, 'b>) -> AllCards<'a, 'b> {
+impl<'a> AllCards<'a> {
+    pub fn new(carddb: &'a TaggedCardDb<'a>) -> AllCards<'a> {
         let mut cards: Vec<_> = carddb.cards().collect();
         debug!("sorting all cards");
         cards.sort_unstable_by_key(|c| &c.card().name);
@@ -72,6 +86,95 @@ impl<'a> CategoryPage<'a> {
     pub fn write_output(&self, output_dir: &Path) -> std::io::Result<()> {
         write!(
             File::create(output_dir.join(self.category.base_uri()))?,
+            "{}",
+            self
+        )
+    }
+}
+
+impl<'a> TagPage<'a> {
+    pub fn new(
+        tag: TagRef<'a>,
+        tag_index: &'a TagIndex,
+        carddb: &'a TaggedCardDb<'a>,
+    ) -> TagPage<'a> {
+        let subtags: HashSet<_> = tag
+            .subtags()
+            .iter()
+            .filter_map(|name| tag_index.get(name))
+            .collect();
+        let cards: Vec<_> = carddb
+            .tag_index()
+            .get(&tag)
+            .map(|ids| {
+                ids.iter()
+                    .filter_map(|id| carddb.card_index().get(id))
+                    .collect()
+            })
+            .unwrap_or_default();
+        let mut tag_map: HashMap<_, Vec<_>> = HashMap::new();
+        for subtag in subtags.iter() {
+            let mut tagcards: Vec<_> = cards
+                .iter()
+                .map(|card| *card)
+                .filter(|card| card.tag_set().contains(subtag))
+                .collect();
+            tagcards.sort_unstable_by_key(|card| &card.card().name);
+            tag_map.insert(Some(*subtag), tagcards);
+        }
+        let mut untagged: Vec<_> = cards
+            .iter()
+            .map(|card| *card)
+            .filter(|card| card.tag_set().is_disjoint(&subtags))
+            .collect();
+        untagged.sort_unstable_by_key(|card| &card.card().name);
+        if !untagged.is_empty() {
+            tag_map.insert(None, untagged);
+        }
+        TagPage {
+            categories: [
+                Category::Lands,
+                Category::Rocks,
+                Category::Dorks,
+                Category::Ramp,
+            ],
+            tag,
+            tag_index,
+            cards: tag_map,
+        }
+    }
+
+    pub fn subtags(&self) -> Vec<TagRef<'a>> {
+        self.tag
+            .subtags()
+            .iter()
+            .filter_map(|name| self.tag_index.get(name))
+            .collect()
+    }
+
+    pub fn get_tag_cards(&self, tag: TagRef<'a>) -> Option<&Vec<&'a TaggedCard<'a>>> {
+        self.cards.get(&Some(tag))
+    }
+
+    pub fn get_untagged_cards(&self) -> Option<&Vec<&'a TaggedCard<'a>>> {
+        self.cards.get(&None)
+    }
+
+    pub fn subtag_has_cards_in_category(&self, tag: TagRef<'a>, category: &Category) -> bool {
+        self.get_tag_cards(tag)
+            .map(|vec| vec.iter().any(|card| card.has_category(category)))
+            .unwrap_or_default()
+    }
+
+    pub fn has_untagged_cards_in_category(&self, category: &Category) -> bool {
+        self.get_untagged_cards()
+            .map(|vec| vec.iter().any(|card| card.has_category(category)))
+            .unwrap_or_default()
+    }
+
+    pub fn write_output(&self, output_dir: &Path) -> std::io::Result<()> {
+        write!(
+            File::create(output_dir.join(format!("tag-{}.html", self.tag.canonical_name())))?,
             "{}",
             self
         )
