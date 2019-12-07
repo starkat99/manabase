@@ -8,7 +8,7 @@
 
 {% block body %}
   {% for category in categories %}
-    <section>
+    <section class="{{ category.filter_class()|safe }}">
       <h3 class="text-primary"><a name="{{ category }}"></a>{{ category }}</h3>
       {% for subtag in self.subtags() %}
         {% if self.subtag_has_cards_in_category(subtag.clone(), category) %}

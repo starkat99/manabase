@@ -53,10 +53,10 @@ impl<'a> CardList<'a> {
 }
 
 impl SetType {
-    pub fn data_attribute(self) -> &'static str {
+    pub fn filter_class(self) -> &'static str {
         match self {
             SetType::Other => "",
-            _ => "data-mtg-silver-border=\"true\"",
+            _ => "mtg-filter-silver-border",
         }
     }
 }

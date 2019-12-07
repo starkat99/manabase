@@ -167,12 +167,9 @@ impl<'a> TaggedCard<'a> {
         self.categories.contains(category)
     }
 
-    pub fn categories_data_attributes(&self) -> String {
+    pub fn category_filter_classes(&self) -> String {
         join(
-            self.categories
-                .iter()
-                .copied()
-                .map(Category::data_attribute),
+            self.categories.iter().copied().map(Category::filter_class),
             " ",
         )
     }

@@ -1,4 +1,4 @@
-<div class="card d-inline-flex border-0 m-2 mtg-card" {{ card.card().set_type.data_attribute()|safe }} {{ card.categories_data_attributes()|safe }} id="card{{ card.card().id|safe }}">
+<div class="card d-inline-flex border-0 m-2 mtg-card {{ card.card().set_type.filter_class()|safe }} {{ card.category_filter_classes()|safe }}" id="card{{ card.card().id|safe }}">
   <a name="{{ card.card().name }}"></a>
   <div class="mtg-card-img-container">
     <a href="{{ card.card().scryfall_uri|safe }}">
@@ -22,7 +22,7 @@
         <a href="{{ cat.base_uri()|safe }}" class="badge badge-pill badge-danger mtg-category">{{ cat.tag_name()|safe }}</a>
       {% endfor %}
       {% for tag in card.tags() %}
-        {% include "tag.html" %}
+        <a href="tag-{{ tag.canonical_name()|safe }}.html" class="badge {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
       {% endfor %}
     </p>
   </div>

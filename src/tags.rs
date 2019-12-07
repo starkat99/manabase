@@ -161,12 +161,21 @@ impl Category {
         }
     }
 
-    pub fn data_attribute(self) -> &'static str {
+    pub fn filter_class(self) -> &'static str {
         match self {
-            Category::Lands => "data-mtg-lands=\"true\"",
-            Category::Rocks => "data-mtg-rocks=\"true\"",
-            Category::Dorks => "data-mtg-dorks=\"true\"",
-            Category::Ramp => "data-mtg-ramp=\"true\"",
+            Category::Lands => "mtg-filter-lands",
+            Category::Rocks => "mtg-filter-rocks",
+            Category::Dorks => "mtg-filter-dorks",
+            Category::Ramp => "mtg-filter-ramp",
+        }
+    }
+
+    pub fn show_only_filter_query(self) -> &'static str {
+        match self {
+            Category::Lands => "show=lands&amp;hide=rocks&amp;hide=dorks&amp;hide=ramp",
+            Category::Rocks => "show=rocks&amp;hide=lands&amp;hide=dorks&amp;hide=ramp",
+            Category::Dorks => "show=dorks&amp;hide=lands&amp;hide=rocks&amp;hide=ramp",
+            Category::Ramp => "show=ramp&amp;hide=lands&amp;hide=rocks&amp;hide=dorks",
         }
     }
 }
