@@ -22,6 +22,7 @@ pub struct Card<'a> {
     pub type_line: Option<Cow<'a, str>>,
     #[serde(borrow)]
     pub image_uris: Option<HashMap<Cow<'a, str>, Cow<'a, str>>>,
+    pub set_type: SetType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -36,8 +37,26 @@ pub struct CardFace<'a> {
     pub type_line: Option<Cow<'a, str>>,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum SetType {
+    Funny,
+    Memorabilia,
+    #[serde(other)]
+    Other,
+}
+
 impl<'a> CardList<'a> {
     pub fn cards(&'a self) -> &'a Vec<Card<'a>> {
         &self.0
+    }
+}
+
+impl SetType {
+    pub fn data_attribute(self) -> &'static str {
+        match self {
+            SetType::Other => "",
+            _ => "data-mtg-silver-border=\"true\"",
+        }
     }
 }

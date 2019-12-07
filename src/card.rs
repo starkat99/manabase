@@ -2,6 +2,7 @@ use crate::{
     scryfall::{Card, CardList},
     tags::{Category, TagIndex, TagRef},
 };
+use itertools::join;
 use std::{
     collections::{BTreeSet, HashMap, HashSet},
     hash::{Hash, Hasher},
@@ -164,6 +165,16 @@ impl<'a> TaggedCard<'a> {
 
     pub fn has_category(&self, category: &Category) -> bool {
         self.categories.contains(category)
+    }
+
+    pub fn categories_data_attributes(&self) -> String {
+        join(
+            self.categories
+                .iter()
+                .copied()
+                .map(Category::data_attribute),
+            " ",
+        )
     }
 }
 

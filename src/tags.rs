@@ -160,6 +160,15 @@ impl Category {
             Category::Ramp => "ramp.html",
         }
     }
+
+    pub fn data_attribute(self) -> &'static str {
+        match self {
+            Category::Lands => "data-mtg-lands=\"true\"",
+            Category::Rocks => "data-mtg-rocks=\"true\"",
+            Category::Dorks => "data-mtg-dorks=\"true\"",
+            Category::Ramp => "data-mtg-ramp=\"true\"",
+        }
+    }
 }
 
 impl std::fmt::Display for Category {

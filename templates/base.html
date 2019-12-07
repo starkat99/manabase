@@ -16,9 +16,39 @@
       <path d="M557.8,288.2v138.4l230.8-213.4L557.8,0v142.8c-309.2,15.6-792.1,253.6-426.5,503.8C13.6,527.9,30,330.1,557.8,288.2z"></path>
     </symbol>
   </svg>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <script src="script/filter.js"></script>
 </head>
 <body>
   <header class="border-bottom bg-light w-100">
+    <div class="dropdown float-right">
+      <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="filterDropDown">
+        Filters
+      </button>
+      <form class="p-4 dropdown-menu dropdown-menu-right" aria-labelledby="filterDropDown">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-lands">
+          <label class="form-check-label" for="filter-lands">Lands</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-rocks">
+          <label class="form-check-label" for="filter-rocks">Mana Rocks</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-dorks">
+          <label class="form-check-label" for="filter-dorks">Mana Dorks</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-ramp">
+          <label class="form-check-label" for="filter-ramp">Mana Ramp</label>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-silver-border">
+          <label class="form-check-label" for="filter-silver-border">Silver Bordered</label>
+        </div>
+      </form>
+    </div>
     <h1>Mana Base</h1>
     {% block header %}
     {% endblock %}

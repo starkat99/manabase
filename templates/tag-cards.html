@@ -3,17 +3,17 @@
 {% block title %}{{ tag.name() }}{% endblock %}
 
 {% block header %}
-  <h2>{{ tag.name() }}</h2>
+  <h2 class="text-secondary">{{ tag.name() }}</h2>
 {% endblock %}
 
 {% block body %}
   {% for category in categories %}
     <section>
-      <h3><a name="{{ category }}"></a>{{ category }}</h3>
+      <h3 class="text-primary"><a name="{{ category }}"></a>{{ category }}</h3>
       {% for subtag in self.subtags() %}
         {% if self.subtag_has_cards_in_category(subtag.clone(), category) %}
           <section>
-            <h4><a name="{{ category }}-{{ subtag.name() }}"></a>{{ subtag.name() }}</h4>
+            <h4 class="text-secondary"><a name="{{ category }}-{{ subtag.name() }}"></a>{{ subtag.name() }}</h4>
             {% if subtag.has_alt_names() %}
               <h6>Alternate Names: {{ subtag.alt_names_string() }}</h6>
             {% endif %}
