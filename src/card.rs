@@ -143,7 +143,7 @@ impl<'a> TaggedCard<'a> {
 
     pub fn tags(&self) -> Vec<TagRef<'a>> {
         let mut tags: Vec<_> = self.tags.iter().copied().collect();
-        tags.sort_unstable_by_key(|&t| t.name().to_owned());
+        tags.sort_unstable_by_key(|&t| t.name().into_owned());
         tags
     }
 

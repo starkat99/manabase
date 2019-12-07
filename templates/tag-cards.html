@@ -9,11 +9,11 @@
 {% block body %}
   {% for category in categories %}
     <section class="{{ category.filter_class()|safe }}">
-      <h3 class="text-primary"><a name="{{ category }}"></a>{{ category }}</h3>
+      <h3 class="text-primary mt-2"><a name="{{ category }}"></a>{{ category }}</h3>
       {% for subtag in self.subtags() %}
         {% if self.subtag_has_cards_in_category(subtag.clone(), category) %}
           <section>
-            <h4 class="text-secondary"><a name="{{ category }}-{{ subtag.name() }}"></a>{{ subtag.name() }}</h4>
+            <h4 class="text-secondary mt-3"><a name="{{ category }}-{{ subtag.canonical_name() }}"></a>{{ subtag.name() }}</h4>
             {% if subtag.has_alt_names() %}
               <h6>Alternate Names: {{ subtag.alt_names_string() }}</h6>
             {% endif %}
@@ -27,7 +27,7 @@
       {% endfor %}
       {% if self.has_untagged_cards_in_category(category) %}
         <section>
-          <h4><a name="{{ category }}-Other"></a>Other</h4>
+          <h4 class="text-secondary"><a name="{{ category }}-Other"></a>Other</h4>
           {% for card in self.get_untagged_cards().unwrap() %}
             {% if card.has_category(category) %}
               {% include "card.html" %}

@@ -8,7 +8,7 @@ use regex::{Regex, RegexBuilder};
 use serde::{Deserialize, Serialize};
 use std::{
     borrow::Cow,
-    collections::{BTreeMap, BTreeSet, HashMap},
+    collections::{BTreeMap, BTreeSet, HashMap, HashSet},
     hash::{Hash, Hasher},
     ops::Deref,
     path::Path,
@@ -58,6 +58,7 @@ pub struct TagData {
     canonical_name: String,
     kind: TagKind,
     color_identity: Option<Colors>,
+    cmc: Option<f32>,
 }
 
 #[derive(Debug)]
@@ -66,6 +67,7 @@ pub struct TagCondition {
     type_regex: Option<Regex>,
     text_regex: Option<Regex>,
     name_regex: Option<Regex>,
+    names: Option<HashSet<String>>,
     color_identity_len: Option<usize>,
     color_identity: Option<Vec<Color>>,
     card_face: Option<usize>,
@@ -91,6 +93,8 @@ struct TagConfig {
     text_regex: Option<String>,
     #[serde(default, rename = "name")]
     name_regex: Option<String>,
+    #[serde(default)]
+    names: Option<Vec<String>>,
     #[serde(default)]
     color_identity_len: Option<usize>,
     #[serde(default)]
@@ -299,6 +303,7 @@ impl TagData {
             canonical_name: TAG_NAME_STRIP_REGEX.replace_all(name, "_").to_string(),
             kind: config.kind,
             color_identity: config.color_identity.clone().map(Colors::from_vec),
+            cmc: config.cmc,
         })
     }
 
@@ -314,8 +319,11 @@ impl TagData {
         self.conditions.iter()
     }
 
-    pub fn name(&self) -> &str {
-        &self.name
+    pub fn name(&self) -> Cow<'_, str> {
+        match self.kind {
+            TagKind::Cost => Cow::Owned(format!("CMC: {}", self.cmc.unwrap_or_default() as i32)),
+            _ => Cow::Borrowed(&self.name),
+        }
     }
 
     pub fn kind(&self) -> TagKind {
@@ -325,6 +333,14 @@ impl TagData {
     pub fn color_identity_symbols(&self) -> Cow<'static, str> {
         if let Some(color_identity) = &self.color_identity {
             color_identity.mana_symbols()
+        } else {
+            Cow::Borrowed("")
+        }
+    }
+
+    pub fn cmc_symbol(&self) -> Cow<'static, str> {
+        if let Some(cmc) = &self.cmc {
+            Cow::Owned(format!("<span class=\"mana s{}\"></span>", *cmc as i32))
         } else {
             Cow::Borrowed("")
         }
@@ -388,6 +404,10 @@ impl TagCondition {
                     builder.build()
                 })
                 .transpose()?,
+            names: config
+                .names
+                .as_ref()
+                .map(|vec| vec.iter().cloned().collect()),
             color_identity: config.color_identity.clone(),
             color_identity_len: config.color_identity_len,
             card_face: config.card_face,
@@ -423,12 +443,19 @@ impl TagCondition {
             }
         }
 
+        if let Some(names) = &self.names {
+            if !names.contains(card.name()) {
+                return false;
+            }
+        }
+
         // First, check for a specified face and only use that face
-        if let Some(face) = self
-            .card_face
-            .and_then(|i| card.card_faces.as_ref().and_then(|v| v.get(i)))
-        {
-            if !self.is_item_match(face) {
+        if let Some(face) = self.card_face {
+            if let Some(face) = card.card_faces.as_ref().and_then(|v| v.get(face)) {
+                if !self.is_item_match(face) {
+                    return false;
+                }
+            } else {
                 return false;
             }
         } else {
@@ -520,12 +547,12 @@ impl std::fmt::Display for TagData {
         match self.kind {
             TagKind::ColorIdentity => write!(
                 fmt,
-                "Color: {} {}",
-                &self.color_identity_symbols(),
+                "Identity: {} {}",
+                self.color_identity_symbols(),
                 &self.name
             ),
             TagKind::ManaPool => write!(fmt, "Mana: {}", &self.name),
-            TagKind::Cost => write!(fmt, "Cost: {}", &self.name),
+            TagKind::Cost => write!(fmt, "CMC: {}", self.cmc_symbol()),
             _ => write!(fmt, "{}", &self.name),
         }
     }

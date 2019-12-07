@@ -52,7 +52,7 @@ subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
 [Plains]
 kind = 'type'
 type = 'Plains'
-subtag = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
+subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
     "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
 
 [Swamps]
@@ -76,7 +76,8 @@ subtags = ["Sac Any Color", "Vivid Lands", "Cycling Deserts", "ETB Spell Lands",
     "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands"]
 
 ["Sac Any Color"]
-name = '^(?:Abandoned Output|Seafloor Debris|Bog Wreckage|Ravaged Highlands|Timberland Ruins)$'
+names = ["Abandoned Output", "Seafloor Debris", "Bog Wreckage", "Ravaged Highlands",
+    "Timberland Ruins"]
 
 ["Vivid Lands"]
 name = '^Vivid \w$'
@@ -94,21 +95,26 @@ When .*? enters the battlefield, '''
 text = 'Hideaway'
 
 ["Keyword Lands"]
-name = '^(?:New Benalia|Tolaria West|Dakmor Salvage|Keldon Megaliths|Llanowar Reborn)$'
+names = ["New Benalia", "Tolaria West", "Dakmor Salvage", "Keldon Megaliths", "Llanowar Reborn"]
 alt-names = ["Futuresight Ability Lands"]
 
 ["Legacy Legend Lands"]
-name = '^(?:Karakas|Tolaria|Urborg|Hammerheim|Pendelhaven)$'
+names = ["Karakas", "Tolaria", "Urborg", "Hammerheim", "Pendelhaven"]
 
 ["Legendary Assist Lands"]
-name = """
-^(?:Eiganjo Castle|Minamo, School at Water's Edge|Shizo, Death's Storehouse|\
-Shinka, the Bloodsoaked Keep|Okina, Temple to the Grandfathers)$\
-"""
+names = ["Eiganjo Castle", "Minamo, School at Water's Edge", "Shizo, Death's Storehouse",
+    "Shinka, the Bloodsoaked Keep", "Okina, Temple to the Grandfathers"]
 
 ["Legendary Transformers"]
-name = 'Adanto, the First Fort|Azcanta, the Sunken Ruin|Temple of Aclazotz|Spitefire Bastion|Itlimoc, Cradle of the Sun'
-card_face = 1
+type = 'Legendary'
+text = 'Transforms '
+card-face = 1
+
+[Transformers]
+subtags = ["Legendary Transformers"]
+text = 'Transforms '
+card-face = 1
+
 
 ["Mono Bounces"]
 color-identity-len = 1
@@ -131,10 +137,11 @@ text = 'enters the battlefield tapped\..*? storage counters '
 alt-names = ["Battery Lands"]
 
 ["Permanent Type Legendaries"]
-name = "^(?:Serra's Sanctum|Tolarian Academy|Gaea's Cradle)$"
+names = ["Serra's Sanctum", "Tolarian Academy", "Gaea's Cradle"]
 
 ["Shadowmoor Utility Lands"]
-name = '^(?:Mistveil Plains|Moonring Island|Leechridden Swamp|Madblind Mountain|Sapseep Forest)$'
+names = ["Mistveil Plains", "Moonring Island", "Leechridden Swamp", "Madblind Mountain",
+    "Sapseep Forest"]
 alt-names = ["Permanent Utility Lands"]
 
 ["Replacement Lands"]
@@ -149,14 +156,14 @@ text = ' Sacrifice a Desert: '
 text = '\sThreshold '
 
 ["Zendikar Landmarks"]
-name = """^(?:Emeria, the Sky Ruin|Magosi, the Waterveil|Crypt of Agadeem|\
-    Valakut, the Molten Pinnacle|Oran-Rief, the Vastwood)$"""
+names = ["Emeria, the Sky Ruin", "Magosi, the Waterveil", "Crypt of Agadeem",
+    "Valakut, the Molten Pinnacle", "Oran-Rief, the Vastwood"]
 
 ["Artifact Lands"]
-type = 'Artifact'
+type = 'Artifact Land'
 
 ["Cycling Lands"]
-text = '\sCycling '
+text = '(C|c)ycling\s'
 
 ["Blighted Lands"]
 name = '^Blighted \w$'
@@ -230,7 +237,7 @@ subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depl
     "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
-    "Canopy Lands"]
+    "Canopy Lands", "Legendary Transformers"]
 
 ["Battle Lands"]
 text = ' enters the battlefield tapped unless you control two or more basic lands\.'
@@ -261,7 +268,7 @@ text = ' enters the battlefield tapped unless you control two or fewer other lan
 text = '\{./.\}, \{T\}: Add \{.\}{2}, \{.\}{2}, or \{.\}{2}'
 
 ["Futuresight Duals"]
-name = '^(?:Nimbus Maze|River of Tears|Grove of the Burnwillows)$'
+names = ["Nimbus Maze", "River of Tears", "Grove of the Burnwillows"]
 
 ["Life-Gain Duals"]
 text = 'When .*? enters the battlefield, you gain 1 life\.1'
@@ -321,17 +328,15 @@ text = '^$'
 alt-names = ["Legacy Duals"]
 
 ["Innistrad Landmarks"]
-name = """
-^(?:Moorland Haunt|Gavony Township|Nephalia Drownyard|Stensia Bloodhall|Kessig Wolf Run|\
-Vault of the Archangel|Slayers' Stronghold|Desolate Lighthouse|Alchemist's Refuge|\
-Grim Backwoods)$"""
+names = ["Moorland Haunt", "Gavony Township", "Nephalia Drownyard", "Stensia Bloodhall",
+    "Kessig Wolf Run", "Vault of the Archangel", "Slayers' Stronghold", "Desolate Lighthouse",
+    "Alchemist's Refuge", "Grim Backwoods"]
 
 ["Ravnica Landmarks"]
-name = """
-^(?:Prahv, Spires of Order|Vitu-Ghazi, the City-Tree|Duskmantle, House of Shadow|\
-Rix Maadi, Dungeon Palace|Skarrg, the Rage Pits|Orzhova, the Church of Deals|\
-Sunhome, Fortress of the Legion|Nivix, Aerie of the Firemind|Novijen, Heart of Progress|\
-Svogthos, the Restless Tomb)$"""
+names = ["Prahv, Spires of Order", "Vitu-Ghazi, the City-Tree", "Duskmantle, House of Shadow",
+    "Rix Maadi, Dungeon Palace", "Skarrg, the Rage Pits", "Orzhova, the Church of Deals",
+    "Sunhome, Fortress of the Legion", "Nivix, Aerie of the Firemind", "Novijen, Heart of Progress",
+    "Svogthos, the Restless Tomb"]
 
 ["Bond Duals"]
 text = ' enters the battlefield tapped unless you have two or more opponents\.'
@@ -400,7 +405,7 @@ subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depl
     "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
-    "Canopy Lands"]
+    "Canopy Lands", "Legendary Transformers"]
 
 [Boros]
 kind = "color-identity"
@@ -410,7 +415,7 @@ subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depl
     "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
-    "Canopy Lands"]
+    "Canopy Lands", "Legendary Transformers"]
 
 [Izzet]
 kind = "color-identity"
@@ -420,7 +425,7 @@ subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depl
     "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
-    "Canopy Lands"]
+    "Canopy Lands", "Legendary Transformers"]
 
 [Simic]
 kind = "color-identity"
@@ -430,7 +435,7 @@ subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depl
     "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
-    "Canopy Lands"]
+    "Canopy Lands", "Legendary Transformers"]
 
 [Golgari]
 kind = "color-identity"
@@ -440,7 +445,7 @@ subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depl
     "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
-    "Canopy Lands"]
+    "Canopy Lands", "Legendary Transformers"]
 
 ["Tri-Color"]
 kind = "color-identity"
@@ -513,31 +518,46 @@ subtags = ["Lairs", "Sac Tri-Lands", "Tap Tri-Lands", "Tri-Color Filters"]
 kind = "color-identity"
 color-identity = []
 subtags = ["Eldrazi Lands", "Artifact Lands", "Basics", "Cycling Lands", "Panoramas",
-    "Copy Lands", "Banding Lands", "Basic Fetches", "Dual Fetches", "Slow Fetches"]
+    "Copy Lands", "Banding Lands", "Basic Fetches", "Dual Fetches", "Slow Fetches", "Transformers"]
 
 ["Eldrazi Lands"]
-name = """
-^(?:Ruins of Oran-Rief|Eye of Ugin|Sanctum of Ugin|Shrine of the Forsaken Gods|\
-Spawning Beds|Eldrazi Temple|Tomb of the Spirit Dragon)$"""
+names = ["Ruins of Oran-Rief", "Eye of Ugin", "Sanctum of Ugin", "Shrine of the Forsaken Gods",
+    "Spawning Beds", "Eldrazi Temple", "Tomb of the Spirit Dragon"]
 
 [Panoramas]
 name = '\w Panorama'
 
 ["Copy Lands"]
-name = "^(?:Thespian's Stage|Vesuva)$"
+names = ["Thespian's Stage", "Vesuva"]
 
 ["Banding Lands"]
-text = ' bands with other '
+text = 'bands? with other\s'
 
 ["Basic Fetches"]
-name = '^(?:Evolving Wilds|Terramorphic Expanse)$'
+names = ["Evolving Wilds", "Terramorphic Expanse"]
 
 ["Dual Fetches"]
-text = ' Pay 1 life, Sacrifice .*?: Search your library for an? .*? or .*? card '
+text = ' Pay 1 life, Sacrifice .*?: Search your library for an? .*? or .*? card'
 
 ["Slow Fetches"]
-text = ' enters the battlefield tapped.*? Search your library for an? .*? or .*? card '
+text = ' enters the battlefield tapped.*? Search your library for an? .*? or .*? card'
 
 [Domain]
 kind = "color-identity"
 color-identity = ["W", "U", "B", "R", "G"]
+
+["{1}"]
+kind = "cost"
+cmc = 1
+
+["{2}"]
+kind = "cost"
+cmc = 2
+
+["{3}"]
+kind = "cost"
+cmc = 3
+
+["{4}"]
+kind = "cost"
+cmc = 4

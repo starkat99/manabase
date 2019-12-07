@@ -11,29 +11,30 @@ pub struct Card<'a> {
     pub id: Cow<'a, str>,
     #[serde(borrow)]
     pub scryfall_uri: Cow<'a, str>,
+    #[serde(default)]
     pub card_faces: Option<Vec<CardFace<'a>>>,
     pub cmc: f32,
     pub color_identity: Vec<Color>,
     #[serde(borrow)]
     pub name: Cow<'a, str>,
-    #[serde(borrow)]
+    #[serde(default, borrow)]
     pub oracle_text: Option<Cow<'a, str>>,
     #[serde(default, borrow)]
     pub type_line: Option<Cow<'a, str>>,
-    #[serde(borrow)]
+    #[serde(default, borrow)]
     pub image_uris: Option<HashMap<Cow<'a, str>, Cow<'a, str>>>,
     pub set_type: SetType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CardFace<'a> {
-    #[serde(borrow)]
+    #[serde(default, borrow)]
     pub image_uris: Option<HashMap<Cow<'a, str>, Cow<'a, str>>>,
     #[serde(borrow)]
     pub name: Cow<'a, str>,
-    #[serde(borrow)]
+    #[serde(default, borrow)]
     pub oracle_text: Option<Cow<'a, str>>,
-    #[serde(borrow)]
+    #[serde(default, borrow)]
     pub type_line: Option<Cow<'a, str>>,
 }
 
