@@ -40,7 +40,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .get_matches();
 
     info!("loading config files");
-    let tag_index = tags::load_tags(&Path::new("config"))?;
+    let config_dir = &Path::new("config");
+    let tag_index = tags::load_tags(config_dir)?;
+    let category_list = tags::CategoryList::load(config_dir)?;
     let tagdb = TagDb::new(&tag_index);
 
     let output_dir = Path::new(matches.value_of_os("output").unwrap());
@@ -68,7 +70,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     info!("tagging cards");
     let mut carddb = TaggedCardDb::new();
-    carddb.build(&tag_index, &cards);
+    carddb.build(&category_list, &tag_index, &cards);
 
     info!("creating template pages");
     templates::IndexPage::new(&tagdb).write_output(&output_dir)?;

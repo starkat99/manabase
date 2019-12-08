@@ -1,33 +1,155 @@
-# ["CMC {0}"]
-# cmc = 0
-# subtags = ["Artifact Lands", "Charge Counters", "One-shot", "Mox", "Other"]
+[Monocolor]
+kind = "mana-pool"
+color-identity-len = 1
 
-# ["Artifact Lands"]
-# type = 'Land'
+["Dual-Color"]
+kind = "mana-pool"
+color-identity-len = 2
 
-# ["Charge Counters"]
-# name = '^(?:Astral Cornucopia|Everflowing Chalice|Jeweled Amulet)$'
+["Tri-Color"]
+kind = "mana-pool"
+color-identity-len = 3
 
-# ["One-shot"]
-# name = "^(?:Lion's Eye Diamond|Lotus Bloom|Lotus Petal)$"
+["Any Color"]
+kind = "mana-pool"
+text = '(any( combination of| one)? colors?|mana of (that color|any type)|mana of different colors)'
 
-# [Mox]
-# name = '\bMox\b'
+["Commander Color"]
+kind = "mana-pool"
+text = "any color in your commander's color identity"
 
-# ["CMC {1}"]
-# cmc = 1
-# subtags = ["Eggs", "Colorless", "Other"]
+[Colorless]
+kind = "color-identity"
+color-identity = []
 
-# [Eggs]
-# name = """
-# ^(?:Barbed Sextant|Chromatic Sphere|Chromatic Star|Darkwater Egg|Mossfire Egg|Shadowblood Egg|\
-# Skycloud Egg|Sungrass Egg|Terrarion)$"""
+[White]
+kind = "color-identity"
+color-identity = ["W"]
 
-# [Colorless]
-# name = '^(?:Mana Vault|Sol Ring)$'
+[Blue]
+kind = "color-identity"
+color-identity = ["U"]
 
-# [Other]
-# name = """
-# ^(?:Paradise Mantle|Arcum's Astrolabe|Expedition Map|Locket of Yesterdays|Mana Cylix|Manifold Key|\
-# Myr Moonvessel|Pyramid of the Pantheon|Springleaf Drum|Thran Turbine|Voltaic Key|\
-# Wayfarer's Bauble)$"""
+[Black]
+kind = "color-identity"
+color-identity = ["B"]
+
+[Red]
+kind = "color-identity"
+color-identity = ["R"]
+
+[Green]
+kind = "color-identity"
+color-identity = ["G"]
+
+[Azorius]
+kind = "color-identity"
+color-identity = ["W", "U"]
+
+[Selesnya]
+kind = "color-identity"
+color-identity = ["W", "G"]
+
+[Dimir]
+kind = "color-identity"
+color-identity = ["U", "B"]
+
+[Rakdos]
+kind = "color-identity"
+color-identity = ["B", "R"]
+
+[Gruul]
+kind = "color-identity"
+color-identity = ["R", "G"]
+
+[Orzhov]
+kind = "color-identity"
+color-identity = ["W", "B"]
+
+[Boros]
+kind = "color-identity"
+color-identity = ["W", "R"]
+
+[Izzet]
+kind = "color-identity"
+color-identity = ["U", "R"]
+
+[Simic]
+kind = "color-identity"
+color-identity = ["U", "G"]
+
+[Golgari]
+kind = "color-identity"
+color-identity = ["B", "G"]
+
+[Esper]
+kind = "color-identity"
+color-identity = ["W", "U", "B"]
+
+[Bant]
+kind = "color-identity"
+color-identity = ["W", "U", "G"]
+
+[Naya]
+kind = "color-identity"
+color-identity = ["W", "R", "G"]
+
+[Grixis]
+kind = "color-identity"
+color-identity = ["U", "B", "R"]
+
+[Jund]
+kind = "color-identity"
+color-identity = ["B", "R", "G"]
+
+[Jeskai]
+kind = "color-identity"
+color-identity = ["W", "U", "R"]
+
+[Mardu]
+kind = "color-identity"
+color-identity = ["W", "B", "R"]
+
+[Abzan]
+kind = "color-identity"
+color-identity = ["W", "B", "G"]
+
+[Sultai]
+kind = "color-identity"
+color-identity = ["U", "B", "G"]
+
+[Temur]
+kind = "color-identity"
+color-identity = ["U", "R", "G"]
+
+[Domain]
+kind = "color-identity"
+color-identity = ["W", "U", "B", "R", "G"]
+
+["{0}"]
+kind = "cost"
+cmc = 0
+subtags = ["Artifact Lands", "Charge Counters", "One-shot", "Mox"]
+match-subtags = true
+
+["Artifact Lands"]
+type = 'Artifact Land'
+
+["Charge Counters"]
+names = ["Astral Cornucopia", "Everflowing Chalice", "Jeweled Amulet"]
+
+["One-shot"]
+names = ["Lion's Eye Diamond", "Lotus Bloom", "Lotus Petal"]
+
+[Mox]
+cmc = 0
+name = '\bMox\b'
+
+["{1}"]
+kind = 'cost'
+cmc = 1
+subtags = ["Eggs"]
+
+[Eggs]
+names = ["Barbed Sextant", "Chromatic Sphere", "Chromatic Star", "Darkwater Egg", "Mossfire Egg",
+    "Shadowblood Egg", "Skycloud Egg", "Sungrass Egg", "Terrarion"]

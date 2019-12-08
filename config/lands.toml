@@ -72,7 +72,7 @@ subtags = ["Legendary Assist Lands", "Legendary Transformers", "Eldrazi Lands",
     "Permanent Type Legendaries", "Legacy Legend Lands"]
 
 [Monocolor]
-kind = "color-identity"
+kind = "mana-pool"
 color-identity-len = 1
 subtags = ["Sac Any Color", "Vivid Lands", "ETB Spell Lands", "Hideaways",
     "Keyword Lands", "Legacy Legend Lands", "Legendary Assist Lands", "Legendary Transformers",
@@ -249,8 +249,8 @@ subtags = ["Sac Any Color", "Vivid Lands", "ETB Spell Lands", "Hideaways",
     "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basics", "Mono Sac Lands",
     "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands", "Tribal Lands"]
 
-[Duals]
-kind = "color-identity"
+["Dual-Color"]
+kind = "mana-pool"
 color-identity-len = 2
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
@@ -478,7 +478,7 @@ subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depl
     "Canopy Lands", "Legendary Transformers"]
 
 ["Tri-Color"]
-kind = "color-identity"
+kind = "mana-pool"
 color-identity-len = 3
 subtags = ["Lairs", "Sac Tri-Lands", "Tap Tri-Lands", "Tri-Color Filters"]
 

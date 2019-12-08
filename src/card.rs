@@ -1,6 +1,6 @@
 use crate::{
     scryfall::{Card, CardList},
-    tags::{Category, TagIndex, TagRef},
+    tags::{Category, CategoryList, TagIndex, TagRef},
 };
 use itertools::join;
 use std::{
@@ -42,14 +42,19 @@ impl<'a> TaggedCardDb<'a> {
         self.card_index.values()
     }
 
-    pub fn build(&mut self, tag_index: &'a TagIndex, cards: &'a CardList<'a>) {
+    pub fn build(
+        &mut self,
+        category_list: &'a CategoryList,
+        tag_index: &'a TagIndex,
+        cards: &'a CardList<'a>,
+    ) {
         for card in cards.cards() {
             trace!("testing card '{}'", &card.name);
             let mut tags: HashSet<TagRef<'a>> = HashSet::new();
             let mut categories: BTreeSet<Category> = BTreeSet::new();
             for (_tag, tag_ref) in tag_index.iter() {
                 for condition in tag_ref.iter() {
-                    if condition.is_match(&card) {
+                    if condition.is_match(category_list, &card) {
                         tags.insert(tag_ref);
                         categories.insert(condition.category());
                     }
@@ -65,6 +70,9 @@ impl<'a> TaggedCardDb<'a> {
             {
                 categories.insert(Category::Lands);
             }
+
+            // Include listed category cards
+            categories.extend(category_list.get_categories(card.name.as_ref()));
 
             if !categories.is_empty() {
                 trace!("card '{}' matched", &card.name);

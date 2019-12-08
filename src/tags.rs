@@ -30,6 +30,13 @@ pub enum Category {
     Ramp,
 }
 
+#[derive(Debug)]
+pub struct CategoryList {
+    rocks: HashSet<String>,
+    dorks: HashSet<String>,
+    ramp: HashSet<String>,
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub enum TagKind {
@@ -180,6 +187,45 @@ impl Category {
             Category::Rocks => "show=rocks&amp;hide=lands&amp;hide=dorks&amp;hide=ramp",
             Category::Dorks => "show=dorks&amp;hide=lands&amp;hide=rocks&amp;hide=ramp",
             Category::Ramp => "show=ramp&amp;hide=lands&amp;hide=rocks&amp;hide=dorks",
+        }
+    }
+}
+
+impl CategoryList {
+    pub fn load(config_dir: &Path) -> Result<CategoryList, Box<dyn std::error::Error>> {
+        let rocks: HashSet<_> = std::fs::read_to_string(config_dir.join("rocks.list"))?
+            .lines()
+            .map(|line| line.to_owned())
+            .collect();
+        let dorks: HashSet<_> = std::fs::read_to_string(config_dir.join("dorks.list"))?
+            .lines()
+            .map(|line| line.to_owned())
+            .collect();
+        let ramp: HashSet<_> = std::fs::read_to_string(config_dir.join("ramp.list"))?
+            .lines()
+            .map(|line| line.to_owned())
+            .collect();
+        Ok(CategoryList { rocks, dorks, ramp })
+    }
+
+    pub fn get_categories(&self, card_name: &str) -> Vec<Category> {
+        let mut categories = Vec::new();
+        if self.rocks.contains(card_name) {
+            categories.push(Category::Rocks);
+        } else if self.dorks.contains(card_name) {
+            categories.push(Category::Dorks);
+        } else if self.ramp.contains(card_name) {
+            categories.push(Category::Ramp);
+        }
+        categories
+    }
+
+    pub fn category_contains(&self, category: Category, card_name: &str) -> bool {
+        match category {
+            Category::Rocks => self.rocks.contains(card_name),
+            Category::Dorks => self.dorks.contains(card_name),
+            Category::Ramp => self.ramp.contains(card_name),
+            _ => panic!("unsupported category"),
         }
     }
 }
@@ -419,7 +465,16 @@ impl TagCondition {
         self.category
     }
 
-    pub fn is_match(&self, card: &Card) -> bool {
+    pub fn is_match(&self, category_list: &CategoryList, card: &Card) -> bool {
+        match self.category {
+            Category::Rocks | Category::Dorks | Category::Ramp => {
+                if !category_list.category_contains(self.category, card.name.as_ref()) {
+                    return false;
+                }
+            }
+            _ => {}
+        }
+
         if let Some(cmc) = self.cmc {
             if card.cmc != cmc {
                 return false;
