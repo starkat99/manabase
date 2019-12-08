@@ -204,7 +204,7 @@ impl TagKind {
         match self {
             TagKind::Other => "badge-dark",
             TagKind::ColorIdentity => "badge-warning",
-            TagKind::ManaPool => "badge-primary",
+            TagKind::ManaPool => "badge-success",
             TagKind::TypeLine => "badge-info",
             TagKind::Cost => "badge-secondary",
         }

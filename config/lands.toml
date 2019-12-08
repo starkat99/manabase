@@ -26,18 +26,18 @@ subtags = ["Cycling Deserts", "Sac Deserts"]
 kind = 'type'
 type = 'Forest'
 subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
-    "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
+    "Shadowmoor Utility Lands", "Basics", "Fairytale Lands"]
 
 [Gates]
 kind = 'type'
 type = 'Gate'
-subtags = ["Gate Duals"]
+subtags = ["Any Color"]
 
 [Islands]
 kind = 'type'
 type = 'Island'
 subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
-    "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
+    "Shadowmoor Utility Lands", "Basics", "Fairytale Lands"]
 
 [Lairs]
 kind = 'type'
@@ -47,49 +47,60 @@ type = 'Lair'
 kind = 'type'
 type = 'Mountain'
 subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
-    "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
+    "Shadowmoor Utility Lands", "Basics", "Fairytale Lands"]
 
 [Plains]
 kind = 'type'
 type = 'Plains'
 subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
-    "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
+    "Shadowmoor Utility Lands", "Basics", "Fairytale Lands"]
 
 [Swamps]
 kind = 'type'
 type = 'Swamp'
 subtags = ["Battle Lands", "Cycling Duals", "Shock Lands", "True Duals",
-    "Shadowmoor Utility Lands", "Snow Basics", "Basics", "Fairytale Lands"]
+    "Shadowmoor Utility Lands", "Basics", "Fairytale Lands"]
 
 ["Urza's"]
 kind = 'type'
-type = "Urza's"
+type = "Urza.s"
+
+[Legendary]
+kind = 'type'
+type = 'Legendary'
+subtags = ["Legendary Assist Lands", "Legendary Transformers", "Eldrazi Lands",
+    "Permanent Type Legendaries", "Legacy Legend Lands"]
 
 [Monocolor]
 kind = "color-identity"
 color-identity-len = 1
-subtags = ["Sac Any Color", "Vivid Lands", "Cycling Deserts", "ETB Spell Lands", "Hideaways",
-    "Keywoard Lands", "Legacy Legend Lands", "Legendary Assist Lands", "Legendary Transformers",
+subtags = ["Sac Any Color", "Vivid Lands", "ETB Spell Lands", "Hideaways",
+    "Keyword Lands", "Legacy Legend Lands", "Legendary Assist Lands", "Legendary Transformers",
     "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands",
     "Permanent Type Legendaries", "Shadowmoor Utility Lands", "Replacement Lands", "Sac Deserts",
-    "Snow Basics", "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basic Lands",
-    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands"]
+    "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basics", "Mono Sac Lands",
+    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands",]
 
 ["Sac Any Color"]
-names = ["Abandoned Output", "Seafloor Debris", "Bog Wreckage", "Ravaged Highlands",
+names = ["Abandoned Outpost", "Seafloor Debris", "Bog Wreckage", "Ravaged Highlands",
     "Timberland Ruins"]
 
+["Mono Sac Lands"]
+color-identity-len = 1
+text = 'enters the battlefield tapped.*?\{T\}, Sacrifice .*?: Add \{.\}\{.\}.'
+
 ["Vivid Lands"]
-name = '^Vivid \w$'
+name = '^Vivid '
 
 ["Cycling Deserts"]
-name = '^Desert of the \w$'
+name = '^Desert of the '
 
 ["ETB Spell Lands"]
 color-identity-len = 1
 text = '''
 enters the battlefield tapped\.
-When .*? enters the battlefield, '''
+When .*? enters the battlefield,.*?
+\{T\}: Add \{.\}\.'''
 
 [Hideaways]
 text = 'Hideaway'
@@ -97,6 +108,10 @@ text = 'Hideaway'
 ["Keyword Lands"]
 names = ["New Benalia", "Tolaria West", "Dakmor Salvage", "Keldon Megaliths", "Llanowar Reborn"]
 alt-names = ["Futuresight Ability Lands"]
+
+["Tribal Lands"]
+text = 'As .*? enters the battlefield, you may reveal an? .{1,9} card from your hand\.'
+subtags = ["Tribal Duals"]
 
 ["Legacy Legend Lands"]
 names = ["Karakas", "Tolaria", "Urborg", "Hammerheim", "Pendelhaven"]
@@ -115,7 +130,6 @@ subtags = ["Legendary Transformers"]
 text = 'Transforms '
 card-face = 1
 
-
 ["Mono Bounces"]
 color-identity-len = 1
 text = '''
@@ -125,11 +139,15 @@ alt-names = ["Karoos"]
 
 ["Mono Depletion Lands"]
 color-identity-len = 1
-text = 'enters the battlefield tapped with two depletion counters on it\.'
+text = 'enters the battlefield tapped with two depletion counters on it'
 
 ["Mono Manlands"]
 color-identity-len = 1
 text = 'enters the battlefield tapped\..*? becomes a .*? creature '
+
+["Storage Lands"]
+text = 'storage counter'
+subtags = ["Mono Storage Lands", "Storage Duals"]
 
 ["Mono Storage Lands"]
 color-identity-len = 1
@@ -164,15 +182,17 @@ type = 'Artifact Land'
 
 ["Cycling Lands"]
 text = '(C|c)ycling\s'
+subtags = ["Cycling Duals", "Cycling Deserts"]
 
 ["Blighted Lands"]
-name = '^Blighted \w$'
+name = '^Blighted '
 
 [Memorials]
-name = '^Memorial to \w$'
+name = '^Memorial to '
 
 [Castles]
-name = '^Castle \w$'
+name = '^Castle '
+text = 'enters the battlefield tapped unless'
 
 ["Fairytale Lands"]
 color-identity-len = 1
@@ -182,59 +202,59 @@ alt-names = ["Mono Check Lands", "Eldraine ETB Lands"]
 [White]
 kind = "color-identity"
 color-identity = ["W"]
-subtags = ["Sac Any Color", "Vivid Lands", "Cycling Deserts", "ETB Spell Lands", "Hideaways",
+subtags = ["Sac Any Color", "Vivid Lands", "ETB Spell Lands", "Hideaways",
     "Keywoard Lands", "Legacy Legend Lands", "Legendary Assist Lands", "Legendary Transformers",
-    "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands",
+    "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands", "Keyword Lands",
     "Permanent Type Legendaries", "Shadowmoor Utility Lands", "Replacement Lands", "Sac Deserts",
-    "Snow Basics", "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basic Lands",
-    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands"]
+    "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basics", "Mono Sac Lands",
+    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands", "Tribal Lands"]
 
 [Blue]
 kind = "color-identity"
 color-identity = ["U"]
-subtags = ["Sac Any Color", "Vivid Lands", "Cycling Deserts", "ETB Spell Lands", "Hideaways",
+subtags = ["Sac Any Color", "Vivid Lands", "ETB Spell Lands", "Hideaways",
     "Keywoard Lands", "Legacy Legend Lands", "Legendary Assist Lands", "Legendary Transformers",
-    "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands",
+    "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands", "Keyword Lands",
     "Permanent Type Legendaries", "Shadowmoor Utility Lands", "Replacement Lands", "Sac Deserts",
-    "Snow Basics", "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basic Lands",
-    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands"]
+    "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basics", "Mono Sac Lands",
+    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands", "Tribal Lands"]
 
 [Black]
 kind = "color-identity"
 color-identity = ["B"]
-subtags = ["Sac Any Color", "Vivid Lands", "Cycling Deserts", "ETB Spell Lands", "Hideaways",
+subtags = ["Sac Any Color", "Vivid Lands", "ETB Spell Lands", "Hideaways",
     "Keywoard Lands", "Legacy Legend Lands", "Legendary Assist Lands", "Legendary Transformers",
-    "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands",
+    "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands", "Keyword Lands",
     "Permanent Type Legendaries", "Shadowmoor Utility Lands", "Replacement Lands", "Sac Deserts",
-    "Snow Basics", "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basic Lands",
-    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands"]
+    "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basics", "Mono Sac Lands",
+    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands", "Tribal Lands"]
 
 [Red]
 kind = "color-identity"
 color-identity = ["R"]
-subtags = ["Sac Any Color", "Vivid Lands", "Cycling Deserts", "ETB Spell Lands", "Hideaways",
+subtags = ["Sac Any Color", "Vivid Lands", "ETB Spell Lands", "Hideaways",
     "Keywoard Lands", "Legacy Legend Lands", "Legendary Assist Lands", "Legendary Transformers",
-    "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands",
+    "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands", "Keyword Lands",
     "Permanent Type Legendaries", "Shadowmoor Utility Lands", "Replacement Lands", "Sac Deserts",
-    "Snow Basics", "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basic Lands",
-    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands"]
+    "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basics", "Mono Sac Lands",
+    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands", "Tribal Lands"]
 
 [Green]
 kind = "color-identity"
 color-identity = ["G"]
-subtags = ["Sac Any Color", "Vivid Lands", "Cycling Deserts", "ETB Spell Lands", "Hideaways",
+subtags = ["Sac Any Color", "Vivid Lands", "ETB Spell Lands", "Hideaways",
     "Keywoard Lands", "Legacy Legend Lands", "Legendary Assist Lands", "Legendary Transformers",
-    "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands",
+    "Mono Bounces", "Mono Depletion Lands", "Mono Manlands", "Mono Storage Lands", "Keyword Lands",
     "Permanent Type Legendaries", "Shadowmoor Utility Lands", "Replacement Lands", "Sac Deserts",
-    "Snow Basics", "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basic Lands",
-    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands"]
+    "Threshold Lands", "Zendikar Landmarks", "Artifact Lands", "Basics", "Mono Sac Lands",
+    "Cycling Lands", "Blighted Lands", "Memorials", "Castles", "Fairytale Lands", "Tribal Lands"]
 
 [Duals]
 kind = "color-identity"
 color-identity-len = 2
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
-    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Duals", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
     "Canopy Lands", "Legendary Transformers"]
@@ -248,7 +268,7 @@ color-identity-len = 2
 text = "When .*? enters the battlefield, return a land you control to its owner's hand"
 alt-names = ["Karoo Duals"]
 
-["Check Lands"]
+["Check Duals"]
 color-identity-len = 2
 text = ' enters the battlefield tapped unless you control an? .*? or an? .*?\.'
 alt-names = ["Buddy Lands"]
@@ -258,24 +278,27 @@ color-identity-len = 2
 text = 'Cycling '
 
 ["Depletion Duals"]
-text = " doesn't untap during your untap step if it has a depltion counter on it\\."
+text = " doesn't untap during your untap step if it has a depletion counter on it\\."
+color-identity-len = 2
 alt-names = ["Counter Lands", "Slow Lands"]
 
 ["Fast Lands"]
 text = ' enters the battlefield tapped unless you control two or fewer other lands\.'
 
 ["Filter Duals"]
-text = '\{./.\}, \{T\}: Add \{.\}{2}, \{.\}{2}, or \{.\}{2}'
+color-identity-len = 2
+text = '\{./.\}, \{T\}: Add \{.\}\{.\}, \{.\}\{.\}, or \{.\}\{.\}'
 
 ["Futuresight Duals"]
 names = ["Nimbus Maze", "River of Tears", "Grove of the Burnwillows"]
 
 ["Life-Gain Duals"]
-text = 'When .*? enters the battlefield, you gain 1 life\.1'
+color-identity-len = 2
+text = 'When .*? enters the battlefield, you gain 1 life\.'
 alt-names = ["Gain Duals", "Life Lands", "Refuges"]
 
 ["Signet Lands"]
-text = '\{1\}, \{T\}: Add \{.\}{2}'
+text = '\{1\}, \{T\}: Add \{.\}\{.\}\.'
 alt-names = ["Manaless Filters", "Odyssey Filters"]
 
 ["Manland Duals"]
@@ -288,10 +311,15 @@ color-identity-len = 2
 text = '^\{T\}: .*? deals 1 damage to you\.'
 
 ["Pause Lands"]
-text = " doesn't untap during your next untap\\."
+text = " doesn't untap during your next untap step\\."
 alt-names = ["Slow Lands"]
 
 ["Scry Lands"]
+text = 'scry 1'
+subtags = ["Scry Duals"]
+
+["Scry Duals"]
+color-identity-len = 2
 text = 'scry 1'
 alt-names = ["Temples"]
 
@@ -312,19 +340,21 @@ name = 'Tainted \w'
 text = 'Activate this ability only if you control a Swamp\.'
 
 ["Tap Duals"]
-text = '^.*? enters the battlefield tapped\.\n\{T\} Add \{.\} or \{T\}(?: to your mana pool)?\.$'
+text = '^\w+ \w+ enters the battlefield tapped\.\n\{T\}: Add \{.\} or \{.\}\.$'
+type = '^Land$'
 
 ["Tap Pain Lands"]
 text = ' enters the battlefield tapped\..*? deals 1 damage to you\.'
 
 ["Tribal Duals"]
-text = 'As .*? enters the battlefield, you may reveal an? .{1,6} card from your hand\.'
+text = 'As .*? enters the battlefield, you may reveal an? .{1,7} card from your hand\.'
+color-identity-len = 2
 alt-names = ["Lord Lands"]
 
 ["True Duals"]
 type = '\w \w'
 color-identity-len = 2
-text = '^$'
+text = '^\(\{T\}: Add \{.\} or \{.\}\.\)$'
 alt-names = ["Legacy Duals"]
 
 ["Innistrad Landmarks"]
@@ -352,7 +382,7 @@ kind = "color-identity"
 color-identity = ["W", "U"]
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
-    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Duals", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
     "Canopy Lands"]
@@ -362,7 +392,7 @@ kind = "color-identity"
 color-identity = ["W", "G"]
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
-    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Duals", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
     "Canopy Lands"]
@@ -372,7 +402,7 @@ kind = "color-identity"
 color-identity = ["U", "B"]
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
-    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Duals", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
     "Canopy Lands"]
@@ -382,7 +412,7 @@ kind = "color-identity"
 color-identity = ["B", "R"]
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
-    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Duals", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
     "Canopy Lands"]
@@ -392,7 +422,7 @@ kind = "color-identity"
 color-identity = ["R", "G"]
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
-    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Duals", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
     "Canopy Lands"]
@@ -402,7 +432,7 @@ kind = "color-identity"
 color-identity = ["W", "B"]
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
-    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Duals", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
     "Canopy Lands", "Legendary Transformers"]
@@ -412,7 +442,7 @@ kind = "color-identity"
 color-identity = ["W", "R"]
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
-    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Duals", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
     "Canopy Lands", "Legendary Transformers"]
@@ -422,7 +452,7 @@ kind = "color-identity"
 color-identity = ["U", "R"]
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
-    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Duals", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
     "Canopy Lands", "Legendary Transformers"]
@@ -432,7 +462,7 @@ kind = "color-identity"
 color-identity = ["U", "G"]
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
-    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Duals", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
     "Canopy Lands", "Legendary Transformers"]
@@ -442,7 +472,7 @@ kind = "color-identity"
 color-identity = ["B", "G"]
 subtags = ["Battle Lands", "Bounce Duals", "Check Duals", "Cycling Duals", "Depletion Duals",
     "Fast Lands", "Filter Duals", "Futuresight Duals", "Gates", "Life-Gain Duals",
-    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Lands", "Shock Lands",
+    "Signet Lands", "Manland Duals", "Pain Lands", "Pause Lands", "Scry Duals", "Shock Lands",
     "Show Duals", "Snow Duals", "Storage Duals", "Tainted Lands", "Tap Duals", "Tap Pain Lands",
     "Tribal Duals", "True Duals", "Innistrad Landmarks", "Ravnica Landmarks", "Bond Duals",
     "Canopy Lands", "Legendary Transformers"]
@@ -454,11 +484,11 @@ subtags = ["Lairs", "Sac Tri-Lands", "Tap Tri-Lands", "Tri-Color Filters"]
 
 ["Sac Tri-Lands"]
 color-identity-len = 3
-text = ' Sacrifice .*?: Add \{.\}{2}'
+text = ', Sacrifice .*?: Add \{.\}\{.\}'
 
 ["Tap Tri-Lands"]
 color-identity-len = 3
-text = '^.*? enters the battlefield tapped\.\n\{T\}: Add \{.\}, \{.\}, or \{.\}(?: to your mana pool)\.$'
+text = '^\w+ \w+ enters the battlefield tapped\.\n\{T\}: Add \{.\}, \{.\}, or \{.\}\.$'
 
 ["Tri-Color Filters"]
 text = '\{1\}, \{T\}:.*\{2\}, \{T\}:'
@@ -518,11 +548,14 @@ subtags = ["Lairs", "Sac Tri-Lands", "Tap Tri-Lands", "Tri-Color Filters"]
 kind = "color-identity"
 color-identity = []
 subtags = ["Eldrazi Lands", "Artifact Lands", "Basics", "Cycling Lands", "Panoramas",
-    "Copy Lands", "Banding Lands", "Basic Fetches", "Dual Fetches", "Slow Fetches", "Transformers"]
+    "Copy Lands", "Banding Lands", "Basic Fetches", "Dual Fetches", "Slow Fetches", "Transformers",
+    "Any Color", "Manlands", "Land Destruction", "Commander Color", "Token Creator",
+    "Urza's", "Scry Lands"]
 
 ["Eldrazi Lands"]
 names = ["Ruins of Oran-Rief", "Eye of Ugin", "Sanctum of Ugin", "Shrine of the Forsaken Gods",
     "Spawning Beds", "Eldrazi Temple", "Tomb of the Spirit Dragon"]
+subtags = ["Fetches"]
 
 [Panoramas]
 name = '\w Panorama'
@@ -533,8 +566,14 @@ names = ["Thespian's Stage", "Vesuva"]
 ["Banding Lands"]
 text = 'bands? with other\s'
 
+[Fetches]
+text = '(S|s)earch your library for.*?card'
+subtags = ["Basic Fetches", "Dual Fetches", "Slow Fetches", "Panoramas", "Eldrazi Lands",
+    "Keyword Lands"]
+
 ["Basic Fetches"]
-names = ["Evolving Wilds", "Terramorphic Expanse"]
+text = 'Search your library for.*?basic land card'
+subtags = ["Blighted Lands", "ETB Tapped", "Cycling Lands"]
 
 ["Dual Fetches"]
 text = ' Pay 1 life, Sacrifice .*?: Search your library for an? .*? or .*? card'
@@ -561,3 +600,30 @@ cmc = 3
 ["{4}"]
 kind = "cost"
 cmc = 4
+
+[Manlands]
+text = 'becomes an?.*?creature'
+subtags = ["Mono Manlands", "Manland Duals"]
+
+["Land Destruction"]
+text = '(D|d)estroy target.*?land'
+
+[Draw]
+text = '(D|d)raw'
+subtags = ["Cycling Lands", "Blighted Lands", "Castles", "Threshold Lands", "Keyword Lands",
+    "Innistrad Landmarks", "Canopy Lands", "Memorials"]
+
+["Token Creator"]
+text = '(C|c)reate.*?token'
+
+["ETB Tapped"]
+text = ' enters the battlefield tapped'
+
+["Any Color"]
+kind = "mana-pool"
+text = '(any( combination of| one)? colors?|mana of (that color|any type)|mana of different colors)'
+subtags = ["Sac Any Color", "Commander Color", "Vivid Lands"]
+
+["Commander Color"]
+kind = "mana-pool"
+text = "any color in your commander's color identity"
