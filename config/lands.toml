@@ -585,19 +585,19 @@ text = ' enters the battlefield tapped.*? Search your library for an? .*? or .*?
 kind = "color-identity"
 color-identity = ["W", "U", "B", "R", "G"]
 
-["{1}"]
+["CMC 1"]
 kind = "cost"
 cmc = 1
 
-["{2}"]
+["CMC 2"]
 kind = "cost"
 cmc = 2
 
-["{3}"]
+["CMC 3"]
 kind = "cost"
 cmc = 3
 
-["{4}"]
+["CMC 4"]
 kind = "cost"
 cmc = 4
 

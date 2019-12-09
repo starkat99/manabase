@@ -183,10 +183,10 @@ impl Category {
 
     pub fn show_only_filter_query(self) -> &'static str {
         match self {
-            Category::Lands => "show=lands&amp;hide=rocks&amp;hide=dorks&amp;hide=ramp",
-            Category::Rocks => "show=rocks&amp;hide=lands&amp;hide=dorks&amp;hide=ramp",
-            Category::Dorks => "show=dorks&amp;hide=lands&amp;hide=rocks&amp;hide=ramp",
-            Category::Ramp => "show=ramp&amp;hide=lands&amp;hide=rocks&amp;hide=dorks",
+            Category::Lands => "show=lands&amp;hide=rocks&amp;hide=dorks&amp;hide=ramp#Lands",
+            Category::Rocks => "show=rocks&amp;hide=lands&amp;hide=dorks&amp;hide=ramp#Rocks",
+            Category::Dorks => "show=dorks&amp;hide=lands&amp;hide=rocks&amp;hide=ramp#Dorks",
+            Category::Ramp => "show=ramp&amp;hide=lands&amp;hide=rocks&amp;hide=dorks#Ramp",
         }
     }
 }

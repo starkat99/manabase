@@ -126,17 +126,16 @@ color-identity = ["U", "R", "G"]
 kind = "color-identity"
 color-identity = ["W", "U", "B", "R", "G"]
 
-["{0}"]
+["CMC 0"]
 kind = "cost"
 cmc = 0
 subtags = ["Artifact Lands", "Charge Counters", "One-shot", "Mox"]
-match-subtags = true
 
 ["Artifact Lands"]
 type = 'Artifact Land'
 
 ["Charge Counters"]
-names = ["Astral Cornucopia", "Everflowing Chalice", "Jeweled Amulet"]
+text = 'charge counter'
 
 ["One-shot"]
 names = ["Lion's Eye Diamond", "Lotus Bloom", "Lotus Petal"]
@@ -145,7 +144,7 @@ names = ["Lion's Eye Diamond", "Lotus Bloom", "Lotus Petal"]
 cmc = 0
 name = '\bMox\b'
 
-["{1}"]
+["CMC 1"]
 kind = 'cost'
 cmc = 1
 subtags = ["Eggs"]
