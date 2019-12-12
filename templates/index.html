@@ -11,7 +11,9 @@
           <h4><a name="{{ card_type }}-{{ kind }}"></a>{{ kind|safe }}</h4>
           <p>
           {% for tag in tags %}
-            <a href="tag-{{ tag.canonical_name()|safe }}.html?{{ card_type.show_only_filter_query()|safe }}" class="badge {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
+            {% if carddb.type_has_cards_of_tag(card_type.clone(), tag) %}
+              <a href="tag-{{ tag.canonical_name()|safe }}.html?{{ card_type.show_only_filter_query()|safe }}" class="badge {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
+            {% endif %}
           {% endfor %}
           </p>
         </section>

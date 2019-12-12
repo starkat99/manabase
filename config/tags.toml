@@ -65,40 +65,139 @@ type = 'Myr'
 
 # Mana Pool
 
-[Monocolor]
+["Colorless Mana"]
 kind = "mana-pool"
-color-identity-len = 1
+mana = []
 
 ["White Mana"]
 kind = "mana-pool"
+mana = ["W"]
 
 ["Blue Mana"]
 kind = "mana-pool"
+mana = ["U"]
 
 ["Black Mana"]
 kind = "mana-pool"
+mana = ["B"]
 
 ["Red Mana"]
 kind = "mana-pool"
+mana = ["R"]
 
 ["Green Mana"]
 kind = "mana-pool"
+mana = ["G"]
 
-[Dualcolor]
+["Azorius Mana"]
 kind = "mana-pool"
-color-identity-len = 2
+mana = ["W", "U"]
 
-[Tricolor]
+["Selesnya Mana"]
 kind = "mana-pool"
-color-identity-len = 3
+mana = ["W", "G"]
 
-["Colorless Mana"]
+["Dimir Mana"]
+kind = "mana-pool"
+mana = ["U", "B"]
+
+["Rakdos Mana"]
+kind = "mana-pool"
+mana = ["B", "R"]
+
+["Gruul Mana"]
+kind = "mana-pool"
+mana = ["R", "G"]
+
+["Orzhov Mana"]
+kind = "mana-pool"
+mana = ["W", "B"]
+
+["Boros Mana"]
+kind = "mana-pool"
+mana = ["W", "R"]
+
+["Izzet Mana"]
+kind = "mana-pool"
+mana = ["U", "R"]
+
+["Simic Mana"]
+kind = "mana-pool"
+mana = ["U", "G"]
+
+["Golgari Mana"]
+kind = "mana-pool"
+mana = ["B", "G"]
+
+["Esper Mana"]
+kind = "mana-pool"
+mana = ["W", "U", "B"]
+
+["Bant Mana"]
+kind = "mana-pool"
+mana = ["W", "U", "G"]
+
+["Naya Mana"]
+kind = "mana-pool"
+mana = ["W", "R", "G"]
+
+["Grixi Mana"]
+kind = "mana-pool"
+mana = ["U", "B", "R"]
+
+["Jund Mana"]
+kind = "mana-pool"
+mana = ["B", "R", "G"]
+
+["Jeskai Mana"]
+kind = "mana-pool"
+mana = ["W", "U", "R"]
+
+["Mardu Mana"]
+kind = "mana-pool"
+mana = ["W", "B", "R"]
+
+["Abzan Mana"]
+kind = "mana-pool"
+mana = ["W", "B", "G"]
+
+["Sultai Mana"]
+kind = "mana-pool"
+mana = ["U", "B", "G"]
+
+["Temur Mana"]
+kind = "mana-pool"
+mana = ["U", "R", "G"]
+
+["Artifice Mana"]
+kind = "mana-pool"
+mana = ["W", "U", "B", "R"]
+
+["Growth Mana"]
+kind = "mana-pool"
+mana = ["W", "U", "B", "G"]
+
+["Altruism Mana"]
+kind = "mana-pool"
+mana = ["W", "U", "R", "G"]
+
+["Aggression Mana"]
+kind = "mana-pool"
+mana = ["W", "B", "R", "G"]
+
+["Chaos Mana"]
+kind = "mana-pool"
+mana = ["U", "B", "R", "G"]
+
+["Domain Mana"]
+kind = "mana-pool"
+mana = ["W", "U", "B", "R", "G"]
+alt-names = ["Rainbow Mana", "Five-Color Mana"]
+
+["Any Color Mana"]
 kind = "mana-pool"
 
-["Any Color"]
-kind = "mana-pool"
-
-["Commander Colors"]
+["Commander Mana"]
 kind = "mana-pool"
 
 ["Opponent Mana"]
@@ -108,7 +207,7 @@ kind = "mana-pool"
 
 [Colorless]
 kind = "color-identity"
-color-identity-len = 0
+color-identity = []
 
 [White]
 kind = "color-identity"
@@ -209,6 +308,26 @@ color-identity = ["U", "B", "G"]
 [Temur]
 kind = "color-identity"
 color-identity = ["U", "R", "G"]
+
+[Artifice]
+kind = "color-identity"
+mana = ["W", "U", "B", "R"]
+
+[Growth]
+kind = "color-identity"
+mana = ["W", "U", "B", "G"]
+
+[Altruism]
+kind = "color-identity"
+mana = ["W", "U", "R", "G"]
+
+[Aggression]
+kind = "color-identity"
+mana = ["W", "B", "R", "G"]
+
+[Chaos]
+kind = "color-identity"
+mana = ["U", "B", "R", "G"]
 
 [Domain]
 kind = "color-identity"

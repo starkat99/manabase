@@ -8,33 +8,35 @@
 
 {% block body %}
   {% for card_type in card_types %}
-    <section class="{{ card_type.filter_class()|safe }}">
-      <h3 class="text-primary mt-2"><a name="{{ card_type }}"></a>{{ card_type }}</h3>
-      {% for subtag in self.subtags() %}
-        {% if self.subtag_has_cards_of_type(subtag.clone(), card_type) %}
+    {% if carddb.type_has_cards_of_tag(card_type.clone(), tag) %}
+      <section class="{{ card_type.filter_class()|safe }}">
+        <h3 class="text-primary mt-2"><a name="{{ card_type }}"></a>{{ card_type }}</h3>
+        {% for subtag in self.subtags() %}
+          {% if self.subtag_has_cards_of_type(subtag.clone(), card_type) %}
+            <section>
+              <h4 class="text-secondary mt-3"><a name="{{ card_type }}-{{ subtag.canonical_name() }}"></a>{{ subtag.name() }}</h4>
+              {% if subtag.has_alt_names() %}
+                <h6>Alternate Names: {{ subtag.alt_names_string() }}</h6>
+              {% endif %}
+              {% for card in self.get_tag_cards(subtag.clone()).unwrap() %}
+                {% if card.has_type(card_type) %}
+                  {% include "card.html" %}
+                {% endif %}
+              {% endfor %}
+            </section>
+          {% endif %}
+        {% endfor %}
+        {% if self.has_untagged_cards_of_type(card_type) %}
           <section>
-            <h4 class="text-secondary mt-3"><a name="{{ card_type }}-{{ subtag.canonical_name() }}"></a>{{ subtag.name() }}</h4>
-            {% if subtag.has_alt_names() %}
-              <h6>Alternate Names: {{ subtag.alt_names_string() }}</h6>
-            {% endif %}
-            {% for card in self.get_tag_cards(subtag.clone()).unwrap() %}
+            <h4 class="text-secondary"><a name="{{ card_type }}-Other"></a>Other</h4>
+            {% for card in self.get_untagged_cards().unwrap() %}
               {% if card.has_type(card_type) %}
                 {% include "card.html" %}
               {% endif %}
             {% endfor %}
           </section>
         {% endif %}
-      {% endfor %}
-      {% if self.has_untagged_cards_of_type(card_type) %}
-        <section>
-          <h4 class="text-secondary"><a name="{{ card_type }}-Other"></a>Other</h4>
-          {% for card in self.get_untagged_cards().unwrap() %}
-            {% if card.has_type(card_type) %}
-              {% include "card.html" %}
-            {% endif %}
-          {% endfor %}
-        </section>
-      {% endif %}
-    </section>
+      </section>
+    {% endif %}
   {% endfor %}
 {% endblock %}

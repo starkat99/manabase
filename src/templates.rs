@@ -15,12 +15,12 @@ use std::{
 pub struct IndexPage<'a> {
     card_types: [CardType; 7],
     tagdb: &'a TagDb<'a>,
+    carddb: &'a TaggedCardDb<'a>,
 }
 
 #[derive(Debug, Template)]
 #[template(path = "all.html")]
 pub struct AllCards<'a> {
-    title: &'static str,
     cards: Vec<&'a TaggedCard<'a>>,
 }
 
@@ -29,6 +29,7 @@ pub struct AllCards<'a> {
 pub struct TypePage<'a> {
     card_type: CardType,
     tagdb: &'a TagDb<'a>,
+    carddb: &'a TaggedCardDb<'a>,
 }
 
 #[derive(Debug, Template)]
@@ -38,10 +39,11 @@ pub struct TagPage<'a> {
     tag: TagRef<'a>,
     tag_index: &'a TagIndex,
     cards: HashMap<Option<TagRef<'a>>, Vec<&'a TaggedCard<'a>>>,
+    carddb: &'a TaggedCardDb<'a>,
 }
 
 impl<'a> IndexPage<'a> {
-    pub fn new(tagdb: &'a TagDb<'a>) -> IndexPage<'a> {
+    pub fn new(tagdb: &'a TagDb<'a>, carddb: &'a TaggedCardDb<'a>) -> IndexPage<'a> {
         IndexPage {
             card_types: [
                 CardType::Land,
@@ -53,6 +55,7 @@ impl<'a> IndexPage<'a> {
                 CardType::Planeswalker,
             ],
             tagdb,
+            carddb,
         }
     }
 
@@ -66,10 +69,7 @@ impl<'a> AllCards<'a> {
         let mut cards: Vec<_> = carddb.cards().collect();
         debug!("sorting all cards");
         cards.sort_unstable_by_key(|c| &c.card().name);
-        AllCards {
-            title: "All cards",
-            cards,
-        }
+        AllCards { cards }
     }
 
     pub fn write_output(&self, output_dir: &Path) -> std::io::Result<()> {
@@ -78,12 +78,16 @@ impl<'a> AllCards<'a> {
 }
 
 impl<'a> TypePage<'a> {
-    pub fn new(card_type: CardType, tagdb: &'a TagDb<'a>) -> TypePage<'a> {
-        TypePage { card_type, tagdb }
-    }
-
-    pub fn card_type(&self) -> &CardType {
-        &self.card_type
+    pub fn new(
+        card_type: CardType,
+        tagdb: &'a TagDb<'a>,
+        carddb: &'a TaggedCardDb<'a>,
+    ) -> TypePage<'a> {
+        TypePage {
+            card_type,
+            tagdb,
+            carddb,
+        }
     }
 
     pub fn write_output(&self, output_dir: &Path) -> std::io::Result<()> {
@@ -147,6 +151,7 @@ impl<'a> TagPage<'a> {
             tag,
             tag_index,
             cards: tag_map,
+            carddb,
         }
     }
 

@@ -48,7 +48,7 @@ pub struct TagData {
     cmc: Option<f32>,
     type_regex: Option<Regex>,
     color_identity: Option<Colors>,
-    color_identity_len: Option<usize>,
+    mana: Option<Colors>,
 }
 
 #[derive(Debug)]
@@ -64,9 +64,9 @@ struct TagConfig {
     #[serde(default, rename = "type")]
     type_regex: Option<String>,
     #[serde(default)]
-    color_identity_len: Option<usize>,
-    #[serde(default)]
     color_identity: Option<Vec<Color>>,
+    #[serde(default)]
+    mana: Option<Vec<Color>>,
     #[serde(default)]
     cmc: Option<f32>,
     #[serde(default)]
@@ -95,6 +95,7 @@ impl TagKind {
     pub fn sort_tags(self, tags: &mut Vec<TagRef<'_>>) {
         match self {
             TagKind::ColorIdentity => tags.sort_unstable_by_key(|tag| tag.color_identity),
+            TagKind::ManaPool => tags.sort_unstable_by_key(|tag| tag.mana),
             TagKind::Cost => tags.sort_unstable_by_key(|tag| tag.cmc.map(|m| m as i32)),
             _ => tags.sort_unstable_by_key(|tag| tag.name.clone()),
         }
@@ -186,7 +187,7 @@ impl TagData {
             color_identity: None,
             cmc: None,
             type_regex: None,
-            color_identity_len: None,
+            mana: None,
         }
     }
 
@@ -208,7 +209,7 @@ impl TagData {
                     builder.build()
                 })
                 .transpose()?,
-            color_identity_len: config.color_identity_len,
+            mana: config.mana.clone().map(Colors::from_vec),
         })
     }
 
@@ -226,6 +227,14 @@ impl TagData {
     pub fn color_identity_symbols(&self) -> Cow<'static, str> {
         if let Some(color_identity) = &self.color_identity {
             color_identity.mana_symbols()
+        } else {
+            Cow::Borrowed("")
+        }
+    }
+
+    pub fn mana_symbols(&self) -> Cow<'static, str> {
+        if let Some(mana) = &self.mana {
+            mana.mana_symbols()
         } else {
             Cow::Borrowed("")
         }
@@ -262,12 +271,6 @@ impl TagData {
             }
         }
 
-        if let Some(color_identity_len) = self.color_identity_len {
-            if card.color_identity.len() == color_identity_len {
-                return true;
-            }
-        }
-
         if let Some(color_identity) = &self.color_identity {
             if &Colors::from_vec(card.color_identity.clone()) == color_identity {
                 return true;
@@ -295,11 +298,16 @@ impl std::fmt::Display for TagData {
         match self.kind {
             TagKind::ColorIdentity => write!(
                 fmt,
-                "Identity: {} {}",
+                "Color Identity: {} {}",
                 self.color_identity_symbols(),
                 &self.name
             ),
-            TagKind::ManaPool => write!(fmt, "Mana: {}", &self.name),
+            TagKind::ManaPool => write!(
+                fmt,
+                "Mana: {} {}",
+                self.mana_symbols(),
+                &self.name.replace(" Mana", "")
+            ),
             TagKind::Cost => write!(fmt, "CMC: {}", self.cmc_symbol()),
             _ => write!(fmt, "{}", &self.name),
         }

@@ -25,6 +25,7 @@ pub enum CardType {
 pub struct TaggedCardDb<'a> {
     card_index: HashMap<CardId<'a>, TaggedCard<'a>>,
     tag_index: HashMap<TagRef<'a>, HashSet<CardId<'a>>>,
+    type_tag_index: HashMap<CardType, HashSet<TagRef<'a>>>,
 }
 
 #[derive(Debug)]
@@ -107,6 +108,15 @@ impl<'a> TaggedCardDb<'a> {
     pub fn new(card_tags: &'a CardTags, tag_index: &'a TagIndex, cards: &'a CardList<'a>) -> Self {
         let mut card_index: HashMap<CardId<'a>, TaggedCard<'a>> = HashMap::new();
         let mut card_tag_index: HashMap<TagRef<'a>, HashSet<CardId<'a>>> = HashMap::new();
+        let mut type_tag_index: HashMap<CardType, HashSet<TagRef<'a>>> = HashMap::new();
+
+        type_tag_index.insert(CardType::Land, HashSet::new());
+        type_tag_index.insert(CardType::Artifact, HashSet::new());
+        type_tag_index.insert(CardType::Creature, HashSet::new());
+        type_tag_index.insert(CardType::Enchantment, HashSet::new());
+        type_tag_index.insert(CardType::Instant, HashSet::new());
+        type_tag_index.insert(CardType::Sorcery, HashSet::new());
+        type_tag_index.insert(CardType::Planeswalker, HashSet::new());
 
         for (tags, card) in cards
             .cards()
@@ -143,6 +153,13 @@ impl<'a> TaggedCardDb<'a> {
                     set.insert(CardId::new(card.id.as_ref()));
                     card_tag_index.insert(tag.clone(), set);
                 }
+
+                for card_type in &types {
+                    type_tag_index
+                        .get_mut(card_type)
+                        .unwrap()
+                        .insert(tag.clone());
+                }
             }
             let tagged_card = TaggedCard::new(card, tags, types);
             card_index.insert(CardId::new(tagged_card.card.id.as_ref()), tagged_card);
@@ -150,6 +167,7 @@ impl<'a> TaggedCardDb<'a> {
         TaggedCardDb {
             card_index,
             tag_index: card_tag_index,
+            type_tag_index,
         }
     }
 
@@ -163,6 +181,10 @@ impl<'a> TaggedCardDb<'a> {
 
     pub fn tag_index(&self) -> &HashMap<TagRef<'a>, HashSet<CardId<'a>>> {
         &self.tag_index
+    }
+
+    pub fn type_has_cards_of_tag(&self, card_type: CardType, tag: &'a TagRef<'a>) -> bool {
+        self.type_tag_index[&card_type].contains(tag)
     }
 }
 

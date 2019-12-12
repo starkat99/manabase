@@ -73,17 +73,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let carddb = TaggedCardDb::new(&card_tags, &tag_index, &cards);
 
     info!("creating template pages");
-    templates::IndexPage::new(&tagdb).write_output(&output_dir)?;
+    templates::IndexPage::new(&tagdb, &carddb).write_output(&output_dir)?;
     debug!("writing all cards page");
     templates::AllCards::new(&carddb).write_output(&output_dir)?;
     debug!("writing card type pages");
-    templates::TypePage::new(CardType::Land, &tagdb).write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Artifact, &tagdb).write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Creature, &tagdb).write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Enchantment, &tagdb).write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Instant, &tagdb).write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Sorcery, &tagdb).write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Planeswalker, &tagdb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Land, &tagdb, &carddb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Artifact, &tagdb, &carddb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Creature, &tagdb, &carddb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Enchantment, &tagdb, &carddb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Instant, &tagdb, &carddb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Sorcery, &tagdb, &carddb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Planeswalker, &tagdb, &carddb).write_output(&output_dir)?;
     debug!("writing tag pages");
     for (_, tag) in tag_index.iter() {
         templates::TagPage::new(tag, &tag_index, &carddb).write_output(&output_dir)?;
