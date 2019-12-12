@@ -1,24 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}Categories{% endblock %}
+{% block title %}Card Types{% endblock %}
 
 {% block body %}
-  {% for category in categories %}
-    <section class="{{ category.filter_class()|safe }}">
-      <h3><a name="{{ category }}"></a><a href="{{ category.base_uri() }}">{{ category|safe }}</a></h3>
+  {% for card_type in card_types %}
+    <section class="{{ card_type.filter_class()|safe }}">
+      <h3><a name="{{ card_type }}"></a><a href="{{ card_type.base_uri() }}">{{ card_type|safe }}</a></h3>
       {% for (kind, tags) in tagdb.kind_index() %}
-        {% if tagdb.has_kind_tags_in_category(kind, category) %}
-          <section>
-            <h4><a name="{{ category }}-{{ kind }}"></a>{{ kind|safe }}</h4>
-            <p>
-            {% for tag in tags %}
-              {% if tag.has_category(category) %}
-                <a href="tag-{{ tag.canonical_name()|safe }}.html?{{ category.show_only_filter_query()|safe }}" class="badge {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
-              {% endif %}
-            {% endfor %}
-            </p>
-          </section>
-        {% endif %}
+        <section>
+          <h4><a name="{{ card_type }}-{{ kind }}"></a>{{ kind|safe }}</h4>
+          <p>
+          {% for tag in tags %}
+            <a href="tag-{{ tag.canonical_name()|safe }}.html?{{ card_type.show_only_filter_query()|safe }}" class="badge {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
+          {% endfor %}
+          </p>
+        </section>
       {% endfor %}
     </section>
   {% endfor %}

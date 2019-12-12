@@ -1,6 +1,6 @@
 use crate::{
-    card::{TaggedCard, TaggedCardDb},
-    tags::{Category, TagDb, TagIndex, TagRef},
+    card::{CardType, TaggedCard, TaggedCardDb},
+    tags::{TagDb, TagIndex, TagRef},
 };
 use askama::Template;
 use std::{
@@ -13,7 +13,7 @@ use std::{
 #[derive(Debug, Template)]
 #[template(path = "index.html")]
 pub struct IndexPage<'a> {
-    categories: [Category; 4],
+    card_types: [CardType; 7],
     tagdb: &'a TagDb<'a>,
 }
 
@@ -25,16 +25,16 @@ pub struct AllCards<'a> {
 }
 
 #[derive(Debug, Template)]
-#[template(path = "category.html")]
-pub struct CategoryPage<'a> {
-    category: Category,
+#[template(path = "card_type.html")]
+pub struct TypePage<'a> {
+    card_type: CardType,
     tagdb: &'a TagDb<'a>,
 }
 
 #[derive(Debug, Template)]
 #[template(path = "tag-cards.html")]
 pub struct TagPage<'a> {
-    categories: [Category; 4],
+    card_types: [CardType; 7],
     tag: TagRef<'a>,
     tag_index: &'a TagIndex,
     cards: HashMap<Option<TagRef<'a>>, Vec<&'a TaggedCard<'a>>>,
@@ -43,11 +43,14 @@ pub struct TagPage<'a> {
 impl<'a> IndexPage<'a> {
     pub fn new(tagdb: &'a TagDb<'a>) -> IndexPage<'a> {
         IndexPage {
-            categories: [
-                Category::Lands,
-                Category::Rocks,
-                Category::Dorks,
-                Category::Ramp,
+            card_types: [
+                CardType::Land,
+                CardType::Artifact,
+                CardType::Creature,
+                CardType::Enchantment,
+                CardType::Instant,
+                CardType::Sorcery,
+                CardType::Planeswalker,
             ],
             tagdb,
         }
@@ -74,18 +77,18 @@ impl<'a> AllCards<'a> {
     }
 }
 
-impl<'a> CategoryPage<'a> {
-    pub fn new(category: Category, tagdb: &'a TagDb<'a>) -> CategoryPage<'a> {
-        CategoryPage { category, tagdb }
+impl<'a> TypePage<'a> {
+    pub fn new(card_type: CardType, tagdb: &'a TagDb<'a>) -> TypePage<'a> {
+        TypePage { card_type, tagdb }
     }
 
-    pub fn category(&self) -> &Category {
-        &self.category
+    pub fn card_type(&self) -> &CardType {
+        &self.card_type
     }
 
     pub fn write_output(&self, output_dir: &Path) -> std::io::Result<()> {
         write!(
-            File::create(output_dir.join(self.category.base_uri()))?,
+            File::create(output_dir.join(self.card_type.base_uri()))?,
             "{}",
             self
         )
@@ -132,11 +135,14 @@ impl<'a> TagPage<'a> {
             tag_map.insert(None, untagged);
         }
         TagPage {
-            categories: [
-                Category::Lands,
-                Category::Rocks,
-                Category::Dorks,
-                Category::Ramp,
+            card_types: [
+                CardType::Land,
+                CardType::Artifact,
+                CardType::Creature,
+                CardType::Enchantment,
+                CardType::Instant,
+                CardType::Sorcery,
+                CardType::Planeswalker,
             ],
             tag,
             tag_index,
@@ -160,15 +166,15 @@ impl<'a> TagPage<'a> {
         self.cards.get(&None)
     }
 
-    pub fn subtag_has_cards_in_category(&self, tag: TagRef<'a>, category: &Category) -> bool {
+    pub fn subtag_has_cards_of_type(&self, tag: TagRef<'a>, card_type: &CardType) -> bool {
         self.get_tag_cards(tag)
-            .map(|vec| vec.iter().any(|card| card.has_category(category)))
+            .map(|vec| vec.iter().any(|card| card.has_type(card_type)))
             .unwrap_or_default()
     }
 
-    pub fn has_untagged_cards_in_category(&self, category: &Category) -> bool {
+    pub fn has_untagged_cards_of_type(&self, card_type: &CardType) -> bool {
         self.get_untagged_cards()
-            .map(|vec| vec.iter().any(|card| card.has_category(category)))
+            .map(|vec| vec.iter().any(|card| card.has_type(card_type)))
             .unwrap_or_default()
     }
 

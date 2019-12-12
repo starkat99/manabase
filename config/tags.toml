@@ -1,0 +1,321 @@
+# Types
+
+[Basic]
+kind = "type"
+type = 'Basic'
+
+["Snow Basic"]
+kind = "type"
+type = 'Basic Snow'
+
+[Snow]
+kind = "type"
+type = 'Snow'
+
+["Snow Dual"]
+alt-names = ["Snow Tapland"]
+
+[Desert]
+kind = "type"
+type = 'Desert'
+
+[Forest]
+kind = "type"
+type = 'Forest'
+
+[Gate]
+kind = "type"
+type = 'Gate'
+
+[Island]
+kind = "type"
+type = 'Island'
+
+[Lair]
+kind = "type"
+type = 'Lair'
+
+[Mountain]
+kind = "type"
+type = 'Mountain'
+
+[Plains]
+kind = "type"
+type = 'Plains'
+
+[Swamp]
+kind = "type"
+type = 'Swamp'
+
+["Urza's"]
+kind = "type"
+type = "Urza.s"
+
+[Legendary]
+kind = "type"
+type = 'Legendary'
+
+[Eldrazi]
+kind = "type"
+type = 'Eldrazi'
+
+[Myr]
+kind = "type"
+type = 'Myr'
+
+# Mana Pool
+
+[Monocolor]
+kind = "mana-pool"
+color-identity-len = 1
+
+["White Mana"]
+kind = "mana-pool"
+
+["Blue Mana"]
+kind = "mana-pool"
+
+["Black Mana"]
+kind = "mana-pool"
+
+["Red Mana"]
+kind = "mana-pool"
+
+["Green Mana"]
+kind = "mana-pool"
+
+[Dualcolor]
+kind = "mana-pool"
+color-identity-len = 2
+
+[Tricolor]
+kind = "mana-pool"
+color-identity-len = 3
+
+["Colorless Mana"]
+kind = "mana-pool"
+
+["Any Color"]
+kind = "mana-pool"
+
+["Commander Colors"]
+kind = "mana-pool"
+
+["Opponent Mana"]
+kind = "mana-pool"
+
+# Color Identity
+
+[Colorless]
+kind = "color-identity"
+color-identity-len = 0
+
+[White]
+kind = "color-identity"
+color-identity = ["W"]
+
+[Blue]
+kind = "color-identity"
+color-identity = ["U"]
+
+[Black]
+kind = "color-identity"
+color-identity = ["B"]
+
+[Red]
+kind = "color-identity"
+color-identity = ["R"]
+
+[Green]
+kind = "color-identity"
+color-identity = ["G"]
+
+[Azorius]
+kind = "color-identity"
+color-identity = ["W", "U"]
+
+[Selesnya]
+kind = "color-identity"
+color-identity = ["W", "G"]
+
+[Dimir]
+kind = "color-identity"
+color-identity = ["U", "B"]
+
+[Rakdos]
+kind = "color-identity"
+color-identity = ["B", "R"]
+
+[Gruul]
+kind = "color-identity"
+color-identity = ["R", "G"]
+
+[Orzhov]
+kind = "color-identity"
+color-identity = ["W", "B"]
+
+[Boros]
+kind = "color-identity"
+color-identity = ["W", "R"]
+
+[Izzet]
+kind = "color-identity"
+color-identity = ["U", "R"]
+
+[Simic]
+kind = "color-identity"
+color-identity = ["U", "G"]
+
+[Golgari]
+kind = "color-identity"
+color-identity = ["B", "G"]
+
+[Esper]
+kind = "color-identity"
+color-identity = ["W", "U", "B"]
+
+[Bant]
+kind = "color-identity"
+color-identity = ["W", "U", "G"]
+
+[Naya]
+kind = "color-identity"
+color-identity = ["W", "R", "G"]
+
+[Grixis]
+kind = "color-identity"
+color-identity = ["U", "B", "R"]
+
+[Jund]
+kind = "color-identity"
+color-identity = ["B", "R", "G"]
+
+[Jeskai]
+kind = "color-identity"
+color-identity = ["W", "U", "R"]
+
+[Mardu]
+kind = "color-identity"
+color-identity = ["W", "B", "R"]
+
+[Abzan]
+kind = "color-identity"
+color-identity = ["W", "B", "G"]
+
+[Sultai]
+kind = "color-identity"
+color-identity = ["U", "B", "G"]
+
+[Temur]
+kind = "color-identity"
+color-identity = ["U", "R", "G"]
+
+[Domain]
+kind = "color-identity"
+color-identity = ["W", "U", "B", "R", "G"]
+alt-names = ["Rainbow", "Five-Color"]
+
+# CMC
+
+["CMC 0"]
+kind = "cost"
+cmc = 0
+
+["CMC 1"]
+kind = "cost"
+cmc = 1
+
+["CMC 2"]
+kind = "cost"
+cmc = 2
+
+["CMC 3"]
+kind = "cost"
+cmc = 3
+
+["CMC 4"]
+kind = "cost"
+cmc = 4
+
+["CMC 5"]
+kind = "cost"
+cmc = 5
+
+["CMC 6"]
+kind = "cost"
+cmc = 6
+
+["CMC 7"]
+kind = "cost"
+cmc = 7
+
+["CMC 8"]
+kind = "cost"
+cmc = 8
+
+["CMC 9"]
+kind = "cost"
+cmc = 9
+
+["CMC 10"]
+kind = "cost"
+cmc = 10
+
+# Other Tags
+
+["Mono Bounce Land"]
+alt-names = ["Karoos"]
+
+["Mono Storage Land"]
+alt-names = ["Battery Land"]
+
+["Mono Check Land"]
+alt-names = ["Fairytale Land", "Eldraine ETB Land"]
+
+["Battle Land"]
+alt-names = ["BFZ Check Land", "Tango Land"]
+
+["Bounce Dual"]
+alt-names = ["Karoo Dual"]
+
+["Check Dual"]
+alt-names = ["Buddy Land"]
+
+["Depletion Dual"]
+alt-names = ["Counter Land", "Slow Land"]
+
+["Life-Gain Dual"]
+alt-names = ["Gain Dual", "Life Land", "Refuge"]
+
+["Signet Land"]
+alt-names = ["Manaless Filter", "Odyssey Filter"]
+
+["Manland Dual"]
+alt-names = ["Elemental Land"]
+
+["Pause Dual"]
+alt-names = ["Slow Dual"]
+
+["Scry Dual"]
+alt-names = ["Temple"]
+
+["Show Dual"]
+alt-names = ["Shadow Land"]
+
+["Storage Dual"]
+alt-names = ["Battery Dual"]
+
+["Tribal Land"]
+alt-names = ["Lord Land"]
+
+["True Dual"]
+alt-names = ["Legacy Dual"]
+
+["Bond Dual"]
+alt-names = ["Battlebond Land", "Multiplayer Dual"]
+
+["Canopy Dual"]
+alt-names = ["Horizon Land"]
+
+["Tricolor Filter"]
+alt-names = ["Homeland"]

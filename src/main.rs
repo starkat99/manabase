@@ -8,9 +8,9 @@ mod templates;
 extern crate log;
 
 use crate::{
-    card::TaggedCardDb,
+    card::{CardType, TaggedCardDb},
     scryfall::CardList,
-    tags::{Category, TagDb},
+    tags::{CardTags, TagDb, TagIndex},
 };
 use clap::{App, Arg};
 use fs_extra::dir::{self, CopyOptions};
@@ -41,8 +41,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     info!("loading config files");
     let config_dir = &Path::new("config");
-    let tag_index = tags::load_tags(config_dir)?;
-    let category_list = tags::CategoryList::load(config_dir)?;
+    let mut tag_index = TagIndex::load(&config_dir.join("tags.toml"))?;
+    let card_tags = CardTags::load(&config_dir.join("card-tags.toml"))?;
+    tag_index.merge_tags(&card_tags);
     let tagdb = TagDb::new(&tag_index);
 
     let output_dir = Path::new(matches.value_of_os("output").unwrap());
@@ -69,18 +70,20 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     debug!("loaded {} cards", cards.cards().len());
 
     info!("tagging cards");
-    let mut carddb = TaggedCardDb::new();
-    carddb.build(&category_list, &tag_index, &cards);
+    let carddb = TaggedCardDb::new(&card_tags, &tag_index, &cards);
 
     info!("creating template pages");
     templates::IndexPage::new(&tagdb).write_output(&output_dir)?;
     debug!("writing all cards page");
     templates::AllCards::new(&carddb).write_output(&output_dir)?;
-    debug!("writing category pages");
-    templates::CategoryPage::new(Category::Lands, &tagdb).write_output(&output_dir)?;
-    templates::CategoryPage::new(Category::Rocks, &tagdb).write_output(&output_dir)?;
-    templates::CategoryPage::new(Category::Dorks, &tagdb).write_output(&output_dir)?;
-    templates::CategoryPage::new(Category::Ramp, &tagdb).write_output(&output_dir)?;
+    debug!("writing card type pages");
+    templates::TypePage::new(CardType::Land, &tagdb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Artifact, &tagdb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Creature, &tagdb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Enchantment, &tagdb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Instant, &tagdb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Sorcery, &tagdb).write_output(&output_dir)?;
+    templates::TypePage::new(CardType::Planeswalker, &tagdb).write_output(&output_dir)?;
     debug!("writing tag pages");
     for (_, tag) in tag_index.iter() {
         templates::TagPage::new(tag, &tag_index, &carddb).write_output(&output_dir)?;

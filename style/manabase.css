@@ -12,7 +12,7 @@
     height: 100%;
 }
 
-.mtg-tag, .mtg-category {
+.mtg-tag, .mtg-card-type {
     font-size: 0.9rem !important;
 }
 

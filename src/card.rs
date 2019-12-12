@@ -1,6 +1,6 @@
 use crate::{
     scryfall::{Card, CardList},
-    tags::{Category, CategoryList, TagIndex, TagRef},
+    tags::{CardTags, TagIndex, TagRef},
 };
 use itertools::join;
 use std::{
@@ -10,18 +10,28 @@ use std::{
     ptr,
 };
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum CardType {
+    Land,
+    Artifact,
+    Creature,
+    Enchantment,
+    Instant,
+    Sorcery,
+    Planeswalker,
+}
+
 #[derive(Debug)]
 pub struct TaggedCardDb<'a> {
     card_index: HashMap<CardId<'a>, TaggedCard<'a>>,
     tag_index: HashMap<TagRef<'a>, HashSet<CardId<'a>>>,
-    category_index: HashMap<Category, HashSet<CardId<'a>>>,
 }
 
 #[derive(Debug)]
 pub struct TaggedCard<'a> {
     card: &'a Card<'a>,
     tags: HashSet<TagRef<'a>>,
-    categories: BTreeSet<Category>,
+    types: BTreeSet<CardType>,
     front_image_uri: &'a str,
     back_image_uri: Option<&'a str>,
 }
@@ -29,76 +39,122 @@ pub struct TaggedCard<'a> {
 #[derive(Debug)]
 pub struct CardId<'a>(&'a str);
 
+impl CardType {
+    fn from_str(type_line: &str) -> BTreeSet<CardType> {
+        let mut types = BTreeSet::new();
+        if type_line.contains("Land") {
+            types.insert(CardType::Land);
+        }
+        if type_line.contains("Artifact") {
+            types.insert(CardType::Artifact);
+        }
+        if type_line.contains("Creature") {
+            types.insert(CardType::Creature);
+        }
+        if type_line.contains("Enchantment") {
+            types.insert(CardType::Enchantment);
+        }
+        if type_line.contains("Instant") {
+            types.insert(CardType::Instant);
+        }
+        if type_line.contains("Sorcery") {
+            types.insert(CardType::Sorcery);
+        }
+        if type_line.contains("Planeswalker") {
+            types.insert(CardType::Planeswalker);
+        }
+        types
+    }
+
+    pub fn base_uri(self) -> &'static str {
+        match self {
+            CardType::Land => "lands.html",
+            CardType::Artifact => "artifacts.html",
+            CardType::Creature => "creatures.html",
+            CardType::Enchantment => "enchantments.html",
+            CardType::Instant => "instants.html",
+            CardType::Sorcery => "sorceries.html",
+            CardType::Planeswalker => "planeswalkers.html",
+        }
+    }
+
+    pub fn filter_class(self) -> &'static str {
+        match self {
+            CardType::Land => "mtg-filter-land",
+            CardType::Artifact => "mtg-filter-artifact",
+            CardType::Creature => "mtg-filter-creature",
+            CardType::Enchantment => "mtg-filter-enchantment",
+            CardType::Instant => "mtg-filter-instant",
+            CardType::Sorcery => "mtg-filter-sorcery",
+            CardType::Planeswalker => "mtg-filter-planeswalker",
+        }
+    }
+
+    pub fn show_only_filter_query(self) -> &'static str {
+        match self {
+            CardType::Land => "show=land&amp;hide=artifact&amp;hide=creature&amp;hide=enchantment&amp;hide=instant&amp;hide=sorcery&amp;hide=planeswalker",
+            CardType::Artifact => "show=artifact&amp;hide=land&amp;hide=creature&amp;hide=enchantment&amp;hide=instant&amp;hide=sorcery&amp;hide=planeswalker",
+            CardType::Creature => "show=creature&amp;hide=land&amp;hide=artifact&amp;hide=enchantment&amp;hide=instant&amp;hide=sorcery&amp;hide=planeswalker",
+            CardType::Enchantment => "show=enchantment&amp;hide=land&amp;hide=artifact&amp;hide=creature&amp;hide=instant&amp;hide=sorcery&amp;hide=planeswalker",
+            CardType::Instant => "show=instant&amp;hide=land&amp;hide=artifact&amp;hide=creature&amp;hide=enchantment&amp;hide=sorcery&amp;hide=planeswalker",
+            CardType::Sorcery => "show=sorcery&amp;hide=land&amp;hide=artifact&amp;hide=creature&amp;hide=enchantment&amp;hide=instant&amp;hide=planeswalker",
+            CardType::Planeswalker => "show=planeswalker&amp;hide=land&amp;hide=artifact&amp;hide=creature&amp;hide=enchantment&amp;hide=instant&amp;hide=sorcery",
+        }
+    }
+}
+
 impl<'a> TaggedCardDb<'a> {
-    pub fn new() -> Self {
+    pub fn new(card_tags: &'a CardTags, tag_index: &'a TagIndex, cards: &'a CardList<'a>) -> Self {
+        let mut card_index: HashMap<CardId<'a>, TaggedCard<'a>> = HashMap::new();
+        let mut card_tag_index: HashMap<TagRef<'a>, HashSet<CardId<'a>>> = HashMap::new();
+
+        for (tags, card) in cards
+            .cards()
+            .iter()
+            .filter_map(|card| card_tags.get_tags(&card.name).map(|tags| (tags, card)))
+        {
+            trace!("tagging card '{}'", &card.name);
+            let type_line = join(
+                card.type_line.iter().chain(
+                    card.card_faces
+                        .iter()
+                        .flatten()
+                        .flat_map(|face| face.type_line.iter()),
+                ),
+                " ",
+            );
+            let types = CardType::from_str(&type_line);
+
+            let mut tags: HashSet<_> = tags
+                .iter()
+                .map(|tag| tag_index.get(&tag).expect(&format!("invalid tag {}", &tag)))
+                .collect();
+            for (_, tag_ref) in tag_index.iter() {
+                if tag_ref.is_match(&card, &type_line) {
+                    tags.insert(tag_ref);
+                }
+            }
+
+            for tag in &tags {
+                if let Some(ids) = card_tag_index.get_mut(tag) {
+                    ids.insert(CardId::new(card.id.as_ref()));
+                } else {
+                    let mut set = HashSet::new();
+                    set.insert(CardId::new(card.id.as_ref()));
+                    card_tag_index.insert(tag.clone(), set);
+                }
+            }
+            let tagged_card = TaggedCard::new(card, tags, types);
+            card_index.insert(CardId::new(tagged_card.card.id.as_ref()), tagged_card);
+        }
         TaggedCardDb {
-            card_index: HashMap::default(),
-            tag_index: HashMap::default(),
-            category_index: HashMap::default(),
+            card_index,
+            tag_index: card_tag_index,
         }
     }
 
     pub fn cards(&self) -> impl Iterator<Item = &TaggedCard<'a>> {
         self.card_index.values()
-    }
-
-    pub fn build(
-        &mut self,
-        category_list: &'a CategoryList,
-        tag_index: &'a TagIndex,
-        cards: &'a CardList<'a>,
-    ) {
-        for card in cards.cards() {
-            trace!("testing card '{}'", &card.name);
-            let mut tags: HashSet<TagRef<'a>> = HashSet::new();
-            let mut categories: BTreeSet<Category> = BTreeSet::new();
-            for (_tag, tag_ref) in tag_index.iter() {
-                for condition in tag_ref.iter() {
-                    if condition.is_match(category_list, &card) {
-                        tags.insert(tag_ref);
-                        categories.insert(condition.category());
-                    }
-                }
-            }
-
-            // Include all lands, even if untagged
-            if card
-                .type_line
-                .as_ref()
-                .filter(|s| Category::Lands.type_regex().unwrap().is_match(&s))
-                .is_some()
-            {
-                categories.insert(Category::Lands);
-            }
-
-            // Include listed category cards
-            categories.extend(category_list.get_categories(card.name.as_ref()));
-
-            if !categories.is_empty() {
-                trace!("card '{}' matched", &card.name);
-                for category in &categories {
-                    if let Some(ids) = self.category_index.get_mut(category) {
-                        ids.insert(CardId::new(card.id.as_ref()));
-                    } else {
-                        let mut set = HashSet::new();
-                        set.insert(CardId::new(card.id.as_ref()));
-                        self.category_index.insert(*category, set);
-                    }
-                }
-                for tag in &tags {
-                    if let Some(ids) = self.tag_index.get_mut(tag) {
-                        ids.insert(CardId::new(card.id.as_ref()));
-                    } else {
-                        let mut set = HashSet::new();
-                        set.insert(CardId::new(card.id.as_ref()));
-                        self.tag_index.insert(tag.clone(), set);
-                    }
-                }
-                let tagged_card = TaggedCard::new(card, tags, categories);
-                self.card_index
-                    .insert(CardId::new(tagged_card.card.id.as_ref()), tagged_card);
-            }
-        }
     }
 
     pub fn card_index(&self) -> &HashMap<CardId<'a>, TaggedCard<'a>> {
@@ -111,7 +167,7 @@ impl<'a> TaggedCardDb<'a> {
 }
 
 impl<'a> TaggedCard<'a> {
-    fn new(card: &'a Card<'a>, tags: HashSet<TagRef<'a>>, categories: BTreeSet<Category>) -> Self {
+    fn new(card: &'a Card<'a>, tags: HashSet<TagRef<'a>>, types: BTreeSet<CardType>) -> Self {
         let back_image_uri = card
             .card_faces
             .as_ref()
@@ -139,7 +195,7 @@ impl<'a> TaggedCard<'a> {
         TaggedCard {
             card,
             tags,
-            categories,
+            types,
             front_image_uri,
             back_image_uri,
         }
@@ -159,8 +215,8 @@ impl<'a> TaggedCard<'a> {
         &self.tags
     }
 
-    pub fn categories(&self) -> &BTreeSet<Category> {
-        &self.categories
+    pub fn types(&self) -> &BTreeSet<CardType> {
+        &self.types
     }
 
     pub fn front_image_uri(&self) -> &str {
@@ -171,15 +227,12 @@ impl<'a> TaggedCard<'a> {
         self.back_image_uri
     }
 
-    pub fn has_category(&self, category: &Category) -> bool {
-        self.categories.contains(category)
+    pub fn has_type(&self, card_type: &CardType) -> bool {
+        self.types.contains(card_type)
     }
 
-    pub fn category_filter_classes(&self) -> String {
-        join(
-            self.categories.iter().copied().map(Category::filter_class),
-            " ",
-        )
+    pub fn type_filter_classes(&self) -> String {
+        join(self.types.iter().copied().map(CardType::filter_class), " ")
     }
 }
 
@@ -221,5 +274,23 @@ impl<'a> Deref for CardId<'a> {
     type Target = str;
     fn deref(&self) -> &str {
         self.0
+    }
+}
+
+impl std::fmt::Display for CardType {
+    fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(
+            fmt,
+            "{}",
+            match self {
+                CardType::Land => "Land",
+                CardType::Artifact => "Artifact",
+                CardType::Creature => "Creature",
+                CardType::Enchantment => "Enchantment",
+                CardType::Instant => "Instant",
+                CardType::Sorcery => "Sorcery",
+                CardType::Planeswalker => "Planeswalker",
+            }
+        )
     }
 }

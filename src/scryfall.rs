@@ -18,8 +18,6 @@ pub struct Card<'a> {
     #[serde(borrow)]
     pub name: Cow<'a, str>,
     #[serde(default, borrow)]
-    pub oracle_text: Option<Cow<'a, str>>,
-    #[serde(default, borrow)]
     pub type_line: Option<Cow<'a, str>>,
     #[serde(default, borrow)]
     pub image_uris: Option<HashMap<Cow<'a, str>, Cow<'a, str>>>,
@@ -32,8 +30,6 @@ pub struct CardFace<'a> {
     pub image_uris: Option<HashMap<Cow<'a, str>, Cow<'a, str>>>,
     #[serde(borrow)]
     pub name: Cow<'a, str>,
-    #[serde(default, borrow)]
-    pub oracle_text: Option<Cow<'a, str>>,
     #[serde(default, borrow)]
     pub type_line: Option<Cow<'a, str>>,
 }

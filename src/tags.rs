@@ -1,6 +1,6 @@
 use crate::{
     color::{Color, Colors},
-    scryfall::{Card, CardFace},
+    scryfall::Card,
 };
 use itertools::free::join;
 use lazy_static::lazy_static;
@@ -16,25 +16,7 @@ use std::{
 };
 
 lazy_static! {
-    static ref LAND_TYPE_REGEX: Regex = { Regex::new(r"\bLand\b").unwrap() };
-    static ref ROCK_TYPE_REGEX: Regex = { Regex::new(r"\bArtifact\b").unwrap() };
-    static ref DORK_TYPE_REGEX: Regex = { Regex::new(r"\bCreature\b").unwrap() };
     static ref TAG_NAME_STRIP_REGEX: Regex = { Regex::new(r"[^-\w]").unwrap() };
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
-pub enum Category {
-    Lands,
-    Rocks,
-    Dorks,
-    Ramp,
-}
-
-#[derive(Debug)]
-pub struct CategoryList {
-    rocks: HashSet<String>,
-    dorks: HashSet<String>,
-    ramp: HashSet<String>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
@@ -59,33 +41,18 @@ pub struct TagIndex(HashMap<String, TagData>);
 #[derive(Debug)]
 pub struct TagData {
     name: String,
-    conditions: Vec<TagCondition>,
     alt_names: BTreeSet<String>,
     subtags: BTreeSet<String>,
     canonical_name: String,
     kind: TagKind,
-    color_identity: Option<Colors>,
     cmc: Option<f32>,
-}
-
-#[derive(Debug)]
-pub struct TagCondition {
-    category: Category,
     type_regex: Option<Regex>,
-    text_regex: Option<Regex>,
-    name_regex: Option<Regex>,
-    names: Option<HashSet<String>>,
+    color_identity: Option<Colors>,
     color_identity_len: Option<usize>,
-    color_identity: Option<Vec<Color>>,
-    card_face: Option<usize>,
-    cmc: Option<f32>,
 }
 
 #[derive(Debug)]
 pub struct TagRef<'a>(&'a TagData);
-
-#[derive(Debug)]
-pub struct CategoryConfig(HashMap<Category, TagConfigFile>);
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(transparent)]
@@ -96,18 +63,10 @@ struct TagConfigFile(HashMap<String, TagConfig>);
 struct TagConfig {
     #[serde(default, rename = "type")]
     type_regex: Option<String>,
-    #[serde(default, rename = "text")]
-    text_regex: Option<String>,
-    #[serde(default, rename = "name")]
-    name_regex: Option<String>,
-    #[serde(default)]
-    names: Option<Vec<String>>,
     #[serde(default)]
     color_identity_len: Option<usize>,
     #[serde(default)]
     color_identity: Option<Vec<Color>>,
-    #[serde(default)]
-    card_face: Option<usize>,
     #[serde(default)]
     cmc: Option<f32>,
     #[serde(default)]
@@ -118,132 +77,9 @@ struct TagConfig {
     kind: TagKind,
 }
 
-pub fn load_tags(config_dir: &Path) -> Result<TagIndex, Box<dyn std::error::Error>> {
-    let mut config = CategoryConfig(HashMap::new());
-    debug!("loading land tags config file");
-    config.0.insert(
-        Category::Lands,
-        toml::from_str(&std::fs::read_to_string(config_dir.join("lands.toml"))?)?,
-    );
-    debug!("loading rocks tags config file");
-    config.0.insert(
-        Category::Rocks,
-        toml::from_str(&std::fs::read_to_string(config_dir.join("rocks.toml"))?)?,
-    );
-    debug!("loading dorks tags config file");
-    config.0.insert(
-        Category::Dorks,
-        toml::from_str(&std::fs::read_to_string(config_dir.join("dorks.toml"))?)?,
-    );
-    debug!("loading ramp tags config file");
-    config.0.insert(
-        Category::Ramp,
-        toml::from_str(&std::fs::read_to_string(config_dir.join("ramp.toml"))?)?,
-    );
-    debug!("indexing tags");
-    Ok(TagIndex::from_config(config)?)
-}
-
-impl Category {
-    pub fn type_regex(self) -> Option<&'static Regex> {
-        match self {
-            Category::Lands => Some(&LAND_TYPE_REGEX),
-            Category::Rocks => Some(&ROCK_TYPE_REGEX),
-            Category::Dorks => Some(&DORK_TYPE_REGEX),
-            Category::Ramp => None,
-        }
-    }
-
-    pub fn tag_name(self) -> &'static str {
-        match self {
-            Category::Lands => "Land",
-            Category::Rocks => "Rock",
-            Category::Dorks => "Dork",
-            Category::Ramp => "Ramp",
-        }
-    }
-
-    pub fn base_uri(self) -> &'static str {
-        match self {
-            Category::Lands => "lands.html",
-            Category::Rocks => "rocks.html",
-            Category::Dorks => "dorks.html",
-            Category::Ramp => "ramp.html",
-        }
-    }
-
-    pub fn filter_class(self) -> &'static str {
-        match self {
-            Category::Lands => "mtg-filter-lands",
-            Category::Rocks => "mtg-filter-rocks",
-            Category::Dorks => "mtg-filter-dorks",
-            Category::Ramp => "mtg-filter-ramp",
-        }
-    }
-
-    pub fn show_only_filter_query(self) -> &'static str {
-        match self {
-            Category::Lands => "show=lands&amp;hide=rocks&amp;hide=dorks&amp;hide=ramp#Lands",
-            Category::Rocks => "show=rocks&amp;hide=lands&amp;hide=dorks&amp;hide=ramp#Rocks",
-            Category::Dorks => "show=dorks&amp;hide=lands&amp;hide=rocks&amp;hide=ramp#Dorks",
-            Category::Ramp => "show=ramp&amp;hide=lands&amp;hide=rocks&amp;hide=dorks#Ramp",
-        }
-    }
-}
-
-impl CategoryList {
-    pub fn load(config_dir: &Path) -> Result<CategoryList, Box<dyn std::error::Error>> {
-        let rocks: HashSet<_> = std::fs::read_to_string(config_dir.join("rocks.list"))?
-            .lines()
-            .map(|line| line.to_owned())
-            .collect();
-        let dorks: HashSet<_> = std::fs::read_to_string(config_dir.join("dorks.list"))?
-            .lines()
-            .map(|line| line.to_owned())
-            .collect();
-        let ramp: HashSet<_> = std::fs::read_to_string(config_dir.join("ramp.list"))?
-            .lines()
-            .map(|line| line.to_owned())
-            .collect();
-        Ok(CategoryList { rocks, dorks, ramp })
-    }
-
-    pub fn get_categories(&self, card_name: &str) -> Vec<Category> {
-        let mut categories = Vec::new();
-        if self.rocks.contains(card_name) {
-            categories.push(Category::Rocks);
-        } else if self.dorks.contains(card_name) {
-            categories.push(Category::Dorks);
-        } else if self.ramp.contains(card_name) {
-            categories.push(Category::Ramp);
-        }
-        categories
-    }
-
-    pub fn category_contains(&self, category: Category, card_name: &str) -> bool {
-        match category {
-            Category::Rocks => self.rocks.contains(card_name),
-            Category::Dorks => self.dorks.contains(card_name),
-            Category::Ramp => self.ramp.contains(card_name),
-            _ => panic!("unsupported category"),
-        }
-    }
-}
-
-impl std::fmt::Display for Category {
-    fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::fmt::Result {
-        write!(
-            fmt,
-            "{}",
-            match self {
-                Category::Lands => "Lands",
-                Category::Rocks => "Rocks",
-                Category::Dorks => "Dorks",
-                Category::Ramp => "Ramp",
-            }
-        )
-    }
-}
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(transparent)]
+pub struct CardTags(HashMap<String, Vec<String>>);
 
 impl TagKind {
     pub fn class(self) -> &'static str {
@@ -258,8 +94,8 @@ impl TagKind {
 
     pub fn sort_tags(self, tags: &mut Vec<TagRef<'_>>) {
         match self {
-            // TODO: Fix None sort order
             TagKind::ColorIdentity => tags.sort_unstable_by_key(|tag| tag.color_identity),
+            TagKind::Cost => tags.sort_unstable_by_key(|tag| tag.cmc.map(|m| m as i32)),
             _ => tags.sort_unstable_by_key(|tag| tag.name.clone()),
         }
     }
@@ -300,29 +136,25 @@ impl<'a> TagDb<'a> {
     pub fn kind_index(&self) -> &BTreeMap<TagKind, Vec<TagRef<'_>>> {
         &self.kind_index
     }
-
-    pub fn has_kind_tags_in_category(&self, kind: &TagKind, category: &Category) -> bool {
-        self.kind_index[kind]
-            .iter()
-            .any(|tag| tag.has_category(category))
-    }
 }
 
 impl TagIndex {
-    fn from_config(config: CategoryConfig) -> Result<Self, regex::Error> {
-        let mut tags: HashMap<String, TagData> = HashMap::new();
-        for (category, tag_configs) in config.0 {
-            for (name, tag_config) in tag_configs.0 {
-                if let Some(tag) = tags.get_mut(&name) {
-                    tag.merge_config(category, tag_config)?;
-                } else {
-                    tags.insert(
-                        name.clone().into(),
-                        TagData::from_config(&name, category, tag_config)?,
-                    );
-                }
-            }
+    pub fn load(config_file: &Path) -> Result<TagIndex, Box<dyn std::error::Error>> {
+        debug!("loading tags config file");
+        let config = toml::from_str(&std::fs::read_to_string(config_file)?)?;
+        debug!("indexing tags");
+        Ok(TagIndex::from_config(config)?)
+    }
+
+    fn from_config(config: TagConfigFile) -> Result<Self, regex::Error> {
+        let mut tags: HashMap<_, _> = HashMap::new();
+        for (name, tag_config) in config.0 {
+            tags.insert(
+                name.clone().into(),
+                TagData::from_config(&name, tag_config)?,
+            );
         }
+
         Ok(TagIndex(tags))
     }
 
@@ -333,36 +165,51 @@ impl TagIndex {
     pub fn get(&self, tag: &str) -> Option<TagRef<'_>> {
         self.0.get(tag).map(TagRef::new)
     }
+
+    pub fn merge_tags(&mut self, card_tags: &CardTags) {
+        for tag in card_tags.tags() {
+            if !self.0.contains_key(tag) {
+                self.0.insert(tag.to_owned(), TagData::new(tag));
+            }
+        }
+    }
 }
 
 impl TagData {
-    fn from_config(
-        name: &str,
-        category: Category,
-        config: TagConfig,
-    ) -> Result<TagData, regex::Error> {
+    fn new(name: &str) -> TagData {
+        TagData {
+            name: name.to_owned(),
+            alt_names: Default::default(),
+            subtags: Default::default(),
+            canonical_name: TAG_NAME_STRIP_REGEX.replace_all(name, "_").to_string(),
+            kind: TagKind::Other,
+            color_identity: None,
+            cmc: None,
+            type_regex: None,
+            color_identity_len: None,
+        }
+    }
+
+    fn from_config(name: &str, config: TagConfig) -> Result<TagData, regex::Error> {
         Ok(TagData {
             name: name.to_owned(),
-            conditions: vec![TagCondition::from_config(category, &config)?],
             alt_names: config.alt_names.into_iter().collect(),
             subtags: config.subtags.into_iter().collect(),
             canonical_name: TAG_NAME_STRIP_REGEX.replace_all(name, "_").to_string(),
             kind: config.kind,
             color_identity: config.color_identity.clone().map(Colors::from_vec),
             cmc: config.cmc,
+            type_regex: config
+                .type_regex
+                .as_ref()
+                .map(|s| {
+                    let mut builder = RegexBuilder::new(&s);
+                    builder.dot_matches_new_line(true);
+                    builder.build()
+                })
+                .transpose()?,
+            color_identity_len: config.color_identity_len,
         })
-    }
-
-    fn merge_config(&mut self, category: Category, config: TagConfig) -> Result<(), regex::Error> {
-        self.conditions
-            .push(TagCondition::from_config(category, &config)?);
-        self.alt_names.extend(config.alt_names);
-        self.subtags.extend(config.subtags);
-        Ok(())
-    }
-
-    pub fn iter(&self) -> impl Iterator<Item = &TagCondition> {
-        self.conditions.iter()
     }
 
     pub fn name(&self) -> Cow<'_, str> {
@@ -396,10 +243,6 @@ impl TagData {
         &self.canonical_name
     }
 
-    pub fn has_category(&self, category: &Category) -> bool {
-        self.conditions.iter().any(|c| c.category == *category)
-    }
-
     pub fn subtags(&self) -> &BTreeSet<String> {
         &self.subtags
     }
@@ -411,183 +254,33 @@ impl TagData {
     pub fn alt_names_string(&self) -> String {
         join(self.alt_names.iter(), ", ")
     }
-}
 
-trait MatchItem {
-    fn type_line(&self) -> Option<&str>;
-    fn name(&self) -> &str;
-    fn text(&self) -> Option<&str>;
-}
-
-impl TagCondition {
-    fn from_config(category: Category, config: &TagConfig) -> Result<TagCondition, regex::Error> {
-        Ok(TagCondition {
-            category,
-            type_regex: config
-                .type_regex
-                .as_ref()
-                .map(|s| {
-                    let mut builder = RegexBuilder::new(&s);
-                    builder.dot_matches_new_line(true);
-                    builder.build()
-                })
-                .transpose()?,
-            text_regex: config
-                .text_regex
-                .as_ref()
-                .map(|s| {
-                    let mut builder = RegexBuilder::new(&s);
-                    builder.dot_matches_new_line(true);
-                    builder.build()
-                })
-                .transpose()?,
-            name_regex: config
-                .name_regex
-                .as_ref()
-                .map(|s| {
-                    let mut builder = RegexBuilder::new(&s);
-                    builder.dot_matches_new_line(true);
-                    builder.build()
-                })
-                .transpose()?,
-            names: config
-                .names
-                .as_ref()
-                .map(|vec| vec.iter().cloned().collect()),
-            color_identity: config.color_identity.clone(),
-            color_identity_len: config.color_identity_len,
-            card_face: config.card_face,
-            cmc: config.cmc,
-        })
-    }
-
-    pub fn category(&self) -> Category {
-        self.category
-    }
-
-    pub fn is_match(&self, category_list: &CategoryList, card: &Card) -> bool {
-        match self.category {
-            Category::Rocks | Category::Dorks | Category::Ramp => {
-                if !category_list.category_contains(self.category, card.name.as_ref()) {
-                    return false;
-                }
-            }
-            _ => {}
-        }
-
+    pub fn is_match(&self, card: &Card, type_line: &str) -> bool {
         if let Some(cmc) = self.cmc {
-            if card.cmc != cmc {
-                return false;
+            if card.cmc == cmc && (!type_line.contains("Land") || cmc > 0.0) {
+                return true;
             }
         }
 
         if let Some(color_identity_len) = self.color_identity_len {
-            if card.color_identity.len() != color_identity_len {
-                return false;
+            if card.color_identity.len() == color_identity_len {
+                return true;
             }
         }
 
         if let Some(color_identity) = &self.color_identity {
-            if card.color_identity.len() != color_identity.len() {
-                return false;
+            if &Colors::from_vec(card.color_identity.clone()) == color_identity {
+                return true;
             }
-            for color in color_identity {
-                if !card.color_identity.contains(color) {
-                    return false;
-                }
-            }
-        }
-
-        if let Some(names) = &self.names {
-            if !names.contains(card.name()) {
-                return false;
-            }
-        }
-
-        // First, check for a specified face and only use that face
-        if let Some(face) = self.card_face {
-            if let Some(face) = card.card_faces.as_ref().and_then(|v| v.get(face)) {
-                if !self.is_item_match(face) {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        } else {
-            if !self.is_item_match(card) {
-                return false;
-            }
-        }
-
-        true
-    }
-
-    fn is_item_match<T: MatchItem>(&self, card: &T) -> bool {
-        // Check category first
-        if !card
-            .type_line()
-            .filter(|s| {
-                self.category
-                    .type_regex()
-                    .filter(|r| !r.is_match(s))
-                    .is_none()
-            })
-            .is_some()
-        {
-            return false;
         }
 
         if let Some(type_regex) = &self.type_regex {
-            if !card
-                .type_line()
-                .filter(|s| type_regex.is_match(s))
-                .is_some()
-            {
-                return false;
+            if type_regex.is_match(type_line.as_ref()) {
+                return true;
             }
         }
 
-        if let Some(name_regex) = &self.name_regex {
-            if !name_regex.is_match(card.name()) {
-                return false;
-            }
-        }
-
-        if let Some(text_regex) = &self.text_regex {
-            if !card.text().filter(|s| text_regex.is_match(s)).is_some() {
-                return false;
-            }
-        }
-
-        true
-    }
-}
-
-impl<'a> MatchItem for Card<'a> {
-    fn type_line(&self) -> Option<&str> {
-        self.type_line.as_ref().map(|s| s.as_ref())
-    }
-
-    fn name(&self) -> &str {
-        &self.name
-    }
-
-    fn text(&self) -> Option<&str> {
-        self.oracle_text.as_ref().map(|s| s.as_ref())
-    }
-}
-
-impl<'a> MatchItem for CardFace<'a> {
-    fn type_line(&self) -> Option<&str> {
-        self.type_line.as_ref().map(|s| s.as_ref())
-    }
-
-    fn name(&self) -> &str {
-        &self.name
-    }
-
-    fn text(&self) -> Option<&str> {
-        self.oracle_text.as_ref().map(|s| s.as_ref())
+        false
     }
 }
 
@@ -657,5 +350,20 @@ impl<'a> Deref for TagRef<'a> {
 impl<'a> std::fmt::Display for TagRef<'a> {
     fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::fmt::Result {
         self.0.fmt(fmt)
+    }
+}
+
+impl CardTags {
+    pub fn load(config_file: &Path) -> Result<CardTags, Box<dyn std::error::Error>> {
+        debug!("loading card tag list");
+        Ok(toml::from_str(&std::fs::read_to_string(config_file)?)?)
+    }
+
+    fn tags(&self) -> HashSet<&str> {
+        self.0.values().flatten().map(|s| s.as_ref()).collect()
+    }
+
+    pub fn get_tags(&self, name: &str) -> Option<&Vec<String>> {
+        self.0.get(name)
     }
 }
