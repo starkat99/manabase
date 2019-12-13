@@ -203,6 +203,9 @@ kind = "mana-pool"
 ["Opponent Mana"]
 kind = "mana-pool"
 
+["Additional Mana"]
+kind = "mana-pool"
+
 # Color Identity
 
 [Colorless]
