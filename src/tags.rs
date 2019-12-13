@@ -367,6 +367,10 @@ impl CardTags {
         Ok(toml::from_str(&std::fs::read_to_string(config_file)?)?)
     }
 
+    pub fn cards(&self) -> impl Iterator<Item = &str> {
+        self.0.keys().map(|s| s.as_ref())
+    }
+
     fn tags(&self) -> HashSet<&str> {
         self.0.values().flatten().map(|s| s.as_ref()).collect()
     }

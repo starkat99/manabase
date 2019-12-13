@@ -14,7 +14,7 @@ use crate::{
 };
 use clap::{App, Arg};
 use fs_extra::dir::{self, CopyOptions};
-use std::path::Path;
+use std::{collections::HashSet, path::Path};
 
 static BULK_DATA_URL: &'static str = "https://archive.scryfall.com/json/scryfall-oracle-cards.json";
 
@@ -87,6 +87,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     debug!("writing tag pages");
     for (_, tag) in tag_index.iter() {
         templates::TagPage::new(tag, &tag_index, &carddb).write_output(&output_dir)?;
+    }
+
+    debug!("checking for invalid cards");
+    let cardset: HashSet<_> = cards.cards().iter().map(|c| c.name.as_ref()).collect();
+    for card in card_tags.cards() {
+        if !cardset.contains(card) {
+            warn!("card \"{}\" not found in database", card);
+        }
     }
 
     info!("complete");
