@@ -6,7 +6,7 @@ Mana Base
 Requires Rust compiler and Cargo tools. To generate pages under default `target/www` path:
 
 ```
-RUST_LOG=info cargo run
+./generate.sh
 ```
 
 Invalid card names and other tagging issues will be displayed as warnings.

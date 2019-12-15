@@ -13,7 +13,7 @@
       <p>
         {% for tag in tags %}
           {% if carddb.type_has_cards_of_tag(card_type, tag) %}
-            <a href="tag-{{ tag.canonical_name()|safe }}.html?{{ card_type.show_only_filter_query()|safe }}" class="badge {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
+            <a href="tag-{{ tag.canonical_name()|safe }}.html{{ card_type.link_suffix()|safe }}" class="badge {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
           {% endif %}
         {% endfor %}
       </p>

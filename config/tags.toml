@@ -3,6 +3,7 @@
 [Basic]
 kind = "type"
 type = 'Basic'
+subtags = ["Colorless", "Snow Basic"]
 
 ["Snow Basic"]
 kind = "type"
@@ -11,6 +12,7 @@ type = 'Basic Snow'
 [Snow]
 kind = "type"
 type = 'Snow'
+subtags = ["Snow Basic", "Snow Dual"]
 
 ["Snow Dual"]
 alt-names = ["Snow Tapland"]
@@ -18,10 +20,13 @@ alt-names = ["Snow Tapland"]
 [Desert]
 kind = "type"
 type = 'Desert'
+subtags = ["Cycling Desert", "Sac Desert"]
 
 [Forest]
 kind = "type"
 type = 'Forest'
+subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
+    "Lorwyn Tribal Land", "Permanent Color Land", "Cycling Dual", "Snow Basic", "Dryad"]
 
 [Gate]
 kind = "type"
@@ -30,22 +35,34 @@ type = 'Gate'
 [Island]
 kind = "type"
 type = 'Island'
+subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
+    "Permanent Color Land", "Cycling Dual", "Snow Basic"]
 
 [Lair]
 kind = "type"
 type = 'Lair'
 
+[Locus]
+kind = "type"
+type = 'Locus'
+
 [Mountain]
 kind = "type"
 type = 'Mountain'
+subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
+    "Permanent Color Land", "Cycling Dual", "Snow Basic"]
 
 [Plains]
 kind = "type"
 type = 'Plains'
+subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
+    "Permanent Color Land", "Cycling Dual", "Snow Basic"]
 
 [Swamp]
 kind = "type"
 type = 'Swamp'
+subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
+    "Permanent Color Land", "Cycling Dual", "Snow Basic"]
 
 ["Urza's"]
 kind = "type"
@@ -54,6 +71,8 @@ type = "Urza.s"
 [Legendary]
 kind = "type"
 type = 'Legendary'
+subtags = ["Eldrazi", "Legends Land", "Kamigawa Landmark", "Transformers", "Permanent Type Land",
+    "Snow", "Manaless Land"]
 
 [Eldrazi]
 kind = "type"
@@ -70,6 +89,10 @@ type = 'Elf'
 [Druid]
 kind = "type"
 type = 'Druid'
+
+[Dryad]
+kind = "type"
+type = 'Dryad'
 
 # Mana Pool
 

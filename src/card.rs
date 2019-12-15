@@ -91,15 +91,15 @@ impl CardType {
         }
     }
 
-    pub fn show_only_filter_query(self) -> &'static str {
+    pub fn link_suffix(self) -> &'static str {
         match self {
-            CardType::Land => "show=land&amp;hide=artifact&amp;hide=creature&amp;hide=enchantment&amp;hide=instant&amp;hide=sorcery&amp;hide=planeswalker",
-            CardType::Artifact => "show=artifact&amp;hide=land&amp;hide=creature&amp;hide=enchantment&amp;hide=instant&amp;hide=sorcery&amp;hide=planeswalker",
-            CardType::Creature => "show=creature&amp;hide=land&amp;hide=artifact&amp;hide=enchantment&amp;hide=instant&amp;hide=sorcery&amp;hide=planeswalker",
-            CardType::Enchantment => "show=enchantment&amp;hide=land&amp;hide=artifact&amp;hide=creature&amp;hide=instant&amp;hide=sorcery&amp;hide=planeswalker",
-            CardType::Instant => "show=instant&amp;hide=land&amp;hide=artifact&amp;hide=creature&amp;hide=enchantment&amp;hide=sorcery&amp;hide=planeswalker",
-            CardType::Sorcery => "show=sorcery&amp;hide=land&amp;hide=artifact&amp;hide=creature&amp;hide=enchantment&amp;hide=instant&amp;hide=planeswalker",
-            CardType::Planeswalker => "show=planeswalker&amp;hide=land&amp;hide=artifact&amp;hide=creature&amp;hide=enchantment&amp;hide=instant&amp;hide=sorcery",
+            CardType::Land => "#Land",
+            CardType::Artifact => "#Artifact",
+            CardType::Creature => "#Creature",
+            CardType::Enchantment => "#Enchantment",
+            CardType::Instant => "#Instant",
+            CardType::Sorcery => "#Sorcery",
+            CardType::Planeswalker => "#Planeswalker",
         }
     }
 }
