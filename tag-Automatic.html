@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Magic: The Gathering deck-building aide for assembling a mana base.">
+  <meta name="author" content="Kathryn Long">
+
+  <title>Automatic · Mana Base</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style/mana.css">
+  <link rel="stylesheet" href="style/manabase.css">
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="shape-transform" viewBox="0 0 1024 1024">
+      <path d="M884.3,357.6c116.8,117.7,151.7,277-362.2,320V496.4L243.2,763.8L522,1031.3V860.8C828.8,839.4,1244.9,604.5,884.3,357.6z"></path>
+      <path d="M557.8,288.2v138.4l230.8-213.4L557.8,0v142.8c-309.2,15.6-792.1,253.6-426.5,503.8C13.6,527.9,30,330.1,557.8,288.2z"></path>
+    </symbol>
+  </svg>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js" integrity="sha384-/fzlFUZom6xS9MDIM/aUQgYzL5J7DoVBOewwG5T3d+sDjQK7hQ7VyQiqfohXwUHK" crossorigin="anonymous"></script>
+  <script src="script/filter.js"></script>
+</head>
+<body>
+  <header class="border-bottom bg-light w-100">
+    <div class="dropdown float-right">
+      <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="filterDropDown">
+        Filters
+      </button>
+      <form class="p-2 dropdown-menu dropdown-menu-right" aria-labelledby="filterDropDown">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-land">
+          <label class="form-check-label" for="filter-land">Lands</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-artifact">
+          <label class="form-check-label" for="filter-artifact">Artifacts</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-creature">
+          <label class="form-check-label" for="filter-creature">Creatures</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-enchantment">
+          <label class="form-check-label" for="filter-enchantment">Enchantments</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-instant">
+          <label class="form-check-label" for="filter-instant">Instants</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-sorcery">
+          <label class="form-check-label" for="filter-sorcery">Sorceries</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-planeswalker">
+          <label class="form-check-label" for="filter-planeswalker">Planeswalkers</label>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-silver-border">
+          <label class="form-check-label" for="filter-silver-border">Silver Bordered</label>
+        </div>
+      </form>
+    </div>
+    <h1>Mana Base</h1>
+    
+  <h2 class="text-secondary">Automatic</h2>
+
+  </header>
+  <main>
+    
+  
+    
+  
+    
+      <section class="mtg-filter-artifact">
+        <h3 class="text-primary mt-2"><a name="Artifact"></a>Artifact</h3>
+        
+        
+          <section>
+            <h4 class="text-secondary"><a name="Artifact-Other"></a>Other</h4>
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact" id="cardebc3824c-11ee-4fec-9397-823783b682d9">
+  <a name="Altar of Shadows"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/mrd/143/altar-of-shadows?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/e/b/ebc3824c-11ee-4fec-9397-823783b682d9.jpg?1562162268" class="front" loading="lazy" alt="Altar of Shadows">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Altar of Shadows</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-Black.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sb"></span> Black</a>
+      
+        <a href="tag-Black_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sb"></span> Black</a>
+      
+        <a href="tag-CMC_7.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s7"></span></a>
+      
+        <a href="tag-Charge_Counter.html" class="badge badge-dark mtg-tag">Charge Counter</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact" id="card3879faf0-6e39-4275-82f6-7fb5c70fc6ce">
+  <a name="Blinkmoth Urn"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/c18/197/blinkmoth-urn?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/3/8/3879faf0-6e39-4275-82f6-7fb5c70fc6ce.jpg?1561904732" class="front" loading="lazy" alt="Blinkmoth Urn">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Blinkmoth Urn</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_5.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s5"></span></a>
+      
+        <a href="tag-Colorless.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+        <a href="tag-Rock.html" class="badge badge-dark mtg-tag">Rock</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card mtg-filter-silver-border mtg-filter-artifact" id="cardfd8d38a8-e835-4314-80eb-6a574756431d">
+  <a name="Sap Sucker"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/ust/203/sap-sucker?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/f/d/fd8d38a8-e835-4314-80eb-6a574756431d.jpg?1562948713" class="front" loading="lazy" alt="Sap Sucker">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Sap Sucker</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_0.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s0"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact" id="card87ff2c28-770b-49cb-be10-35429233e048">
+  <a name="Tangleroot"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/mrd/259/tangleroot?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/8/7/87ff2c28-770b-49cb-be10-35429233e048.jpg?1562150008" class="front" loading="lazy" alt="Tangleroot">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Tangleroot</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact" id="card791c310f-b50d-4993-9add-9f585f6172af">
+  <a name="Thran Turbine"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/usg/311/thran-turbine?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/7/9/791c310f-b50d-4993-9add-9f585f6172af.jpg?1562920431" class="front" loading="lazy" alt="Thran Turbine">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Thran Turbine</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_1.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s1"></span></a>
+      
+        <a href="tag-Colorless.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Mana_Restriction.html" class="badge badge-dark mtg-tag">Mana Restriction</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact" id="card520f4a24-fb1a-4964-887c-2f08a752fae2">
+  <a name="Ventifact Bottle"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/mir/323/ventifact-bottle?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/5/2/520f4a24-fb1a-4964-887c-2f08a752fae2.jpg?1562719271" class="front" loading="lazy" alt="Ventifact Bottle">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Ventifact Bottle</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Charge_Counter.html" class="badge badge-dark mtg-tag">Charge Counter</a>
+      
+        <a href="tag-Colorless.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+          </section>
+        
+      </section>
+    
+  
+    
+      <section class="mtg-filter-creature">
+        <h3 class="text-primary mt-2"><a name="Creature"></a>Creature</h3>
+        
+        
+          <section>
+            <h4 class="text-secondary"><a name="Creature-Other"></a>Other</h4>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card7f95145a-41a1-478e-bf8a-ea8838d6f9b1">
+  <a name="Conduit of Storms &#x2f;&#x2f; Conduit of Emrakul"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/emn/124/conduit-of-storms-conduit-of-emrakul?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/7/f/7f95145a-41a1-478e-bf8a-ea8838d6f9b1.jpg?1562740440" class="front" loading="lazy" alt="Conduit of Storms &#x2f;&#x2f; Conduit of Emrakul">
+      
+        <img src="https://img.scryfall.com/cards/normal/back/7/f/7f95145a-41a1-478e-bf8a-ea8838d6f9b1.jpg?1562740440" class="back" loading="lazy" alt="Conduit of Storms &#x2f;&#x2f; Conduit of Emrakul">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#card7f95145a-41a1-478e-bf8a-ea8838d6f9b1 .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Conduit of Storms &#x2f;&#x2f; Conduit of Emrakul</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Eldrazi.html" class="badge badge-info mtg-tag">Eldrazi</a>
+      
+        <a href="tag-Red.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sr"></span> Red</a>
+      
+        <a href="tag-Red_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sr"></span> Red</a>
+      
+        <a href="tag-Transformer.html" class="badge badge-dark mtg-tag">Transformer</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card986981fa-a744-45d8-81c7-68ef335c79e2">
+  <a name="Grand Warlord Radha"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/dom/195/grand-warlord-radha?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/9/8/986981fa-a744-45d8-81c7-68ef335c79e2.jpg?1562739940" class="front" loading="lazy" alt="Grand Warlord Radha">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Grand Warlord Radha</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Elf.html" class="badge badge-info mtg-tag">Elf</a>
+      
+        <a href="tag-Gruul.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sr"></span><span class="mana sg"></span> Gruul</a>
+      
+        <a href="tag-Gruul_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sr"></span><span class="mana sg"></span> Gruul</a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card63005c92-fc0b-45dc-b488-489350527453">
+  <a name="Magus of the Vineyard"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/cmd/166/magus-of-the-vineyard?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/6/3/63005c92-fc0b-45dc-b488-489350527453.jpg?1562913314" class="front" loading="lazy" alt="Magus of the Vineyard">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Magus of the Vineyard</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_1.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s1"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card54231832-d492-4812-b658-4ab9a30fefe2">
+  <a name="Neheb, the Eternal"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/hou/104/neheb-the-eternal?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/5/4/54231832-d492-4812-b658-4ab9a30fefe2.jpg?1562799464" class="front" loading="lazy" alt="Neheb, the Eternal">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Neheb, the Eternal</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_5.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s5"></span></a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Red.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sr"></span> Red</a>
+      
+        <a href="tag-Red_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sr"></span> Red</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card5e1f14a7-ef44-4489-a111-30e199e5f08d">
+  <a name="Radha, Heir to Keld"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/dds/53/radha-heir-to-keld?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/5/e/5e1f14a7-ef44-4489-a111-30e199e5f08d.jpg?1562856630" class="front" loading="lazy" alt="Radha, Heir to Keld">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Radha, Heir to Keld</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Elf.html" class="badge badge-info mtg-tag">Elf</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Gruul.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sr"></span><span class="mana sg"></span> Gruul</a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+        <a href="tag-Red_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sr"></span> Red</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card774ec405-5127-4475-8c74-b8858bd84379">
+  <a name="Sakiko, Mother of Summer"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bok/141/sakiko-mother-of-summer?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/7/7/774ec405-5127-4475-8c74-b8858bd84379.jpg?1562877904" class="front" loading="lazy" alt="Sakiko, Mother of Summer">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Sakiko, Mother of Summer</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_6.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s6"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="cardb2ca7687-ba90-4479-8c6e-ece3f29fff12">
+  <a name="Sakura-Tribe Springcaller"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bok/142/sakura-tribe-springcaller?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/b/2/b2ca7687-ba90-4479-8c6e-ece3f29fff12.jpg?1562879197" class="front" loading="lazy" alt="Sakura-Tribe Springcaller">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Sakura-Tribe Springcaller</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card471cd229-c80f-4dc5-a174-96984fc80a2f">
+  <a name="Savage Ventmaw"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bbd/229/savage-ventmaw?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/4/7/471cd229-c80f-4dc5-a174-96984fc80a2f.jpg?1562909475" class="front" loading="lazy" alt="Savage Ventmaw">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Savage Ventmaw</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_6.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s6"></span></a>
+      
+        <a href="tag-Gruul.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sr"></span><span class="mana sg"></span> Gruul</a>
+      
+        <a href="tag-Gruul_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sr"></span><span class="mana sg"></span> Gruul</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="carddab9407d-9389-4ec9-963c-80de095a6812">
+  <a name="Shizuko, Caller of Autumn"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bok/144/shizuko-caller-of-autumn?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/d/a/dab9407d-9389-4ec9-963c-80de095a6812.jpg?1562880141" class="front" loading="lazy" alt="Shizuko, Caller of Autumn">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Shizuko, Caller of Autumn</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+          </section>
+        
+      </section>
+    
+  
+    
+      <section class="mtg-filter-enchantment">
+        <h3 class="text-primary mt-2"><a name="Enchantment"></a>Enchantment</h3>
+        
+        
+          <section>
+            <h4 class="text-secondary"><a name="Enchantment-Other"></a>Other</h4>
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="card779f87b6-b99c-4eb1-a43e-af275b9ef3b1">
+  <a name="Black Market"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/c17/98/black-market?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/7/7/779f87b6-b99c-4eb1-a43e-af275b9ef3b1.jpg?1562613081" class="front" loading="lazy" alt="Black Market">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Black Market</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-Black.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sb"></span> Black</a>
+      
+        <a href="tag-Black_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sb"></span> Black</a>
+      
+        <a href="tag-CMC_5.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s5"></span></a>
+      
+        <a href="tag-Charge_Counter.html" class="badge badge-dark mtg-tag">Charge Counter</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="card41bab8de-6e0f-4ccd-a303-01e9c8c82d3f">
+  <a name="Braid of Fire"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/csp/78/braid-of-fire?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/4/1/41bab8de-6e0f-4ccd-a303-01e9c8c82d3f.jpg?1562181457" class="front" loading="lazy" alt="Braid of Fire">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Braid of Fire</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+        <a href="tag-Red.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sr"></span> Red</a>
+      
+        <a href="tag-Red_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sr"></span> Red</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="card847340fb-9251-4439-b33b-f86bff507dcd">
+  <a name="Carnival of Souls"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/uds/55/carnival-of-souls?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/8/4/847340fb-9251-4439-b33b-f86bff507dcd.jpg?1562444254" class="front" loading="lazy" alt="Carnival of Souls">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Carnival of Souls</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-Black.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sb"></span> Black</a>
+      
+        <a href="tag-Black_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sb"></span> Black</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="card93abb48a-85f2-432d-8602-0a1d17fbb409">
+  <a name="Carpet of Flowers"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/usg/240/carpet-of-flowers?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/9/3/93abb48a-85f2-432d-8602-0a1d17fbb409.jpg?1562926232" class="front" loading="lazy" alt="Carpet of Flowers">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Carpet of Flowers</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Any_Color_Mana.html" class="badge badge-success mtg-tag">Mana:  Any Color</a>
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_1.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s1"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="cardd8531643-5657-44b6-89d1-9cdf67ed09c4">
+  <a name="Eladamri&#x27;s Vineyard"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/tmp/223/eladamris-vineyard?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/d/8/d8531643-5657-44b6-89d1-9cdf67ed09c4.jpg?1562056878" class="front" loading="lazy" alt="Eladamri&#x27;s Vineyard">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Eladamri&#x27;s Vineyard</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_1.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s1"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="card9757631a-c505-4a16-94c1-8bb609ce7bc5">
+  <a name="Elemental Resonance"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/dis/83/elemental-resonance?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/9/7/9757631a-c505-4a16-94c1-8bb609ce7bc5.jpg?1562613528" class="front" loading="lazy" alt="Elemental Resonance">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Elemental Resonance</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Any_Color_Mana.html" class="badge badge-success mtg-tag">Mana:  Any Color</a>
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="card5e7ee5ff-eabc-4947-b5fe-2647c7e2eb82">
+  <a name="Frontier Siege"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/c17/150/frontier-siege?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/5/e/5e7ee5ff-eabc-4947-b5fe-2647c7e2eb82.jpg?1562609900" class="front" loading="lazy" alt="Frontier Siege">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Frontier Siege</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="card7611a97d-6500-4311-baa1-be3ee0791f3a">
+  <a name="Mark of Sakiko"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bok/135/mark-of-sakiko?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/7/6/7611a97d-6500-4311-baa1-be3ee0791f3a.jpg?1562877859" class="front" loading="lazy" alt="Mark of Sakiko">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Mark of Sakiko</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Automatic.html" class="badge badge-dark mtg-tag">Automatic</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </section>
+        
+      </section>
+    
+  
+    
+  
+    
+  
+    
+  
+
+  </main>
+  <footer class="border-top bg-light w-100">
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Index</a>
+      <a href="lands.html" class="nav-link">Lands</a>
+      <a href="artifacts.html" class="nav-link">Artifacts</a>
+      <a href="creatures.html" class="nav-link">Creatures</a>
+      <a href="enchantments.html" class="nav-link">Enchantments</a>
+      <a href="instants.html" class="nav-link">Instants</a>
+      <a href="sorceries.html" class="nav-link">Sorceries</a>
+      <a href="planeswalkers.html" class="nav-link">Planeswalkers</a>
+      <a href="all.html" class="nav-link">All Cards</a>
+      <a href="https://github.com/starkat99/manabase" class="nav-link">Source</a>
+      <a href="https://github.com/starkat99/manabase/issues" class="nav-link">Report Issues</a>
+    </nav>
+    <p class="text-muted"><small>Portions of this site are unofficial Fan Content permitted under
+      the <a href="https://company.wizards.com">Wizards of the Coast</a> Fan Content Policy. The
+      literal and graphical information presented on this site about
+      <a href="https://magic.wizards.com">Magic: The Gathering</a>, including card images, the mana
+      symbols, and Oracle text, is copyright Wizards of the Coast, LLC, a subsidiary of Hasbro, Inc.
+      This site is not produced by, endorsed by, supported by, or affiliated with Wizards of the
+      Coast.</small></p>
+    <p class="text-muted"><small>This site is generated using data from the
+      <a href="https://scryfall.com">Scryfall</a> API. This site is not produced by, endorsed by,
+      supported by, or affiliated with Scryfall.</small></p>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Flip/1.1.2/jquery.flip.min.js" integrity="sha256-CAgJ3dV4c4eWFBbunpYeUQZiRlVuR4NsizhWMKgN2L4=" crossorigin="anonymous"></script>
+  <script src="script/manabase.js"></script>
+</body>
+</html>

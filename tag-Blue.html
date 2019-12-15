@@ -3,36 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Blue &mdash; Mana Base</title>
+  <meta name="description" content="Magic: The Gathering deck-building aide for assembling a mana base.">
+  <meta name="author" content="Kathryn Long">
+
+  <title>Blue · Mana Base</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="style/mana.css">
   <link rel="stylesheet" href="style/manabase.css">
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="shape-transform" viewBox="0 0 1024 1024">
-      <path d="M884.3,357.6c116.8,117.7,151.7,277-362.2,320V496.4L243.2,763.8L522,1031.3V860.8C828.8,839.4,1244.9,604.5,884.3,357.6z"></path><path d="M557.8,288.2v138.4l230.8-213.4L557.8,0v142.8c-309.2,15.6-792.1,253.6-426.5,503.8C13.6,527.9,30,330.1,557.8,288.2z"></path>
+      <path d="M884.3,357.6c116.8,117.7,151.7,277-362.2,320V496.4L243.2,763.8L522,1031.3V860.8C828.8,839.4,1244.9,604.5,884.3,357.6z"></path>
+      <path d="M557.8,288.2v138.4l230.8-213.4L557.8,0v142.8c-309.2,15.6-792.1,253.6-426.5,503.8C13.6,527.9,30,330.1,557.8,288.2z"></path>
     </symbol>
   </svg>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js" integrity="sha384-/fzlFUZom6xS9MDIM/aUQgYzL5J7DoVBOewwG5T3d+sDjQK7hQ7VyQiqfohXwUHK" crossorigin="anonymous"></script>
+  <script src="script/filter.js"></script>
 </head>
 <body>
   <header class="border-bottom bg-light w-100">
+    <div class="dropdown float-right">
+      <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="filterDropDown">
+        Filters
+      </button>
+      <form class="p-2 dropdown-menu dropdown-menu-right" aria-labelledby="filterDropDown">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-land">
+          <label class="form-check-label" for="filter-land">Lands</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-artifact">
+          <label class="form-check-label" for="filter-artifact">Artifacts</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-creature">
+          <label class="form-check-label" for="filter-creature">Creatures</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-enchantment">
+          <label class="form-check-label" for="filter-enchantment">Enchantments</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-instant">
+          <label class="form-check-label" for="filter-instant">Instants</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-sorcery">
+          <label class="form-check-label" for="filter-sorcery">Sorceries</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-planeswalker">
+          <label class="form-check-label" for="filter-planeswalker">Planeswalkers</label>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-silver-border">
+          <label class="form-check-label" for="filter-silver-border">Silver Bordered</label>
+        </div>
+      </form>
+    </div>
     <h1>Mana Base</h1>
     
-  <h2>Blue</h2>
+  <h2 class="text-secondary">Blue</h2>
 
   </header>
   <main>
     
   
-    <section>
-      <h3>Lands</h3>
-      
+    
+      <section class="mtg-filter-land">
+        <h3 class="text-primary mt-2"><a name="Land"></a>Land</h3>
         
-          <section>
-            <h4>Artifact Lands</h4>
-            
-            
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Artifact_Land"></a>Artifact Land</h4>
               
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card1fedc183-2d95-471c-ba78-2169e4df13f8">
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-artifact" id="card1fedc183-2d95-471c-ba78-2169e4df13f8">
+  <a name="Seat of the Synod"></a>
   <div class="mtg-card-img-container">
     <a href="https://scryfall.com/card/c18/278/seat-of-the-synod?utm_source=api">
       <img src="https://img.scryfall.com/cards/normal/front/1/f/1fedc183-2d95-471c-ba78-2169e4df13f8.jpg?1561901614" class="front" loading="lazy" alt="Seat of the Synod">
@@ -44,36 +92,187 @@
     <h6 class="card-title">Seat of the Synod</h6>
     <p class="card-text">
       
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
       
       
-        <a href="tag-Artifact_Lands.html" class="badge badge-dark mtg-tag">Artifact Lands</a>
+        <a href="tag-Artifact_Land.html" class="badge badge-dark mtg-tag">Artifact Land</a>
       
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
       
     </p>
   </div>
 </div>
+                
               
-            
-          </section>
+            </section>
+          
         
-      
-        
-      
-        
-      
-        
-      
-        
-          <section>
-            <h4>Cycling Lands</h4>
-            
-            
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Basic"></a>Basic</h4>
               
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card91b92d87-776c-490f-9ff1-234e47145df8">
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card772b4f6b-dc2b-4247-8f55-f37608d75725">
+  <a name="Island"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/eld/256/island?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/7/7/772b4f6b-dc2b-4247-8f55-f37608d75725.jpg?1572491314" class="front" loading="lazy" alt="Island">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Island</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Basic.html" class="badge badge-info mtg-tag">Basic</a>
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Island.html" class="badge badge-info mtg-tag">Island</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card33893d4a-6304-4e13-9282-2a220a762715">
+  <a name="Snow-Covered Island"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/me2/242/snow-covered-island?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/3/3/33893d4a-6304-4e13-9282-2a220a762715.jpg?1562868074" class="front" loading="lazy" alt="Snow-Covered Island">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Snow-Covered Island</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Basic.html" class="badge badge-info mtg-tag">Basic</a>
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Island.html" class="badge badge-info mtg-tag">Island</a>
+      
+        <a href="tag-Snow.html" class="badge badge-info mtg-tag">Snow</a>
+      
+        <a href="tag-Snow_Basic.html" class="badge badge-info mtg-tag">Snow Basic</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Blighted_Land"></a>Blighted Land</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card433cfdee-7e3c-4349-aa89-7e57723d2bf8">
+  <a name="Blighted Cataract"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/ddt/26/blighted-cataract?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/4/3/433cfdee-7e3c-4349-aa89-7e57723d2bf8.jpg?1562908555" class="front" loading="lazy" alt="Blighted Cataract">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Blighted Cataract</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blighted_Land.html" class="badge badge-dark mtg-tag">Blighted Land</a>
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Draw.html" class="badge badge-dark mtg-tag">Draw</a>
+      
+        <a href="tag-Sac_Land.html" class="badge badge-dark mtg-tag">Sac Land</a>
+      
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Castle"></a>Castle</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card0a8b9d37-e89c-44ad-bd1b-51cb06ec3e0b">
+  <a name="Castle Vantress"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/eld/242/castle-vantress?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/0/a/0a8b9d37-e89c-44ad-bd1b-51cb06ec3e0b.jpg?1572491190" class="front" loading="lazy" alt="Castle Vantress">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Castle Vantress</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Castle.html" class="badge badge-dark mtg-tag">Castle</a>
+      
+        <a href="tag-Scry.html" class="badge badge-dark mtg-tag">Scry</a>
+      
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Cycling"></a>Cycling</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card91b92d87-776c-490f-9ff1-234e47145df8">
+  <a name="Desert of the Mindful"></a>
   <div class="mtg-card-img-container">
     <a href="https://scryfall.com/card/hou/173/desert-of-the-mindful?utm_source=api">
       <img src="https://img.scryfall.com/cards/normal/front/9/1/91b92d87-776c-490f-9ff1-234e47145df8.jpg?1562806981" class="front" loading="lazy" alt="Desert of the Mindful">
@@ -85,24 +284,31 @@
     <h6 class="card-title">Desert of the Mindful</h6>
     <p class="card-text">
       
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
       
       
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Cycling_Lands.html" class="badge badge-dark mtg-tag">Cycling Lands</a>
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Deserts.html" class="badge badge-info mtg-tag">Deserts</a>
+        <a href="tag-Cycling.html" class="badge badge-dark mtg-tag">Cycling</a>
       
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
+        <a href="tag-Cycling_Desert.html" class="badge badge-dark mtg-tag">Cycling Desert</a>
+      
+        <a href="tag-Desert.html" class="badge badge-info mtg-tag">Desert</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
       
     </p>
   </div>
 </div>
+                
               
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card54e0fcc2-2409-4e00-95d5-418ffa161c20">
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card54e0fcc2-2409-4e00-95d5-418ffa161c20">
+  <a name="Lonely Sandbar"></a>
   <div class="mtg-card-img-container">
     <a href="https://scryfall.com/card/mh1/242/lonely-sandbar?utm_source=api">
       <img src="https://img.scryfall.com/cards/normal/front/5/4/54e0fcc2-2409-4e00-95d5-418ffa161c20.jpg?1562202574" class="front" loading="lazy" alt="Lonely Sandbar">
@@ -114,22 +320,27 @@
     <h6 class="card-title">Lonely Sandbar</h6>
     <p class="card-text">
       
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
       
       
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Cycling_Lands.html" class="badge badge-dark mtg-tag">Cycling Lands</a>
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
+        <a href="tag-Cycling.html" class="badge badge-dark mtg-tag">Cycling</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
       
     </p>
   </div>
 </div>
+                
               
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card34aa8ed8-1790-4fd3-9fe4-bef7b2884739">
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card34aa8ed8-1790-4fd3-9fe4-bef7b2884739">
+  <a name="Remote Isle"></a>
   <div class="mtg-card-img-container">
     <a href="https://scryfall.com/card/c14/309/remote-isle?utm_source=api">
       <img src="https://img.scryfall.com/cards/normal/front/3/4/34aa8ed8-1790-4fd3-9fe4-bef7b2884739.jpg?1561938168" class="front" loading="lazy" alt="Remote Isle">
@@ -141,187 +352,79 @@
     <h6 class="card-title">Remote Isle</h6>
     <p class="card-text">
       
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
       
       
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Cycling_Lands.html" class="badge badge-dark mtg-tag">Cycling Lands</a>
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
+        <a href="tag-Cycling.html" class="badge badge-dark mtg-tag">Cycling</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
       
     </p>
   </div>
 </div>
+                
               
-            
-          </section>
+            </section>
+          
         
-      
-        
-          <section>
-            <h4>ETB Spell Lands</h4>
-            
-            
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Fallen_Sac_Land"></a>Fallen Sac Land</h4>
               
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="cardb92121b6-b12e-4fe3-9afb-f2c77c2796ac">
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card21fe2f1b-bfd1-4682-ae23-069300de3791">
+  <a name="Svyelunite Temple"></a>
   <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/c14/287/coral-atoll?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/b/9/b92121b6-b12e-4fe3-9afb-f2c77c2796ac.jpg?1561956168" class="front" loading="lazy" alt="Coral Atoll">
+    <a href="https://scryfall.com/card/me2/237/svyelunite-temple?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/2/1/21fe2f1b-bfd1-4682-ae23-069300de3791.jpg?1562867851" class="front" loading="lazy" alt="Svyelunite Temple">
       
     </a>
     
   </div>
   <div class="card-body p-0">
-    <h6 class="card-title">Coral Atoll</h6>
+    <h6 class="card-title">Svyelunite Temple</h6>
     <p class="card-text">
       
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
       
       
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-ETB_Spell_Lands.html" class="badge badge-dark mtg-tag">ETB Spell Lands</a>
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Mono_Bounces.html" class="badge badge-dark mtg-tag">Mono Bounces</a>
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
       
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
+        <a href="tag-Fallen_Sac_Land.html" class="badge badge-dark mtg-tag">Fallen Sac Land</a>
+      
+        <a href="tag-Sac_Land.html" class="badge badge-dark mtg-tag">Sac Land</a>
+      
+        <a href="tag-Sac_Ritual.html" class="badge badge-dark mtg-tag">Sac Ritual</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
       
     </p>
   </div>
 </div>
+                
               
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card29479ab2-c492-479c-82ba-441703b27c0c">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/c18/253/halimar-depths?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/2/9/29479ab2-c492-479c-82ba-441703b27c0c.jpg?1561902677" class="front" loading="lazy" alt="Halimar Depths">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Halimar Depths</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-ETB_Spell_Lands.html" class="badge badge-dark mtg-tag">ETB Spell Lands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card29b0027d-c232-4cdd-89c4-75947687aa71">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/bfz/246/skyline-cascade?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/2/9/29b0027d-c232-4cdd-89c4-75947687aa71.jpg?1562904866" class="front" loading="lazy" alt="Skyline Cascade">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Skyline Cascade</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-ETB_Spell_Lands.html" class="badge badge-dark mtg-tag">ETB Spell Lands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="cardf48608ef-8526-49cc-94a9-c1efc6580a9b">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/ddi/37/soaring-seacliff?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/f/4/f48608ef-8526-49cc-94a9-c1efc6580a9b.jpg?1562953000" class="front" loading="lazy" alt="Soaring Seacliff">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Soaring Seacliff</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-ETB_Spell_Lands.html" class="badge badge-dark mtg-tag">ETB Spell Lands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
+            </section>
+          
         
-      
-        
-          <section>
-            <h4>Fairytale Lands</h4>
-            
-              <h6>Alternate Names: Eldraine ETB Lands, Mono Check Lands</h6>
-            
-            
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Hideaway"></a>Hideaway</h4>
               
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card170e792c-80d5-4775-ad95-37614574ab84">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/eld/247/mystic-sanctuary?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/1/7/170e792c-80d5-4775-ad95-37614574ab84.jpg?1572491237" class="front" loading="lazy" alt="Mystic Sanctuary">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Mystic Sanctuary</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Fairytale_Lands.html" class="badge badge-dark mtg-tag">Fairytale Lands</a>
-      
-        <a href="tag-Islands.html" class="badge badge-info mtg-tag">Islands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
               
-            
-          </section>
-        
-      
-        
-          <section>
-            <h4>Hideaways</h4>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card4216656e-90e8-45fc-a0f6-0d0d79d0a021">
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card4216656e-90e8-45fc-a0f6-0d0d79d0a021">
+  <a name="Shelldock Isle"></a>
   <div class="mtg-card-img-container">
     <a href="https://scryfall.com/card/lrw/272/shelldock-isle?utm_source=api">
       <img src="https://img.scryfall.com/cards/normal/front/4/2/4216656e-90e8-45fc-a0f6-0d0d79d0a021.jpg?1562345880" class="front" loading="lazy" alt="Shelldock Isle">
@@ -333,65 +436,37 @@
     <h6 class="card-title">Shelldock Isle</h6>
     <p class="card-text">
       
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
       
       
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Hideaways.html" class="badge badge-dark mtg-tag">Hideaways</a>
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
       
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
+        <a href="tag-Hideaway.html" class="badge badge-dark mtg-tag">Hideaway</a>
       
-        
-          <section>
-            <h4>Legacy Legend Lands</h4>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="cardd43c01b7-443d-4061-a934-6863d230c9b8">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/leg/308/tolaria?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/d/4/d43c01b7-443d-4061-a934-6863d230c9b8.jpg?1562861342" class="front" loading="lazy" alt="Tolaria">
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
       
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Tolaria</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Legacy_Legend_Lands.html" class="badge badge-dark mtg-tag">Legacy Legend Lands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
       
     </p>
   </div>
 </div>
+                
               
-            
-          </section>
+            </section>
+          
         
-      
-        
-          <section>
-            <h4>Legendary Assist Lands</h4>
-            
-            
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Kamigawa_Landmark"></a>Kamigawa Landmark</h4>
               
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card7536292c-da25-41c8-ba28-1e35758a7f3d">
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card7536292c-da25-41c8-ba28-1e35758a7f3d">
+  <a name="Minamo, School at Water&#x27;s Edge"></a>
   <div class="mtg-card-img-container">
     <a href="https://scryfall.com/card/chk/279/minamo-school-at-waters-edge?utm_source=api">
       <img src="https://img.scryfall.com/cards/normal/front/7/5/7536292c-da25-41c8-ba28-1e35758a7f3d.jpg?1562761537" class="front" loading="lazy" alt="Minamo, School at Water&#x27;s Edge">
@@ -403,30 +478,757 @@
     <h6 class="card-title">Minamo, School at Water&#x27;s Edge</h6>
     <p class="card-text">
       
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
       
       
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Legendary_Assist_Lands.html" class="badge badge-dark mtg-tag">Legendary Assist Lands</a>
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
+        <a href="tag-Kamigawa_Landmark.html" class="badge badge-dark mtg-tag">Kamigawa Landmark</a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
       
     </p>
   </div>
 </div>
+                
               
-            
-          </section>
-        
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="cardffc2d68e-6543-43ec-b67a-afff1325a32f">
+  <a name="Oboro, Palace in the Clouds"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/sok/164/oboro-palace-in-the-clouds?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/f/f/ffc2d68e-6543-43ec-b67a-afff1325a32f.jpg?1562497052" class="front" loading="lazy" alt="Oboro, Palace in the Clouds">
       
-        
-          <section>
-            <h4>Legendary Transformers</h4>
-            
-            
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Oboro, Palace in the Clouds</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Kamigawa_Landmark.html" class="badge badge-dark mtg-tag">Kamigawa Landmark</a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+    </p>
+  </div>
+</div>
+                
               
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card1a7e242e-bb48-4134-a1c2-6033713d658f">
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Keyword_Land"></a>Keyword Land</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="carda9e80f06-ea05-4151-920f-7ddc88952169">
+  <a name="Tolaria West"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/fut/173/tolaria-west?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/a/9/a9e80f06-ea05-4151-920f-7ddc88952169.jpg?1562929228" class="front" loading="lazy" alt="Tolaria West">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Tolaria West</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Keyword_Land.html" class="badge badge-dark mtg-tag">Keyword Land</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+        <a href="tag-Tutor.html" class="badge badge-dark mtg-tag">Tutor</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Legends_Land"></a>Legends Land</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="cardd43c01b7-443d-4061-a934-6863d230c9b8">
+  <a name="Tolaria"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/leg/308/tolaria?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/d/4/d43c01b7-443d-4061-a934-6863d230c9b8.jpg?1562861342" class="front" loading="lazy" alt="Tolaria">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Tolaria</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Legends_Land.html" class="badge badge-dark mtg-tag">Legends Land</a>
+      
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Memorial"></a>Memorial</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="cardb97bb62e-45cf-4862-b181-5af463a442b5">
+  <a name="Memorial to Genius"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/dom/243/memorial-to-genius?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/b/9/b97bb62e-45cf-4862-b181-5af463a442b5.jpg?1562741840" class="front" loading="lazy" alt="Memorial to Genius">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Memorial to Genius</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Draw.html" class="badge badge-dark mtg-tag">Draw</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Memorial.html" class="badge badge-dark mtg-tag">Memorial</a>
+      
+        <a href="tag-Sac_Land.html" class="badge badge-dark mtg-tag">Sac Land</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Mono_Bounce_Land"></a>Mono Bounce Land</h4>
+              
+                <h6>Alternate Names: Karoos</h6>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="cardb92121b6-b12e-4fe3-9afb-f2c77c2796ac">
+  <a name="Coral Atoll"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/c14/287/coral-atoll?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/b/9/b92121b6-b12e-4fe3-9afb-f2c77c2796ac.jpg?1561956168" class="front" loading="lazy" alt="Coral Atoll">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Coral Atoll</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Bounce_Land.html" class="badge badge-dark mtg-tag">Bounce Land</a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Mono_Bounce_Land.html" class="badge badge-dark mtg-tag">Mono Bounce Land</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Mono_Check_Land"></a>Mono Check Land</h4>
+              
+                <h6>Alternate Names: Eldraine ETB Land, Fairytale Land</h6>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card170e792c-80d5-4775-ad95-37614574ab84">
+  <a name="Mystic Sanctuary"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/eld/247/mystic-sanctuary?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/1/7/170e792c-80d5-4775-ad95-37614574ab84.jpg?1572491237" class="front" loading="lazy" alt="Mystic Sanctuary">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Mystic Sanctuary</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Check_Land.html" class="badge badge-dark mtg-tag">Check Land</a>
+      
+        <a href="tag-Island.html" class="badge badge-info mtg-tag">Island</a>
+      
+        <a href="tag-Mono_Check_Land.html" class="badge badge-dark mtg-tag">Mono Check Land</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Mono_Depletion_Land"></a>Mono Depletion Land</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card006871fd-2641-42cb-a2ac-a33d05fc5a35">
+  <a name="Saprazzan Skerry"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/mmq/328/saprazzan-skerry?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/0/0/006871fd-2641-42cb-a2ac-a33d05fc5a35.jpg?1562378939" class="front" loading="lazy" alt="Saprazzan Skerry">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Saprazzan Skerry</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Depletion_Land.html" class="badge badge-dark mtg-tag">Depletion Land</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Mono_Depletion_Land.html" class="badge badge-dark mtg-tag">Mono Depletion Land</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Mono_Manland"></a>Mono Manland</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card8f4ab639-b439-462e-acc3-69b5d6bb29da">
+  <a name="Faerie Conclave"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/cma/248/faerie-conclave?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/8/f/8f4ab639-b439-462e-acc3-69b5d6bb29da.jpg?1562634217" class="front" loading="lazy" alt="Faerie Conclave">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Faerie Conclave</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Manland.html" class="badge badge-dark mtg-tag">Manland</a>
+      
+        <a href="tag-Mono_Manland.html" class="badge badge-dark mtg-tag">Mono Manland</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Mono_Storage_Land"></a>Mono Storage Land</h4>
+              
+                <h6>Alternate Names: Battery Land</h6>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card6769de45-903f-4269-a100-9ceca1df26ac">
+  <a name="Sand Silos"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/5ed/423/sand-silos?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/6/7/6769de45-903f-4269-a100-9ceca1df26ac.jpg?1562591347" class="front" loading="lazy" alt="Sand Silos">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Sand Silos</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Mono_Storage_Land.html" class="badge badge-dark mtg-tag">Mono Storage Land</a>
+      
+        <a href="tag-Storage_Land.html" class="badge badge-dark mtg-tag">Storage Land</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card52a69122-19c0-47ec-8bea-478511ba88e6">
+  <a name="Saprazzan Cove"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/mmq/327/saprazzan-cove?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/5/2/52a69122-19c0-47ec-8bea-478511ba88e6.jpg?1562380865" class="front" loading="lazy" alt="Saprazzan Cove">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Saprazzan Cove</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Mono_Storage_Land.html" class="badge badge-dark mtg-tag">Mono Storage Land</a>
+      
+        <a href="tag-Storage_Land.html" class="badge badge-dark mtg-tag">Storage Land</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Permanent_Color_Land"></a>Permanent Color Land</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card64b36993-666c-40d0-b61a-1d162bd06dcc">
+  <a name="Moonring Island"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/shm/276/moonring-island?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/6/4/64b36993-666c-40d0-b61a-1d162bd06dcc.jpg?1562830955" class="front" loading="lazy" alt="Moonring Island">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Moonring Island</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Island.html" class="badge badge-info mtg-tag">Island</a>
+      
+        <a href="tag-Permanent_Color_Land.html" class="badge badge-dark mtg-tag">Permanent Color Land</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Permanent_Type_Land"></a>Permanent Type Land</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="cardfd99bce1-ce39-464b-8e61-2631eb3ed6f6">
+  <a name="Tolarian Academy"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/vma/319/tolarian-academy?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/f/d/fd99bce1-ce39-464b-8e61-2631eb3ed6f6.jpg?1562946191" class="front" loading="lazy" alt="Tolarian Academy">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Tolarian Academy</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Permanent_Type_Land.html" class="badge badge-dark mtg-tag">Permanent Type Land</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Replacement_Land"></a>Replacement Land</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card4678132d-85bc-49cc-b3be-62cf709de42b">
+  <a name="Soldevi Excavations"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/me2/236/soldevi-excavations?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/4/6/4678132d-85bc-49cc-b3be-62cf709de42b.jpg?1562868541" class="front" loading="lazy" alt="Soldevi Excavations">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Soldevi Excavations</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Replacement_Land.html" class="badge badge-dark mtg-tag">Replacement Land</a>
+      
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Sac_Desert"></a>Sac Desert</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card203011ef-3737-4fd1-bd23-0e531b5a7c32">
+  <a name="Ipnu Rivulet"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/hou/180/ipnu-rivulet?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/2/0/203011ef-3737-4fd1-bd23-0e531b5a7c32.jpg?1562791814" class="front" loading="lazy" alt="Ipnu Rivulet">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Ipnu Rivulet</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Desert.html" class="badge badge-info mtg-tag">Desert</a>
+      
+        <a href="tag-Pain_Land.html" class="badge badge-dark mtg-tag">Pain Land</a>
+      
+        <a href="tag-Sac_Desert.html" class="badge badge-dark mtg-tag">Sac Desert</a>
+      
+        <a href="tag-Sac_Land.html" class="badge badge-dark mtg-tag">Sac Land</a>
+      
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Spell_Land"></a>Spell Land</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card29479ab2-c492-479c-82ba-441703b27c0c">
+  <a name="Halimar Depths"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/c18/253/halimar-depths?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/2/9/29479ab2-c492-479c-82ba-441703b27c0c.jpg?1561902677" class="front" loading="lazy" alt="Halimar Depths">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Halimar Depths</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Spell_Land.html" class="badge badge-dark mtg-tag">Spell Land</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card29b0027d-c232-4cdd-89c4-75947687aa71">
+  <a name="Skyline Cascade"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bfz/246/skyline-cascade?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/2/9/29b0027d-c232-4cdd-89c4-75947687aa71.jpg?1562904866" class="front" loading="lazy" alt="Skyline Cascade">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Skyline Cascade</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Spell_Land.html" class="badge badge-dark mtg-tag">Spell Land</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="cardf48608ef-8526-49cc-94a9-c1efc6580a9b">
+  <a name="Soaring Seacliff"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/ddi/37/soaring-seacliff?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/f/4/f48608ef-8526-49cc-94a9-c1efc6580a9b.jpg?1562953000" class="front" loading="lazy" alt="Soaring Seacliff">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Soaring Seacliff</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Spell_Land.html" class="badge badge-dark mtg-tag">Spell Land</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Threshold_Land"></a>Threshold Land</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="cardd5d74112-7244-4c3f-a5eb-b6be671aefe8">
+  <a name="Cephalid Coliseum"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/ody/317/cephalid-coliseum?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/d/5/d5d74112-7244-4c3f-a5eb-b6be671aefe8.jpg?1562934946" class="front" loading="lazy" alt="Cephalid Coliseum">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Cephalid Coliseum</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Draw.html" class="badge badge-dark mtg-tag">Draw</a>
+      
+        <a href="tag-Pain_Land.html" class="badge badge-dark mtg-tag">Pain Land</a>
+      
+        <a href="tag-Sac_Land.html" class="badge badge-dark mtg-tag">Sac Land</a>
+      
+        <a href="tag-Threshold_Land.html" class="badge badge-dark mtg-tag">Threshold Land</a>
+      
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Transformer"></a>Transformer</h4>
+              
+              
+                
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-enchantment" id="card1a7e242e-bb48-4134-a1c2-6033713d658f">
+  <a name="Search for Azcanta &#x2f;&#x2f; Azcanta, the Sunken Ruin"></a>
   <div class="mtg-card-img-container">
     <a href="https://scryfall.com/card/xln/74/search-for-azcanta-azcanta-the-sunken-ruin?utm_source=api">
       <img src="https://img.scryfall.com/cards/normal/front/1/a/1a7e242e-bb48-4134-a1c2-6033713d658f.jpg?1562551479" class="front" loading="lazy" alt="Search for Azcanta &#x2f;&#x2f; Azcanta, the Sunken Ruin">
@@ -446,754 +1248,39 @@
     <h6 class="card-title">Search for Azcanta &#x2f;&#x2f; Azcanta, the Sunken Ruin</h6>
     <p class="card-text">
       
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
       
       
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Legendary_Transformers.html" class="badge badge-dark mtg-tag">Legendary Transformers</a>
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
       
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
       
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
       
-        
+        <a href="tag-Transformer.html" class="badge badge-dark mtg-tag">Transformer</a>
       
-        
-          <section>
-            <h4>Mono Bounces</h4>
-            
-              <h6>Alternate Names: Karoos</h6>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="cardb92121b6-b12e-4fe3-9afb-f2c77c2796ac">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/c14/287/coral-atoll?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/b/9/b92121b6-b12e-4fe3-9afb-f2c77c2796ac.jpg?1561956168" class="front" loading="lazy" alt="Coral Atoll">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Coral Atoll</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-ETB_Spell_Lands.html" class="badge badge-dark mtg-tag">ETB Spell Lands</a>
-      
-        <a href="tag-Mono_Bounces.html" class="badge badge-dark mtg-tag">Mono Bounces</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
       
     </p>
   </div>
 </div>
+                
               
-            
-          </section>
-        
-      
-        
-          <section>
-            <h4>Mono Depletion Lands</h4>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card006871fd-2641-42cb-a2ac-a33d05fc5a35">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/mmq/328/saprazzan-skerry?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/0/0/006871fd-2641-42cb-a2ac-a33d05fc5a35.jpg?1562378939" class="front" loading="lazy" alt="Saprazzan Skerry">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Saprazzan Skerry</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Mono_Depletion_Lands.html" class="badge badge-dark mtg-tag">Mono Depletion Lands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
-      
-        
-          <section>
-            <h4>Mono Manlands</h4>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card8f4ab639-b439-462e-acc3-69b5d6bb29da">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/cma/248/faerie-conclave?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/8/f/8f4ab639-b439-462e-acc3-69b5d6bb29da.jpg?1562634217" class="front" loading="lazy" alt="Faerie Conclave">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Faerie Conclave</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Mono_Manlands.html" class="badge badge-dark mtg-tag">Mono Manlands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
-      
-        
-          <section>
-            <h4>Mono Storage Lands</h4>
-            
-              <h6>Alternate Names: Battery Lands</h6>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card6769de45-903f-4269-a100-9ceca1df26ac">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/5ed/423/sand-silos?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/6/7/6769de45-903f-4269-a100-9ceca1df26ac.jpg?1562591347" class="front" loading="lazy" alt="Sand Silos">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Sand Silos</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Mono_Storage_Lands.html" class="badge badge-dark mtg-tag">Mono Storage Lands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card52a69122-19c0-47ec-8bea-478511ba88e6">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/mmq/327/saprazzan-cove?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/5/2/52a69122-19c0-47ec-8bea-478511ba88e6.jpg?1562380865" class="front" loading="lazy" alt="Saprazzan Cove">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Saprazzan Cove</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Mono_Storage_Lands.html" class="badge badge-dark mtg-tag">Mono Storage Lands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
-      
-        
-          <section>
-            <h4>Permanent Type Legendaries</h4>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="cardfd99bce1-ce39-464b-8e61-2631eb3ed6f6">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/vma/319/tolarian-academy?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/f/d/fd99bce1-ce39-464b-8e61-2631eb3ed6f6.jpg?1562946191" class="front" loading="lazy" alt="Tolarian Academy">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Tolarian Academy</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-        <a href="tag-Permanent_Type_Legendaries.html" class="badge badge-dark mtg-tag">Permanent Type Legendaries</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
-      
-        
-          <section>
-            <h4>Replacement Lands</h4>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card4678132d-85bc-49cc-b3be-62cf709de42b">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/me2/236/soldevi-excavations?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/4/6/4678132d-85bc-49cc-b3be-62cf709de42b.jpg?1562868541" class="front" loading="lazy" alt="Soldevi Excavations">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Soldevi Excavations</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-        <a href="tag-Replacement_Lands.html" class="badge badge-dark mtg-tag">Replacement Lands</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
-      
-        
-          <section>
-            <h4>Sac Any Color</h4>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card9e492399-d514-485a-8cdd-a3797a05e47a">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/ody/325/seafloor-debris?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/9/e/9e492399-d514-485a-8cdd-a3797a05e47a.jpg?1562924445" class="front" loading="lazy" alt="Seafloor Debris">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Seafloor Debris</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-        <a href="tag-Sac_Any_Color.html" class="badge badge-dark mtg-tag">Sac Any Color</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
-      
-        
-          <section>
-            <h4>Sac Deserts</h4>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card203011ef-3737-4fd1-bd23-0e531b5a7c32">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/hou/180/ipnu-rivulet?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/2/0/203011ef-3737-4fd1-bd23-0e531b5a7c32.jpg?1562791814" class="front" loading="lazy" alt="Ipnu Rivulet">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Ipnu Rivulet</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Deserts.html" class="badge badge-info mtg-tag">Deserts</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-        <a href="tag-Sac_Deserts.html" class="badge badge-dark mtg-tag">Sac Deserts</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
-      
-        
-          <section>
-            <h4>Shadowmoor Utility Lands</h4>
-            
-              <h6>Alternate Names: Permanent Utility Lands</h6>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card64b36993-666c-40d0-b61a-1d162bd06dcc">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/shm/276/moonring-island?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/6/4/64b36993-666c-40d0-b61a-1d162bd06dcc.jpg?1562830955" class="front" loading="lazy" alt="Moonring Island">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Moonring Island</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Islands.html" class="badge badge-info mtg-tag">Islands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-        <a href="tag-Shadowmoor_Utility_Lands.html" class="badge badge-dark mtg-tag">Shadowmoor Utility Lands</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
-      
-        
-          <section>
-            <h4>Snow Basics</h4>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card33893d4a-6304-4e13-9282-2a220a762715">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/me2/242/snow-covered-island?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/3/3/33893d4a-6304-4e13-9282-2a220a762715.jpg?1562868074" class="front" loading="lazy" alt="Snow-Covered Island">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Snow-Covered Island</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Basics.html" class="badge badge-info mtg-tag">Basics</a>
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Islands.html" class="badge badge-info mtg-tag">Islands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-        <a href="tag-Snow.html" class="badge badge-info mtg-tag">Snow</a>
-      
-        <a href="tag-Snow_Basics.html" class="badge badge-info mtg-tag">Snow Basics</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
-      
-        
-          <section>
-            <h4>Threshold Lands</h4>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="cardd5d74112-7244-4c3f-a5eb-b6be671aefe8">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/ody/317/cephalid-coliseum?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/d/5/d5d74112-7244-4c3f-a5eb-b6be671aefe8.jpg?1562934946" class="front" loading="lazy" alt="Cephalid Coliseum">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Cephalid Coliseum</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-        <a href="tag-Threshold_Lands.html" class="badge badge-dark mtg-tag">Threshold Lands</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
-      
-        
-      
-        
-          <section>
-            <h4>Zendikar Landmarks</h4>
-            
-            
-              
-                <div class="card d-inline-flex border-0 m-2 mtg-card" id="card3c84cf70-4164-47ea-8da1-c0ca1ac132e1">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/zen/218/magosi-the-waterveil?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/3/c/3c84cf70-4164-47ea-8da1-c0ca1ac132e1.jpg?1562611444" class="front" loading="lazy" alt="Magosi, the Waterveil">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Magosi, the Waterveil</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-        <a href="tag-Zendikar_Landmarks.html" class="badge badge-dark mtg-tag">Zendikar Landmarks</a>
-      
-    </p>
-  </div>
-</div>
-              
-            
-          </section>
-        
-      
-      
-        <section>
-          <h4>Other</h4>
+            </section>
           
-            
-              <div class="card d-inline-flex border-0 m-2 mtg-card" id="cardaa2c9306-b065-4813-8817-ae46a7725b5e">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/mma/219/academy-ruins?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/a/a/aa2c9306-b065-4813-8817-ae46a7725b5e.jpg?1561968079" class="front" loading="lazy" alt="Academy Ruins">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Academy Ruins</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-            
+        
           
-            
-              <div class="card d-inline-flex border-0 m-2 mtg-card" id="card433cfdee-7e3c-4349-aa89-7e57723d2bf8">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/ddt/26/blighted-cataract?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/4/3/433cfdee-7e3c-4349-aa89-7e57723d2bf8.jpg?1562908555" class="front" loading="lazy" alt="Blighted Cataract">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Blighted Cataract</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-            
-          
-            
-              <div class="card d-inline-flex border-0 m-2 mtg-card" id="card0a8b9d37-e89c-44ad-bd1b-51cb06ec3e0b">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/eld/242/castle-vantress?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/0/a/0a8b9d37-e89c-44ad-bd1b-51cb06ec3e0b.jpg?1572491190" class="front" loading="lazy" alt="Castle Vantress">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Castle Vantress</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-            
-          
-            
-              <div class="card d-inline-flex border-0 m-2 mtg-card" id="card000f1f50-08e5-4d83-8159-98f06a0e2279">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/eld/255/island?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/0/0/000f1f50-08e5-4d83-8159-98f06a0e2279.jpg?1572491305" class="front" loading="lazy" alt="Island">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Island</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Basics.html" class="badge badge-info mtg-tag">Basics</a>
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Islands.html" class="badge badge-info mtg-tag">Islands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-            
-          
-            
-              <div class="card d-inline-flex border-0 m-2 mtg-card" id="cardb97bb62e-45cf-4862-b181-5af463a442b5">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/dom/243/memorial-to-genius?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/b/9/b97bb62e-45cf-4862-b181-5af463a442b5.jpg?1562741840" class="front" loading="lazy" alt="Memorial to Genius">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Memorial to Genius</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-            
-          
-            
-              <div class="card d-inline-flex border-0 m-2 mtg-card" id="cardffc2d68e-6543-43ec-b67a-afff1325a32f">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/sok/164/oboro-palace-in-the-clouds?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/f/f/ffc2d68e-6543-43ec-b67a-afff1325a32f.jpg?1562497052" class="front" loading="lazy" alt="Oboro, Palace in the Clouds">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Oboro, Palace in the Clouds</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-            
-          
-            
-              <div class="card d-inline-flex border-0 m-2 mtg-card" id="cardd993c973-2eb6-423c-8ee9-10749a751524">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/ons/322/riptide-laboratory?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/d/9/d993c973-2eb6-423c-8ee9-10749a751524.jpg?1562946819" class="front" loading="lazy" alt="Riptide Laboratory">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Riptide Laboratory</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-            
-          
-            
-              <div class="card d-inline-flex border-0 m-2 mtg-card" id="card21fe2f1b-bfd1-4682-ae23-069300de3791">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/me2/237/svyelunite-temple?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/2/1/21fe2f1b-bfd1-4682-ae23-069300de3791.jpg?1562867851" class="front" loading="lazy" alt="Svyelunite Temple">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Svyelunite Temple</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-            
-          
-            
-              <div class="card d-inline-flex border-0 m-2 mtg-card" id="cardb6ed7ca8-fd91-46e3-9149-a3de23c7078e">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/mir/330/teferis-isle?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/b/6/b6ed7ca8-fd91-46e3-9149-a3de23c7078e.jpg?1562721425" class="front" loading="lazy" alt="Teferi&#x27;s Isle">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Teferi&#x27;s Isle</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-            
-          
-            
-              <div class="card d-inline-flex border-0 m-2 mtg-card" id="carda9e80f06-ea05-4151-920f-7ddc88952169">
-  <div class="mtg-card-img-container">
-    <a href="https://scryfall.com/card/fut/173/tolaria-west?utm_source=api">
-      <img src="https://img.scryfall.com/cards/normal/front/a/9/a9e80f06-ea05-4151-920f-7ddc88952169.jpg?1562929228" class="front" loading="lazy" alt="Tolaria West">
-      
-    </a>
-    
-  </div>
-  <div class="card-body p-0">
-    <h6 class="card-title">Tolaria West</h6>
-    <p class="card-text">
-      
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
-      
-      
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
-      
-        <a href="tag-Keyword_Lands.html" class="badge badge-dark mtg-tag">Keyword Lands</a>
-      
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
-      
-    </p>
-  </div>
-</div>
-            
-          
-            
-              <div class="card d-inline-flex border-0 m-2 mtg-card" id="card65887a2e-893e-429d-8831-bd6e60941300">
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Vivid_Land"></a>Vivid Land</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card65887a2e-893e-429d-8831-bd6e60941300">
+  <a name="Vivid Creek"></a>
   <div class="mtg-card-img-container">
     <a href="https://scryfall.com/card/c17/290/vivid-creek?utm_source=api">
       <img src="https://img.scryfall.com/cards/normal/front/6/5/65887a2e-893e-429d-8831-bd6e60941300.jpg?1562610843" class="front" loading="lazy" alt="Vivid Creek">
@@ -1205,202 +1292,3054 @@
     <h6 class="card-title">Vivid Creek</h6>
     <p class="card-text">
       
-        <a href="lands.html" class="badge badge-pill badge-danger mtg-category">Land</a>
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
       
       
-        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color: <span class="mana su"></span> Blue</a>
+        <a href="tag-Any_Color_Mana.html" class="badge badge-success mtg-tag">Mana:  Any Color</a>
       
-        <a href="tag-Monocolor.html" class="badge badge-warning mtg-tag">Color:  Monocolor</a>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Charge_Counter.html" class="badge badge-dark mtg-tag">Charge Counter</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+        <a href="tag-Vivid_Land.html" class="badge badge-dark mtg-tag">Vivid Land</a>
       
     </p>
   </div>
 </div>
-            
+                
+              
+            </section>
           
-        </section>
+        
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Land-Zendikar_Landmark"></a>Zendikar Landmark</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="card3c84cf70-4164-47ea-8da1-c0ca1ac132e1">
+  <a name="Magosi, the Waterveil"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/zen/218/magosi-the-waterveil?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/3/c/3c84cf70-4164-47ea-8da1-c0ca1ac132e1.jpg?1562611444" class="front" loading="lazy" alt="Magosi, the Waterveil">
       
-    </section>
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Magosi, the Waterveil</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Tapland.html" class="badge badge-dark mtg-tag">Tapland</a>
+      
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
+      
+        <a href="tag-Zendikar_Landmark.html" class="badge badge-dark mtg-tag">Zendikar Landmark</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
+        
+        
+          <section>
+            <h4 class="text-secondary"><a name="Land-Other"></a>Other</h4>
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="cardaa2c9306-b065-4813-8817-ae46a7725b5e">
+  <a name="Academy Ruins"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/mma/219/academy-ruins?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/a/a/aa2c9306-b065-4813-8817-ae46a7725b5e.jpg?1561968079" class="front" loading="lazy" alt="Academy Ruins">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Academy Ruins</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="cardd993c973-2eb6-423c-8ee9-10749a751524">
+  <a name="Riptide Laboratory"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/ons/322/riptide-laboratory?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/d/9/d993c973-2eb6-423c-8ee9-10749a751524.jpg?1562946819" class="front" loading="lazy" alt="Riptide Laboratory">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Riptide Laboratory</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Tribal_Land.html" class="badge badge-dark mtg-tag">Tribal Land</a>
+      
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land" id="cardb6ed7ca8-fd91-46e3-9149-a3de23c7078e">
+  <a name="Teferi&#x27;s Isle"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/mir/330/teferis-isle?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/b/6/b6ed7ca8-fd91-46e3-9149-a3de23c7078e.jpg?1562721425" class="front" loading="lazy" alt="Teferi&#x27;s Isle">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Teferi&#x27;s Isle</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </section>
+        
+      </section>
+    
   
-    <section>
-      <h3>Rocks</h3>
-      
+    
+      <section class="mtg-filter-artifact">
+        <h3 class="text-primary mt-2"><a name="Artifact"></a>Artifact</h3>
         
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Artifact-Artifact_Land"></a>Artifact Land</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-artifact" id="card1fedc183-2d95-471c-ba78-2169e4df13f8">
+  <a name="Seat of the Synod"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/c18/278/seat-of-the-synod?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/1/f/1fedc183-2d95-471c-ba78-2169e4df13f8.jpg?1561901614" class="front" loading="lazy" alt="Seat of the Synod">
       
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Seat of the Synod</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+      
+        <a href="tag-Artifact_Land.html" class="badge badge-dark mtg-tag">Artifact Land</a>
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
+          
+        
+          
+        
+        
+          <section>
+            <h4 class="text-secondary"><a name="Artifact-Other"></a>Other</h4>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact" id="cardcd2cb84e-c079-486e-87ad-d188fe38bc76">
+  <a name="Blue Mana Battery"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/4ed/300/blue-mana-battery?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/c/d/cd2cb84e-c079-486e-87ad-d188fe38bc76.jpg?1559603819" class="front" loading="lazy" alt="Blue Mana Battery">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Blue Mana Battery</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
       
       
-    </section>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Charge_Counter.html" class="badge badge-dark mtg-tag">Charge Counter</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+        <a href="tag-Rock.html" class="badge badge-dark mtg-tag">Rock</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact" id="card78d22400-39f6-444d-b508-783a7df7e945">
+  <a name="Eye of Ramos"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/mmq/294/eye-of-ramos?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/7/8/78d22400-39f6-444d-b508-783a7df7e945.jpg?1562381375" class="front" loading="lazy" alt="Eye of Ramos">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Eye of Ramos</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Egg.html" class="badge badge-dark mtg-tag">Egg</a>
+      
+        <a href="tag-Ramos.html" class="badge badge-dark mtg-tag">Ramos</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+        <a href="tag-Rock.html" class="badge badge-dark mtg-tag">Rock</a>
+      
+        <a href="tag-Sac_Ritual.html" class="badge badge-dark mtg-tag">Sac Ritual</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact" id="card0f7f1148-7b1b-4969-a2f8-428de1e2e8ff">
+  <a name="Midnight Clock"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/eld/54/midnight-clock?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/0/f/0f7f1148-7b1b-4969-a2f8-428de1e2e8ff.jpg?1572489934" class="front" loading="lazy" alt="Midnight Clock">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Midnight Clock</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+        <a href="tag-Rock.html" class="badge badge-dark mtg-tag">Rock</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact" id="cardea1feac0-d3a7-45eb-9719-1cdaf51ea0b6">
+  <a name="Mox Sapphire"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/vma/9/mox-sapphire?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/e/a/ea1feac0-d3a7-45eb-9719-1cdaf51ea0b6.jpg?1562942006" class="front" loading="lazy" alt="Mox Sapphire">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Mox Sapphire</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_0.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s0"></span></a>
+      
+        <a href="tag-Mox.html" class="badge badge-dark mtg-tag">Mox</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+        <a href="tag-Rock.html" class="badge badge-dark mtg-tag">Rock</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact mtg-filter-creature" id="cardd2eac3d4-2a7c-49d3-bcbb-e92b46303c31">
+  <a name="Silver Myr"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/td2/8/silver-myr?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/d/2/d2eac3d4-2a7c-49d3-bcbb-e92b46303c31.jpg?1562937336" class="front" loading="lazy" alt="Silver Myr">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Silver Myr</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Myr.html" class="badge badge-info mtg-tag">Myr</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+        <a href="tag-Rock.html" class="badge badge-dark mtg-tag">Rock</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact" id="card61d27478-5a03-47a8-a185-8a0c9b4e0474">
+  <a name="Sky Diamond"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/c14/269/sky-diamond?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/6/1/61d27478-5a03-47a8-a185-8a0c9b4e0474.jpg?1561944328" class="front" loading="lazy" alt="Sky Diamond">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Sky Diamond</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Diamond.html" class="badge badge-dark mtg-tag">Diamond</a>
+      
+        <a href="tag-ETB_Tapped.html" class="badge badge-dark mtg-tag">ETB Tapped</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+        <a href="tag-Rock.html" class="badge badge-dark mtg-tag">Rock</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </section>
+        
+      </section>
+    
   
-    <section>
-      <h3>Dorks</h3>
-      
+    
+      <section class="mtg-filter-creature">
+        <h3 class="text-primary mt-2"><a name="Creature"></a>Creature</h3>
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Creature-Transformer"></a>Transformer</h4>
+              
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card22e816af-df55-4a3f-a6e7-0ff3bb1b45b5">
+  <a name="Curious Homunculus &#x2f;&#x2f; Voracious Reader"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/emn/54/curious-homunculus-voracious-reader?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/2/2/22e816af-df55-4a3f-a6e7-0ff3bb1b45b5.jpg?1540920747" class="front" loading="lazy" alt="Curious Homunculus &#x2f;&#x2f; Voracious Reader">
       
+        <img src="https://img.scryfall.com/cards/normal/back/2/2/22e816af-df55-4a3f-a6e7-0ff3bb1b45b5.jpg?1540920747" class="back" loading="lazy" alt="Curious Homunculus &#x2f;&#x2f; Voracious Reader">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#card22e816af-df55-4a3f-a6e7-0ff3bb1b45b5 .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Curious Homunculus &#x2f;&#x2f; Voracious Reader</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Cost_Reduction.html" class="badge badge-dark mtg-tag">Cost Reduction</a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Eldrazi.html" class="badge badge-info mtg-tag">Eldrazi</a>
+      
+        <a href="tag-Mana_Restriction.html" class="badge badge-dark mtg-tag">Mana Restriction</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+        <a href="tag-Transformer.html" class="badge badge-dark mtg-tag">Transformer</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+                
+              
+            </section>
+          
         
+          
+        
+          
+        
+        
+          <section>
+            <h4 class="text-secondary"><a name="Creature-Other"></a>Other</h4>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="cardfe75a1c1-e55e-4c49-9419-43bf5962142d">
+  <a name="Apprentice Wizard"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/me1/30/apprentice-wizard?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/f/e/fe75a1c1-e55e-4c49-9419-43bf5962142d.jpg?1559592282" class="front" loading="lazy" alt="Apprentice Wizard">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Apprentice Wizard</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
       
       
-    </section>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Filter.html" class="badge badge-dark mtg-tag">Filter</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card32e58ba3-4202-4f91-b27f-7528d27c1d5c">
+  <a name="Arbiter of the Ideal"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bng/31/arbiter-of-the-ideal?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/3/2/32e58ba3-4202-4f91-b27f-7528d27c1d5c.jpg?1562502879" class="front" loading="lazy" alt="Arbiter of the Ideal">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Arbiter of the Ideal</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_6.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s6"></span></a>
+      
+        <a href="tag-Dig.html" class="badge badge-dark mtg-tag">Dig</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="cardd7eca8c7-cc51-44d6-a529-ccf128136c07">
+  <a name="Benthic Explorers"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/me3/29/benthic-explorers?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/d/7/d7eca8c7-cc51-44d6-a529-ccf128136c07.jpg?1562940675" class="front" loading="lazy" alt="Benthic Explorers">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Benthic Explorers</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Opponent_Mana.html" class="badge badge-success mtg-tag">Mana:  Opponent</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card0f16252d-0692-43f6-b980-ed9a6d937637">
+  <a name="Braids, Conjurer Adept"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/plc/36/braids-conjurer-adept?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/0/f/0f16252d-0692-43f6-b980-ed9a6d937637.jpg?1562565772" class="front" loading="lazy" alt="Braids, Conjurer Adept">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Braids, Conjurer Adept</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="cardbbe4bb6f-bec6-49d2-99d7-e3750a0ea03f">
+  <a name="Cultivator Drone"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/ogw/42/cultivator-drone?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/b/b/bbe4bb6f-bec6-49d2-99d7-e3750a0ea03f.jpg?1562932773" class="front" loading="lazy" alt="Cultivator Drone">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Cultivator Drone</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Eldrazi.html" class="badge badge-info mtg-tag">Eldrazi</a>
+      
+        <a href="tag-Mana_Restriction.html" class="badge badge-dark mtg-tag">Mana Restriction</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card093610b6-3fe3-4f12-859f-569857fa341b">
+  <a name="Deranged Assistant"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/uma/49/deranged-assistant?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/0/9/093610b6-3fe3-4f12-859f-569857fa341b.jpg?1547516168" class="front" loading="lazy" alt="Deranged Assistant">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Deranged Assistant</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="cardf527bc84-fa66-4763-a035-344e6458e54b">
+  <a name="Dreamscape Artist"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/uma/52/dreamscape-artist?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/f/5/f527bc84-fa66-4763-a035-344e6458e54b.jpg?1547516210" class="front" loading="lazy" alt="Dreamscape Artist">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Dreamscape Artist</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Basic_Fetch.html" class="badge badge-dark mtg-tag">Basic Fetch</a>
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Fetch.html" class="badge badge-dark mtg-tag">Fetch</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card0fd5b48c-6850-47d4-8106-297be6c8f708">
+  <a name="Drowner of Hope"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bfz/57/drowner-of-hope?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/0/f/0fd5b48c-6850-47d4-8106-297be6c8f708.jpg?1562898751" class="front" loading="lazy" alt="Drowner of Hope">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Drowner of Hope</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_6.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s6"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Eldrazi.html" class="badge badge-info mtg-tag">Eldrazi</a>
+      
+        <a href="tag-Sac_Ritual.html" class="badge badge-dark mtg-tag">Sac Ritual</a>
+      
+        <a href="tag-Token.html" class="badge badge-dark mtg-tag">Token</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card9c9c1a10-446e-492a-95cc-a459dc6c08a0">
+  <a name="Eldrazi Skyspawner"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bfz/58/eldrazi-skyspawner?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/9/c/9c9c1a10-446e-492a-95cc-a459dc6c08a0.jpg?1562931948" class="front" loading="lazy" alt="Eldrazi Skyspawner">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Eldrazi Skyspawner</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Eldrazi.html" class="badge badge-info mtg-tag">Eldrazi</a>
+      
+        <a href="tag-Sac_Ritual.html" class="badge badge-dark mtg-tag">Sac Ritual</a>
+      
+        <a href="tag-Token.html" class="badge badge-dark mtg-tag">Token</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card37752e04-574f-4af3-9e9c-70d67e0d0a98">
+  <a name="Grand Architect"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/td2/10/grand-architect?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/3/7/37752e04-574f-4af3-9e9c-70d67e0d0a98.jpg?1562906196" class="front" loading="lazy" alt="Grand Architect">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Grand Architect</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Mana_Restriction.html" class="badge badge-dark mtg-tag">Mana Restriction</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="carde0855762-7068-4111-a6bf-fe6d5b092c74">
+  <a name="Incubator Drone"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bfz/60/incubator-drone?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/e/0/e0855762-7068-4111-a6bf-fe6d5b092c74.jpg?1562948433" class="front" loading="lazy" alt="Incubator Drone">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Incubator Drone</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Eldrazi.html" class="badge badge-info mtg-tag">Eldrazi</a>
+      
+        <a href="tag-Sac_Ritual.html" class="badge badge-dark mtg-tag">Sac Ritual</a>
+      
+        <a href="tag-Token.html" class="badge badge-dark mtg-tag">Token</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="cardacfd5dc9-affe-473c-92f6-7d0764332e7a">
+  <a name="Merfolk Wayfinder"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/ddt/12/merfolk-wayfinder?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/a/c/acfd5dc9-affe-473c-92f6-7d0764332e7a.jpg?1562929844" class="front" loading="lazy" alt="Merfolk Wayfinder">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Merfolk Wayfinder</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Dig.html" class="badge badge-dark mtg-tag">Dig</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="carda382a9b8-0b19-46c2-a547-a22d6e23d0ac">
+  <a name="Oboro Breezecaller"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/sok/48/oboro-breezecaller?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/a/3/a382a9b8-0b19-46c2-a547-a22d6e23d0ac.jpg?1562495145" class="front" loading="lazy" alt="Oboro Breezecaller">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Oboro Breezecaller</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card5e5fcd6f-1653-44bf-a796-4c9ff9adf390">
+  <a name="Patron of the Moon"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bok/45/patron-of-the-moon?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/5/e/5e5fcd6f-1653-44bf-a796-4c9ff9adf390.jpg?1562877337" class="front" loading="lazy" alt="Patron of the Moon">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Patron of the Moon</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_7.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s7"></span></a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="cardfbe5d85f-bfd3-49e1-a943-ed1ade6bb2a2">
+  <a name="Peregrine Drake"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bbd/128/peregrine-drake?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/f/b/fbe5d85f-bfd3-49e1-a943-ed1ade6bb2a2.jpg?1562945824" class="front" loading="lazy" alt="Peregrine Drake">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Peregrine Drake</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_5.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s5"></span></a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card64d64264-895f-4d4d-8e5c-ab1d0d6e340b">
+  <a name="Qarsi Deceiver"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/dtk/71/qarsi-deceiver?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/6/4/64d64264-895f-4d4d-8e5c-ab1d0d6e340b.jpg?1562787393" class="front" loading="lazy" alt="Qarsi Deceiver">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Qarsi Deceiver</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Mana_Restriction.html" class="badge badge-dark mtg-tag">Mana Restriction</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="cardec947bb8-8cb0-4e1e-8873-fe9bb9761e01">
+  <a name="Renowned Weaponsmith"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/m20/72/renowned-weaponsmith?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/e/c/ec947bb8-8cb0-4e1e-8873-fe9bb9761e01.jpg?1563898701" class="front" loading="lazy" alt="Renowned Weaponsmith">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Renowned Weaponsmith</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Mana_Restriction.html" class="badge badge-dark mtg-tag">Mana Restriction</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card124308ac-1bf6-4a79-8aaa-f3be8eeb3e78">
+  <a name="Sea Scryer"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/mir/90/sea-scryer?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/1/2/124308ac-1bf6-4a79-8aaa-f3be8eeb3e78.jpg?1562717848" class="front" loading="lazy" alt="Sea Scryer">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Sea Scryer</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Filter.html" class="badge badge-dark mtg-tag">Filter</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="carda9957cbe-da88-41fe-a4aa-e32ec9e7aa38">
+  <a name="Shoreline Ranger"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/a25/72/shoreline-ranger?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/a/9/a9957cbe-da88-41fe-a4aa-e32ec9e7aa38.jpg?1562439552" class="front" loading="lazy" alt="Shoreline Ranger">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Shoreline Ranger</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_6.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s6"></span></a>
+      
+        <a href="tag-Landcycling.html" class="badge badge-dark mtg-tag">Landcycling</a>
+      
+        <a href="tag-Tutor.html" class="badge badge-dark mtg-tag">Tutor</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-artifact mtg-filter-creature" id="cardd2eac3d4-2a7c-49d3-bcbb-e92b46303c31">
+  <a name="Silver Myr"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/td2/8/silver-myr?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/d/2/d2eac3d4-2a7c-49d3-bcbb-e92b46303c31.jpg?1562937336" class="front" loading="lazy" alt="Silver Myr">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Silver Myr</h6>
+    <p class="card-text">
+      
+        <a href="artifacts.html" class="badge badge-pill badge-primary mtg-card-type">Artifact</a>
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Myr.html" class="badge badge-info mtg-tag">Myr</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+        <a href="tag-Rock.html" class="badge badge-dark mtg-tag">Rock</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card87174f2d-bd11-4a40-b1c7-79040be04716">
+  <a name="Soldevi Machinist"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/me4/63/soldevi-machinist?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/8/7/87174f2d-bd11-4a40-b1c7-79040be04716.jpg?1562926884" class="front" loading="lazy" alt="Soldevi Machinist">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Soldevi Machinist</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Mana_Restriction.html" class="badge badge-dark mtg-tag">Mana Restriction</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="cardb31b2e24-1a70-48bd-8946-ff29e12c6f3d">
+  <a name="Trickster Mage"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/nem/49/trickster-mage?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/b/3/b31b2e24-1a70-48bd-8946-ff29e12c6f3d.jpg?1562631577" class="front" loading="lazy" alt="Trickster Mage">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Trickster Mage</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_1.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s1"></span></a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card9e7fb3c0-5159-4d1f-8490-ce4c9a60f567">
+  <a name="Urza, Lord High Artificer"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/mh1/75/urza-lord-high-artificer?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/9/e/9e7fb3c0-5159-4d1f-8490-ce4c9a60f567.jpg?1567181307" class="front" loading="lazy" alt="Urza, Lord High Artificer">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Urza, Lord High Artificer</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="cardac3d65ac-efa0-4bce-bc43-802fe1909b58">
+  <a name="Vedalken Engineer"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/c16/103/vedalken-engineer?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/a/c/ac3d65ac-efa0-4bce-bc43-802fe1909b58.jpg?1562414939" class="front" loading="lazy" alt="Vedalken Engineer">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Vedalken Engineer</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Any_Color_Mana.html" class="badge badge-success mtg-tag">Mana:  Any Color</a>
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Mana_Restriction.html" class="badge badge-dark mtg-tag">Mana Restriction</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-creature" id="card5c7795fb-2995-4dff-bc1b-7809bfbb1657">
+  <a name="Vodalian Arcanist"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/dom/73/vodalian-arcanist?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/5/c/5c7795fb-2995-4dff-bc1b-7809bfbb1657.jpg?1562736340" class="front" loading="lazy" alt="Vodalian Arcanist">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Vodalian Arcanist</h6>
+    <p class="card-text">
+      
+        <a href="creatures.html" class="badge badge-pill badge-primary mtg-card-type">Creature</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Dork.html" class="badge badge-dark mtg-tag">Dork</a>
+      
+        <a href="tag-Mana_Restriction.html" class="badge badge-dark mtg-tag">Mana Restriction</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+          </section>
+        
+      </section>
+    
   
-    <section>
-      <h3>Ramp</h3>
-      
+    
+      <section class="mtg-filter-enchantment">
+        <h3 class="text-primary mt-2"><a name="Enchantment"></a>Enchantment</h3>
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
-      
+          
         
+          
+            <section>
+              <h4 class="text-secondary mt-3"><a name="Enchantment-Transformer"></a>Transformer</h4>
+              
+              
+                
+              
+                
+                  <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-enchantment" id="card1a7e242e-bb48-4134-a1c2-6033713d658f">
+  <a name="Search for Azcanta &#x2f;&#x2f; Azcanta, the Sunken Ruin"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/xln/74/search-for-azcanta-azcanta-the-sunken-ruin?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/1/a/1a7e242e-bb48-4134-a1c2-6033713d658f.jpg?1562551479" class="front" loading="lazy" alt="Search for Azcanta &#x2f;&#x2f; Azcanta, the Sunken Ruin">
       
+        <img src="https://img.scryfall.com/cards/normal/back/1/a/1a7e242e-bb48-4134-a1c2-6033713d658f.jpg?1562551479" class="back" loading="lazy" alt="Search for Azcanta &#x2f;&#x2f; Azcanta, the Sunken Ruin">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#card1a7e242e-bb48-4134-a1c2-6033713d658f .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Search for Azcanta &#x2f;&#x2f; Azcanta, the Sunken Ruin</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Legendary.html" class="badge badge-info mtg-tag">Legendary</a>
+      
+        <a href="tag-Transformer.html" class="badge badge-dark mtg-tag">Transformer</a>
+      
+        <a href="tag-Utility_Land.html" class="badge badge-dark mtg-tag">Utility Land</a>
+      
+    </p>
+  </div>
+</div>
+                
+              
+            </section>
+          
         
+          
+        
+          
+        
+        
+          <section>
+            <h4 class="text-secondary"><a name="Enchantment-Other"></a>Other</h4>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="cardb0df72c6-4f54-43ec-a4e0-5733003f4fd7">
+  <a name="Annex"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/9ed/59/annex?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/b/0/b0df72c6-4f54-43ec-a4e0-5733003f4fd7.jpg?1562740318" class="front" loading="lazy" alt="Annex">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Annex</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
       
       
-    </section>
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Enchant_Land.html" class="badge badge-dark mtg-tag">Enchant Land</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="carddcb32615-4a97-4196-8c8c-3cd2748e74ea">
+  <a name="Iceberg"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/me2/49/iceberg?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/d/c/dcb32615-4a97-4196-8c8c-3cd2748e74ea.jpg?1562870937" class="front" loading="lazy" alt="Iceberg">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Iceberg</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="card7990ebba-e9f2-4ba4-a352-e26ec81d4bed">
+  <a name="Imprisoned in the Moon"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/emn/65/imprisoned-in-the-moon?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/7/9/7990ebba-e9f2-4ba4-a352-e26ec81d4bed.jpg?1562739521" class="front" loading="lazy" alt="Imprisoned in the Moon">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Imprisoned in the Moon</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="card6e091dd6-149f-46ea-bae0-224e79e3aacb">
+  <a name="Mind Over Matter"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/exo/40/mind-over-matter?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/6/e/6e091dd6-149f-46ea-bae0-224e79e3aacb.jpg?1562087852" class="front" loading="lazy" alt="Mind Over Matter">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Mind Over Matter</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_6.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s6"></span></a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="card788ed793-3993-4a63-b9f9-9ac3947c3108">
+  <a name="Snowfall"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/ice/101/snowfall?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/7/8/788ed793-3993-4a63-b9f9-9ac3947c3108.jpg?1562917282" class="front" loading="lazy" alt="Snowfall">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Snowfall</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Additional_Mana.html" class="badge badge-success mtg-tag">Mana:  Additional</a>
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="carde2cf16f8-6e69-46b3-8453-1d1a2a5670e2">
+  <a name="Training Grounds"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/roe/91/training-grounds?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/e/2/e2cf16f8-6e69-46b3-8453-1d1a2a5670e2.jpg?1562709585" class="front" loading="lazy" alt="Training Grounds">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Training Grounds</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_1.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s1"></span></a>
+      
+        <a href="tag-Cost_Reduction.html" class="badge badge-dark mtg-tag">Cost Reduction</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-enchantment" id="card613694aa-b169-400d-8063-2b83d8303611">
+  <a name="Treachery"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/uds/50/treachery?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/6/1/613694aa-b169-400d-8063-2b83d8303611.jpg?1562444218" class="front" loading="lazy" alt="Treachery">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Treachery</h6>
+    <p class="card-text">
+      
+        <a href="enchantments.html" class="badge badge-pill badge-primary mtg-card-type">Enchantment</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_5.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s5"></span></a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </section>
+        
+      </section>
+    
+  
+    
+      <section class="mtg-filter-instant">
+        <h3 class="text-primary mt-2"><a name="Instant"></a>Instant</h3>
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+          <section>
+            <h4 class="text-secondary"><a name="Instant-Other"></a>Other</h4>
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card249a7be3-311e-4ce6-97dc-97242463ae23">
+  <a name="Abstruse Interference"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/ogw/40/abstruse-interference?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/2/4/249a7be3-311e-4ce6-97dc-97242463ae23.jpg?1562902357" class="front" loading="lazy" alt="Abstruse Interference">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Abstruse Interference</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Eldrazi.html" class="badge badge-info mtg-tag">Eldrazi</a>
+      
+        <a href="tag-Sac_Ritual.html" class="badge badge-dark mtg-tag">Sac Ritual</a>
+      
+        <a href="tag-Token.html" class="badge badge-dark mtg-tag">Token</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card03d86e0b-294f-41b8-a5cd-d3144a019334">
+  <a name="Adverse Conditions"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/bfz/54/adverse-conditions?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/0/3/03d86e0b-294f-41b8-a5cd-d3144a019334.jpg?1562895970" class="front" loading="lazy" alt="Adverse Conditions">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Adverse Conditions</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Eldrazi.html" class="badge badge-info mtg-tag">Eldrazi</a>
+      
+        <a href="tag-Sac_Ritual.html" class="badge badge-dark mtg-tag">Sac Ritual</a>
+      
+        <a href="tag-Token.html" class="badge badge-dark mtg-tag">Token</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card2047963c-3761-4d21-834a-674762248b77">
+  <a name="High Tide"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/vma/73/high-tide?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/2/0/2047963c-3761-4d21-834a-674762248b77.jpg?1564536200" class="front" loading="lazy" alt="High Tide">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">High Tide</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Additional_Mana.html" class="badge badge-success mtg-tag">Mana:  Additional</a>
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_1.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s1"></span></a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card416d2d51-8f29-4e95-b037-e8c32b081e6c">
+  <a name="Mana Drain"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/ima/65/mana-drain?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/4/1/416d2d51-8f29-4e95-b037-e8c32b081e6c.jpg?1562848002" class="front" loading="lazy" alt="Mana Drain">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Mana Drain</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Ritual.html" class="badge badge-dark mtg-tag">Ritual</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card860aa0fe-0337-458c-b864-5ef5733fbae6">
+  <a name="Reset"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/me3/48/reset?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/8/6/860aa0fe-0337-458c-b864-5ef5733fbae6.jpg?1562923286" class="front" loading="lazy" alt="Reset">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Reset</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="cardee7bf287-488c-4fdf-b9ff-fc2065697123">
+  <a name="Rewind"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/mm3/47/rewind?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/e/e/ee7bf287-488c-4fdf-b9ff-fc2065697123.jpg?1561770151" class="front" loading="lazy" alt="Rewind">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Rewind</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card20652385-465f-408b-adea-13a14fb05642">
+  <a name="Scattering Stroke"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/cmd/60/scattering-stroke?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/2/0/20652385-465f-408b-adea-13a14fb05642.jpg?1562900990" class="front" loading="lazy" alt="Scattering Stroke">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Scattering Stroke</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card1959f078-4b7b-4df2-a256-d43b2d97e853">
+  <a name="Snap"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/dds/10/snap?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/1/9/1959f078-4b7b-4df2-a256-d43b2d97e853.jpg?1562856547" class="front" loading="lazy" alt="Snap">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Snap</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card6e619ada-e9ce-4758-afd8-8def853877eb">
+  <a name="Spell Swindle"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/xln/82/spell-swindle?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/6/e/6e619ada-e9ce-4758-afd8-8def853877eb.jpg?1562557238" class="front" loading="lazy" alt="Spell Swindle">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Spell Swindle</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Any_Color_Mana.html" class="badge badge-success mtg-tag">Mana:  Any Color</a>
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_5.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s5"></span></a>
+      
+        <a href="tag-Sac_Ritual.html" class="badge badge-dark mtg-tag">Sac Ritual</a>
+      
+        <a href="tag-Token.html" class="badge badge-dark mtg-tag">Token</a>
+      
+        <a href="tag-Treasure.html" class="badge badge-dark mtg-tag">Treasure</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="carde10a2beb-81d5-49d5-b76c-23c843ae53de">
+  <a name="Traumatic Visions"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/cn2/123/traumatic-visions?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/e/1/e10a2beb-81d5-49d5-b76c-23c843ae53de.jpg?1562937060" class="front" loading="lazy" alt="Traumatic Visions">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Traumatic Visions</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Basic_Landcycling.html" class="badge badge-dark mtg-tag">Basic Landcycling</a>
+      
+        <a href="tag-Basic_Tutor.html" class="badge badge-dark mtg-tag">Basic Tutor</a>
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_5.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s5"></span></a>
+      
+        <a href="tag-Landcycling.html" class="badge badge-dark mtg-tag">Landcycling</a>
+      
+        <a href="tag-Tutor.html" class="badge badge-dark mtg-tag">Tutor</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card8497ab30-02e9-47a7-8e15-c6ae98394fb5">
+  <a name="Turnabout"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/vma/99/turnabout?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/8/4/8497ab30-02e9-47a7-8e15-c6ae98394fb5.jpg?1562921814" class="front" loading="lazy" alt="Turnabout">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Turnabout</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_4.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s4"></span></a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card1b25858a-ab2d-441a-a3fe-6d5ecd7f05be">
+  <a name="Twiddle"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/8ed/111/twiddle?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/1/b/1b25858a-ab2d-441a-a3fe-6d5ecd7f05be.jpg?1562900371" class="front" loading="lazy" alt="Twiddle">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Twiddle</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_1.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s1"></span></a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card6c47db5b-7cc4-446f-b96c-e0c69ed9f0b0">
+  <a name="Twitch"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/tpr/76/twitch?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/6/c/6c47db5b-7cc4-446f-b96c-e0c69ed9f0b0.jpg?1562429842" class="front" loading="lazy" alt="Twitch">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Twitch</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Draw.html" class="badge badge-dark mtg-tag">Draw</a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-instant" id="card97da6607-9131-4f8b-8af3-63439a59b78b">
+  <a name="Unwind"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/dom/72/unwind?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/9/7/97da6607-9131-4f8b-8af3-63439a59b78b.jpg?1562739909" class="front" loading="lazy" alt="Unwind">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Unwind</h6>
+    <p class="card-text">
+      
+        <a href="instants.html" class="badge badge-pill badge-primary mtg-card-type">Instant</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+          </section>
+        
+      </section>
+    
+  
+    
+      <section class="mtg-filter-sorcery">
+        <h3 class="text-primary mt-2"><a name="Sorcery"></a>Sorcery</h3>
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+          <section>
+            <h4 class="text-secondary"><a name="Sorcery-Other"></a>Other</h4>
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-sorcery" id="cardee3bc0e6-5e47-4a04-af15-faea70f3983a">
+  <a name="Aminatou&#x27;s Augury"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/c18/6/aminatous-augury?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/e/e/ee3bc0e6-5e47-4a04-af15-faea70f3983a.jpg?1561927397" class="front" loading="lazy" alt="Aminatou&#x27;s Augury">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Aminatou&#x27;s Augury</h6>
+    <p class="card-text">
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_8.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s8"></span></a>
+      
+        <a href="tag-Dig.html" class="badge badge-dark mtg-tag">Dig</a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-sorcery" id="card380a7357-8c07-4ee5-83a0-10672d7e85d4">
+  <a name="Drain Power"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/me4/46/drain-power?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/3/8/380a7357-8c07-4ee5-83a0-10672d7e85d4.jpg?1562908155" class="front" loading="lazy" alt="Drain Power">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Drain Power</h6>
+    <p class="card-text">
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Opponent_Mana.html" class="badge badge-success mtg-tag">Mana:  Opponent</a>
+      
+        <a href="tag-Ritual.html" class="badge badge-dark mtg-tag">Ritual</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-sorcery" id="card9f67692d-9df6-4841-a36b-26c28110b63b">
+  <a name="Energy Tap"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/4ed/69/energy-tap?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/9/f/9f67692d-9df6-4841-a36b-26c28110b63b.jpg?1559604235" class="front" loading="lazy" alt="Energy Tap">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Energy Tap</h6>
+    <p class="card-text">
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_1.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s1"></span></a>
+      
+        <a href="tag-Colorless_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sc"></span> Colorless</a>
+      
+        <a href="tag-Ritual.html" class="badge badge-dark mtg-tag">Ritual</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-sorcery" id="cardfa7b7897-36e0-415a-8bb7-602886164852">
+  <a name="Show and Tell"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/cn2/121/show-and-tell?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/f/a/fa7b7897-36e0-415a-8bb7-602886164852.jpg?1562942123" class="front" loading="lazy" alt="Show and Tell">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Show and Tell</h6>
+    <p class="card-text">
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Ramp.html" class="badge badge-dark mtg-tag">Ramp</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-sorcery" id="cardf3d62dbd-63db-4ac9-950f-9852627f23f2">
+  <a name="Time Spiral"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/usg/103/time-spiral?utm_source=api">
+      <img src="https://img.scryfall.com/cards/normal/front/f/3/f3d62dbd-63db-4ac9-950f-9852627f23f2.jpg?1562946525" class="front" loading="lazy" alt="Time Spiral">
+      
+    </a>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Time Spiral</h6>
+    <p class="card-text">
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-CMC_6.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s6"></span></a>
+      
+        <a href="tag-Draw.html" class="badge badge-dark mtg-tag">Draw</a>
+      
+        <a href="tag-Untap.html" class="badge badge-dark mtg-tag">Untap</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </section>
+        
+      </section>
+    
+  
+    
   
 
   </main>
-  <footer class="border-top d-flex bg-light w-100">
+  <footer class="border-top bg-light w-100">
     <nav class="nav">
       <a href="index.html" class="nav-link">Index</a>
+      <a href="lands.html" class="nav-link">Lands</a>
+      <a href="artifacts.html" class="nav-link">Artifacts</a>
+      <a href="creatures.html" class="nav-link">Creatures</a>
+      <a href="enchantments.html" class="nav-link">Enchantments</a>
+      <a href="instants.html" class="nav-link">Instants</a>
+      <a href="sorceries.html" class="nav-link">Sorceries</a>
+      <a href="planeswalkers.html" class="nav-link">Planeswalkers</a>
       <a href="all.html" class="nav-link">All Cards</a>
+      <a href="https://github.com/starkat99/manabase" class="nav-link">Source</a>
+      <a href="https://github.com/starkat99/manabase/issues" class="nav-link">Report Issues</a>
     </nav>
+    <p class="text-muted"><small>Portions of this site are unofficial Fan Content permitted under
+      the <a href="https://company.wizards.com">Wizards of the Coast</a> Fan Content Policy. The
+      literal and graphical information presented on this site about
+      <a href="https://magic.wizards.com">Magic: The Gathering</a>, including card images, the mana
+      symbols, and Oracle text, is copyright Wizards of the Coast, LLC, a subsidiary of Hasbro, Inc.
+      This site is not produced by, endorsed by, supported by, or affiliated with Wizards of the
+      Coast.</small></p>
+    <p class="text-muted"><small>This site is generated using data from the
+      <a href="https://scryfall.com">Scryfall</a> API. This site is not produced by, endorsed by,
+      supported by, or affiliated with Scryfall.</small></p>
   </footer>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Flip/1.1.2/jquery.flip.min.js" integrity="sha256-CAgJ3dV4c4eWFBbunpYeUQZiRlVuR4NsizhWMKgN2L4=" crossorigin="anonymous"></script>
   <script src="script/manabase.js"></script>
 </body>
 </html>

@@ -12,14 +12,8 @@
     height: 100%;
 }
 
-.mtg-tag, .mtg-category {
-    font-size: 0.80rem !important;
-}
-
-.mtg-tag img, .mtg-category img {
-    height: 0.80rem !important;
-    width: 0.80rem !important;
-    vertical-align: top;
+.mtg-tag, .mtg-card-type {
+    font-size: 0.9rem !important;
 }
 
 .mtg-transform-button {
