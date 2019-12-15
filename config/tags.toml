@@ -63,6 +63,14 @@ type = 'Eldrazi'
 kind = "type"
 type = 'Myr'
 
+[Elf]
+kind = "type"
+type = 'Elf'
+
+[Druid]
+kind = "type"
+type = 'Druid'
+
 # Mana Pool
 
 ["Colorless Mana"]
@@ -141,7 +149,7 @@ mana = ["W", "U", "G"]
 kind = "mana-pool"
 mana = ["W", "R", "G"]
 
-["Grixi Mana"]
+["Grixis Mana"]
 kind = "mana-pool"
 mana = ["U", "B", "R"]
 
