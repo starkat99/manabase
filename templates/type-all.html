@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}{{ card_type }}{% endblock %}
+
+{% block header %}
+  <h2 class="text-secondary">All {{ card_type|safe }} unfiltered</h2>
+{% endblock %}
+
+{% block body %}
+  {% for card in cards %}
+    {% include "card.html" %}
+  {% endfor %}
+{% endblock %}

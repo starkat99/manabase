@@ -5,7 +5,8 @@
 {% block body %}
   {% for card_type in card_types %}
     <section class="{{ card_type.filter_class()|safe }}">
-      <h3><a name="{{ card_type }}"></a><a href="{{ card_type.base_uri() }}">{{ card_type|safe }}</a></h3>
+      <h3><a name="{{ card_type }}"></a><a href="{{ card_type.base_uri() }}">{{ card_type.plural()|safe }}</a></h3>
+      <h5><a href="{{ card_type.all_base_uri()|safe }}">All {{ card_type.plural() }}</a></h5>
       {% for (kind, tags) in tagdb.kind_index() %}
         <section>
           <h4><a name="{{ card_type }}-{{ kind }}"></a>{{ kind|safe }}</h4>

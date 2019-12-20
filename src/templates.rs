@@ -3,6 +3,7 @@ use crate::{
     tags::{TagDb, TagIndex, TagRef},
 };
 use askama::Template;
+use chrono::prelude::*;
 use std::{
     collections::{HashMap, HashSet},
     fs::File,
@@ -16,12 +17,22 @@ pub struct IndexPage<'a> {
     card_types: [CardType; 7],
     tagdb: &'a TagDb<'a>,
     carddb: &'a TaggedCardDb<'a>,
+    timestamp: DateTime<Utc>,
 }
 
 #[derive(Debug, Template)]
 #[template(path = "all.html")]
 pub struct AllCards<'a> {
     cards: Vec<&'a TaggedCard<'a>>,
+    timestamp: DateTime<Utc>,
+}
+
+#[derive(Debug, Template)]
+#[template(path = "type-all.html")]
+pub struct TypeAllCards<'a> {
+    card_type: CardType,
+    cards: Vec<&'a TaggedCard<'a>>,
+    timestamp: DateTime<Utc>,
 }
 
 #[derive(Debug, Template)]
@@ -30,6 +41,7 @@ pub struct TypePage<'a> {
     card_type: CardType,
     tagdb: &'a TagDb<'a>,
     carddb: &'a TaggedCardDb<'a>,
+    timestamp: DateTime<Utc>,
 }
 
 #[derive(Debug, Template)]
@@ -40,10 +52,15 @@ pub struct TagPage<'a> {
     tag_index: &'a TagIndex,
     cards: HashMap<Option<TagRef<'a>>, Vec<&'a TaggedCard<'a>>>,
     carddb: &'a TaggedCardDb<'a>,
+    timestamp: DateTime<Utc>,
 }
 
 impl<'a> IndexPage<'a> {
-    pub fn new(tagdb: &'a TagDb<'a>, carddb: &'a TaggedCardDb<'a>) -> IndexPage<'a> {
+    pub fn new(
+        tagdb: &'a TagDb<'a>,
+        carddb: &'a TaggedCardDb<'a>,
+        timestamp: DateTime<Utc>,
+    ) -> IndexPage<'a> {
         IndexPage {
             card_types: [
                 CardType::Land,
@@ -56,6 +73,7 @@ impl<'a> IndexPage<'a> {
             ],
             tagdb,
             carddb,
+            timestamp,
         }
     }
 
@@ -65,15 +83,43 @@ impl<'a> IndexPage<'a> {
 }
 
 impl<'a> AllCards<'a> {
-    pub fn new(carddb: &'a TaggedCardDb<'a>) -> AllCards<'a> {
+    pub fn new(carddb: &'a TaggedCardDb<'a>, timestamp: DateTime<Utc>) -> AllCards<'a> {
         let mut cards: Vec<_> = carddb.cards().collect();
         debug!("sorting all cards");
         cards.sort_unstable_by_key(|c| &c.card().name);
-        AllCards { cards }
+        AllCards { cards, timestamp }
     }
 
     pub fn write_output(&self, output_dir: &Path) -> std::io::Result<()> {
         write!(File::create(output_dir.join("all.html"))?, "{}", self)
+    }
+}
+
+impl<'a> TypeAllCards<'a> {
+    pub fn new(
+        card_type: CardType,
+        carddb: &'a TaggedCardDb<'a>,
+        timestamp: DateTime<Utc>,
+    ) -> TypeAllCards<'a> {
+        let mut cards: Vec<_> = carddb
+            .cards()
+            .filter(|c| c.types().contains(&card_type))
+            .collect();
+        debug!("sorting all cards");
+        cards.sort_unstable_by_key(|c| &c.card().name);
+        TypeAllCards {
+            card_type,
+            cards,
+            timestamp,
+        }
+    }
+
+    pub fn write_output(&self, output_dir: &Path) -> std::io::Result<()> {
+        write!(
+            File::create(output_dir.join(self.card_type.all_base_uri()))?,
+            "{}",
+            self
+        )
     }
 }
 
@@ -82,11 +128,13 @@ impl<'a> TypePage<'a> {
         card_type: CardType,
         tagdb: &'a TagDb<'a>,
         carddb: &'a TaggedCardDb<'a>,
+        timestamp: DateTime<Utc>,
     ) -> TypePage<'a> {
         TypePage {
             card_type,
             tagdb,
             carddb,
+            timestamp,
         }
     }
 
@@ -104,6 +152,7 @@ impl<'a> TagPage<'a> {
         tag: TagRef<'a>,
         tag_index: &'a TagIndex,
         carddb: &'a TaggedCardDb<'a>,
+        timestamp: DateTime<Utc>,
     ) -> TagPage<'a> {
         let subtags: HashSet<_> = tag
             .subtags()
@@ -152,6 +201,7 @@ impl<'a> TagPage<'a> {
             tag_index,
             cards: tag_map,
             carddb,
+            timestamp,
         }
     }
 

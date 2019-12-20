@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}{{ card_type }}{% endblock %}
+{% block title %}{{ card_type.plural() }}{% endblock %}
 
 {% block header %}
-  <h2 class="text-secondary">{{ card_type|safe }}</h2>
+  <h2 class="text-secondary">{{ card_type.plural() }}</h2>
 {% endblock %}
 
 {% block body %}
+  <h5><a href="{{ card_type.all_base_uri()|safe }}">All {{ card_type.plural() }}</a></h5>
   {% for (kind, tags) in tagdb.kind_index() %}
     <section>
       <h4><a name="{{ kind }}"></a>{{ kind|safe }}</h4>

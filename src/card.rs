@@ -79,6 +79,18 @@ impl CardType {
         }
     }
 
+    pub fn all_base_uri(self) -> &'static str {
+        match self {
+            CardType::Land => "all-lands.html",
+            CardType::Artifact => "all-artifacts.html",
+            CardType::Creature => "all-creatures.html",
+            CardType::Enchantment => "all-enchantments.html",
+            CardType::Instant => "all-instants.html",
+            CardType::Sorcery => "all-sorceries.html",
+            CardType::Planeswalker => "all-planeswalkers.html",
+        }
+    }
+
     pub fn filter_class(self) -> &'static str {
         match self {
             CardType::Land => "mtg-filter-land",
@@ -100,6 +112,18 @@ impl CardType {
             CardType::Instant => "#Instant",
             CardType::Sorcery => "#Sorcery",
             CardType::Planeswalker => "#Planeswalker",
+        }
+    }
+
+    pub fn plural(self) -> &'static str {
+        match self {
+            CardType::Land => "Lands",
+            CardType::Artifact => "Artifacts",
+            CardType::Creature => "Creatures",
+            CardType::Enchantment => "Enchantments",
+            CardType::Instant => "Instants",
+            CardType::Sorcery => "Sorceries",
+            CardType::Planeswalker => "Planeswalkers",
         }
     }
 }
