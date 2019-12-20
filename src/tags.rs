@@ -1,6 +1,6 @@
 use crate::{
     color::{Color, Colors},
-    scryfall::Card,
+    scryfall::{Card, Format, Legality},
 };
 use itertools::free::join;
 use lazy_static::lazy_static;
@@ -27,6 +27,7 @@ pub enum TagKind {
     Cost,
     #[serde(rename = "type")]
     TypeLine,
+    Format,
     Other,
 }
 
@@ -49,6 +50,7 @@ pub struct TagData {
     type_regex: Option<Regex>,
     color_identity: Option<Colors>,
     mana: Option<Colors>,
+    format: Option<(Format, Legality)>,
 }
 
 #[derive(Debug)]
@@ -75,6 +77,10 @@ struct TagConfig {
     subtags: Vec<String>,
     #[serde(default)]
     kind: TagKind,
+    #[serde(default)]
+    format: Option<Format>,
+    #[serde(default)]
+    legality: Option<Legality>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,6 +95,7 @@ impl TagKind {
             TagKind::ManaPool => "badge-success",
             TagKind::TypeLine => "badge-info",
             TagKind::Cost => "badge-secondary",
+            TagKind::Format => "badge-danger",
         }
     }
 
@@ -112,6 +119,7 @@ impl std::fmt::Display for TagKind {
                 TagKind::Cost => "Converted Mana Cost",
                 TagKind::ManaPool => "Mana",
                 TagKind::TypeLine => "Type",
+                TagKind::Format => "Format Legality",
                 TagKind::Other => "Other",
             }
         )
@@ -188,6 +196,7 @@ impl TagData {
             cmc: None,
             type_regex: None,
             mana: None,
+            format: None,
         }
     }
 
@@ -210,12 +219,21 @@ impl TagData {
                 })
                 .transpose()?,
             mana: config.mana.clone().map(Colors::from_vec),
+            format: match (config.format, config.legality) {
+                (Some(f), Some(l)) => Some((f, l)),
+                _ => None,
+            },
         })
     }
 
     pub fn name(&self) -> Cow<'_, str> {
         match self.kind {
             TagKind::Cost => Cow::Owned(format!("CMC: {}", self.cmc.unwrap_or_default() as i32)),
+            TagKind::Format => Cow::Owned(format!(
+                "{} in {}",
+                self.format.unwrap().1,
+                self.format.unwrap().0
+            )),
             _ => Cow::Borrowed(&self.name),
         }
     }
@@ -283,6 +301,18 @@ impl TagData {
             }
         }
 
+        if let Some((format, legality)) = &self.format {
+            if card
+                .legalities
+                .as_ref()
+                .and_then(|legalities| legalities.get(format))
+                .filter(|l| l == &legality)
+                .is_some()
+            {
+                return true;
+            }
+        }
+
         false
     }
 }
@@ -309,6 +339,12 @@ impl std::fmt::Display for TagData {
                 &self.name.replace(" Mana", "")
             ),
             TagKind::Cost => write!(fmt, "CMC: {}", self.cmc_symbol()),
+            TagKind::Format => write!(
+                fmt,
+                "{} in {}",
+                self.format.unwrap().1,
+                self.format.unwrap().0
+            ),
             _ => write!(fmt, "{}", &self.name),
         }
     }

@@ -22,6 +22,8 @@ pub struct Card<'a> {
     #[serde(default, borrow)]
     pub image_uris: Option<HashMap<Cow<'a, str>, Cow<'a, str>>>,
     pub set_type: SetType,
+    #[serde(default)]
+    pub legalities: Option<HashMap<Format, Legality>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -43,6 +45,31 @@ pub enum SetType {
     Other,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum Format {
+    Standard,
+    Historic,
+    Pioneer,
+    Modern,
+    Legacy,
+    Vintage,
+    Pauper,
+    Commander,
+    Brawl,
+    #[serde(other)]
+    Other,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum Legality {
+    NotLegal,
+    Legal,
+    Restricted,
+    Banned,
+}
+
 impl<'a> CardList<'a> {
     pub fn cards(&'a self) -> &'a Vec<Card<'a>> {
         &self.0
@@ -55,5 +82,43 @@ impl SetType {
             SetType::Other => "",
             _ => "mtg-filter-silver-border",
         }
+    }
+}
+
+impl std::fmt::Display for Format {
+    fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        use Format::*;
+        write!(
+            fmt,
+            "{}",
+            match self {
+                Standard => "Standard",
+                Historic => "Historic",
+                Pioneer => "Pioneer",
+                Modern => "Modern",
+                Legacy => "Legacy",
+                Vintage => "Vintage",
+                Pauper => "Pauper",
+                Commander => "Commander",
+                Brawl => "Brawl",
+                Other => "Other",
+            }
+        )
+    }
+}
+
+impl std::fmt::Display for Legality {
+    fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        use Legality::*;
+        write!(
+            fmt,
+            "{}",
+            match self {
+                NotLegal => "Not Legal",
+                Legal => "Legal",
+                Restricted => "Restricted",
+                Banned => "Banned",
+            }
+        )
     }
 }
