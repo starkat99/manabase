@@ -7,6 +7,12 @@
 {% endblock %}
 
 {% block body %}
+  {% if tag.has_alt_names() %}
+    <h4 class="text-secondary">Alternate Names: {{ tag.alt_names_string() }}</h4>
+  {% endif %}
+  {% if tag.description().is_some() %}
+    <p class="text-muted">{{ tag.description().unwrap() }}</p>
+  {% endif %}
   {% for card_type in card_types %}
     {% if carddb.type_has_cards_of_tag(card_type.clone(), tag) %}
       <section class="{{ card_type.filter_class()|safe }}">
@@ -16,7 +22,10 @@
             <section>
               <h4 class="text-secondary mt-3"><a name="{{ card_type }}-{{ subtag.canonical_name() }}"></a>{{ subtag.name() }}</h4>
               {% if subtag.has_alt_names() %}
-                <h6>Alternate Names: {{ subtag.alt_names_string() }}</h6>
+                <h6 class="text-secondary">Alternate Names: {{ subtag.alt_names_string() }}</h6>
+              {% endif %}
+              {% if subtag.description().is_some() %}
+                <p class="text-muted">{{ subtag.description().unwrap() }}</p>
               {% endif %}
               {% for card in self.get_tag_cards(subtag.clone()).unwrap() %}
                 {% if card.has_type(card_type) %}

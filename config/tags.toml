@@ -71,16 +71,18 @@ type = "Urza.s"
 [Legendary]
 kind = "type"
 type = 'Legendary'
-subtags = ["Eldrazi", "Legends Land", "Kamigawa Landmark", "Transformers", "Permanent Type Land",
-    "Snow"]
+subtags = ["Eldrazi", "Legends Land", "Kamigawa Landmark", "Transformer", "Permanent Type Land",
+    "Snow", "Mox", "Cost Reduction", "Dork", "Rock", "Automatic"]
 
 [Eldrazi]
 kind = "type"
 type = 'Eldrazi'
+subtags = ["Token", "Token Generator", "Transformer", "Fetch", "Dork"]
 
 [Myr]
 kind = "type"
 type = 'Myr'
+subtags = ["Dork"]
 
 [Elf]
 kind = "type"
@@ -94,6 +96,10 @@ type = 'Druid'
 kind = "type"
 type = 'Dryad'
 
+[Human]
+kind = "type"
+type = 'Human'
+
 [Adventure]
 kind = "type"
 type = 'Adventure'
@@ -101,6 +107,10 @@ type = 'Adventure'
 [Aura]
 kind = "type"
 type = 'Aura'
+
+[Vehicle]
+kind = "type"
+type = 'Vehicle'
 
 # Mana Pool
 
@@ -337,7 +347,7 @@ alt-names = ["Rainbow Mana", "Five-Color Mana"]
 kind = "mana-pool"
 subtags = ["Sac Any Color", "Transformer", "Filter", "Pain Land",
     "Charge Counter", "Lorwyn Tribal Land", "Vivid Land", "Myr", "Rock", "Egg", "Mox", "Dork",
-    "Enchant Land", "Automatic", "Ritual"]
+    "Enchant Land", "Automatic", "Ritual", "Treasure"]
 
 ["Commander Mana"]
 kind = "mana-pool"
@@ -595,70 +605,106 @@ alt-names = ["Rainbow", "Five-Color"]
 ["CMC 0"]
 kind = "cost"
 cmc = 0
+subtags = ["Mox", "Egg", "Charge Counter"]
 
 ["CMC 1"]
 kind = "cost"
 cmc = 1
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 ["CMC 2"]
 kind = "cost"
 cmc = 2
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual", "Signet", "Diamond", "Myr",
+    "Talisman", "Medallion", "Familiar"]
 
 ["CMC 3"]
 kind = "cost"
 cmc = 3
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual", "Banner", "Dragon Monument",
+    "Cluestone", "Keyrune", "Cameo", "Locket", "Ramos", "Borderpost", "Totem", "Obelisk", "Myr",
+    "Monument"]
 
 ["CMC 4"]
 kind = "cost"
 cmc = 4
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual", "Battery"]
 
 ["CMC 5"]
 kind = "cost"
 cmc = 5
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual", "Attendant"]
 
 ["CMC 6"]
 kind = "cost"
 cmc = 6
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 ["CMC 7"]
 kind = "cost"
 cmc = 7
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 ["CMC 8"]
 kind = "cost"
 cmc = 8
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 ["CMC 9"]
 kind = "cost"
 cmc = 9
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 ["CMC 10"]
 kind = "cost"
 cmc = 10
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 ["CMC 11"]
 kind = "cost"
 cmc = 11
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 ["CMC 12"]
 kind = "cost"
 cmc = 12
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 ["CMC 13"]
 kind = "cost"
 cmc = 13
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 ["CMC 14"]
 kind = "cost"
 cmc = 14
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 ["CMC 15"]
 kind = "cost"
 cmc = 15
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 ["CMC 16"]
 kind = "cost"
 cmc = 16
+subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
+    "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual"]
 
 # Format Legality
 
@@ -759,6 +805,19 @@ legality = "banned"
 
 # Other Tags
 
+[Dork]
+alt-names = ["Mana Dork"]
+subtags = ["Myr", "Filter", "Unbtap", "Elf", "Human", "Transformer", "Eldrazi", "Token", "Tutor",
+    "Ritual", "Automatic"]
+description = "Creatures with reusable mana abilities."
+
+[Rock]
+alt-names = ["Mana Rock"]
+subtags = ["Banner", "Myr", "Signet", "Dragon Monument", "Cluestone", "Keyrune", "Locket",
+    "Charge Counter", "Battery", "Cameo", "Diamond", "Mox", "Transformer", "Vehicle", "Ramos",
+    "Borderpost", "Totem", "Obelisk", "Talisman"]
+description = "Artifacts with reusable mana abilities."
+
 ["Mono Bounce Land"]
 alt-names = ["Karoos"]
 
@@ -817,22 +876,29 @@ alt-names = ["Horizon Land"]
 alt-names = ["Homeland"]
 
 ["Basic Fetch"]
-subtags = ["Basic Fetch Land", "Blighted Land", "Panorama"]
+alt-names = ["Basic Land Fetch"]
+subtags = ["Basic Fetch Land", "Blighted Land", "Panorama", "Basic Tutor", "Scry", "Draw", "Egg"]
+description = "Cards that search your library for basic land cards and put them directly on the battlefield."
 
 ["Basic Tutor"]
-subtags = ["Basic Landcycling", "Transformer"]
+alt-names = ["Basic Land Tutor"]
+subtags = ["Basic Landcycling", "Transformer", "Egg", "Draw", "Energy", "Basic Fetch", "Scry", "Draw"]
+description = "Cards that search your library for basic land cards and put them into your hand or on top of your library."
 
 ["Bounce Land"]
 subtags = ["Mono Bounce Land", "Bounce Dual", "Lair"]
 
 ["Charge Counter"]
-subtags = ["Vivid Land"]
+subtags = ["Vivid Land", "Battery", "Automatic"]
+description = "Cards that use charge counters."
 
 ["Check Land"]
 subtags = ["Mono Check Land", "Check Dual"]
 
 ["Cost Reduction"]
-subtags = ["Transformer"]
+alt-names = ["Mana Cost Reduction"]
+subtags = ["Transformer", "Draw", "Eldrazi", "Familiar", "Monument", "Medallion", "Scry", "Token"]
+description = "Cards that reduce the casting cost of other spells."
 
 [Cycling]
 subtags = ["Cycling Dual", "Cycling Desert"]
@@ -841,14 +907,18 @@ subtags = ["Cycling Dual", "Cycling Desert"]
 subtags = ["Mono Depletion Land", "Depletion Dual"]
 
 [Draw]
-subtags = ["Transformer", "Utility Land", "Canopy Dual"]
+subtags = ["Transformer", "Utility Land", "Canopy Dual", "Banner", "Cluestone", "Locket", "Egg",
+    "Dork", "Cost Reduction", "Fetch", "Scry", "Tutor", "Enchant Land"]
+description = "Cards that may draw cards in addition to their other mana-related effects."
 
 ["ETB Tapped"]
 subtags = ["Sac Any Color", "Life-Gain Dual", "Tricolor Sac Land", "Tricolor Tapland", "Snow Dual",
     "Bounce Dual", "Gate", "Slow Fetch", "Cycling", "Spell Land", "Kamigawa Landmark",
     "Mono Storage Land", "Slow Pain Dual", "Manland", "Tap Dual", "Zendikar Landmark",
     "Keyword Land", "Fallen Sac Land", "Mono Depletion Land", "Hideaway", "Mono Bounce Land",
-    "Double Fetch", "Permanent Color Land", "Memorial", "Temple", "Vivid Land"]
+    "Double Fetch", "Permanent Color Land", "Memorial", "Temple", "Vivid Land", "Diamond",
+    "Borderpost", "Manrock"]
+description = "Permanents that enter that battlefield tapped."
 
 [Tapland]
 subtags = ["Sac Any Color", "Life-Gain Dual", "Tricolor Sac Land", "Tricolor Tapland", "Snow Dual",
@@ -858,52 +928,108 @@ subtags = ["Sac Any Color", "Life-Gain Dual", "Tricolor Sac Land", "Tricolor Tap
     "Double Fetch", "Permanent Color Land", "Memorial", "Temple", "Vivid Land"]
 
 [Fetch]
+alt-names = ["Land Fetch"]
 subtags = ["Fast Fetch", "Slow Fetch", "Basic Fetch", "Basic Fetch Land", "Panorama",
     "Double Fetch"]
+description = "Cards that search your library for land cards and put them directly on the battlefield."
 
 [Filter]
-subtags = ["Tricolor Filter", "Filter Dual"]
+alt-names = ["Mana Filter"]
+subtags = ["Tricolor Filter", "Filter Dual", "Rock", "Egg", "Dork", "Ritual"]
+description = "Cards that convert one color of mana into another."
 
 [Landcycling]
 subtags = ["Basic Landcycling"]
 
 ["Manaless Land"]
 subtags = ["Banding Land", "Fast Fetch", "Slow Fetch", "Basic Fetch Land", "Eldrazi"]
+description = "Lands that do not have mana abilities."
 
 [Manland]
 subtags = ["Manland Dual", "Mono Manland"]
+description = "Lands that can temporarily become creatures."
 
 ["Pain Land"]
 subtags = ["Pain Dual", "Threshold Land", "Slow Pain Dual", "Canopy Dual", "Kamigawa Landmark",
     "Sac Desert", "Lorwyn Tribal Land"]
 
 [Ramp]
+alt-names = ["Mana Ramp"]
 subtags = ["Urza's"]
+description = "Cards that provide permanent mana advantage."
 
 ["Sac Land"]
+alt-names = ["Sacrifice Land"]
 subtags = ["Sac Any Color", "Fast Fetch", "Slow Fetch", "Fallen Sac Land", "Panorama",
     "Threshold Land", "Blighted Land", "Strip Land", "Basic Fetch Land", "Canopy Dual",
     "Token", "Sac Desert", "Memorial", "Tricolor Sac Land"]
+description = "Lands that can sacrifice themselves for an effect."
 
 ["Sac Ritual"]
-subtags = ["Sac Any Color", "Tricolor Sac Land", "Fallen Sac Land", "Eldrazi", "Treasure"]
+alt-names = ["Sacrifice Ritual"]
+subtags = ["Sac Any Color", "Tricolor Sac Land", "Fallen Sac Land", "Eldrazi", "Treasure",
+    "Sac Outlet", "Egg", "Attendant", "Ramos"]
+description = "Cards that sacrifice themselves or other permanents for mana."
 
 [Scry]
 subtags = ["Temple", "Castle", "Keyword Land", "Transformer"]
+description = "Cards that scry in addition to other mana-related effects."
 
 ["Storage Land"]
 subtags = ["Storage Dual", "Mono Storage Land"]
 
 [Token]
 subtags = ["Token Generator", "Sac Land", "Eldrazi", "Treasure", "Transformer"]
+description = "Cards that can create one or more tokens."
 
-["Tribal Land"]
-subtags = ["Lorwyn Tribal Land"]
+["Token Generator"]
+description = "Permanents that can repeatedly create tokens."
 
 [Tutor]
-subtags = ["Basic Tutor", "Landcycling", "Transformer"]
+alt-names = ["Land Tutor"]
+subtags = ["Basic Tutor", "Landcycling", "Transformer", "Egg", "Energy", "Fetch"]
+description = "Cards that can search your library for land cards and put them in your hand or on top of your library."
 
 ["Utility Land"]
 subtags = ["Innistrad Landmark", "Zendikar Landmark", "Transformer", "Replacement Land",
     "Threshold Land", "Castle", "Tribal Land", "Ravnica Landmark", "Kamigawa Landmark",
     "Legends Land", "Hideaway", "Permanent Color Land"]
+description = "Lands with repeatable non-mana abilities."
+
+[Dig]
+subtags = ["Reclamation", "Draw", "Scry", "Untap"]
+description = "Cards that search through the top of your library for land cards."
+
+["Mana Restriction"]
+description = "Cards with mana abilities that can only be used for certain spells."
+
+[Reclamation]
+description = "Cards that can return lands from your graveyard to the battlefield, your hand, or your library."
+
+[Ritual]
+description = "Cards that provide a one-time amount of mana when cast or when entering the battlefield."
+
+["Strip Land"]
+description = "Lands that can destroy other lands."
+
+[Treasure]
+subtags = ["Transformer", "Token Generator"]
+description = "Cards that create treasure tokens."
+
+[Untap]
+subtags = ["Dork", "Enchant Land"]
+description = "Cards than can untap lands."
+
+[Egg]
+subtags = ["Tutor", "Fetch", "Sac Ritual", "Ramos", "Filter"]
+description = "A cheap, one-time use artifact that provides mana and card draw or a land tutor."
+
+[Automatic]
+subtags = ["Charge Counter", "Transformer", "Dork"]
+description = "Cards that automatically add mana during a turn or add mana when a trigger occurs."
+
+[Mox]
+subtags = ["Any Color Mana"]
+
+[Transformer]
+subtags = ["Legendary", "Rock", "Dork"]

@@ -19,7 +19,13 @@ Tag configuration under [config/tags.toml](config/tags.toml).
 Scyrfall search string:
 
 ```
-oracle:land or oracle:add or oracle:mana or type:land
+oracle:land or oracle:add or oracle:mana or type:land or (oracle:cost oracle:"less to cast")
+```
+
+Sort tag file:
+
+```
+sort -bfio config/card-tags.toml config/card-tags.toml
 ```
 
 ## Page Templates

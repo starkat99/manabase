@@ -43,6 +43,7 @@ pub struct TagIndex(HashMap<String, TagData>);
 pub struct TagData {
     name: String,
     alt_names: BTreeSet<String>,
+    description: Option<String>,
     subtags: BTreeSet<String>,
     canonical_name: String,
     kind: TagKind,
@@ -81,6 +82,8 @@ struct TagConfig {
     format: Option<Format>,
     #[serde(default)]
     legality: Option<Legality>,
+    #[serde(default)]
+    description: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -197,6 +200,7 @@ impl TagData {
             type_regex: None,
             mana: None,
             format: None,
+            description: None,
         }
     }
 
@@ -223,6 +227,7 @@ impl TagData {
                 (Some(f), Some(l)) => Some((f, l)),
                 _ => None,
             },
+            description: config.description,
         })
     }
 
@@ -315,6 +320,10 @@ impl TagData {
 
         false
     }
+
+    pub fn description(&self) -> Option<&str> {
+        self.description.as_deref()
+    }
 }
 
 impl Default for TagKind {
@@ -339,12 +348,10 @@ impl std::fmt::Display for TagData {
                 &self.name.replace(" Mana", "")
             ),
             TagKind::Cost => write!(fmt, "CMC: {}", self.cmc_symbol()),
-            TagKind::Format => write!(
-                fmt,
-                "{} in {}",
-                self.format.unwrap().1,
-                self.format.unwrap().0
-            ),
+            TagKind::Format => match self.format.unwrap() {
+                (f, Legality::Legal) => write!(fmt, "{}", f),
+                (f, l) => write!(fmt, "{}: {}", f, l),
+            },
             _ => write!(fmt, "{}", &self.name),
         }
     }
