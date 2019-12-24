@@ -22,11 +22,6 @@ const INITIALLY_SHOWN_FILTERS = ["land", "artifact", "creature", "enchantment", 
 
 var show_filters = [];
 var hide_filters = [];
-const cookie_params = Cookies.getJSON("filter");
-if (cookie_params !== undefined) {
-    show_filters = show_filters.concat(cookie_params["show"]);
-    hide_filters = hide_filters.concat(cookie_params["hide"]);
-}
 
 const params = new URLSearchParams(window.location.search);
 show_filters = show_filters.concat(params.getAll("show"));
