@@ -28,6 +28,5 @@ $("input.mtg-filter").on("change", function () {
             hide_filters.push(filter);
         }
     }
-    Cookies.set("filter", { "show": show_filters, "hide": hide_filters });
     updateFilters();
 });
