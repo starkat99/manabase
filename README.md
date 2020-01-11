@@ -25,7 +25,7 @@ oracle:land or oracle:add or oracle:mana or type:land or (oracle:cost oracle:"le
 Sort tag file:
 
 ```
-sort -bfio config/card-tags.toml config/card-tags.toml
+./sort.sh
 ```
 
 ## Page Templates
