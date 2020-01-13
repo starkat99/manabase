@@ -1023,6 +1023,7 @@
 "Nissa, Worldwaker" = ["Untap", "Fetch", "Basic Fetch", "Ramp"]
 "Nivix, Aerie of the Firemind" = ["Colorless Mana", "Ravnica Landmark", "Utility Land"]
 "Noble Hierarch" = ["Dork", "Ramp", "Bant Mana"]
+"Noble Templar" = ["Tutor", "Landcycling"]
 "Nomadic Elf" = ["Filter", "Any Color Mana"]
 "Nomad Outpost" = ["ETB Tapped", "Tricolor Tapland", "Tapland", "Mardu Mana"]
 "Nomad Stadium" = ["Pain Land", "White Mana", "Threshold Land", "Sac Land"]
