@@ -802,7 +802,7 @@
 "Krark-Clan Stoker" = ["Sac Ritual", "Red Mana"]
 "Krosan Drover" = ["Cost Reduction", "Ramp"]
 "Krosan Restorer" = ["Dork", "Ramp", "Untap"]
-"Krosan Tusker" = ["Tutor", "Basic Tutor"]
+"Krosan Tusker" = ["Tutor", "Basic Tutor", "Cycling"]
 "Krosan Verge" = ["ETB Tapped", "Colorless Mana", "Fetch", "Tapland", "Double Fetch"]
 "Krosan Warchief" = ["Cost Reduction", "Ramp"]
 "Krosan Wayfarer" = ["Ramp"]
