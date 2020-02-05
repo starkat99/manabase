@@ -20,7 +20,7 @@ use std::{collections::HashSet, path::Path};
 static BULK_DATA_URL: &'static str = "https://archive.scryfall.com/json/scryfall-oracle-cards.json";
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
+async fn main() -> anyhow::Result<()> {
     {
         let mut builder = env_logger::Builder::from_default_env();
         builder.target(env_logger::Target::Stdout);

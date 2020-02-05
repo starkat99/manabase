@@ -151,7 +151,7 @@ impl<'a> TagDb<'a> {
 }
 
 impl TagIndex {
-    pub fn load(config_file: &Path) -> Result<TagIndex, Box<dyn std::error::Error>> {
+    pub fn load(config_file: &Path) -> anyhow::Result<TagIndex> {
         debug!("loading tags config file");
         let config = toml::from_str(&std::fs::read_to_string(config_file)?)?;
         debug!("indexing tags");
@@ -405,7 +405,7 @@ impl<'a> std::fmt::Display for TagRef<'a> {
 }
 
 impl CardTags {
-    pub fn load(config_file: &Path) -> Result<CardTags, Box<dyn std::error::Error>> {
+    pub fn load(config_file: &Path) -> anyhow::Result<CardTags> {
         debug!("loading card tag list");
         Ok(toml::from_str(&std::fs::read_to_string(config_file)?)?)
     }
