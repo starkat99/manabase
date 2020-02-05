@@ -2,35 +2,37 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Update rust
-      run: rustup update stable
-    - name: Build generator
-      if: success()
-      run: cargo build --verbose
-    - name: Run generator
-      if: success()
-      run: cargo run
-      env:
-        RUST_LOG: info
-    - name: Deploy GitHub Pages
-      if: success()
-      uses: crazy-max/ghaction-github-pages@v1.2.5
-      env:
-        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
-      with:
-        # Create incremental commit instead of doing push force
-        keep_history: true
-        # Allow an empty commit to be created
-        allow_empty_commit: false
-        # Build directory to deploy
-        build_dir: target/www
+      - uses: actions/checkout@v1
+      - name: Update rust
+        run: rustup update stable
+      - name: Build generator
+        if: success()
+        run: cargo build --release --verbose
+        env:
+          RUSTFLAGS: -C target-cpu=native
+      - name: Run generator
+        if: success()
+        run: cargo run --release
+        env:
+          RUST_LOG: info
+          RUSTFLAGS: -C target-cpu=native
+      - name: Deploy GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v1.2.5
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+        with:
+          # Create incremental commit instead of doing push force
+          keep_history: true
+          # Allow an empty commit to be created
+          allow_empty_commit: false
+          # Build directory to deploy
+          build_dir: target/www

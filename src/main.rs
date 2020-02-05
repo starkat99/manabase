@@ -19,7 +19,8 @@ use std::{collections::HashSet, path::Path};
 
 static BULK_DATA_URL: &'static str = "https://archive.scryfall.com/json/scryfall-oracle-cards.json";
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     {
         let mut builder = env_logger::Builder::from_default_env();
         builder.target(env_logger::Target::Stdout);
@@ -65,7 +66,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         bulk_data = std::fs::read_to_string(path)?;
     } else {
         info!("loading Scryfall bulk card data from {}", BULK_DATA_URL);
-        bulk_data = reqwest::get(BULK_DATA_URL)?.text()?;
+        bulk_data = reqwest::get(BULK_DATA_URL).await?.text().await?;
     }
     let timestamp = Utc::now();
     let cards: CardList = serde_json::from_str(&bulk_data)?;
