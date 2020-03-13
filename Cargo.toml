@@ -17,7 +17,7 @@ askama = "0.9"
 lazy_static = "1"
 clap = "2.33"
 fs_extra = "1"
-itertools = "0.8"
+itertools = "0.9"
 chrono = "0.4"
 tokio = {version = "0.2", features = ["macros"]}
 anyhow = "1"
