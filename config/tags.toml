@@ -26,7 +26,8 @@ subtags = ["Cycling Desert", "Sac Desert"]
 kind = "type"
 type = 'Forest'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Lorwyn Tribal Land", "Permanent Color Land", "Cycling Dual", "Snow Basic", "Dryad"]
+    "Lorwyn Tribal Land", "Permanent Color Land", "Cycling Dual", "Snow Basic", "Dryad",
+    "Tricolor Cycling Land"]
 
 [Gate]
 kind = "type"
@@ -36,7 +37,7 @@ type = 'Gate'
 kind = "type"
 type = 'Island'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land"]
 
 [Lair]
 kind = "type"
@@ -50,19 +51,19 @@ type = 'Locus'
 kind = "type"
 type = 'Mountain'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land"]
 
 [Plains]
 kind = "type"
 type = 'Plains'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land"]
 
 [Swamp]
 kind = "type"
 type = 'Swamp'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land"]
 
 ["Urza's"]
 kind = "type"
@@ -296,27 +297,27 @@ subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "
 ["Jeskai Mana"]
 kind = "mana-pool"
 mana = ["W", "U", "R"]
-subtags = ["Tricolor Tapland", "Banner"]
+subtags = ["Tricolor Tapland", "Banner", "Crystal", "Tricolor Cycling Land"]
 
 ["Mardu Mana"]
 kind = "mana-pool"
 mana = ["W", "B", "R"]
-subtags = ["Tricolor Tapland", "Banner", "Ritual"]
+subtags = ["Tricolor Tapland", "Banner", "Ritual", "Crystal", "Tricolor Cycling Land"]
 
 ["Abzan Mana"]
 kind = "mana-pool"
 mana = ["W", "B", "G"]
-subtags = ["Tricolor Tapland", "Lorwyn Tribal Land", "Banner"]
+subtags = ["Tricolor Tapland", "Lorwyn Tribal Land", "Banner", "Tricolor Cycling Land", "Crystal"]
 
 ["Sultai Mana"]
 kind = "mana-pool"
 mana = ["U", "B", "G"]
-subtags = ["Tricolor Tapland", "Banner", "Dork"]
+subtags = ["Tricolor Tapland", "Banner", "Dork", "Crystal", "Tricolor Cycling Land"]
 
 ["Temur Mana"]
 kind = "mana-pool"
 mana = ["U", "R", "G"]
-subtags = ["Tricolor Tapland", "Banner", "Dork"]
+subtags = ["Tricolor Tapland", "Banner", "Dork", "Crystal", "Tricolor Cycling Land"]
 
 ["Artifice Mana"]
 kind = "mana-pool"
@@ -553,27 +554,28 @@ subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "
 [Jeskai]
 kind = "color-identity"
 color-identity = ["W", "U", "R"]
-subtags = ["Tricolor Tapland", "Banner"]
+subtags = ["Tricolor Tapland", "Banner",, "Tricolor Cycling Land", "Crystal"]
 
 [Mardu]
 kind = "color-identity"
 color-identity = ["W", "B", "R"]
-subtags = ["Tricolor Tapland", "Banner", "Ritual"]
+subtags = ["Tricolor Tapland", "Banner", "Ritual", "Tricolor Cycling Land", "Crystal"]
 
 [Abzan]
 kind = "color-identity"
 color-identity = ["W", "B", "G"]
-subtags = ["Tricolor Tapland", "Lorwyn Tribal Land", "Banner", "Filter"]
+subtags = ["Tricolor Tapland", "Lorwyn Tribal Land", "Banner", "Filter", "Tricolor Cycling Land",
+"Crystal"]
 
 [Sultai]
 kind = "color-identity"
 color-identity = ["U", "B", "G"]
-subtags = ["Tricolor Tapland", "Banner", "Dork"]
+subtags = ["Tricolor Tapland", "Banner", "Dork", "Tricolor Cycling Land", "Crystal"]
 
 [Temur]
 kind = "color-identity"
 color-identity = ["U", "R", "G"]
-subtags = ["Tricolor Tapland", "Banner", "Dork", "Filter"]
+subtags = ["Tricolor Tapland", "Banner", "Dork", "Filter", "Tricolor Cycling Land", "Crystal"]
 
 [Artifice]
 kind = "color-identity"
@@ -626,7 +628,7 @@ cmc = 3
 subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch", "Reclamation",
     "Automatic", "Sac Ritual", "Enchant Land", "Transformer", "Ritual", "Banner", "Dragon Monument",
     "Cluestone", "Keyrune", "Cameo", "Locket", "Ramos", "Borderpost", "Totem", "Obelisk", "Myr",
-    "Monument"]
+    "Monument", "Crystal"]
 
 ["CMC 4"]
 kind = "cost"
@@ -815,7 +817,7 @@ description = "Creatures with reusable mana abilities."
 alt-names = ["Mana Rock"]
 subtags = ["Banner", "Myr", "Signet", "Dragon Monument", "Cluestone", "Keyrune", "Locket",
     "Charge Counter", "Battery", "Cameo", "Diamond", "Mox", "Transformer", "Vehicle", "Ramos",
-    "Borderpost", "Totem", "Obelisk", "Talisman"]
+    "Borderpost", "Totem", "Obelisk", "Talisman", "Crystal"]
 description = "Artifacts with reusable mana abilities."
 
 ["Mono Bounce Land"]
@@ -901,14 +903,14 @@ subtags = ["Transformer", "Draw", "Eldrazi", "Familiar", "Monument", "Medallion"
 description = "Cards that reduce the casting cost of other spells."
 
 [Cycling]
-subtags = ["Cycling Dual", "Cycling Desert"]
+subtags = ["Cycling Dual", "Cycling Desert", "Tricolor Cycling Land", "Crystal"]
 
 ["Depletion Land"]
 subtags = ["Mono Depletion Land", "Depletion Dual"]
 
 [Draw]
 subtags = ["Transformer", "Utility Land", "Canopy Dual", "Banner", "Cluestone", "Locket", "Egg",
-    "Dork", "Cost Reduction", "Fetch", "Scry", "Tutor", "Enchant Land"]
+    "Dork", "Cost Reduction", "Fetch", "Scry", "Tutor", "Enchant Land", "Crystal"]
 description = "Cards that may draw cards in addition to their other mana-related effects."
 
 ["ETB Tapped"]
@@ -917,7 +919,7 @@ subtags = ["Sac Any Color", "Life-Gain Dual", "Tricolor Sac Land", "Tricolor Tap
     "Mono Storage Land", "Slow Pain Dual", "Manland", "Tap Dual", "Zendikar Landmark",
     "Keyword Land", "Fallen Sac Land", "Mono Depletion Land", "Hideaway", "Mono Bounce Land",
     "Double Fetch", "Permanent Color Land", "Memorial", "Temple", "Vivid Land", "Diamond",
-    "Borderpost", "Manrock"]
+    "Borderpost", "Manrock", "Tricolor Cycling Land"]
 description = "Permanents that enter that battlefield tapped."
 
 [Tapland]
@@ -925,7 +927,8 @@ subtags = ["Sac Any Color", "Life-Gain Dual", "Tricolor Sac Land", "Tricolor Tap
     "Bounce Dual", "Gate", "Slow Fetch", "Cycling", "Spell Land", "Kamigawa Landmark",
     "Mono Storage Land", "Slow Pain Dual", "Manland", "Tap Dual", "Zendikar Landmark",
     "Keyword Land", "Fallen Sac Land", "Mono Depletion Land", "Hideaway", "Mono Bounce Land",
-    "Double Fetch", "Permanent Color Land", "Memorial", "Temple", "Vivid Land"]
+    "Double Fetch", "Permanent Color Land", "Memorial", "Temple", "Vivid Land",
+    "Tricolor Cycling Land"]
 
 [Fetch]
 alt-names = ["Land Fetch"]
