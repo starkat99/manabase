@@ -554,7 +554,7 @@ subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "
 [Jeskai]
 kind = "color-identity"
 color-identity = ["W", "U", "R"]
-subtags = ["Tricolor Tapland", "Banner",, "Tricolor Cycling Land", "Crystal"]
+subtags = ["Tricolor Tapland", "Banner", "Tricolor Cycling Land", "Crystal"]
 
 [Mardu]
 kind = "color-identity"
