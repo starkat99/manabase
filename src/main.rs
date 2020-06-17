@@ -60,10 +60,12 @@ async fn main() -> anyhow::Result<()> {
     dir::copy("script", output_dir, &copy_opts)?;
 
     let bulk_data: String;
+    let data_updated: DateTime<Utc>;
     if let Some(path) = matches.value_of_os("data") {
         let path = Path::new(path);
         info!("loading Scryfall bulk card data from {}", path.display());
         bulk_data = std::fs::read_to_string(path)?;
+        data_updated = std::fs::metadata(path)?.modified()?.into();
     } else {
         let bulk_data_info = reqwest::get(BULK_DATA_API_URL)
             .await?
@@ -78,6 +80,7 @@ async fn main() -> anyhow::Result<()> {
             .await?
             .text()
             .await?;
+        data_updated = bulk_data_info.updated_at;
     }
     let timestamp = Utc::now();
     let cards: CardList = serde_json::from_str(&bulk_data)?;
@@ -87,43 +90,128 @@ async fn main() -> anyhow::Result<()> {
     let carddb = TaggedCardDb::new(&card_tags, &tag_index, &cards);
 
     info!("creating template pages");
-    templates::IndexPage::new(&tagdb, &carddb, timestamp.clone()).write_output(&output_dir)?;
+    templates::IndexPage::new(&tagdb, &carddb, timestamp.clone(), data_updated.clone())
+        .write_output(&output_dir)?;
     debug!("writing all cards page");
-    templates::AllCards::new(&carddb, timestamp.clone()).write_output(&output_dir)?;
+    templates::AllCards::new(&carddb, timestamp.clone(), data_updated.clone())
+        .write_output(&output_dir)?;
     debug!("writing all type card pages");
-    templates::TypeAllCards::new(CardType::Land, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypeAllCards::new(CardType::Artifact, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypeAllCards::new(CardType::Creature, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypeAllCards::new(CardType::Enchantment, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypeAllCards::new(CardType::Instant, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypeAllCards::new(CardType::Sorcery, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypeAllCards::new(CardType::Planeswalker, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
+    templates::TypeAllCards::new(
+        CardType::Land,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypeAllCards::new(
+        CardType::Artifact,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypeAllCards::new(
+        CardType::Creature,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypeAllCards::new(
+        CardType::Enchantment,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypeAllCards::new(
+        CardType::Instant,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypeAllCards::new(
+        CardType::Sorcery,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypeAllCards::new(
+        CardType::Planeswalker,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
     debug!("writing card type pages");
-    templates::TypePage::new(CardType::Land, &tagdb, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Artifact, &tagdb, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Creature, &tagdb, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Enchantment, &tagdb, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Instant, &tagdb, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Sorcery, &tagdb, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
-    templates::TypePage::new(CardType::Planeswalker, &tagdb, &carddb, timestamp.clone())
-        .write_output(&output_dir)?;
+    templates::TypePage::new(
+        CardType::Land,
+        &tagdb,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypePage::new(
+        CardType::Artifact,
+        &tagdb,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypePage::new(
+        CardType::Creature,
+        &tagdb,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypePage::new(
+        CardType::Enchantment,
+        &tagdb,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypePage::new(
+        CardType::Instant,
+        &tagdb,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypePage::new(
+        CardType::Sorcery,
+        &tagdb,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypePage::new(
+        CardType::Planeswalker,
+        &tagdb,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
     debug!("writing tag pages");
     for (_, tag) in tag_index.iter() {
-        templates::TagPage::new(tag, &tag_index, &carddb, timestamp.clone())
-            .write_output(&output_dir)?;
+        templates::TagPage::new(
+            tag,
+            &tag_index,
+            &carddb,
+            timestamp.clone(),
+            data_updated.clone(),
+        )
+        .write_output(&output_dir)?;
     }
 
     debug!("checking for invalid cards");

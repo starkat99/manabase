@@ -1,4 +1,5 @@
 use crate::color::Color;
+use chrono::prelude::*;
 use serde::{Deserialize, Serialize};
 use std::{borrow::Cow, collections::HashMap};
 
@@ -73,6 +74,7 @@ pub enum Legality {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct BulkDataInfo {
     pub download_uri: String,
+    pub updated_at: DateTime<Utc>,
 }
 
 impl<'a> CardList<'a> {
