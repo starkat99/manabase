@@ -16,7 +16,7 @@ use std::{
 };
 
 lazy_static! {
-    static ref TAG_NAME_STRIP_REGEX: Regex = { Regex::new(r"[^-\w]").unwrap() };
+    static ref TAG_NAME_STRIP_REGEX: Regex = Regex::new(r"[^-\w]").unwrap();
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]

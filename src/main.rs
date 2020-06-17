@@ -9,7 +9,7 @@ extern crate log;
 
 use crate::{
     card::{CardType, TaggedCardDb},
-    scryfall::CardList,
+    scryfall::{BulkDataInfo, CardList},
     tags::{CardTags, TagDb, TagIndex},
 };
 use chrono::prelude::*;
@@ -17,7 +17,7 @@ use clap::{App, Arg};
 use fs_extra::dir::{self, CopyOptions};
 use std::{collections::HashSet, path::Path};
 
-static BULK_DATA_URL: &'static str = "https://archive.scryfall.com/json/scryfall-oracle-cards.json";
+static BULK_DATA_API_URL: &'static str = "https://api.scryfall.com/bulk-data/oracle-cards";
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -65,8 +65,19 @@ async fn main() -> anyhow::Result<()> {
         info!("loading Scryfall bulk card data from {}", path.display());
         bulk_data = std::fs::read_to_string(path)?;
     } else {
-        info!("loading Scryfall bulk card data from {}", BULK_DATA_URL);
-        bulk_data = reqwest::get(BULK_DATA_URL).await?.text().await?;
+        let bulk_data_info = reqwest::get(BULK_DATA_API_URL)
+            .await?
+            .json::<BulkDataInfo>()
+            .await?;
+
+        info!(
+            "loading Scryfall bulk card data from {}",
+            &bulk_data_info.download_uri
+        );
+        bulk_data = reqwest::get(&bulk_data_info.download_uri)
+            .await?
+            .text()
+            .await?;
     }
     let timestamp = Utc::now();
     let cards: CardList = serde_json::from_str(&bulk_data)?;

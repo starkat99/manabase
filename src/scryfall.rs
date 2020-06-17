@@ -70,6 +70,11 @@ pub enum Legality {
     Banned,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BulkDataInfo {
+    pub download_uri: String,
+}
+
 impl<'a> CardList<'a> {
     pub fn cards(&'a self) -> &'a Vec<Card<'a>> {
         &self.0
