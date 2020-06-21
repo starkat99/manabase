@@ -1036,3 +1036,6 @@ subtags = ["Any Color Mana"]
 
 [Transformer]
 subtags = ["Legendary", "Rock", "Dork"]
+
+["Thriving Land"]
+alt-names = ["Jumpstart Land"]
