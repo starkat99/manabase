@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Magic: The Gathering deck-building aide for assembling a mana base.">
+  <meta name="generator" content="https://github.com/starkat99/manabase/">
+  <meta name="robots" content="index, follow">
+  <meta name="creation_date" content="2020-09-14 07:34:49.662016331 UTC">
+
+  <title>Bolt Modal · Mana Base</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="style/mana.css">
+  <link rel="stylesheet" href="style/manabase.css">
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="shape-transform" viewBox="0 0 1024 1024">
+      <path
+        d="M884.3,357.6c116.8,117.7,151.7,277-362.2,320V496.4L243.2,763.8L522,1031.3V860.8C828.8,839.4,1244.9,604.5,884.3,357.6z">
+      </path>
+      <path
+        d="M557.8,288.2v138.4l230.8-213.4L557.8,0v142.8c-309.2,15.6-792.1,253.6-426.5,503.8C13.6,527.9,30,330.1,557.8,288.2z">
+      </path>
+    </symbol>
+  </svg>
+  <script src="script/filter.js"></script>
+</head>
+
+<body>
+  <header class="border-bottom bg-light w-100">
+    <div class="dropdown float-right">
+      <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" id="filterDropDown">
+        Filters
+      </button>
+      <form class="p-2 dropdown-menu dropdown-menu-right" aria-labelledby="filterDropDown">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-land">
+          <label class="form-check-label" for="filter-land">Lands</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-artifact">
+          <label class="form-check-label" for="filter-artifact">Artifacts</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-creature">
+          <label class="form-check-label" for="filter-creature">Creatures</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-enchantment">
+          <label class="form-check-label" for="filter-enchantment">Enchantments</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-instant">
+          <label class="form-check-label" for="filter-instant">Instants</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-sorcery">
+          <label class="form-check-label" for="filter-sorcery">Sorceries</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-planeswalker">
+          <label class="form-check-label" for="filter-planeswalker">Planeswalkers</label>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input mtg-filter" id="filter-silver-border">
+          <label class="form-check-label" for="filter-silver-border">Silver Bordered</label>
+        </div>
+      </form>
+    </div>
+    <h1>Mana Base</h1>
+    
+  <h2 class="text-secondary">Bolt Modal</h2>
+
+  </header>
+  <main>
+    
+  
+  
+  
+  
+  
+    
+      <section class="mtg-filter-land">
+        <h3 class="text-primary mt-2"><a name="Land"></a>Land</h3>
+        
+        
+          <section>
+            <h4 class="text-secondary"><a name="Land-Other"></a>Other</h4>
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-sorcery" id="card67f4c93b-080c-4196-b095-6a120a221988">
+  <a name="Agadeem&#x27;s Awakening &#x2f;&#x2f; Agadeem, the Undercrypt"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/znr/90/agadeems-awakening-agadeem-the-undercrypt?utm_source=api">
+      <img src="https://c1.scryfall.com/file/scryfall-cards/normal/front/6/7/67f4c93b-080c-4196-b095-6a120a221988.jpg?1599563883" class="front" loading="lazy" alt="Agadeem&#x27;s Awakening &#x2f;&#x2f; Agadeem, the Undercrypt">
+      
+        <img src="https://c1.scryfall.com/file/scryfall-cards/normal/back/6/7/67f4c93b-080c-4196-b095-6a120a221988.jpg?1599563883" class="back" loading="lazy" alt="Agadeem&#x27;s Awakening &#x2f;&#x2f; Agadeem, the Undercrypt">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#card67f4c93b-080c-4196-b095-6a120a221988 .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Agadeem&#x27;s Awakening &#x2f;&#x2f; Agadeem, the Undercrypt</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Black.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sb"></span> Black</a>
+      
+        <a href="tag-Black_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sb"></span> Black</a>
+      
+        <a href="tag-Bolt_Modal.html" class="badge badge-dark mtg-tag">Bolt Modal</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Modal.html" class="badge badge-dark mtg-tag">Modal</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-sorcery" id="cardc470539a-9cc7-4175-8f7c-c982b6072b6d">
+  <a name="Emeria&#x27;s Call &#x2f;&#x2f; Emeria, Shattered Skyclave"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/znr/12/emerias-call-emeria-shattered-skyclave?utm_source=api">
+      <img src="https://c1.scryfall.com/file/scryfall-cards/normal/front/c/4/c470539a-9cc7-4175-8f7c-c982b6072b6d.jpg?1599245525" class="front" loading="lazy" alt="Emeria&#x27;s Call &#x2f;&#x2f; Emeria, Shattered Skyclave">
+      
+        <img src="https://c1.scryfall.com/file/scryfall-cards/normal/back/c/4/c470539a-9cc7-4175-8f7c-c982b6072b6d.jpg?1599245525" class="back" loading="lazy" alt="Emeria&#x27;s Call &#x2f;&#x2f; Emeria, Shattered Skyclave">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#cardc470539a-9cc7-4175-8f7c-c982b6072b6d .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Emeria&#x27;s Call &#x2f;&#x2f; Emeria, Shattered Skyclave</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Bolt_Modal.html" class="badge badge-dark mtg-tag">Bolt Modal</a>
+      
+        <a href="tag-CMC_7.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s7"></span></a>
+      
+        <a href="tag-Modal.html" class="badge badge-dark mtg-tag">Modal</a>
+      
+        <a href="tag-White.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sw"></span> White</a>
+      
+        <a href="tag-White_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sw"></span> White</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-sorcery" id="card193071fe-180b-4d35-ba78-9c16675c29fc">
+  <a name="Sea Gate Restoration &#x2f;&#x2f; Sea Gate, Reborn"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/znr/76/sea-gate-restoration-sea-gate-reborn?utm_source=api">
+      <img src="https://c1.scryfall.com/file/scryfall-cards/normal/front/1/9/193071fe-180b-4d35-ba78-9c16675c29fc.jpg?1599235589" class="front" loading="lazy" alt="Sea Gate Restoration &#x2f;&#x2f; Sea Gate, Reborn">
+      
+        <img src="https://c1.scryfall.com/file/scryfall-cards/normal/back/1/9/193071fe-180b-4d35-ba78-9c16675c29fc.jpg?1599235589" class="back" loading="lazy" alt="Sea Gate Restoration &#x2f;&#x2f; Sea Gate, Reborn">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#card193071fe-180b-4d35-ba78-9c16675c29fc .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Sea Gate Restoration &#x2f;&#x2f; Sea Gate, Reborn</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Bolt_Modal.html" class="badge badge-dark mtg-tag">Bolt Modal</a>
+      
+        <a href="tag-CMC_7.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s7"></span></a>
+      
+        <a href="tag-Modal.html" class="badge badge-dark mtg-tag">Modal</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-sorcery" id="cardbc7239ea-f8aa-4a6f-87bd-c35359635673">
+  <a name="Shatterskull Smashing &#x2f;&#x2f; Shatterskull, the Hammer Pass"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/znr/161/shatterskull-smashing-shatterskull-the-hammer-pass?utm_source=api">
+      <img src="https://c1.scryfall.com/file/scryfall-cards/normal/front/b/c/bc7239ea-f8aa-4a6f-87bd-c35359635673.jpg?1599233097" class="front" loading="lazy" alt="Shatterskull Smashing &#x2f;&#x2f; Shatterskull, the Hammer Pass">
+      
+        <img src="https://c1.scryfall.com/file/scryfall-cards/normal/back/b/c/bc7239ea-f8aa-4a6f-87bd-c35359635673.jpg?1599233097" class="back" loading="lazy" alt="Shatterskull Smashing &#x2f;&#x2f; Shatterskull, the Hammer Pass">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#cardbc7239ea-f8aa-4a6f-87bd-c35359635673 .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Shatterskull Smashing &#x2f;&#x2f; Shatterskull, the Hammer Pass</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Bolt_Modal.html" class="badge badge-dark mtg-tag">Bolt Modal</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Modal.html" class="badge badge-dark mtg-tag">Modal</a>
+      
+        <a href="tag-Red.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sr"></span> Red</a>
+      
+        <a href="tag-Red_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sr"></span> Red</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-sorcery" id="card61bd69ea-1e9e-46b0-b1a1-ed7fdbe3deb6">
+  <a name="Turntimber Symbiosis &#x2f;&#x2f; Turntimber, Serpentine Wood"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/znr/215/turntimber-symbiosis-turntimber-serpentine-wood?utm_source=api">
+      <img src="https://c1.scryfall.com/file/scryfall-cards/normal/front/6/1/61bd69ea-1e9e-46b0-b1a1-ed7fdbe3deb6.jpg?1599564200" class="front" loading="lazy" alt="Turntimber Symbiosis &#x2f;&#x2f; Turntimber, Serpentine Wood">
+      
+        <img src="https://c1.scryfall.com/file/scryfall-cards/normal/back/6/1/61bd69ea-1e9e-46b0-b1a1-ed7fdbe3deb6.jpg?1599564200" class="back" loading="lazy" alt="Turntimber Symbiosis &#x2f;&#x2f; Turntimber, Serpentine Wood">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#card61bd69ea-1e9e-46b0-b1a1-ed7fdbe3deb6 .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Turntimber Symbiosis &#x2f;&#x2f; Turntimber, Serpentine Wood</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Bolt_Modal.html" class="badge badge-dark mtg-tag">Bolt Modal</a>
+      
+        <a href="tag-CMC_7.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s7"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Modal.html" class="badge badge-dark mtg-tag">Modal</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+          </section>
+        
+      </section>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      <section class="mtg-filter-sorcery">
+        <h3 class="text-primary mt-2"><a name="Sorcery"></a>Sorcery</h3>
+        
+        
+          <section>
+            <h4 class="text-secondary"><a name="Sorcery-Other"></a>Other</h4>
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-sorcery" id="card67f4c93b-080c-4196-b095-6a120a221988">
+  <a name="Agadeem&#x27;s Awakening &#x2f;&#x2f; Agadeem, the Undercrypt"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/znr/90/agadeems-awakening-agadeem-the-undercrypt?utm_source=api">
+      <img src="https://c1.scryfall.com/file/scryfall-cards/normal/front/6/7/67f4c93b-080c-4196-b095-6a120a221988.jpg?1599563883" class="front" loading="lazy" alt="Agadeem&#x27;s Awakening &#x2f;&#x2f; Agadeem, the Undercrypt">
+      
+        <img src="https://c1.scryfall.com/file/scryfall-cards/normal/back/6/7/67f4c93b-080c-4196-b095-6a120a221988.jpg?1599563883" class="back" loading="lazy" alt="Agadeem&#x27;s Awakening &#x2f;&#x2f; Agadeem, the Undercrypt">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#card67f4c93b-080c-4196-b095-6a120a221988 .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Agadeem&#x27;s Awakening &#x2f;&#x2f; Agadeem, the Undercrypt</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Black.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sb"></span> Black</a>
+      
+        <a href="tag-Black_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sb"></span> Black</a>
+      
+        <a href="tag-Bolt_Modal.html" class="badge badge-dark mtg-tag">Bolt Modal</a>
+      
+        <a href="tag-CMC_3.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s3"></span></a>
+      
+        <a href="tag-Modal.html" class="badge badge-dark mtg-tag">Modal</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-sorcery" id="cardc470539a-9cc7-4175-8f7c-c982b6072b6d">
+  <a name="Emeria&#x27;s Call &#x2f;&#x2f; Emeria, Shattered Skyclave"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/znr/12/emerias-call-emeria-shattered-skyclave?utm_source=api">
+      <img src="https://c1.scryfall.com/file/scryfall-cards/normal/front/c/4/c470539a-9cc7-4175-8f7c-c982b6072b6d.jpg?1599245525" class="front" loading="lazy" alt="Emeria&#x27;s Call &#x2f;&#x2f; Emeria, Shattered Skyclave">
+      
+        <img src="https://c1.scryfall.com/file/scryfall-cards/normal/back/c/4/c470539a-9cc7-4175-8f7c-c982b6072b6d.jpg?1599245525" class="back" loading="lazy" alt="Emeria&#x27;s Call &#x2f;&#x2f; Emeria, Shattered Skyclave">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#cardc470539a-9cc7-4175-8f7c-c982b6072b6d .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Emeria&#x27;s Call &#x2f;&#x2f; Emeria, Shattered Skyclave</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Bolt_Modal.html" class="badge badge-dark mtg-tag">Bolt Modal</a>
+      
+        <a href="tag-CMC_7.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s7"></span></a>
+      
+        <a href="tag-Modal.html" class="badge badge-dark mtg-tag">Modal</a>
+      
+        <a href="tag-White.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sw"></span> White</a>
+      
+        <a href="tag-White_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sw"></span> White</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-sorcery" id="card193071fe-180b-4d35-ba78-9c16675c29fc">
+  <a name="Sea Gate Restoration &#x2f;&#x2f; Sea Gate, Reborn"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/znr/76/sea-gate-restoration-sea-gate-reborn?utm_source=api">
+      <img src="https://c1.scryfall.com/file/scryfall-cards/normal/front/1/9/193071fe-180b-4d35-ba78-9c16675c29fc.jpg?1599235589" class="front" loading="lazy" alt="Sea Gate Restoration &#x2f;&#x2f; Sea Gate, Reborn">
+      
+        <img src="https://c1.scryfall.com/file/scryfall-cards/normal/back/1/9/193071fe-180b-4d35-ba78-9c16675c29fc.jpg?1599235589" class="back" loading="lazy" alt="Sea Gate Restoration &#x2f;&#x2f; Sea Gate, Reborn">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#card193071fe-180b-4d35-ba78-9c16675c29fc .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Sea Gate Restoration &#x2f;&#x2f; Sea Gate, Reborn</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Blue.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Blue_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana su"></span> Blue</a>
+      
+        <a href="tag-Bolt_Modal.html" class="badge badge-dark mtg-tag">Bolt Modal</a>
+      
+        <a href="tag-CMC_7.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s7"></span></a>
+      
+        <a href="tag-Modal.html" class="badge badge-dark mtg-tag">Modal</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-sorcery" id="cardbc7239ea-f8aa-4a6f-87bd-c35359635673">
+  <a name="Shatterskull Smashing &#x2f;&#x2f; Shatterskull, the Hammer Pass"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/znr/161/shatterskull-smashing-shatterskull-the-hammer-pass?utm_source=api">
+      <img src="https://c1.scryfall.com/file/scryfall-cards/normal/front/b/c/bc7239ea-f8aa-4a6f-87bd-c35359635673.jpg?1599233097" class="front" loading="lazy" alt="Shatterskull Smashing &#x2f;&#x2f; Shatterskull, the Hammer Pass">
+      
+        <img src="https://c1.scryfall.com/file/scryfall-cards/normal/back/b/c/bc7239ea-f8aa-4a6f-87bd-c35359635673.jpg?1599233097" class="back" loading="lazy" alt="Shatterskull Smashing &#x2f;&#x2f; Shatterskull, the Hammer Pass">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#cardbc7239ea-f8aa-4a6f-87bd-c35359635673 .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Shatterskull Smashing &#x2f;&#x2f; Shatterskull, the Hammer Pass</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Bolt_Modal.html" class="badge badge-dark mtg-tag">Bolt Modal</a>
+      
+        <a href="tag-CMC_2.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s2"></span></a>
+      
+        <a href="tag-Modal.html" class="badge badge-dark mtg-tag">Modal</a>
+      
+        <a href="tag-Red.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sr"></span> Red</a>
+      
+        <a href="tag-Red_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sr"></span> Red</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+              
+                <div class="card d-inline-flex border-0 m-2 mtg-card  mtg-filter-land mtg-filter-sorcery" id="card61bd69ea-1e9e-46b0-b1a1-ed7fdbe3deb6">
+  <a name="Turntimber Symbiosis &#x2f;&#x2f; Turntimber, Serpentine Wood"></a>
+  <div class="mtg-card-img-container">
+    <a href="https://scryfall.com/card/znr/215/turntimber-symbiosis-turntimber-serpentine-wood?utm_source=api">
+      <img src="https://c1.scryfall.com/file/scryfall-cards/normal/front/6/1/61bd69ea-1e9e-46b0-b1a1-ed7fdbe3deb6.jpg?1599564200" class="front" loading="lazy" alt="Turntimber Symbiosis &#x2f;&#x2f; Turntimber, Serpentine Wood">
+      
+        <img src="https://c1.scryfall.com/file/scryfall-cards/normal/back/6/1/61bd69ea-1e9e-46b0-b1a1-ed7fdbe3deb6.jpg?1599564200" class="back" loading="lazy" alt="Turntimber Symbiosis &#x2f;&#x2f; Turntimber, Serpentine Wood">
+      
+    </a>
+    
+      <button type="button" class="mtg-transform-button" title="Transform" rel="nofollow" data-component="card-transform-button" data-target="#card61bd69ea-1e9e-46b0-b1a1-ed7fdbe3deb6 .mtg-card-img-container">
+        <svg title="Transform">
+          <use xlink:href="#shape-transform"/>
+        </svg>
+      </button>
+    
+  </div>
+  <div class="card-body p-0">
+    <h6 class="card-title">Turntimber Symbiosis &#x2f;&#x2f; Turntimber, Serpentine Wood</h6>
+    <p class="card-text">
+      
+        <a href="lands.html" class="badge badge-pill badge-primary mtg-card-type">Land</a>
+      
+        <a href="sorceries.html" class="badge badge-pill badge-primary mtg-card-type">Sorcery</a>
+      
+      
+        <a href="tag-Bolt_Modal.html" class="badge badge-dark mtg-tag">Bolt Modal</a>
+      
+        <a href="tag-CMC_7.html" class="badge badge-secondary mtg-tag">CMC: <span class="mana s7"></span></a>
+      
+        <a href="tag-Green.html" class="badge badge-warning mtg-tag">Color Identity: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Green_Mana.html" class="badge badge-success mtg-tag">Mana: <span class="mana sg"></span> Green</a>
+      
+        <a href="tag-Modal.html" class="badge badge-dark mtg-tag">Modal</a>
+      
+    </p>
+  </div>
+</div>
+              
+            
+          </section>
+        
+      </section>
+    
+  
+    
+    
+  
+
+  </main>
+  <footer class="border-top bg-light w-100">
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Index</a>
+      <a href="lands.html" class="nav-link">Lands</a>
+      <a href="artifacts.html" class="nav-link">Artifacts</a>
+      <a href="creatures.html" class="nav-link">Creatures</a>
+      <a href="enchantments.html" class="nav-link">Enchantments</a>
+      <a href="instants.html" class="nav-link">Instants</a>
+      <a href="sorceries.html" class="nav-link">Sorceries</a>
+      <a href="planeswalkers.html" class="nav-link">Planeswalkers</a>
+      <a href="all.html" class="nav-link">All Cards</a>
+      <a href="https://github.com/starkat99/manabase" class="nav-link">Source</a>
+      <a href="https://github.com/starkat99/manabase/issues" class="nav-link">Report Issues</a>
+    </nav>
+    <p class="text-muted"><small>Portions of this site are unofficial Fan Content permitted under
+        the <a href="https://company.wizards.com">Wizards of the Coast</a> Fan Content Policy. The
+        literal and graphical information presented on this site about
+        <a href="https://magic.wizards.com">Magic: The Gathering</a>, including card images, the mana
+        symbols, and Oracle text, is copyright Wizards of the Coast, LLC, a subsidiary of Hasbro, Inc.
+        This site is not produced by, endorsed by, supported by, or affiliated with Wizards of the
+        Coast.</small></p>
+    <p class="text-muted"><small>This site is generated using data from the
+        <a href="https://scryfall.com">Scryfall</a> API. This site is not produced by, endorsed by,
+        supported by, or affiliated with Scryfall.</small></p>
+    <p class="text-muted"><small>Last generated at 2020-09-14 07:34:49.662016331 UTC from data updated at
+        2020-09-13 21:05:23.772 UTC.</small></p>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Flip/1.1.2/jquery.flip.min.js"
+    integrity="sha256-CAgJ3dV4c4eWFBbunpYeUQZiRlVuR4NsizhWMKgN2L4=" crossorigin="anonymous"></script>
+  <script src="script/manabase.js"></script>
+</body>
+
+</html>
