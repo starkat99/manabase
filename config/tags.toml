@@ -1039,3 +1039,6 @@ subtags = ["Legendary", "Rock", "Dork"]
 
 ["Thriving Land"]
 alt-names = ["Jumpstart Land"]
+
+[Modal]
+subtags = ["Modal Dual", "Bolt Modal"]
