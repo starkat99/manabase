@@ -14,11 +14,11 @@
     <p class="text-muted">{{ tag.description().unwrap() }}</p>
   {% endif %}
   {% for card_type in card_types %}
-    {% if carddb.type_has_cards_of_tag(card_type.clone(), tag) %}
+    {% if carddb.type_has_cards_of_tag(card_type, tag) %}
       <section class="{{ card_type.filter_class()|safe }}">
         <h3 class="text-primary mt-2"><a name="{{ card_type }}"></a>{{ card_type }}</h3>
         {% for subtag in self.subtags() %}
-          {% if self.subtag_has_cards_of_type(subtag.clone(), card_type) %}
+          {% if self.subtag_has_cards_of_type(subtag, card_type) %}
             <section>
               <h4 class="text-secondary mt-3"><a name="{{ card_type }}-{{ subtag.canonical_name() }}"></a>{{ subtag.name() }}</h4>
               {% if subtag.has_alt_names() %}

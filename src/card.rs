@@ -207,8 +207,8 @@ impl<'a> TaggedCardDb<'a> {
         &self.tag_index
     }
 
-    pub fn type_has_cards_of_tag(&self, card_type: CardType, tag: &'a TagRef<'a>) -> bool {
-        self.type_tag_index[&card_type].contains(tag)
+    pub fn type_has_cards_of_tag(&self, card_type: &CardType, tag: &'a TagRef<'a>) -> bool {
+        self.type_tag_index[card_type].contains(tag)
     }
 }
 

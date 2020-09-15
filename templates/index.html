@@ -12,7 +12,7 @@
           <h4><a name="{{ card_type }}-{{ kind }}"></a>{{ kind|safe }}</h4>
           <p>
           {% for tag in tags %}
-            {% if carddb.type_has_cards_of_tag(card_type.clone(), tag) %}
+            {% if carddb.type_has_cards_of_tag(card_type, tag) %}
               <a href="tag-{{ tag.canonical_name()|safe }}.html{{ card_type.link_suffix()|safe }}" class="badge {{ tag.kind().class()|safe }} mtg-tag">{{ tag|safe }}</a>
             {% endif %}
           {% endfor %}
