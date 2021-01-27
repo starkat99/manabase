@@ -4,6 +4,7 @@ use crate::{
 };
 use askama::Template;
 use chrono::prelude::*;
+use log::debug;
 use std::{
     collections::{HashMap, HashSet},
     fs::File,

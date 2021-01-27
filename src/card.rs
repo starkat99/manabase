@@ -3,6 +3,7 @@ use crate::{
     tags::{CardTags, TagIndex, TagRef},
 };
 use itertools::join;
+use log::trace;
 use std::{
     collections::{BTreeSet, HashMap, HashSet},
     hash::{Hash, Hasher},

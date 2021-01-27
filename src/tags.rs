@@ -4,6 +4,7 @@ use crate::{
 };
 use itertools::free::join;
 use lazy_static::lazy_static;
+use log::debug;
 use regex::{Regex, RegexBuilder};
 use serde::{Deserialize, Serialize};
 use std::{

@@ -4,9 +4,6 @@ mod scryfall;
 mod tags;
 mod templates;
 
-#[macro_use]
-extern crate log;
-
 use crate::{
     card::{CardType, TaggedCardDb},
     scryfall::{BulkDataInfo, CardList},
@@ -15,6 +12,7 @@ use crate::{
 use chrono::prelude::*;
 use clap::{App, Arg};
 use fs_extra::dir::{self, CopyOptions};
+use log::{debug, info, warn};
 use std::{collections::HashSet, path::Path};
 
 static BULK_DATA_API_URL: &'static str = "https://api.scryfall.com/bulk-data/oracle-cards";
