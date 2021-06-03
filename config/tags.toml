@@ -1042,3 +1042,9 @@ alt-names = ["Jumpstart Land"]
 
 [Modal]
 subtags = ["Modal Dual", "Bolt Modal"]
+
+["Bridge Land"]
+alt-names = ["Artifact Dual", "Artifact Tapland"]
+
+["Artifact Land"]
+subtags = ["Bridge Land"]
