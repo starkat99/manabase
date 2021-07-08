@@ -949,7 +949,7 @@ subtags = ["Banding Land", "Fast Fetch", "Slow Fetch", "Basic Fetch Land", "Eldr
 description = "Lands that do not have mana abilities."
 
 [Manland]
-subtags = ["Manland Dual", "Mono Manland"]
+subtags = ["Manland Dual", "Mono Manland", "Fast Manland"]
 description = "Lands that can temporarily become creatures."
 
 ["Pain Land"]
@@ -1048,3 +1048,6 @@ alt-names = ["Artifact Dual", "Artifact Tapland"]
 
 ["Artifact Land"]
 subtags = ["Bridge Land"]
+
+["Fast Manland"]
+alt-names = ["Forgotten Realms Landmark"]
