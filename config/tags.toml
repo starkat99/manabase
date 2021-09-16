@@ -1034,6 +1034,9 @@ description = "Cards that automatically add mana during a turn or add mana when 
 [Mox]
 subtags = ["Any Color Mana"]
 
+["Battle Dual"]
+alt-names = ["Tango Land"]
+
 [Transformer]
 subtags = ["Legendary", "Rock", "Dork"]
 
@@ -1051,3 +1054,6 @@ subtags = ["Bridge Land"]
 
 ["Fast Manland"]
 alt-names = ["Forgotten Realms Landmark"]
+
+["Slow Dual"]
+alt-names = ["Last Land", "Haunted Land"]
