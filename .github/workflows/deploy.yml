@@ -3,7 +3,12 @@ name: Deploy GitHub Pages
 on:
   push:
     branches:
-      - master
+      - main
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+  CARGO_PROFILE_RELEASE_DEBUG: 0
 
 jobs:
   deploy:
@@ -11,25 +16,27 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Update rust
-        run: rustup update stable
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
       - name: Build generator
-        if: success()
         run: cargo build --release --verbose
         env:
           RUSTFLAGS: -C target-cpu=native
       - name: Run generator
-        if: success()
         run: cargo run --release
         env:
           RUST_LOG: info
           RUSTFLAGS: -C target-cpu=native
       - name: Deploy GitHub Pages
-        if: success()
-        uses: crazy-max/ghaction-github-pages@v1.2.5
+        uses: crazy-max/ghaction-github-pages@v2
         env:
-          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          target_branch: gh-pages
+          jekyll: false
           # Create incremental commit instead of doing push force
           keep_history: true
           # Allow an empty commit to be created
