@@ -43,3 +43,5 @@ jobs:
           allow_empty_commit: false
           # Build directory to deploy
           build_dir: target/www
+          # CNAME
+          fqdn: manabase.info
