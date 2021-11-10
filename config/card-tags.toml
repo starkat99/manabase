@@ -1548,6 +1548,7 @@
 "Scavenger Grounds" = ["Colorless Mana", "Sac Land"]
 "Scholarship Sponsor" = ["Fetch", "Basic Fetch"]
 "School of the Unseen" = ["Colorless Mana", "Any Color Mana", "Filter"]
+"Scion of Opulence" = ["Treasure", "Sac Ritual", "Any Color Mana"]
 "Scion Summoner" = ["Token", "Sac Ritual", "Colorless Mana"]
 "Scorched Ruins" = ["Replacement Land", "Ramp", "Colorless Mana"]
 "Scorned Villager // Moonscarred Werewolf" = ["Dork", "Ramp", "Green Mana", "Transformer"]
