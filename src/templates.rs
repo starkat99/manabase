@@ -227,6 +227,10 @@ impl<'a> TagPage<'a> {
         }
     }
 
+    pub fn tag_ref(&self) -> &TagRef<'a> {
+        &self.tag
+    }
+
     pub fn subtags(&self) -> Vec<TagRef<'a>> {
         self.tag
             .subtags()
@@ -235,7 +239,7 @@ impl<'a> TagPage<'a> {
             .collect()
     }
 
-    pub fn get_tag_cards(&self, tag: &TagRef<'a>) -> Option<&Vec<&'a TaggedCard<'a>>> {
+    pub fn get_tag_cards(&self, tag: TagRef<'a>) -> Option<&Vec<&'a TaggedCard<'a>>> {
         self.cards.get(&Some(tag.clone()))
     }
 
@@ -244,7 +248,7 @@ impl<'a> TagPage<'a> {
     }
 
     pub fn subtag_has_cards_of_type(&self, tag: &TagRef<'a>, card_type: &CardType) -> bool {
-        self.get_tag_cards(tag)
+        self.get_tag_cards(*tag)
             .map(|vec| vec.iter().any(|card| card.has_type(card_type)))
             .unwrap_or_default()
     }

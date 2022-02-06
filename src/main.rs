@@ -27,13 +27,13 @@ async fn main() -> anyhow::Result<()> {
 
     let matches = App::new("manabase")
         .arg(
-            Arg::with_name("data")
-                .short("d")
+            Arg::new("data")
+                .short('d')
                 .long("data")
                 .takes_value(true),
         )
         .arg(
-            Arg::with_name("output")
+            Arg::new("output")
                 .index(1)
                 .default_value("target/www"),
         )
