@@ -188,7 +188,7 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Lorwyn Tribal Land",
     "Futuresight Dual", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork",
-    "Dragon Monument", "Egg", "Cameo", "Borderpost"]
+    "Dragon Monument", "Egg", "Cameo", "Borderpost", "Draw Dual"]
 
 ["Selesnya Mana"]
 kind = "mana-pool"
@@ -197,7 +197,7 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Show Dual", "Canopy Dual", "Fast Dual", "Storage Dual", "True Dual", "Cycling Dual", "Gate",
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Cluestone", "Keyrune", "Locket",
-    "Signet", "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo", "Borderpost"]
+    "Signet", "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo", "Borderpost", "Draw Dual"]
 
 ["Dimir Mana"]
 kind = "mana-pool"
@@ -207,7 +207,7 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Tainted Land",
     "Lorwyn Tribal Land", "Futuresight Dual", "Cluestone", "Keyrune", "Locket", "Signet",
-    "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo", "Borderpost"]
+    "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo", "Borderpost", "Draw Dual"]
 
 ["Rakdos Mana"]
 kind = "mana-pool"
@@ -217,7 +217,7 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Tainted Land",
     "Lorwyn Tribal Land", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork",
-    "Dragon Monument", "Egg", "Cameo", "Borderpost", "Filter", "Ritual"]
+    "Dragon Monument", "Egg", "Cameo", "Borderpost", "Filter", "Ritual", "Draw Dual"]
 
 ["Gruul Mana"]
 kind = "mana-pool"
@@ -227,7 +227,7 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Futuresight Dual", "Cluestone",
     "Keyrune", "Locket", "Signet", "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo",
-    "Borderpost", "Dork", "Ritual", "Automatic"]
+    "Borderpost", "Dork", "Ritual", "Automatic", "Draw Dual"]
 
 ["Orzhov Mana"]
 kind = "mana-pool"
@@ -259,7 +259,7 @@ mana = ["U", "G"]
 subtags = ["True Dual", "Fast Dual", "Tap Dual", "Gate", "Bounce Dual",
     "Manland Dual", "Transformer", "Life-Gain Dual", "Pain Dual", "Canopy Dual", "Shock Dual",
     "Slow Pain Dual", "Temple", "Filter Dual", "Check Dual", "Tricolor Filter", "Tricolor Sac Land",
-    "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork",]
+    "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork"]
 
 ["Golgari Mana"]
 kind = "mana-pool"
@@ -272,27 +272,27 @@ subtags = ["True Dual", "Fast Dual", "Tap Dual", "Lorwyn Tribal Land", "Gate", "
 ["Esper Mana"]
 kind = "mana-pool"
 mana = ["W", "U", "B"]
-subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "Obelisk", "Attendant"]
+subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "Obelisk", "Attendant", "Tricolor Cycling Land"]
 
 ["Bant Mana"]
 kind = "mana-pool"
 mana = ["W", "U", "G"]
-subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "Obelisk", "Attendant", "Dork"]
+subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "Obelisk", "Attendant", "Dork", "Tricolor Cycling Land"]
 
 ["Naya Mana"]
 kind = "mana-pool"
 mana = ["W", "R", "G"]
-subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "Obelisk", "Attendant", "Dork"]
+subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "Obelisk", "Attendant", "Dork", "Tricolor Cycling Land"]
 
 ["Grixis Mana"]
 kind = "mana-pool"
 mana = ["U", "B", "R"]
-subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "Obelisk", "Attendant"]
+subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "Obelisk", "Attendant", "Tricolor Cycling Land"]
 
 ["Jund Mana"]
 kind = "mana-pool"
 mana = ["B", "R", "G"]
-subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "Obelisk", "Attendant"]
+subtags = ["Lair", "Tricolor Filter", "Tricolor Sac Land", "Tricolor Tapland", "Obelisk", "Attendant", "Tricolor Cycling Land"]
 
 ["Jeskai Mana"]
 kind = "mana-pool"
@@ -372,7 +372,7 @@ subtags = ["Banding Land", "Fast Fetch", "Landcycling", "Transformer",
     "Desert", "Utility Land", "Eldrazi", "Basic Fetch Land", "Token",
     "Double Fetch", "Storage Land", "Pain Land", "Snow", "Lorwyn Tribal Land", "Strip Land",
     "Copy Land", "Urza's", "Basic", "Myr", "Rock", "Tutor", "Fetch", "Egg", "Artifact Land", "Mox",
-    "Dork", "Reclamation"]
+    "Dork", "Reclamation", "Auto Fetch Land"]
 
 [White]
 kind = "color-identity"
@@ -879,7 +879,7 @@ alt-names = ["Homeland"]
 
 ["Basic Fetch"]
 alt-names = ["Basic Land Fetch"]
-subtags = ["Basic Fetch Land", "Blighted Land", "Panorama", "Basic Tutor", "Scry", "Draw", "Egg"]
+subtags = ["Basic Fetch Land", "Blighted Land", "Panorama", "Basic Tutor", "Scry", "Draw", "Egg", "Auto Fetch Land"]
 description = "Cards that search your library for basic land cards and put them directly on the battlefield."
 
 ["Basic Tutor"]
@@ -933,7 +933,7 @@ subtags = ["Sac Any Color", "Life-Gain Dual", "Tricolor Sac Land", "Tricolor Tap
 [Fetch]
 alt-names = ["Land Fetch"]
 subtags = ["Fast Fetch", "Slow Fetch", "Basic Fetch", "Basic Fetch Land", "Panorama",
-    "Double Fetch"]
+    "Double Fetch", "Auto Fetch Land"]
 description = "Cards that search your library for land cards and put them directly on the battlefield."
 
 [Filter]
@@ -965,7 +965,7 @@ description = "Cards that provide permanent mana advantage."
 alt-names = ["Sacrifice Land"]
 subtags = ["Sac Any Color", "Fast Fetch", "Slow Fetch", "Fallen Sac Land", "Panorama",
     "Threshold Land", "Blighted Land", "Strip Land", "Basic Fetch Land", "Canopy Dual",
-    "Token", "Sac Desert", "Memorial", "Tricolor Sac Land"]
+    "Token", "Sac Desert", "Memorial", "Tricolor Sac Land", "Draw Dual"]
 description = "Lands that can sacrifice themselves for an effect."
 
 ["Sac Ritual"]
@@ -1060,3 +1060,6 @@ alt-names = ["Last Land", "Haunted Land"]
 
 ["Channel Land"]
 alt-names = ["Kamigawa Neon Landmark"]
+
+["Tricolor Cycling Land"]
+alt-names = ["Triome"]
