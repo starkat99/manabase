@@ -32,6 +32,7 @@ subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
 [Gate]
 kind = "type"
 type = 'Gate'
+subtags = ["Battle Gate", "Guild Gate"]
 
 [Island]
 kind = "type"
