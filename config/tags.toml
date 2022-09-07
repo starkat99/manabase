@@ -27,7 +27,7 @@ kind = "type"
 type = 'Forest'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
     "Lorwyn Tribal Land", "Permanent Color Land", "Cycling Dual", "Snow Basic", "Dryad",
-    "Tricolor Cycling Land"]
+    "Tricolor Cycling Land", "Basic Tap Dual"]
 
 [Gate]
 kind = "type"
@@ -38,7 +38,7 @@ subtags = ["Battle Gate", "Guild Gate"]
 kind = "type"
 type = 'Island'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual"]
 
 [Lair]
 kind = "type"
@@ -52,19 +52,19 @@ type = 'Locus'
 kind = "type"
 type = 'Mountain'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual"]
 
 [Plains]
 kind = "type"
 type = 'Plains'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual"]
 
 [Swamp]
 kind = "type"
 type = 'Swamp'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual"]
 
 ["Urza's"]
 kind = "type"
@@ -189,7 +189,7 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Lorwyn Tribal Land",
     "Futuresight Dual", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork",
-    "Dragon Monument", "Egg", "Cameo", "Borderpost", "Draw Dual"]
+    "Dragon Monument", "Egg", "Cameo", "Borderpost", "Draw Dual", "Basic Tap Dual"]
 
 ["Selesnya Mana"]
 kind = "mana-pool"
@@ -198,7 +198,8 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Show Dual", "Canopy Dual", "Fast Dual", "Storage Dual", "True Dual", "Cycling Dual", "Gate",
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Cluestone", "Keyrune", "Locket",
-    "Signet", "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo", "Borderpost", "Draw Dual"]
+    "Signet", "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo", "Borderpost", "Draw Dual",
+    "Basic Tap Dual"]
 
 ["Dimir Mana"]
 kind = "mana-pool"
@@ -208,7 +209,8 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Tainted Land",
     "Lorwyn Tribal Land", "Futuresight Dual", "Cluestone", "Keyrune", "Locket", "Signet",
-    "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo", "Borderpost", "Draw Dual"]
+    "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo", "Borderpost", "Draw Dual", 
+    "Basic Tap Dual"]
 
 ["Rakdos Mana"]
 kind = "mana-pool"
@@ -218,7 +220,8 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Tainted Land",
     "Lorwyn Tribal Land", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork",
-    "Dragon Monument", "Egg", "Cameo", "Borderpost", "Filter", "Ritual", "Draw Dual"]
+    "Dragon Monument", "Egg", "Cameo", "Borderpost", "Filter", "Ritual", "Draw Dual",
+    "Basic Tap Dual"]
 
 ["Gruul Mana"]
 kind = "mana-pool"
@@ -228,7 +231,7 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Futuresight Dual", "Cluestone",
     "Keyrune", "Locket", "Signet", "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo",
-    "Borderpost", "Dork", "Ritual", "Automatic", "Draw Dual"]
+    "Borderpost", "Dork", "Ritual", "Automatic", "Draw Dual", "Basic Tap Dual"]
 
 ["Orzhov Mana"]
 kind = "mana-pool"
@@ -236,7 +239,8 @@ mana = ["W", "B"]
 subtags = ["True Dual", "Fast Dual", "Tap Dual", "Gate", "Bounce Dual",
     "Manland Dual", "Transformer", "Life-Gain Dual", "Pain Dual", "Canopy Dual", "Shock Dual",
     "Slow Pain Dual", "Temple", "Filter Dual", "Check Dual", "Tainted Land", "Tricolor Filter",
-    "Tricolor Sac Land", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork"]
+    "Tricolor Sac Land", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork",
+    "Basic Tap Dual"]
 
 ["Boros Mana"]
 kind = "mana-pool"
@@ -244,7 +248,7 @@ mana = ["W", "R"]
 subtags = ["True Dual", "Fast Dual", "Tap Dual", "Lorwyn Tribal Land", "Gate", "Bounce Dual",
     "Manland Dual", "Transformer", "Life-Gain Dual", "Pain Dual", "Canopy Dual", "Shock Dual",
     "Slow Pain Dual", "Temple", "Filter Dual", "Check Dual", "Tricolor Filter", "Tricolor Sac Land",
-    "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork"]
+    "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork", "Basic Tap Dual"]
 
 ["Izzet Mana"]
 kind = "mana-pool"
@@ -252,7 +256,7 @@ mana = ["U", "R"]
 subtags = ["True Dual", "Fast Dual", "Tap Dual", "Gate", "Bounce Dual",
     "Manland Dual", "Transformer", "Life-Gain Dual", "Pain Dual", "Canopy Dual", "Shock Dual",
     "Slow Pain Dual", "Temple", "Filter Dual", "Check Dual", "Tricolor Filter", "Tricolor Sac Land",
-    "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork"]
+    "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork", "Basic Tap Dual"]
 
 ["Simic Mana"]
 kind = "mana-pool"
@@ -260,7 +264,7 @@ mana = ["U", "G"]
 subtags = ["True Dual", "Fast Dual", "Tap Dual", "Gate", "Bounce Dual",
     "Manland Dual", "Transformer", "Life-Gain Dual", "Pain Dual", "Canopy Dual", "Shock Dual",
     "Slow Pain Dual", "Temple", "Filter Dual", "Check Dual", "Tricolor Filter", "Tricolor Sac Land",
-    "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork"]
+    "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork", "Basic Tap Dual"]
 
 ["Golgari Mana"]
 kind = "mana-pool"
@@ -268,7 +272,8 @@ mana = ["B", "G"]
 subtags = ["True Dual", "Fast Dual", "Tap Dual", "Lorwyn Tribal Land", "Gate", "Bounce Dual",
     "Manland Dual", "Transformer", "Life-Gain Dual", "Pain Dual", "Canopy Dual", "Shock Dual",
     "Slow Pain Dual", "Temple", "Filter Dual", "Check Dual", "Tainted Land", "Tricolor Filter",
-    "Tricolor Sac Land", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork"]
+    "Tricolor Sac Land", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork",
+    "Basic Tap Dual"]
 
 ["Esper Mana"]
 kind = "mana-pool"
@@ -439,7 +444,8 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Lorwyn Tribal Land",
     "Futuresight Dual", "Innistrad Landmark", "Ravnica Landmark", "Cluestone", "Keyrune", "Locket",
-    "Signet", "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo", "Borderpost", "Landcycling", "Dork"]
+    "Signet", "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo", "Borderpost", "Landcycling", 
+    "Dork", "Basic Tap Dual"]
 
 [Selesnya]
 kind = "color-identity"
@@ -449,7 +455,8 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Innistrad Landmark",
     "Ravnica Landmark", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork",
-    "Dragon Monument", "Egg", "Cameo", "Borderpost", "Dork", "Fetch", "Enchant Land", "Landcycling"]
+    "Dragon Monument", "Egg", "Cameo", "Borderpost", "Dork", "Fetch", "Enchant Land", "Landcycling",
+    "Basic Tap Dual"]
 
 [Dimir]
 kind = "color-identity"
@@ -460,7 +467,7 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Tainted Land",
     "Lorwyn Tribal Land", "Futuresight Dual", "Innistrad Landmark", "Ravnica Landmark", "Cluestone",
     "Keyrune", "Locket", "Signet", "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo",
-    "Borderpost", "Landcycling", "Dork"]
+    "Borderpost", "Landcycling", "Dork", "Basic Tap Dual"]
 
 [Rakdos]
 kind = "color-identity"
@@ -470,7 +477,8 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Bounce Dual", "Manland Dual", "Signet Land", "Check Dual", "Shock Dual", "Temple", "Tap Dual",
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Tainted Land",
     "Lorwyn Tribal Land", "Innistrad Landmark", "Ravnica Landmark", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork",
-    "Dragon Monument", "Egg", "Cameo", "Borderpost", "Dork", "Filter", "Landcycling", "Ritual"]
+    "Dragon Monument", "Egg", "Cameo", "Borderpost", "Dork", "Filter", "Landcycling", "Ritual",
+    "Basic Tap Dual"]
 
 [Gruul]
 kind = "color-identity"
@@ -481,7 +489,7 @@ subtags = ["Snow Dual", "Life-Gain Dual", "Bond Dual", "Pain Dual", "Battle Dual
     "Pause Dual", "Pause Dual", "Depletion Dual", "Filter Dual", "Futuresight Dual",
     "Innistrad Landmark", "Ravnica Landmark", "Cluestone", "Keyrune", "Locket", "Signet",
     "Talisman", "Dork", "Dragon Monument", "Egg", "Cameo", "Borderpost", "Dork", "Ritual",
-    "Automatic"]
+    "Automatic", "Basic Tap Dual"]
 
 [Orzhov]
 kind = "color-identity"
@@ -490,7 +498,7 @@ subtags = ["True Dual", "Fast Dual", "Tap Dual", "Gate", "Bounce Dual",
     "Manland Dual", "Transformer", "Life-Gain Dual", "Pain Dual", "Canopy Dual", "Shock Dual",
     "Slow Pain Dual", "Temple", "Filter Dual", "Check Dual", "Tainted Land", "Innistrad Landmark",
     "Ravnica Landmark", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork",
-    "Cost Reduction"]
+    "Cost Reduction", "Basic Tap Dual"]
 
 [Boros]
 kind = "color-identity"
@@ -498,7 +506,8 @@ color-identity = ["W", "R"]
 subtags = ["True Dual", "Fast Dual", "Tap Dual", "Lorwyn Tribal Land", "Gate", "Bounce Dual",
     "Manland Dual", "Transformer", "Life-Gain Dual", "Pain Dual", "Canopy Dual", "Shock Dual",
     "Slow Pain Dual", "Temple", "Filter Dual", "Check Dual", "Innistrad Landmark",
-    "Ravnica Landmark", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork"]
+    "Ravnica Landmark", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork", 
+    "Basic Tap Dual"]
 
 [Izzet]
 kind = "color-identity"
@@ -507,7 +516,7 @@ subtags = ["True Dual", "Fast Dual", "Tap Dual", "Gate", "Bounce Dual",
     "Manland Dual", "Transformer", "Life-Gain Dual", "Pain Dual", "Canopy Dual", "Shock Dual",
     "Slow Pain Dual", "Temple", "Filter Dual", "Check Dual", "Innistrad Landmark",
     "Ravnica Landmark", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork", "Dig",
-    "Cost Reduction"]
+    "Cost Reduction", "Basic Tap Dual"]
 
 [Simic]
 kind = "color-identity"
@@ -516,7 +525,7 @@ subtags = ["True Dual", "Fast Dual", "Tap Dual", "Gate", "Bounce Dual",
     "Manland Dual", "Transformer", "Life-Gain Dual", "Pain Dual", "Canopy Dual", "Shock Dual",
     "Slow Pain Dual", "Temple", "Filter Dual", "Check Dual", "Innistrad Landmark",
     "Ravnica Landmark", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork", "Dig",
-    "Cost Reduction", "Fetch"]
+    "Cost Reduction", "Fetch", "Basic Tap Dual"]
 
 [Golgari]
 kind = "color-identity"
@@ -525,7 +534,7 @@ subtags = ["True Dual", "Fast Dual", "Tap Dual", "Lorwyn Tribal Land", "Gate", "
     "Manland Dual", "Transformer", "Life-Gain Dual", "Pain Dual", "Canopy Dual", "Shock Dual",
     "Slow Pain Dual", "Temple", "Filter Dual", "Check Dual", "Tainted Land", "Innistrad Landmark",
     "Ravnica Landmark", "Cluestone", "Keyrune", "Locket", "Signet", "Talisman", "Dork", "Eldrazi",
-    "Reclamation", "Fetch", "Dig"]
+    "Reclamation", "Fetch", "Dig", "Basic Tap Dual"]
 
 [Esper]
 kind = "color-identity"
@@ -1064,3 +1073,6 @@ alt-names = ["Kamigawa Neon Landmark"]
 
 ["Tricolor Cycling Land"]
 alt-names = ["Triome"]
+
+["Basic Tap Dual"]
+description = "Tapland with dual basic land types"
