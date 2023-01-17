@@ -10,7 +10,7 @@ use crate::{
     tags::{CardTags, TagDb, TagIndex},
 };
 use chrono::prelude::*;
-use clap::{App, Arg};
+use clap::{Arg, Command};
 use fs_extra::dir::{self, CopyOptions};
 use log::{debug, info, warn};
 use std::{collections::HashSet, path::Path};
@@ -25,18 +25,9 @@ async fn main() -> anyhow::Result<()> {
         builder.init();
     }
 
-    let matches = App::new("manabase")
-        .arg(
-            Arg::new("data")
-                .short('d')
-                .long("data")
-                .takes_value(true),
-        )
-        .arg(
-            Arg::new("output")
-                .index(1)
-                .default_value("target/www"),
-        )
+    let matches = Command::new("manabase")
+        .arg(Arg::new("data").short('d').long("data").num_args(1))
+        .arg(Arg::new("output").index(1).default_value("target/www"))
         .get_matches();
 
     info!("loading config files");
@@ -46,7 +37,7 @@ async fn main() -> anyhow::Result<()> {
     tag_index.merge_tags(&card_tags);
     let tagdb = TagDb::new(&tag_index);
 
-    let output_dir = Path::new(matches.value_of_os("output").unwrap());
+    let output_dir = Path::new(matches.get_one::<String>("output").unwrap());
 
     std::fs::create_dir_all(&output_dir)?;
     let copy_opts = CopyOptions {
@@ -59,7 +50,7 @@ async fn main() -> anyhow::Result<()> {
 
     let bulk_data: String;
     let data_updated: DateTime<Utc>;
-    if let Some(path) = matches.value_of_os("data") {
+    if let Some(path) = matches.get_one::<String>("data") {
         let path = Path::new(path);
         info!("loading Scryfall bulk card data from {}", path.display());
         bulk_data = std::fs::read_to_string(path)?;
