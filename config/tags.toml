@@ -1076,3 +1076,6 @@ alt-names = ["Triome"]
 
 ["Basic Tap Dual"]
 description = "Tapland with dual basic land types"
+
+[Powerstone]
+description = "Cards that create Powerstone tokens."
