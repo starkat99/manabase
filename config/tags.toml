@@ -27,7 +27,7 @@ kind = "type"
 type = 'Forest'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
     "Lorwyn Tribal Land", "Permanent Color Land", "Cycling Dual", "Snow Basic", "Dryad",
-    "Tricolor Cycling Land", "Basic Tap Dual"]
+    "Tricolor Cycling Land", "Basic Tap Dual", "Snow Dual"]
 
 [Gate]
 kind = "type"
@@ -38,7 +38,8 @@ subtags = ["Battle Gate", "Guild Gate"]
 kind = "type"
 type = 'Island'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual",
+    "Snow Dual"]
 
 [Lair]
 kind = "type"
@@ -52,19 +53,22 @@ type = 'Locus'
 kind = "type"
 type = 'Mountain'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual",
+    "Snow Dual"]
 
 [Plains]
 kind = "type"
 type = 'Plains'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual",
+    "Snow Dual"]
 
 [Swamp]
 kind = "type"
 type = 'Swamp'
 subtags = ["True Dual", "Shock Dual", "Battle Dual", "Basic", "Mono Check Land",
-    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual"]
+    "Permanent Color Land", "Cycling Dual", "Snow Basic", "Tricolor Cycling Land", "Basic Tap Dual",
+    "Snow Dual"]
 
 ["Urza's"]
 kind = "type"
@@ -74,7 +78,8 @@ type = "Urza.s"
 kind = "type"
 type = 'Legendary'
 subtags = ["Eldrazi", "Legends Land", "Kamigawa Landmark", "Transformer", "Permanent Type Land",
-    "Snow", "Mox", "Cost Reduction", "Dork", "Rock", "Automatic"]
+    "Snow", "Mox", "Cost Reduction", "Dork", "Rock", "Automatic", "Utility Land", "Channel Land",
+    "Middle Earth Landmark", "Token"]
 
 [Eldrazi]
 kind = "type"
@@ -124,7 +129,8 @@ subtags = ["Utility Land", "Replacement Land", "Mono Bounce Land", "Panorama", "
     "Tricolor Filter", "Pause Dual", "Transformer", "Tribal Land", "Token", "Utility Land",
     "Ravnica Landmark", "Innistrad Landmark", "Strip Land", "Sac Desert", "Double Fetch",
     "Pain Dual", "Basic Fetch Land", "Slow Pain Dual", "Eldrazi", "Tainted Land", "Urza's",
-    "Basic", "Myr", "Rock", "Tutor", "Fetch", "Egg", "Artifact Land", "Mox", "Dork", "Ritual"]
+    "Basic", "Myr", "Rock", "Tutor", "Fetch", "Egg", "Artifact Land", "Mox", "Dork", "Ritual",
+    "Filter", "Sac Land"]
 
 ["White Mana"]
 kind = "mana-pool"
@@ -354,7 +360,8 @@ alt-names = ["Rainbow Mana", "Five-Color Mana"]
 kind = "mana-pool"
 subtags = ["Sac Any Color", "Transformer", "Filter", "Pain Land",
     "Charge Counter", "Lorwyn Tribal Land", "Vivid Land", "Myr", "Rock", "Egg", "Mox", "Dork",
-    "Enchant Land", "Automatic", "Ritual", "Treasure"]
+    "Enchant Land", "Automatic", "Ritual", "Treasure", "Utility Land", "Battle Gate", 
+    "Thriving Land"]
 
 ["Commander Mana"]
 kind = "mana-pool"
@@ -376,9 +383,10 @@ color-identity = []
 subtags = ["Banding Land", "Fast Fetch", "Landcycling", "Transformer",
     "Slow Fetch", "Panorama", "Cycling", "Manland", "Kamigawa Landmark",
     "Desert", "Utility Land", "Eldrazi", "Basic Fetch Land", "Token",
-    "Double Fetch", "Storage Land", "Pain Land", "Snow", "Lorwyn Tribal Land", "Strip Land",
+    "Double Fetch", "Storage Land", "Pain Land", "Snow", "Strip Land",
     "Copy Land", "Urza's", "Basic", "Myr", "Rock", "Tutor", "Fetch", "Egg", "Artifact Land", "Mox",
-    "Dork", "Reclamation", "Auto Fetch Land"]
+    "Dork", "Reclamation", "Auto Fetch Land", "Sac Land", "Gate", "Draw", "Filter", "Manaless Land",
+    "Legendary", "Treasure"]
 
 [White]
 kind = "color-identity"
@@ -920,7 +928,8 @@ subtags = ["Mono Depletion Land", "Depletion Dual"]
 
 [Draw]
 subtags = ["Transformer", "Utility Land", "Canopy Dual", "Banner", "Cluestone", "Locket", "Egg",
-    "Dork", "Cost Reduction", "Fetch", "Scry", "Tutor", "Enchant Land", "Crystal"]
+    "Dork", "Cost Reduction", "Fetch", "Scry", "Tutor", "Enchant Land", "Crystal", "Draw Dual",
+    "Cycling", "Sphere Domain"]
 description = "Cards that may draw cards in addition to their other mana-related effects."
 
 ["ETB Tapped"]
@@ -955,7 +964,8 @@ description = "Cards that convert one color of mana into another."
 subtags = ["Basic Landcycling"]
 
 ["Manaless Land"]
-subtags = ["Banding Land", "Fast Fetch", "Slow Fetch", "Basic Fetch Land", "Eldrazi"]
+subtags = ["Banding Land", "Fast Fetch", "Slow Fetch", "Basic Fetch Land", "Eldrazi", 
+    "Utility Land", "Copy Land"]
 description = "Lands that do not have mana abilities."
 
 [Manland]
@@ -975,7 +985,8 @@ description = "Cards that provide permanent mana advantage."
 alt-names = ["Sacrifice Land"]
 subtags = ["Sac Any Color", "Fast Fetch", "Slow Fetch", "Fallen Sac Land", "Panorama",
     "Threshold Land", "Blighted Land", "Strip Land", "Basic Fetch Land", "Canopy Dual",
-    "Token", "Sac Desert", "Memorial", "Tricolor Sac Land", "Draw Dual"]
+    "Token", "Sac Desert", "Memorial", "Tricolor Sac Land", "Draw Dual", "Kaldheim Sac Land",
+    "Auto Fetch Land", "Desert"]
 description = "Lands that can sacrifice themselves for an effect."
 
 ["Sac Ritual"]
@@ -985,7 +996,7 @@ subtags = ["Sac Any Color", "Tricolor Sac Land", "Fallen Sac Land", "Eldrazi", "
 description = "Cards that sacrifice themselves or other permanents for mana."
 
 [Scry]
-subtags = ["Temple", "Castle", "Keyword Land", "Transformer"]
+subtags = ["Temple", "Castle", "Keyword Land", "Transformer", "Campus Land"]
 description = "Cards that scry in addition to other mana-related effects."
 
 ["Storage Land"]
@@ -1006,7 +1017,7 @@ description = "Cards that can search your library for land cards and put them in
 ["Utility Land"]
 subtags = ["Innistrad Landmark", "Zendikar Landmark", "Transformer", "Replacement Land",
     "Threshold Land", "Castle", "Tribal Land", "Ravnica Landmark", "Kamigawa Landmark",
-    "Legends Land", "Hideaway", "Permanent Color Land"]
+    "Legends Land", "Permanent Color Land", "Middle Earth Landmark", "Campus Land", "Sphere"]
 description = "Lands with repeatable non-mana abilities."
 
 [Dig]
@@ -1060,7 +1071,7 @@ subtags = ["Modal Dual", "Bolt Modal"]
 alt-names = ["Artifact Dual", "Artifact Tapland"]
 
 ["Artifact Land"]
-subtags = ["Bridge Land"]
+subtags = ["Bridge Land", "Mono Artifact Land"]
 
 ["Fast Manland"]
 alt-names = ["Forgotten Realms Landmark"]
@@ -1083,7 +1094,7 @@ description = "Cards that create Powerstone tokens."
 [Sphere]
 kind = "type"
 type = "Sphere"
-subtags = ["Sphere Domain"]
+subtags = ["Sphere Domain", "Utility Land"]
 
 ["Sphere Domain"]
 description = "Phyrexian domain sphere cycle."
@@ -1095,3 +1106,10 @@ description = "Lord of the Rings: Tales of Middle Earth landmarks."
 ["Mana Bank"]
 alt-names = ["Mana Retention"]
 descrption = "Cards that retain unspent mana between steps and phases"
+
+["Bolt Modal"]
+description = "Zendikar Rising modal land/spell with ETB tap/bolt choice."
+
+[Saga]
+kind = "type"
+type = "Saga"
