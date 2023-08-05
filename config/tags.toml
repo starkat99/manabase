@@ -728,97 +728,97 @@ subtags = ["Untap", "Filter", "Tutor", "Dig", "Rock", "Dork", "Eldrazi", "Fetch"
 
 # Format Legality
 
-["Legal in Standard"]
+["Standard"]
 kind = "format"
 format = "standard"
 legality = "legal"
 
-["Banned in Standard"]
+["Standard: Banned"]
 kind = "format"
 format = "standard"
 legality = "banned"
 
-["Legal in Historic"]
+["Historic"]
 kind = "format"
 format = "historic"
 legality = "legal"
 
-["Banned in Historic"]
+["Historic: Banned"]
 kind = "format"
 format = "historic"
 legality = "banned"
 
-["Legal in Pioneer"]
+["Pioneer"]
 kind = "format"
 format = "pioneer"
 legality = "legal"
 
-["Banned in Pioneer"]
+["Pioneer: Banned"]
 kind = "format"
 format = "pioneer"
 legality = "banned"
 
-["Legal in Modern"]
+["Modern"]
 kind = "format"
 format = "modern"
 legality = "legal"
 
-["Banned in Modern"]
+["Modern: Banned"]
 kind = "format"
 format = "modern"
 legality = "banned"
 
-["Legal in Legacy"]
+["Legacy"]
 kind = "format"
 format = "legacy"
 legality = "legal"
 
-["Banned in Legacy"]
+["Legacy: Banned"]
 kind = "format"
 format = "legacy"
 legality = "banned"
 
-["Legal in Vintage"]
+["Vintage"]
 kind = "format"
 format = "vintage"
 legality = "legal"
 
-["Banned in Vintage"]
+["Vintage: Banned"]
 kind = "format"
 format = "vintage"
 legality = "banned"
 
-["Restricted in Vintage"]
+["Vintage: Restricted"]
 kind = "format"
 format = "vintage"
 legality = "restricted"
 
-["Legal in Pauper"]
+["Pauper"]
 kind = "format"
 format = "pauper"
 legality = "legal"
 
-["Banned in Pauper"]
+["Pauper: Banned"]
 kind = "format"
 format = "pauper"
 legality = "banned"
 
-["Legal in Commander"]
+["Commander"]
 kind = "format"
 format = "commander"
 legality = "legal"
 
-["Banned in Commander"]
+["Commander: Banned"]
 kind = "format"
 format = "commander"
 legality = "banned"
 
-["Legal in Brawl"]
+["Brawl"]
 kind = "format"
 format = "brawl"
 legality = "legal"
 
-["Banned in Brawl"]
+["Brawl: Banned"]
 kind = "format"
 format = "brawl"
 legality = "banned"
