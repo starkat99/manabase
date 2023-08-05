@@ -18,7 +18,7 @@ function updateFilters() {
 }
 
 const INITIALLY_HIDDEN_FILTERS = ["silver-border"];
-const INITIALLY_SHOWN_FILTERS = ["land", "artifact", "creature", "enchantment", "instant", "sorcery", "planeswalker"];
+const INITIALLY_SHOWN_FILTERS = ["land", "artifact", "creature", "enchantment", "instant", "sorcery", "planeswalker", "battle"];
 
 var show_filters = [];
 var hide_filters = [];
