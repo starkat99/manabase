@@ -1087,3 +1087,11 @@ subtags = ["Sphere Domain"]
 
 ["Sphere Domain"]
 description = "Phyrexian domain sphere cycle."
+
+["Middle Earth Landmark"]
+alt-names = ["LotR Landmark"]
+description = "Lord of the Rings: Tales of Middle Earth landmarks."
+
+["Mana Bank"]
+alt-names = ["Mana Retention"]
+descrption = "Cards that retain unspent mana between steps and phases"

@@ -14,6 +14,7 @@ pub struct Card<'a> {
     pub scryfall_uri: Cow<'a, str>,
     #[serde(default)]
     pub card_faces: Option<Vec<CardFace<'a>>>,
+    #[serde(default)]
     pub cmc: f32,
     pub color_identity: Vec<Color>,
     #[serde(borrow)]
