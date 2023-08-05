@@ -134,6 +134,13 @@ async fn main() -> anyhow::Result<()> {
         data_updated.clone(),
     )
     .write_output(&output_dir)?;
+    templates::TypeAllCards::new(
+        CardType::Battle,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
     debug!("writing card type pages");
     templates::TypePage::new(
         CardType::Land,
@@ -185,6 +192,14 @@ async fn main() -> anyhow::Result<()> {
     .write_output(&output_dir)?;
     templates::TypePage::new(
         CardType::Planeswalker,
+        &tagdb,
+        &carddb,
+        timestamp.clone(),
+        data_updated.clone(),
+    )
+    .write_output(&output_dir)?;
+    templates::TypePage::new(
+        CardType::Battle,
         &tagdb,
         &carddb,
         timestamp.clone(),

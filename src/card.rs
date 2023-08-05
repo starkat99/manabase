@@ -20,6 +20,7 @@ pub enum CardType {
     Instant,
     Sorcery,
     Planeswalker,
+    Battle,
 }
 
 #[derive(Debug)]
@@ -65,6 +66,9 @@ impl CardType {
         if type_line.contains("Planeswalker") {
             types.insert(CardType::Planeswalker);
         }
+        if type_line.contains("Battle") {
+            types.insert(CardType::Battle);
+        }
         types
     }
 
@@ -77,6 +81,7 @@ impl CardType {
             CardType::Instant => "instants.html",
             CardType::Sorcery => "sorceries.html",
             CardType::Planeswalker => "planeswalkers.html",
+            CardType::Battle => "battles.html",
         }
     }
 
@@ -89,6 +94,7 @@ impl CardType {
             CardType::Instant => "all-instants.html",
             CardType::Sorcery => "all-sorceries.html",
             CardType::Planeswalker => "all-planeswalkers.html",
+            CardType::Battle => "all-battles.html",
         }
     }
 
@@ -101,6 +107,7 @@ impl CardType {
             CardType::Instant => "mtg-filter-instant",
             CardType::Sorcery => "mtg-filter-sorcery",
             CardType::Planeswalker => "mtg-filter-planeswalker",
+            CardType::Battle => "mtg-filter-battle",
         }
     }
 
@@ -113,6 +120,7 @@ impl CardType {
             CardType::Instant => "#Instant",
             CardType::Sorcery => "#Sorcery",
             CardType::Planeswalker => "#Planeswalker",
+            CardType::Battle => "#Battle",
         }
     }
 
@@ -125,6 +133,7 @@ impl CardType {
             CardType::Instant => "Instants",
             CardType::Sorcery => "Sorceries",
             CardType::Planeswalker => "Planeswalkers",
+            CardType::Battle => "Battles",
         }
     }
 }
@@ -142,6 +151,7 @@ impl<'a> TaggedCardDb<'a> {
         type_tag_index.insert(CardType::Instant, HashSet::new());
         type_tag_index.insert(CardType::Sorcery, HashSet::new());
         type_tag_index.insert(CardType::Planeswalker, HashSet::new());
+        type_tag_index.insert(CardType::Battle, HashSet::new());
 
         for (tags, card) in cards
             .cards()
@@ -337,6 +347,7 @@ impl std::fmt::Display for CardType {
                 CardType::Instant => "Instant",
                 CardType::Sorcery => "Sorcery",
                 CardType::Planeswalker => "Planeswalker",
+                CardType::Battle => "Battle",
             }
         )
     }

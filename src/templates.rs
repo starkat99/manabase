@@ -15,7 +15,7 @@ use std::{
 #[derive(Debug, Template)]
 #[template(path = "index.html")]
 pub struct IndexPage<'a> {
-    card_types: [CardType; 7],
+    card_types: [CardType; 8],
     tagdb: &'a TagDb<'a>,
     carddb: &'a TaggedCardDb<'a>,
     timestamp: DateTime<Utc>,
@@ -52,7 +52,7 @@ pub struct TypePage<'a> {
 #[derive(Debug, Template)]
 #[template(path = "tag-cards.html")]
 pub struct TagPage<'a> {
-    card_types: [CardType; 7],
+    card_types: [CardType; 8],
     tag: TagRef<'a>,
     tag_index: &'a TagIndex,
     cards: HashMap<Option<TagRef<'a>>, Vec<&'a TaggedCard<'a>>>,
@@ -77,6 +77,7 @@ impl<'a> IndexPage<'a> {
                 CardType::Instant,
                 CardType::Sorcery,
                 CardType::Planeswalker,
+                CardType::Battle,
             ],
             tagdb,
             carddb,
@@ -217,6 +218,7 @@ impl<'a> TagPage<'a> {
                 CardType::Instant,
                 CardType::Sorcery,
                 CardType::Planeswalker,
+                CardType::Battle,
             ],
             tag,
             tag_index,
