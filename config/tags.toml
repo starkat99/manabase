@@ -130,7 +130,7 @@ subtags = ["Utility Land", "Replacement Land", "Mono Bounce Land", "Panorama", "
     "Ravnica Landmark", "Innistrad Landmark", "Strip Land", "Sac Desert", "Double Fetch",
     "Pain Dual", "Basic Fetch Land", "Slow Pain Dual", "Eldrazi", "Tainted Land", "Urza's",
     "Basic", "Myr", "Rock", "Tutor", "Fetch", "Egg", "Artifact Land", "Mox", "Dork", "Ritual",
-    "Filter", "Sac Land"]
+    "Filter", "Sac Land", "Cave"]
 
 ["White Mana"]
 kind = "mana-pool"
@@ -141,7 +141,7 @@ subtags = ["Sac Any Color", "Artifact Land", "Castle", "Cycling", "Mono Manland"
     "Threshold Land", "Basic", "Mono Depletion Land", "Fallen Sac Land", "Lorwyn Tribal Land",
     "Permanent Type Land", "Sac Desert", "Vivid Land", "Hideaway", "Kamigawa Landmark",
     "Zendikar Landmark", "Tricolor Filter", "Tricolor Sac Land", "Battery", "Ramos", "Mox", "Myr",
-    "Diamond", "Totem", "Dork", "Fetch", "Tutor", "Filter", "Reclamation", "Landcycling"]
+    "Diamond", "Totem", "Dork", "Fetch", "Tutor", "Filter", "Reclamation", "Landcycling", "Discover Land"]
 
 ["Blue Mana"]
 kind = "mana-pool"
@@ -152,7 +152,7 @@ subtags = ["Sac Any Color", "Artifact Land", "Castle", "Cycling", "Mono Manland"
     "Threshold Land", "Basic", "Mono Depletion Land", "Fallen Sac Land",
     "Permanent Type Land", "Sac Desert", "Vivid Land", "Hideaway", "Kamigawa Landmark",
     "Zendikar Landmark", "Tricolor Filter", "Tricolor Sac Land", "Battery", "Ramos", "Mox", "Myr",
-    "Diamond", "Dork", "Totem"]
+    "Diamond", "Dork", "Totem", "Discover Land"]
 
 ["Black Mana"]
 kind = "mana-pool"
@@ -163,7 +163,7 @@ subtags = ["Sac Any Color", "Artifact Land", "Castle", "Cycling", "Mono Manland"
     "Threshold Land", "Basic", "Mono Depletion Land", "Fallen Sac Land",
     "Sac Desert", "Vivid Land", "Hideaway", "Kamigawa Landmark", "Zendikar Landmark",
     "Tricolor Filter", "Tricolor Sac Land", "Automatic", "Battery", "Diamond", "Myr", "Mox",
-    "Totem", "Ramos", "Sac Ritual", "Dork", "Filter", "Ritual"]
+    "Totem", "Ramos", "Sac Ritual", "Dork", "Filter", "Ritual", "Discover Land"]
 
 ["Red Mana"]
 kind = "mana-pool"
@@ -174,7 +174,7 @@ subtags = ["Sac Any Color", "Artifact Land", "Castle", "Cycling", "Mono Manland"
     "Threshold Land", "Basic", "Mono Depletion Land", "Fallen Sac Land", "Lorwyn Tribal Land",
     "Sac Desert", "Vivid Land", "Hideaway", "Kamigawa Landmark", "Zendikar Landmark",
     "Tricolor Filter", "Tricolor Sac Land", "Sac Ritual", "Diamond", "Totem", "Ramos", "Myr", "Mox",
-    "Battery", "Ritual", "Dork", "Automatic"]
+    "Battery", "Ritual", "Dork", "Automatic", "Discover Land"]
 
 ["Green Mana"]
 kind = "mana-pool"
@@ -185,7 +185,7 @@ subtags = ["Sac Any Color", "Artifact Land", "Castle", "Cycling", "Mono Manland"
     "Threshold Land", "Basic", "Mono Depletion Land", "Fallen Sac Land",
     "Permanent Type Land", "Sac Desert", "Vivid Land", "Hideaway", "Kamigawa Landmark",
     "Zendikar Landmark", "Tricolor Filter", "Tricolor Sac Land", "Dork", "Battery", "Myr",
-    "Ramos", "Diamond", "Mox", "Totem", "Automatic", "Ritual", "Filter", "Enchant Land"]
+    "Ramos", "Diamond", "Mox", "Totem", "Automatic", "Ritual", "Filter", "Enchant Land", "Discover Land"]
 
 ["Azorius Mana"]
 kind = "mana-pool"
@@ -866,6 +866,7 @@ alt-names = ["Gain Dual", "Life Land", "Refuge"]
 alt-names = ["Manaless Filter", "Odyssey Filter"]
 
 ["Manland Dual"]
+subtags = ["Restless Land"]
 alt-names = ["Elemental Land"]
 
 ["Pause Dual"]
@@ -938,7 +939,7 @@ subtags = ["Sac Any Color", "Life-Gain Dual", "Tricolor Sac Land", "Tricolor Tap
     "Mono Storage Land", "Slow Pain Dual", "Manland", "Tap Dual", "Zendikar Landmark",
     "Keyword Land", "Fallen Sac Land", "Mono Depletion Land", "Hideaway", "Mono Bounce Land",
     "Double Fetch", "Permanent Color Land", "Memorial", "Temple", "Vivid Land", "Diamond",
-    "Borderpost", "Manrock", "Tricolor Cycling Land"]
+    "Borderpost", "Manrock", "Tricolor Cycling Land", "Cave", "Discover Land"]
 description = "Permanents that enter that battlefield tapped."
 
 [Tapland]
@@ -947,7 +948,7 @@ subtags = ["Sac Any Color", "Life-Gain Dual", "Tricolor Sac Land", "Tricolor Tap
     "Mono Storage Land", "Slow Pain Dual", "Manland", "Tap Dual", "Zendikar Landmark",
     "Keyword Land", "Fallen Sac Land", "Mono Depletion Land", "Hideaway", "Mono Bounce Land",
     "Double Fetch", "Permanent Color Land", "Memorial", "Temple", "Vivid Land",
-    "Tricolor Cycling Land"]
+    "Tricolor Cycling Land", "Cave", "Discover Land"]
 
 [Fetch]
 alt-names = ["Land Fetch"]
@@ -969,7 +970,7 @@ subtags = ["Banding Land", "Fast Fetch", "Slow Fetch", "Basic Fetch Land", "Eldr
 description = "Lands that do not have mana abilities."
 
 [Manland]
-subtags = ["Manland Dual", "Mono Manland", "Fast Manland"]
+subtags = ["Manland Dual", "Mono Manland", "Fast Manland", "Restless Land"]
 description = "Lands that can temporarily become creatures."
 
 ["Pain Land"]
@@ -986,7 +987,7 @@ alt-names = ["Sacrifice Land"]
 subtags = ["Sac Any Color", "Fast Fetch", "Slow Fetch", "Fallen Sac Land", "Panorama",
     "Threshold Land", "Blighted Land", "Strip Land", "Basic Fetch Land", "Canopy Dual",
     "Token", "Sac Desert", "Memorial", "Tricolor Sac Land", "Draw Dual", "Kaldheim Sac Land",
-    "Auto Fetch Land", "Desert"]
+    "Auto Fetch Land", "Desert", "Discover Land"]
 description = "Lands that can sacrifice themselves for an effect."
 
 ["Sac Ritual"]
@@ -1017,7 +1018,7 @@ description = "Cards that can search your library for land cards and put them in
 ["Utility Land"]
 subtags = ["Innistrad Landmark", "Zendikar Landmark", "Transformer", "Replacement Land",
     "Threshold Land", "Castle", "Tribal Land", "Ravnica Landmark", "Kamigawa Landmark",
-    "Legends Land", "Permanent Color Land", "Middle Earth Landmark", "Campus Land", "Sphere"]
+    "Legends Land", "Permanent Color Land", "Middle Earth Landmark", "Campus Land", "Sphere", "Cave"]
 description = "Lands with repeatable non-mana abilities."
 
 [Dig]
@@ -1059,7 +1060,7 @@ subtags = ["Any Color Mana"]
 alt-names = ["Tango Land"]
 
 [Transformer]
-subtags = ["Legendary", "Rock", "Dork"]
+subtags = ["Legendary", "Rock", "Dork", "Ixalan Landmark"]
 
 ["Thriving Land"]
 alt-names = ["Jumpstart Land"]
@@ -1113,3 +1114,20 @@ description = "Zendikar Rising modal land/spell with ETB tap/bolt choice."
 [Saga]
 kind = "type"
 type = "Saga"
+
+["Restless Land"]
+description = "Manland duals with additional attack trigger"
+
+[Map]
+description = "Cards that create map tokens that can explore"
+
+["Ixalan Landmark"]
+description = "Legendary Lost Caverns of Ixalan cards that transform into a (possibly legendary) land"
+
+["Discover Land"]
+description = "Lands that sacrifice to discover"
+
+[Cave]
+kind = "type"
+type = "Cave"
+subtypes = ["Tapland", "Discover Land"]
